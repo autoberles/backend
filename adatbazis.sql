@@ -5,9 +5,9 @@ COLLATE utf8mb4_hungarian_ci;
 
 USE autoberles;
 
---------------------------------------------------
+-- --------------------------------------------------
 -- TÍPUS TÁBLÁK (ENUM helyett)
---------------------------------------------------
+-- --------------------------------------------------
 
 CREATE TABLE valto_tipusok (
     id INT PRIMARY KEY AUTO_INCREMENT,
@@ -24,9 +24,9 @@ CREATE TABLE klima_tipusok (
     megnevezes VARCHAR(50) NOT NULL UNIQUE
 );
 
---------------------------------------------------
+-- --------------------------------------------------
 -- TELEPHELYEK
---------------------------------------------------
+-- --------------------------------------------------
 
 CREATE TABLE telephelyek (
     id INT PRIMARY KEY,
@@ -36,9 +36,9 @@ CREATE TABLE telephelyek (
     telefonszam VARCHAR(30) NOT NULL
 );
 
---------------------------------------------------
+-- --------------------------------------------------
 -- FELHASZNALOK
---------------------------------------------------
+-- --------------------------------------------------
 
 CREATE TABLE felhasznalok (
     id INT PRIMARY KEY,
@@ -48,9 +48,9 @@ CREATE TABLE felhasznalok (
     szuletesi_datum DATE NOT NULL
 );
 
---------------------------------------------------
+-- --------------------------------------------------
 -- AUTOK
---------------------------------------------------
+-- --------------------------------------------------
 
 CREATE TABLE autok (
     id INT PRIMARY KEY,
@@ -67,9 +67,9 @@ CREATE TABLE autok (
     FOREIGN KEY (uzemanyagtipus_id) REFERENCES uzemanyag_tipusok(id)
 );
 
---------------------------------------------------
+-- --------------------------------------------------
 -- EGYEB_FELSZERELTSEGEK
---------------------------------------------------
+-- --------------------------------------------------
 
 CREATE TABLE egyeb_felszereltsegek (
     id INT PRIMARY KEY,
@@ -83,9 +83,9 @@ CREATE TABLE egyeb_felszereltsegek (
     FOREIGN KEY (klima_id) REFERENCES klima_tipusok(id)
 );
 
---------------------------------------------------
+-- --------------------------------------------------
 -- BERLESEK
---------------------------------------------------
+-- --------------------------------------------------
 
 CREATE TABLE berlesek (
     id INT PRIMARY KEY,
@@ -97,9 +97,9 @@ CREATE TABLE berlesek (
     FOREIGN KEY (felhasznalo_id) REFERENCES felhasznalok(id)
 );
 
---------------------------------------------------
+-- --------------------------------------------------
 -- TÍPUS ADATOK FELTÖLTÉSE
---------------------------------------------------
+-- --------------------------------------------------
 
 INSERT INTO valto_tipusok (megnevezes) VALUES
 ('manuális'),
@@ -179,4 +179,5 @@ INSERT INTO berlesek VALUES
 (5,1,5,'2025-04-12','2025-04-18'),
 (6,10,6,'2025-05-05','2025-05-09'),
 (7,15,7,'2025-05-20','2025-05-25'),
+
 (8,6,8,'2025-06-01','2025-06-03')
