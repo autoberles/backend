@@ -1,121 +1,99 @@
--- Adatbázis
-CREATE DATABASE IF NOT EXISTS autoberles
+-- Database
+CREATE DATABASE IF NOT EXISTS car_rental
 CHARACTER SET utf8mb4
 COLLATE utf8mb4_hungarian_ci;
 
-USE autoberles;
+USE car_rental;
 
--- --------------------------------------------------
--- TÍPUS TÁBLÁK (ENUM helyett)
--- --------------------------------------------------
-
-CREATE TABLE valto_tipusok (
+-- Type tables
+CREATE TABLE transmission_types (
     id INT PRIMARY KEY AUTO_INCREMENT,
-    megnevezes VARCHAR(50) NOT NULL UNIQUE
+    name VARCHAR(50) NOT NULL UNIQUE
 );
 
-CREATE TABLE uzemanyag_tipusok (
+CREATE TABLE fuel_types (
     id INT PRIMARY KEY AUTO_INCREMENT,
-    megnevezes VARCHAR(50) NOT NULL UNIQUE
+    name VARCHAR(50) NOT NULL UNIQUE
 );
 
-CREATE TABLE klima_tipusok (
+CREATE TABLE air_conditioning_types (
     id INT PRIMARY KEY AUTO_INCREMENT,
-    megnevezes VARCHAR(50) NOT NULL UNIQUE
+    name VARCHAR(50) NOT NULL UNIQUE
 );
 
--- --------------------------------------------------
--- TELEPHELYEK
--- --------------------------------------------------
-
-CREATE TABLE telephelyek (
+-- Branches
+CREATE TABLE branches (
     id INT PRIMARY KEY,
-    varos VARCHAR(100) NOT NULL,
-    cim VARCHAR(255) NOT NULL,
+    city VARCHAR(100) NOT NULL,
+    address VARCHAR(255) NOT NULL,
     email VARCHAR(150) NOT NULL,
-    telefonszam VARCHAR(30) NOT NULL
+    phone_number VARCHAR(30) NOT NULL
 );
 
--- --------------------------------------------------
--- FELHASZNALOK
--- --------------------------------------------------
-
-CREATE TABLE felhasznalok (
+-- Users
+CREATE TABLE users (
     id INT PRIMARY KEY,
-    vezeteknev VARCHAR(100) NOT NULL,
-    keresztnev VARCHAR(100) NOT NULL,
+    last_name VARCHAR(100) NOT NULL,
+    first_name VARCHAR(100) NOT NULL,
     email VARCHAR(150) NOT NULL UNIQUE,
-    szuletesi_datum DATE NOT NULL
+    birth_date DATE NOT NULL
 );
 
--- --------------------------------------------------
--- AUTOK
--- --------------------------------------------------
-
-CREATE TABLE autok (
+-- Cars
+CREATE TABLE cars (
     id INT PRIMARY KEY,
-    marka VARCHAR(50) NOT NULL,
-    tipus VARCHAR(50) NOT NULL,
-    telephely_id INT NOT NULL,
-    evjarat YEAR NOT NULL,
-    valto_id INT NOT NULL,
-    uzemanyagtipus_id INT NOT NULL,
-    ulesek_szama TINYINT NOT NULL,
-    ar INT NOT NULL,
-    FOREIGN KEY (telephely_id) REFERENCES telephelyek(id),
-    FOREIGN KEY (valto_id) REFERENCES valto_tipusok(id),
-    FOREIGN KEY (uzemanyagtipus_id) REFERENCES uzemanyag_tipusok(id)
+    brand VARCHAR(50) NOT NULL,
+    model VARCHAR(50) NOT NULL,
+    branch_id INT NOT NULL,
+    year YEAR NOT NULL,
+    transmission_id INT NOT NULL,
+    fuel_type_id INT NOT NULL,
+    number_of_seats TINYINT NOT NULL,
+    price INT NOT NULL,
+    FOREIGN KEY (branch_id) REFERENCES branches(id),
+    FOREIGN KEY (transmission_id) REFERENCES transmission_types(id),
+    FOREIGN KEY (fuel_type_id) REFERENCES fuel_types(id)
 );
 
--- --------------------------------------------------
--- EGYEB_FELSZERELTSEGEK
--- --------------------------------------------------
-
-CREATE TABLE egyeb_felszereltsegek (
+-- Additional equipment
+CREATE TABLE additional_equipment (
     id INT PRIMARY KEY,
-    auto_id INT NOT NULL,
-    tolatoradar BOOLEAN NOT NULL,
-    klima_id INT NOT NULL,
-    ulesfutes BOOLEAN NOT NULL,
-    navigacio BOOLEAN NOT NULL,
-    borules BOOLEAN NOT NULL,
-    FOREIGN KEY (auto_id) REFERENCES autok(id),
-    FOREIGN KEY (klima_id) REFERENCES klima_tipusok(id)
+    car_id INT NOT NULL,
+    parking_sensors BOOLEAN NOT NULL,
+    air_conditioning_id INT NOT NULL,
+    heated_seats BOOLEAN NOT NULL,
+    navigation BOOLEAN NOT NULL,
+    leather_seats BOOLEAN NOT NULL,
+    FOREIGN KEY (car_id) REFERENCES cars(id),
+    FOREIGN KEY (air_conditioning_id) REFERENCES air_conditioning_types(id)
 );
 
--- --------------------------------------------------
--- BERLESEK
--- --------------------------------------------------
-
-CREATE TABLE berlesek (
+-- Rentals
+CREATE TABLE rentals (
     id INT PRIMARY KEY,
-    auto_id INT NOT NULL,
-    felhasznalo_id INT NOT NULL,
-    kezdet_datum DATE NOT NULL,
-    vege_datum DATE NOT NULL,
-    FOREIGN KEY (auto_id) REFERENCES autok(id),
-    FOREIGN KEY (felhasznalo_id) REFERENCES felhasznalok(id)
+    car_id INT NOT NULL,
+    user_id INT NOT NULL,
+    start_date DATE NOT NULL,
+    end_date DATE NOT NULL,
+    FOREIGN KEY (car_id) REFERENCES cars(id),
+    FOREIGN KEY (user_id) REFERENCES users(id)
 );
 
--- --------------------------------------------------
--- TÍPUS ADATOK FELTÖLTÉSE
--- --------------------------------------------------
+INSERT INTO transmission_types (name) VALUES
+('automata'),
+('manuális');
 
-INSERT INTO valto_tipusok (megnevezes) VALUES
-('manuális'),
-('automata');
-
-INSERT INTO uzemanyag_tipusok (megnevezes) VALUES
+INSERT INTO fuel_types (name) VALUES
 ('benzines'),
 ('dízel'),
-('hibrid'),
-('elektromos');
+('elektromos'),
+('hibrid');
 
-INSERT INTO klima_tipusok (megnevezes) VALUES
-('manuális'),
-('automata');
+INSERT INTO air_conditioning_types (name) VALUES
+('automata'),
+('manuális');
 
-INSERT INTO telephelyek VALUES
+INSERT INTO branches VALUES
 (1,'Budapest','1138 Budapest, Váci út 123.','budapest@autoker.hu','+36 1 555 1234'),
 (2,'Győr','9027 Győr, Szent István út 45.','gyor@autoker.hu','+36 96 555 678'),
 (3,'Szeged','6724 Szeged, Kossuth Lajos sugárút 78.','szeged@autoker.hu','+36 62 555 987'),
@@ -125,7 +103,7 @@ INSERT INTO telephelyek VALUES
 (7,'Miskolc','3525 Miskolc, Széchenyi utca 88.','miskolc@autoker.hu','+36 46 555 444'),
 (8,'Zalaegerszeg','8900 Zalaegerszeg, Kossuth Lajos utca 21.','zalaegerszeg@autoker.hu','+36 92 555 555');
 
-INSERT INTO felhasznalok VALUES
+INSERT INTO users VALUES
 (1,'Kovács','András','kovacs.andras@email.hu','1990-05-12'),
 (2,'Nagy','Eszter','nagy.eszter@email.hu','1988-11-03'),
 (3,'Tóth','Bence','toth.bence@email.hu','1995-07-21'),
@@ -135,7 +113,7 @@ INSERT INTO felhasznalok VALUES
 (7,'Molnár','Gábor','molnar.gabor@email.hu','1993-04-17'),
 (8,'Horváth','Zsófia','horvath.zsofia@email.hu','1991-06-25');
 
-INSERT INTO autok VALUES
+INSERT INTO cars VALUES
 (1,'Toyota','Corolla',1,2021,2,3,5,8990000),
 (2,'Volkswagen','Golf',2,2019,1,1,5,6590000),
 (3,'BMW','320d',4,2020,2,2,5,11290000),
@@ -153,7 +131,7 @@ INSERT INTO autok VALUES
 (15,'Nissan','Qashqai',7,2022,2,1,5,11990000),
 (16,'Mazda','CX-5',8,2020,2,1,5,10490000);
 
-INSERT INTO egyeb_felszereltsegek VALUES
+INSERT INTO additional_equipment VALUES
 (1,1,TRUE,2,TRUE,TRUE,FALSE),
 (2,2,FALSE,1,FALSE,TRUE,FALSE),
 (3,3,TRUE,2,TRUE,TRUE,TRUE),
@@ -171,7 +149,7 @@ INSERT INTO egyeb_felszereltsegek VALUES
 (15,15,TRUE,2,TRUE,TRUE,FALSE),
 (16,16,TRUE,2,TRUE,TRUE,FALSE);
 
-INSERT INTO berlesek VALUES
+INSERT INTO rentals VALUES
 (1,3,1,'2025-03-01','2025-03-05'),
 (2,8,2,'2025-03-02','2025-03-04'),
 (3,13,3,'2025-03-10','2025-03-15'),
@@ -179,5 +157,4 @@ INSERT INTO berlesek VALUES
 (5,1,5,'2025-04-12','2025-04-18'),
 (6,10,6,'2025-05-05','2025-05-09'),
 (7,15,7,'2025-05-20','2025-05-25'),
-
-(8,6,8,'2025-06-01','2025-06-03')
+(8,6,8,'2025-06-01','2025-06-03');
