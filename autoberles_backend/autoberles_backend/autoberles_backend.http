@@ -1,0 +1,6 @@
+@autoberles_backend_HostAddress = http://localhost:5128
+
+GET {{autoberles_backend_HostAddress}}/weatherforecast/
+Accept: application/json
+
+###

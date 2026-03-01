@@ -1,0 +1,3 @@
+﻿<Project>
+  <Import Project="..\build\autoberles_backend.props" />
+</Project>
