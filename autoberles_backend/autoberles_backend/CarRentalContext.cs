@@ -122,6 +122,8 @@ public partial class CarRentalContext : DbContext
 
             entity.HasIndex(e => e.FuelTypeId, "fuel_type_id");
 
+            entity.HasIndex(e => e.LicensePlate, "license_plate").IsUnique();
+
             entity.HasIndex(e => e.TransmissionId, "transmission_id");
 
             entity.Property(e => e.Id)
@@ -136,11 +138,14 @@ public partial class CarRentalContext : DbContext
             entity.Property(e => e.FuelTypeId)
                 .HasColumnType("int(11)")
                 .HasColumnName("fuel_type_id");
+            entity.Property(e => e.LicensePlate)
+                .HasMaxLength(20)
+                .HasColumnName("license_plate");
             entity.Property(e => e.Model)
                 .HasMaxLength(50)
                 .HasColumnName("model");
             entity.Property(e => e.NumberOfSeats)
-                .HasColumnType("tinyint(4)")
+                .HasColumnType("smallint(6)")
                 .HasColumnName("number_of_seats");
             entity.Property(e => e.Price)
                 .HasColumnType("int(11)")
