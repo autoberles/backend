@@ -1,9 +1,14 @@
-﻿using System;
+﻿using Microsoft.EntityFrameworkCore;
+using System;
 using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
 
 namespace autoberles_backend.Models;
 
+[Index(nameof(City), IsUnique = true)]
+[Index(nameof(Address), IsUnique = true)]
+[Index(nameof(Email), IsUnique = true)]
+[Index(nameof(PhoneNumber), IsUnique = true)]
 public partial class Branch
 {
     [Key]

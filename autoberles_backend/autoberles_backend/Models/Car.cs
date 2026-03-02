@@ -1,10 +1,11 @@
-﻿using System;
+﻿using Microsoft.EntityFrameworkCore;
+using System;
 using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
 
 namespace autoberles_backend.Models;
 
-public class Car
+public partial class Car
 {
     [Key]
     public int Id { get; set; }
