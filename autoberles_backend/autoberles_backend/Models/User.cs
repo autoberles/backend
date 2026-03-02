@@ -52,4 +52,4 @@ public partial class User
         return ValidationResult.Success;
     }
 }
-}
+

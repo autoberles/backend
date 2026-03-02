@@ -4,7 +4,7 @@ using System.ComponentModel.DataAnnotations;
 
 namespace autoberles_backend.Models;
 
-public partial class Car
+public class Car
 {
     [Key]
     public int Id { get; set; }
@@ -22,27 +22,27 @@ public partial class Car
 
     [Required]
     [Range(1980,2100)]
-    public int Year { get; set; }
+    public int? Year { get; set; }
 
 
     [Required]
     [Range(2,9)]
-    public short NumberOfSeats { get; set; }
+    public short? NumberOfSeats { get; set; }
 
 
     [Required]
-    public int Price { get; set; }
+    public int? Price { get; set; }
 
 
     [Required]
     [RegularExpression(@"^[A-Z]{2}-[A-Z]{2}-\d{3}$", ErrorMessage = "A rendszámtábla kötelező formátuma: AA-AA-123")]
-    public string LicensePlate { get; set; } = null!;
+    public string? LicensePlate { get; set; } = null!;
 
-    public int BranchId { get; set; }
+    public int? BranchId { get; set; }
 
-    public int TransmissionId { get; set; }
+    public int? TransmissionId { get; set; }
 
-    public int FuelTypeId { get; set; }
+    public int? FuelTypeId { get; set; }
 
     public virtual ICollection<AdditionalEquipment> AdditionalEquipments { get; set; } = new List<AdditionalEquipment>();
 
