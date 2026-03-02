@@ -29,7 +29,8 @@ public partial class User
     [Required(ErrorMessage = "A születési dátum megadása kötelező.")]
     [DataType(DataType.Date)]
     [CustomValidation(typeof(User), nameof(ValidateBirthDate))]
-    public DateTime BirthDate { get; set; }
+    public DateTime? BirthDate { get; set; }
+
     public virtual ICollection<Rental> Rentals { get; set; } = new List<Rental>();
 
     public static ValidationResult? ValidateBirthDate(DateTime birthDate, ValidationContext context)
