@@ -266,8 +266,8 @@
         "IsRequired": true
       },
       {
-        "Name": "user",
-        "Type": "System.Object",
+        "Name": "body",
+        "Type": "System.Text.Json.JsonElement",
         "IsRequired": true
       }
     ],
@@ -308,8 +308,8 @@
     "Order": 0,
     "Parameters": [
       {
-        "Name": "user",
-        "Type": "System.Object",
+        "Name": "dto",
+        "Type": "autoberles_backend.Classes.CreateUserDto",
         "IsRequired": true
       }
     ],

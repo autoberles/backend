@@ -1,7 +1,9 @@
-﻿using autoberles_backend.Models;
+﻿using autoberles_backend.Classes;
+using autoberles_backend.Models;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
+using System.Reflection;
 using System.Text.Json;
 
 namespace autoberles_backend.Controllers
@@ -15,7 +17,7 @@ namespace autoberles_backend.Controllers
         [HttpGet("user")]
         public async Task<IActionResult> GetAllUsers()
         {
-            List<User> users = await context.Users.ToListAsync();
+            var users = await context.Users.Include(x => x.Rentals).ThenInclude(x => x.Car).ToListAsync();
             if (users == null)
                 return BadRequest("Hiba a felhasználók lekérdezése során");
             return Ok(users);
@@ -26,7 +28,9 @@ namespace autoberles_backend.Controllers
         {
             try
             {
-                User? user = await context.Users.FindAsync(id);
+                var user = await context.Users.Include(x => x.Rentals)
+                                              .ThenInclude(x => x.Car)
+                                              .FirstOrDefaultAsync(x => x.Id == id);
                 if (user == null)
                     return NotFound($"Nem található felhasználó a(z) {id} ID-val!");
                 return Ok(user);
@@ -38,45 +42,49 @@ namespace autoberles_backend.Controllers
         }
 
         [HttpPost("user")]
-        public async Task<IActionResult> PostUser([FromBody] dynamic user)
+        public async Task<IActionResult> PostUser([FromBody] CreateUserDto dto)
         {
-            try
+            if (!ModelState.IsValid)
+                return BadRequest(ModelState);
+
+            var user = new User
             {
-                User newUser = JsonSerializer.Deserialize<User>(user, new JsonSerializerOptions { PropertyNameCaseInsensitive = true });
-                if (newUser == null)
-                    return BadRequest("Hiba az adatok konvertálása során!");
-                context.Users.Add(newUser);
-                context.SaveChanges();
-                return Ok(newUser);
-            }
-            catch (Exception ex)
-            {
-                return BadRequest($"Hiba {ex}");
-            }
+                FirstName = dto.FirstName,
+                LastName = dto.LastName,
+                Email = dto.Email,
+                BirthDate = dto.BirthDate
+            };
+
+            context.Users.Add(user);
+            await context.SaveChangesAsync();
+            return CreatedAtAction(nameof(GetUserById), new { id = user.Id }, user);
         }
 
         [HttpPatch("{id}")]
-        public async Task<IActionResult> PatchUser(int id, [FromBody] dynamic user)
+        public async Task<IActionResult> PatchUser(int id, [FromBody] JsonElement body)
         {
-            try
+            var user = await context.Users.FindAsync(id);
+            if (user == null)
+                return NotFound($"Nem található felhasználó a(z) {id} ID-val!");
+            if (body.ValueKind != JsonValueKind.Object)
+                return BadRequest("Érvénytelen JSON formátum!");
+            foreach (var property in body.EnumerateObject())
             {
-                User? existed = await context.Users.FindAsync(id);
-                if (existed == null)
-                    return NotFound($"Nem található felhasználó a(z) {id} ID-val!");
-                User? newUser = JsonSerializer.Deserialize<User>(user, new JsonSerializerOptions() { PropertyNameCaseInsensitive = true });
-                existed.LastName = newUser.LastName ?? existed.LastName;
-                existed.FirstName = newUser.FirstName ?? existed.FirstName;
-                existed.Email = newUser.Email ?? existed.Email;
-                existed.BirthDate = newUser.BirthDate ?? existed.BirthDate;
-                int rowAffected = await context.SaveChangesAsync();
-                if (rowAffected == 0)
-                    return BadRequest("Hiba a frissítés során!");
-                return Ok($"A(z) {id} ID-val rendelkező felhasználó frissítésre került!");
+                var propInfo = typeof(User).GetProperty(
+                    property.Name,
+                    BindingFlags.IgnoreCase | BindingFlags.Public | BindingFlags.Instance);
+
+                if (propInfo == null)
+                    return BadRequest($"Ismeretlen mező: {property.Name}");
+
+                var convertedValue = JsonSerializer.Deserialize(
+                    property.Value.GetRawText(),
+                    propInfo.PropertyType);
+
+                propInfo.SetValue(user, convertedValue);
             }
-            catch (Exception ex)
-            {
-                return BadRequest($"Hiba {ex}");
-            }
+            await context.SaveChangesAsync();
+            return Ok($"A(z) {id} ID-val rendelkező felhasználó frissítésre került!");
         }
 
         [HttpDelete("{id}")]

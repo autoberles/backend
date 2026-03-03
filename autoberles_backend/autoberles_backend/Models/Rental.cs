@@ -25,6 +25,7 @@ public partial class Rental
     [JsonIgnore]
     public virtual Car Car { get; set; } = null!;
 
+    [JsonIgnore]
     public virtual User User { get; set; } = null!;
 
 

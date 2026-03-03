@@ -18,12 +18,12 @@ namespace autoberles_backend.Controllers
         public async Task<IActionResult> GetAllCars()
         {
             var cars = await context.Cars
-                .Include(c => c.AdditionalEquipment)
-                    .ThenInclude(a => a.AirConditioning)
-                .Include(c => c.Branch)
-                .Include(c => c.FuelType)
-                .Include(c => c.TransmissionType)
-                .Include(c => c.Rentals)
+                .Include(x => x.AdditionalEquipment)
+                    .ThenInclude(x => x.AirConditioning)
+                .Include(x => x.Branch)
+                .Include(x => x.FuelType)
+                .Include(x => x.TransmissionType)
+                .Include(x => x.Rentals)
                 .ToListAsync();
             if (cars == null)
                 return BadRequest("Hiba az autók lekérdezése során");
@@ -37,13 +37,13 @@ namespace autoberles_backend.Controllers
             try
             {
                 var car = await context.Cars
-                            .Include(c => c.AdditionalEquipment)
-                                .ThenInclude(a => a.AirConditioning)
-                            .Include(c => c.Branch)
-                            .Include(c => c.FuelType)
-                            .Include(c => c.TransmissionType)
-                            .Include(c => c.Rentals)
-                            .FirstOrDefaultAsync(c => c.Id == id); 
+                            .Include(x => x.AdditionalEquipment)
+                                .ThenInclude(x => x.AirConditioning)
+                            .Include(x => x.Branch)
+                            .Include(x => x.FuelType)
+                            .Include(x => x.TransmissionType)
+                            .Include(x => x.Rentals)
+                            .FirstOrDefaultAsync(x => x.Id == id); 
                 if (car == null)
                     return NotFound($"Nem található autó a(z) {id} ID-val!");
                 return Ok(car);
@@ -157,7 +157,7 @@ namespace autoberles_backend.Controllers
                     return NotFound($"Nem található autó a(z) {id} ID-val!");
 
                 var equipment = await context.AdditionalEquipments
-                    .FirstOrDefaultAsync(e => e.CarId == id);
+                    .FirstOrDefaultAsync(x => x.CarId == id);
                 if (equipment != null)
                     context.AdditionalEquipments.Remove(equipment);
                 context.Cars.Remove(car);

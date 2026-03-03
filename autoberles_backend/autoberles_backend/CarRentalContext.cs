@@ -33,7 +33,6 @@ public partial class CarRentalContext : DbContext
         modelBuilder.Entity<AdditionalEquipment>(entity =>
         {
             entity.HasKey(e => e.Id).HasName("PRIMARY");
-
             entity.ToTable("additional_equipment");
 
             entity.HasIndex(e => e.AirConditioningId, "air_conditioning_id");
@@ -59,55 +58,12 @@ public partial class CarRentalContext : DbContext
             entity.HasOne(d => d.AirConditioning)
                 .WithMany(p => p.AdditionalEquipments)
                 .HasForeignKey(d => d.AirConditioningId)
-                .OnDelete(DeleteBehavior.Restrict)
-                .HasConstraintName("additional_equipment_ibfk_2");
+                .OnDelete(DeleteBehavior.Restrict);
 
             entity.HasOne(d => d.Car)
                 .WithOne(p => p.AdditionalEquipment)
                 .HasForeignKey<AdditionalEquipment>(d => d.CarId)
-                .OnDelete(DeleteBehavior.Cascade)
-                .HasConstraintName("additional_equipment_ibfk_1");
-        });
-
-        modelBuilder.Entity<AirConditioningType>(entity =>
-        {
-            entity.HasKey(e => e.Id).HasName("PRIMARY");
-            entity.ToTable("air_conditioning_types");
-            entity.HasIndex(e => e.Name, "name").IsUnique();
-
-            entity.Property(e => e.Id)
-                .HasColumnType("int(11)")
-                .HasColumnName("id");
-
-            entity.Property(e => e.Name)
-                .HasMaxLength(50)
-                .HasColumnName("name");
-        });
-
-        modelBuilder.Entity<Branch>(entity =>
-        {
-            entity.HasKey(e => e.Id).HasName("PRIMARY");
-            entity.ToTable("branches");
-
-            entity.Property(e => e.Id)
-                .HasColumnType("int(11)")
-                .HasColumnName("id");
-
-            entity.Property(e => e.Address)
-                .HasMaxLength(255)
-                .HasColumnName("address");
-
-            entity.Property(e => e.City)
-                .HasMaxLength(100)
-                .HasColumnName("city");
-
-            entity.Property(e => e.Email)
-                .HasMaxLength(150)
-                .HasColumnName("email");
-
-            entity.Property(e => e.PhoneNumber)
-                .HasMaxLength(30)
-                .HasColumnName("phone_number");
+                .OnDelete(DeleteBehavior.Cascade);
         });
 
         modelBuilder.Entity<Car>(entity =>
@@ -163,35 +119,17 @@ public partial class CarRentalContext : DbContext
             entity.HasOne(d => d.Branch)
                 .WithMany(p => p.Cars)
                 .HasForeignKey(d => d.BranchId)
-                .OnDelete(DeleteBehavior.Restrict)
-                .HasConstraintName("cars_ibfk_1");
+                .OnDelete(DeleteBehavior.Restrict);
 
             entity.HasOne(d => d.FuelType)
                 .WithMany(p => p.Cars)
                 .HasForeignKey(d => d.FuelTypeId)
-                .OnDelete(DeleteBehavior.Restrict)
-                .HasConstraintName("cars_ibfk_3");
+                .OnDelete(DeleteBehavior.Restrict);
 
             entity.HasOne(d => d.TransmissionType)
                 .WithMany(p => p.Cars)
                 .HasForeignKey(d => d.TransmissionId)
-                .OnDelete(DeleteBehavior.Restrict)
-                .HasConstraintName("cars_ibfk_2");
-        });
-
-        modelBuilder.Entity<FuelType>(entity =>
-        {
-            entity.HasKey(e => e.Id).HasName("PRIMARY");
-            entity.ToTable("fuel_types");
-            entity.HasIndex(e => e.Name, "name").IsUnique();
-
-            entity.Property(e => e.Id)
-                .HasColumnType("int(11)")
-                .HasColumnName("id");
-
-            entity.Property(e => e.Name)
-                .HasMaxLength(50)
-                .HasColumnName("name");
+                .OnDelete(DeleteBehavior.Restrict);
         });
 
         modelBuilder.Entity<Rental>(entity =>
@@ -225,30 +163,12 @@ public partial class CarRentalContext : DbContext
             entity.HasOne(d => d.Car)
                 .WithMany(p => p.Rentals)
                 .HasForeignKey(d => d.CarId)
-                .OnDelete(DeleteBehavior.Restrict)
-                .HasConstraintName("rentals_ibfk_1");
+                .OnDelete(DeleteBehavior.Cascade);
 
             entity.HasOne(d => d.User)
                 .WithMany(p => p.Rentals)
                 .HasForeignKey(d => d.UserId)
-                .OnDelete(DeleteBehavior.Restrict)
-                .HasConstraintName("rentals_ibfk_2");
-        });
-
-        modelBuilder.Entity<TransmissionType>(entity =>
-        {
-            entity.HasKey(e => e.Id).HasName("PRIMARY");
-            entity.ToTable("transmission_types");
-
-            entity.HasIndex(e => e.Name, "name").IsUnique();
-
-            entity.Property(e => e.Id)
-                .HasColumnType("int(11)")
-                .HasColumnName("id");
-
-            entity.Property(e => e.Name)
-                .HasMaxLength(50)
-                .HasColumnName("name");
+                .OnDelete(DeleteBehavior.Cascade);
         });
 
         modelBuilder.Entity<User>(entity =>
@@ -277,6 +197,33 @@ public partial class CarRentalContext : DbContext
             entity.Property(e => e.LastName)
                 .HasMaxLength(100)
                 .HasColumnName("last_name");
+        });
+
+        modelBuilder.Entity<AirConditioningType>(entity =>
+        {
+            entity.HasKey(e => e.Id);
+            entity.ToTable("air_conditioning_types");
+            entity.HasIndex(e => e.Name, "name").IsUnique();
+        });
+
+        modelBuilder.Entity<FuelType>(entity =>
+        {
+            entity.HasKey(e => e.Id);
+            entity.ToTable("fuel_types");
+            entity.HasIndex(e => e.Name, "name").IsUnique();
+        });
+
+        modelBuilder.Entity<TransmissionType>(entity =>
+        {
+            entity.HasKey(e => e.Id);
+            entity.ToTable("transmission_types");
+            entity.HasIndex(e => e.Name, "name").IsUnique();
+        });
+
+        modelBuilder.Entity<Branch>(entity =>
+        {
+            entity.HasKey(e => e.Id);
+            entity.ToTable("branches");
         });
 
         OnModelCreatingPartial(modelBuilder);
