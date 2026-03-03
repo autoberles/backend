@@ -28,7 +28,7 @@ namespace autoberles_backend.Controllers
             {
                 Car? car = await context.Cars.FindAsync(id);
                 if (car == null)
-                    return NotFound($"Nem található autó a {id} ID-val!");
+                    return NotFound($"Nem található autó a(z) {id} ID-val!");
                 return Ok(car);
             }
             catch (Exception ex)
@@ -62,7 +62,7 @@ namespace autoberles_backend.Controllers
             {
                 Car? existed = await context.Cars.FindAsync(id);
                 if (existed == null)
-                    return NotFound($"Nem található autó a {id} ID-val!");
+                    return NotFound($"Nem található autó a(z) {id} ID-val!");
                 Car? newCar = JsonSerializer.Deserialize<Car>(car, new JsonSerializerOptions() { PropertyNameCaseInsensitive = true });
                 existed.Brand = newCar.Brand ?? existed.Brand;
                 existed.Model = newCar.Model ?? existed.Model;
@@ -76,7 +76,7 @@ namespace autoberles_backend.Controllers
                 int rowAffected = await context.SaveChangesAsync();
                 if (rowAffected == 0)
                     return BadRequest("Hiba a frissítés során!");
-                return Ok($"A {id} ID-val rendelkező autó frissítésre került!");
+                return Ok($"A(z) {id} ID-val rendelkező autó frissítésre került!");
             }
             catch (Exception ex)
             {
@@ -91,10 +91,10 @@ namespace autoberles_backend.Controllers
             {
                 Car? car = await context.Cars.FindAsync(id);
                 if (car == null)
-                    return NotFound($"Nem található autó a {id} ID-val!");
+                    return NotFound($"Nem található autó a(z) {id} ID-val!");
                 context.Cars.Remove(car);
                 await context.SaveChangesAsync();
-                return Ok($"A {id} ID-val rendelkező autó sikeresen törölve!");
+                return Ok($"A(z) {id} ID-val rendelkező autó sikeresen törölve!");
             }
             catch (Exception ex)
             {

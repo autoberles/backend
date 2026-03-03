@@ -28,7 +28,7 @@ namespace autoberles_backend.Controllers
             {
                 Branch? branch = await context.Branches.FindAsync(id);
                 if (branch == null)
-                    return NotFound($"Nem található telephely a {id} ID-val!");
+                    return NotFound($"Nem található telephely a(z) {id} ID-val!");
                 return Ok(branch);
             }
             catch (Exception ex)
@@ -62,7 +62,7 @@ namespace autoberles_backend.Controllers
             {
                 Branch? existed = await context.Branches.FindAsync(id);
                 if (existed == null)
-                    return NotFound($"Nem található telephely a {id} ID-val!");
+                    return NotFound($"Nem található telephely a(z) {id} ID-val!");
                 Branch? newBranch = JsonSerializer.Deserialize<Branch>(branch, new JsonSerializerOptions() { PropertyNameCaseInsensitive = true });
                 existed.City = newBranch.City ?? existed.City;
                 existed.Address = newBranch.Address ?? existed.Address;
@@ -71,7 +71,7 @@ namespace autoberles_backend.Controllers
                 int rowAffected = await context.SaveChangesAsync();
                 if (rowAffected == 0)
                     return BadRequest("Hiba a frissítés során!");
-                return Ok($"A {id} ID-val rendelkező telephely frissítésre került!");
+                return Ok($"A(z) {id} ID-val rendelkező telephely frissítésre került!");
             }
             catch (Exception ex)
             {
@@ -86,10 +86,10 @@ namespace autoberles_backend.Controllers
             {
                 Branch? branch = await context.Branches.FindAsync(id);
                 if (branch == null)
-                    return NotFound($"Nem található telephely a {id} ID-val!");
+                    return NotFound($"Nem található telephely a(z) {id} ID-val!");
                 context.Branches.Remove(branch);
                 await context.SaveChangesAsync();
-                return Ok($"A {id} ID-val rendelkező telephely sikeresen törölve!");
+                return Ok($"A(z) {id} ID-val rendelkező telephely sikeresen törölve!");
             }
             catch (Exception ex)
             {

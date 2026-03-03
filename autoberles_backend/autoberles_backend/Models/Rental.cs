@@ -9,17 +9,17 @@ public partial class Rental
     [Key]
     public int Id { get; set; }
 
-    public int CarId { get; set; }
+    public int? CarId { get; set; }
 
-    public int UserId { get; set; }
+    public int? UserId { get; set; }
 
 
     [Required(ErrorMessage = "A bérlés kezdetét megadni kötelező!")]
-    public DateTime StartDate { get; set; }
+    public DateTime? StartDate { get; set; }
 
 
     [Required(ErrorMessage = "A bérlés végét megadni kötelező!")]
-    public DateTime EndDate { get; set; }
+    public DateTime? EndDate { get; set; }
 
     public virtual Car Car { get; set; } = null!;
 
@@ -36,12 +36,12 @@ public partial class Rental
             return new ValidationResult("A kezdő dátumnak korábbinak kell lennie, mint a befejező dátumnak.");
         }
 
-        if (startDate.Date < DateTime.Today)
+        if (startDate?.Date < DateTime.Today)
         {
             return new ValidationResult("A bérlés kezdete nem lehet múltbeli dátum.");
         }
 
-        var days = (endDate - startDate).TotalDays;
+        var days = (endDate - startDate)?.TotalDays;
 
         if (days < 1)
         {

@@ -28,7 +28,7 @@ namespace autoberles_backend.Controllers
             {
                 User? user = await context.Users.FindAsync(id);
                 if (user == null)
-                    return NotFound($"Nem található felhasználó a {id} ID-val!");
+                    return NotFound($"Nem található felhasználó a(z) {id} ID-val!");
                 return Ok(user);
             }
             catch (Exception ex)
@@ -62,7 +62,7 @@ namespace autoberles_backend.Controllers
             {
                 User? existed = await context.Users.FindAsync(id);
                 if (existed == null)
-                    return NotFound($"Nem található felhasználó a {id} ID-val!");
+                    return NotFound($"Nem található felhasználó a(z) {id} ID-val!");
                 User? newUser = JsonSerializer.Deserialize<User>(user, new JsonSerializerOptions() { PropertyNameCaseInsensitive = true });
                 existed.LastName = newUser.LastName ?? existed.LastName;
                 existed.FirstName = newUser.FirstName ?? existed.FirstName;
@@ -71,7 +71,7 @@ namespace autoberles_backend.Controllers
                 int rowAffected = await context.SaveChangesAsync();
                 if (rowAffected == 0)
                     return BadRequest("Hiba a frissítés során!");
-                return Ok($"A {id} ID-val rendelkező felhasználó frissítésre került!");
+                return Ok($"A(z) {id} ID-val rendelkező felhasználó frissítésre került!");
             }
             catch (Exception ex)
             {
@@ -86,10 +86,10 @@ namespace autoberles_backend.Controllers
             {
                 User? user = await context.Users.FindAsync(id);
                 if (user == null)
-                    return NotFound($"Nem található felhasználó a {id} ID-val!");
+                    return NotFound($"Nem található felhasználó a(z) {id} ID-val!");
                 context.Users.Remove(user);
                 await context.SaveChangesAsync();
-                return Ok($"A {id} ID-val rendelkező felhasználó sikeresen törölve!");
+                return Ok($"A(z) {id} ID-val rendelkező felhasználó sikeresen törölve!");
             }
             catch (Exception ex)
             {

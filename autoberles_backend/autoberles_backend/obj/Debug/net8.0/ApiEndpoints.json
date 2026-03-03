@@ -158,6 +158,85 @@
     "ReturnTypes": []
   },
   {
+    "ContainingType": "autoberles_backend.Controllers.RentalController",
+    "Method": "GetRentalById",
+    "RelativePath": "api/Rental/{id}",
+    "HttpMethod": "GET",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "id",
+        "Type": "System.Int32",
+        "IsRequired": true
+      }
+    ],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "autoberles_backend.Controllers.RentalController",
+    "Method": "PatchRental",
+    "RelativePath": "api/Rental/{id}",
+    "HttpMethod": "PATCH",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "id",
+        "Type": "System.Int32",
+        "IsRequired": true
+      },
+      {
+        "Name": "rental",
+        "Type": "System.Object",
+        "IsRequired": true
+      }
+    ],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "autoberles_backend.Controllers.RentalController",
+    "Method": "DeleteRental",
+    "RelativePath": "api/Rental/{id}",
+    "HttpMethod": "DELETE",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "id",
+        "Type": "System.Int32",
+        "IsRequired": true
+      }
+    ],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "autoberles_backend.Controllers.RentalController",
+    "Method": "GetAllRentals",
+    "RelativePath": "api/Rental/rental",
+    "HttpMethod": "GET",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "autoberles_backend.Controllers.RentalController",
+    "Method": "PostRental",
+    "RelativePath": "api/Rental/rental",
+    "HttpMethod": "POST",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "rental",
+        "Type": "System.Object",
+        "IsRequired": true
+      }
+    ],
+    "ReturnTypes": []
+  },
+  {
     "ContainingType": "autoberles_backend.Controllers.UserController",
     "Method": "GetUserById",
     "RelativePath": "api/User/{id}",
