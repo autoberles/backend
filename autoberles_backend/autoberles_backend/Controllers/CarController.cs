@@ -1,7 +1,9 @@
-﻿using autoberles_backend.Models;
+﻿using autoberles_backend.Classes;
+using autoberles_backend.Models;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
+using System.Reflection;
 using System.Text.Json;
 
 namespace autoberles_backend.Controllers
@@ -15,18 +17,33 @@ namespace autoberles_backend.Controllers
         [HttpGet("car")]
         public async Task<IActionResult> GetAllCars()
         {
-            List<Car> cars = await context.Cars.ToListAsync();
+            var cars = await context.Cars
+                .Include(c => c.AdditionalEquipment)
+                    .ThenInclude(a => a.AirConditioning)
+                .Include(c => c.Branch)
+                .Include(c => c.FuelType)
+                .Include(c => c.TransmissionType)
+                .Include(c => c.Rentals)
+                .ToListAsync();
             if (cars == null)
                 return BadRequest("Hiba az autók lekérdezése során");
             return Ok(cars);
         }
+
 
         [HttpGet("{id}")]
         public async Task<IActionResult> GetCarById([FromRoute] int id)
         {
             try
             {
-                Car? car = await context.Cars.FindAsync(id);
+                var car = await context.Cars
+                            .Include(c => c.AdditionalEquipment)
+                                .ThenInclude(a => a.AirConditioning)
+                            .Include(c => c.Branch)
+                            .Include(c => c.FuelType)
+                            .Include(c => c.TransmissionType)
+                            .Include(c => c.Rentals)
+                            .FirstOrDefaultAsync(c => c.Id == id); 
                 if (car == null)
                     return NotFound($"Nem található autó a(z) {id} ID-val!");
                 return Ok(car);
@@ -37,68 +54,121 @@ namespace autoberles_backend.Controllers
             }
         }
 
+
         [HttpPost("car")]
-        public async Task<IActionResult> PostCar([FromBody] dynamic car)
+        public async Task<IActionResult> PostCar([FromBody] CreateCarDTO dto)
         {
-            try
+            if (!ModelState.IsValid)
+                return BadRequest(ModelState);
+
+            var car = new Car
             {
-                Car newCar = JsonSerializer.Deserialize<Car>(car, new JsonSerializerOptions { PropertyNameCaseInsensitive = true });
-                if (newCar == null)
-                    return BadRequest("Hiba az adatok konvertálása során!");
-                context.Cars.Add(newCar);
-                context.SaveChanges();
-                return Ok(newCar);
-            }
-            catch (Exception ex)
+                Brand = dto.Brand,
+                Model = dto.Model,
+                Year = dto.Year,
+                NumberOfSeats = dto.NumberOfSeats,
+                Price = dto.Price,
+                LicensePlate = dto.LicensePlate,
+                BranchId = dto.BranchId,
+                TransmissionId = dto.TransmissionId,
+                FuelTypeId = dto.FuelTypeId
+            };
+
+            context.Cars.Add(car);
+            await context.SaveChangesAsync();
+
+            if (dto.AdditionalEquipment != null)
             {
-                return BadRequest($"Hiba {ex}");
+                var equipment = new AdditionalEquipment
+                {
+                    CarId = car.Id,
+                    ParkingSensors = dto.AdditionalEquipment.ParkingSensors,
+                    HeatedSeats = dto.AdditionalEquipment.HeatedSeats,
+                    Navigation = dto.AdditionalEquipment.Navigation,
+                    LeatherSeats = dto.AdditionalEquipment.LeatherSeats,
+                    AirConditioningId = dto.AdditionalEquipment.AirConditioningId
+                };
+                context.AdditionalEquipments.Add(equipment);
+                await context.SaveChangesAsync();
             }
+            return CreatedAtAction(nameof(GetCarById), new { id = car.Id }, car);
         }
 
+
         [HttpPatch("{id}")]
-        public async Task<IActionResult> PatchCar(int id, [FromBody] dynamic car)
+        public async Task<IActionResult> PatchCar(int id, [FromBody] JsonElement body)
         {
-            try
+            var car = await context.Cars.FindAsync(id);
+
+            if (car == null)
+                return NotFound($"Nem található autó a(z) {id} ID-val!");
+
+            if (body.ValueKind == JsonValueKind.Object)
             {
-                Car? existed = await context.Cars.FindAsync(id);
-                if (existed == null)
-                    return NotFound($"Nem található autó a(z) {id} ID-val!");
-                Car? newCar = JsonSerializer.Deserialize<Car>(car, new JsonSerializerOptions() { PropertyNameCaseInsensitive = true });
-                existed.Brand = newCar.Brand ?? existed.Brand;
-                existed.Model = newCar.Model ?? existed.Model;
-                existed.BranchId = newCar.BranchId ?? existed.BranchId;
-                existed.Year = newCar.Year ?? existed.Year;
-                existed.TransmissionId = newCar.TransmissionId ?? existed.TransmissionId;
-                existed.FuelTypeId = newCar.FuelTypeId ?? existed.FuelTypeId;
-                existed.NumberOfSeats = newCar.NumberOfSeats ?? existed.NumberOfSeats;
-                existed.Price = newCar.Price ?? existed.Price;
-                existed.LicensePlate = newCar.LicensePlate ?? existed.LicensePlate;
-                int rowAffected = await context.SaveChangesAsync();
-                if (rowAffected == 0)
-                    return BadRequest("Hiba a frissítés során!");
-                return Ok($"A(z) {id} ID-val rendelkező autó frissítésre került!");
+                foreach (var property in body.EnumerateObject())
+                {
+                    UpdateProperty(car, property.Name, property.Value);
+                }
             }
-            catch (Exception ex)
+            else if (body.ValueKind == JsonValueKind.Array)
             {
-                return BadRequest($"Hiba {ex}");
+                foreach (var item in body.EnumerateArray())
+                {
+                    var field = item.GetProperty("field").GetString();
+                    var value = item.GetProperty("value");
+
+                    UpdateProperty(car, field, value);
+                }
             }
+            else
+            {
+                return BadRequest("Érvénytelen JSON formátum.");
+            }
+
+            await context.SaveChangesAsync();
+
+            return Ok($"A(z) {id} ID-val rendelkező autó frissítésre került!");
+        }
+
+        private void UpdateProperty(Car car, string fieldName, JsonElement value)
+        {
+            var property = typeof(Car).GetProperty(
+                fieldName,
+                BindingFlags.IgnoreCase | BindingFlags.Public | BindingFlags.Instance);
+
+            if (property == null)
+                throw new Exception($"Ismeretlen mező: {fieldName}");
+
+            var convertedValue = JsonSerializer.Deserialize(
+                value.GetRawText(),
+                property.PropertyType);
+
+            property.SetValue(car, convertedValue);
         }
 
         [HttpDelete("{id}")]
         public async Task<IActionResult> DeleteCar(int id)
         {
+            using var transaction = await context.Database.BeginTransactionAsync();
             try
             {
-                Car? car = await context.Cars.FindAsync(id);
+                var car = await context.Cars.FindAsync(id);
                 if (car == null)
                     return NotFound($"Nem található autó a(z) {id} ID-val!");
+
+                var equipment = await context.AdditionalEquipments
+                    .FirstOrDefaultAsync(e => e.CarId == id);
+                if (equipment != null)
+                    context.AdditionalEquipments.Remove(equipment);
                 context.Cars.Remove(car);
                 await context.SaveChangesAsync();
-                return Ok($"A(z) {id} ID-val rendelkező autó sikeresen törölve!");
+                await transaction.CommitAsync();
+                return Ok($"A {id} ID-val rendelkező autó sikeresen törölve!");
             }
-            catch (Exception ex)
+            catch
             {
-                return BadRequest($"Hiba {ex}");
+                await transaction.RollbackAsync();
+                return StatusCode(500, "Hiba történt a törlés során.");
             }
         }
     }

@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
+using System.Text.Json.Serialization;
 
 namespace autoberles_backend.Models;
 
@@ -21,6 +22,7 @@ public partial class Rental
     [Required(ErrorMessage = "A bérlés végét megadni kötelező!")]
     public DateTime? EndDate { get; set; }
 
+    [JsonIgnore]
     public virtual Car Car { get; set; } = null!;
 
     public virtual User User { get; set; } = null!;

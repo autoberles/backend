@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
+using System.Text.Json.Serialization;
 
 namespace autoberles_backend.Models;
 
@@ -34,5 +35,6 @@ public partial class AdditionalEquipment
 
     public virtual AirConditioningType AirConditioning { get; set; } = null!;
 
+    [JsonIgnore]
     public virtual Car Car { get; set; } = null!;
 }

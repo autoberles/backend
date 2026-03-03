@@ -37,7 +37,7 @@ public partial class Car
 
     [Required]
     [RegularExpression(@"^[A-Z]{2}-[A-Z]{2}-\d{3}$", ErrorMessage = "A rendszámtábla kötelező formátuma: AA-AA-123")]
-    public string? LicensePlate { get; set; } = null!;
+    public string LicensePlate { get; set; } = null!;
 
     public int? BranchId { get; set; }
 
@@ -45,7 +45,7 @@ public partial class Car
 
     public int? FuelTypeId { get; set; }
 
-    public virtual ICollection<AdditionalEquipment> AdditionalEquipments { get; set; } = new List<AdditionalEquipment>();
+    public virtual AdditionalEquipment AdditionalEquipment { get; set; } = null!;
 
     public virtual Branch Branch { get; set; } = null!;
 
@@ -53,5 +53,5 @@ public partial class Car
 
     public virtual ICollection<Rental> Rentals { get; set; } = new List<Rental>();
 
-    public virtual TransmissionType Transmission { get; set; } = null!;
+    public virtual TransmissionType? TransmissionType { get; set; }
 }

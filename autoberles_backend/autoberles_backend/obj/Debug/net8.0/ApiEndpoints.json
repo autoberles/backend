@@ -108,8 +108,8 @@
         "IsRequired": true
       },
       {
-        "Name": "car",
-        "Type": "System.Object",
+        "Name": "body",
+        "Type": "System.Text.Json.JsonElement",
         "IsRequired": true
       }
     ],
@@ -150,8 +150,8 @@
     "Order": 0,
     "Parameters": [
       {
-        "Name": "car",
-        "Type": "System.Object",
+        "Name": "dto",
+        "Type": "autoberles_backend.Classes.CreateCarDTO",
         "IsRequired": true
       }
     ],

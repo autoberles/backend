@@ -2,6 +2,7 @@
 using System;
 using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
+using System.Text.Json.Serialization;
 
 namespace autoberles_backend.Models;
 
@@ -35,5 +36,6 @@ public partial class Branch
     [RegularExpression(@"^(\+36|06)[0-9]{1,2} ?[0-9]{3} ?[0-9]{3,4}$", ErrorMessage = "Érvénytelen telefonszám formátum.")]
     public string PhoneNumber { get; set; } = null!;
 
+    [JsonIgnore]
     public virtual ICollection<Car> Cars { get; set; } = new List<Car>();
 }

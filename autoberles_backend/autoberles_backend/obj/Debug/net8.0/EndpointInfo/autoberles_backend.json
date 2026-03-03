@@ -136,13 +136,19 @@
         "requestBody": {
           "content": {
             "application/json": {
-              "schema": { }
+              "schema": {
+                "$ref": "#/components/schemas/CreateCarDTO"
+              }
             },
             "text/json": {
-              "schema": { }
+              "schema": {
+                "$ref": "#/components/schemas/CreateCarDTO"
+              }
             },
             "application/*+json": {
-              "schema": { }
+              "schema": {
+                "$ref": "#/components/schemas/CreateCarDTO"
+              }
             }
           }
         },
@@ -458,5 +464,75 @@
       }
     }
   },
-  "components": { }
+  "components": {
+    "schemas": {
+      "CreateAdditionalEquipmentDto": {
+        "type": "object",
+        "properties": {
+          "parkingSensors": {
+            "type": "boolean"
+          },
+          "heatedSeats": {
+            "type": "boolean"
+          },
+          "navigation": {
+            "type": "boolean"
+          },
+          "leatherSeats": {
+            "type": "boolean"
+          },
+          "airConditioningId": {
+            "type": "integer",
+            "format": "int32"
+          }
+        },
+        "additionalProperties": false
+      },
+      "CreateCarDTO": {
+        "type": "object",
+        "properties": {
+          "brand": {
+            "type": "string",
+            "nullable": true
+          },
+          "model": {
+            "type": "string",
+            "nullable": true
+          },
+          "year": {
+            "type": "integer",
+            "format": "int32"
+          },
+          "numberOfSeats": {
+            "type": "integer",
+            "format": "int32"
+          },
+          "price": {
+            "type": "integer",
+            "format": "int32"
+          },
+          "licensePlate": {
+            "type": "string",
+            "nullable": true
+          },
+          "branchId": {
+            "type": "integer",
+            "format": "int32"
+          },
+          "transmissionId": {
+            "type": "integer",
+            "format": "int32"
+          },
+          "fuelTypeId": {
+            "type": "integer",
+            "format": "int32"
+          },
+          "additionalEquipment": {
+            "$ref": "#/components/schemas/CreateAdditionalEquipmentDto"
+          }
+        },
+        "additionalProperties": false
+      }
+    }
+  }
 }

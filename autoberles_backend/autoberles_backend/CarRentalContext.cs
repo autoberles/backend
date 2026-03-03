@@ -17,23 +17,15 @@ public partial class CarRentalContext : DbContext
     }
 
     public virtual DbSet<AdditionalEquipment> AdditionalEquipments { get; set; }
-
     public virtual DbSet<AirConditioningType> AirConditioningTypes { get; set; }
-
     public virtual DbSet<Branch> Branches { get; set; }
-
     public virtual DbSet<Car> Cars { get; set; }
-
     public virtual DbSet<FuelType> FuelTypes { get; set; }
-
     public virtual DbSet<Rental> Rentals { get; set; }
-
     public virtual DbSet<TransmissionType> TransmissionTypes { get; set; }
-
     public virtual DbSet<User> Users { get; set; }
 
     protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
-#warning To protect potentially sensitive information in your connection string, you should move it out of source code. You can avoid scaffolding the connection string by using the Name= syntax to read it from configuration - see https://go.microsoft.com/fwlink/?linkid=2131148. For more guidance on storing connection strings, see https://go.microsoft.com/fwlink/?LinkId=723263.
         => optionsBuilder.UseMySQL("Server=localhost;Database=car_rental;uid=root;pwd=;");
 
     protected override void OnModelCreating(ModelBuilder modelBuilder)
@@ -45,45 +37,48 @@ public partial class CarRentalContext : DbContext
             entity.ToTable("additional_equipment");
 
             entity.HasIndex(e => e.AirConditioningId, "air_conditioning_id");
-
             entity.HasIndex(e => e.CarId, "car_id");
 
             entity.Property(e => e.Id)
                 .HasColumnType("int(11)")
                 .HasColumnName("id");
+
             entity.Property(e => e.AirConditioningId)
                 .HasColumnType("int(11)")
                 .HasColumnName("air_conditioning_id");
+
             entity.Property(e => e.CarId)
                 .HasColumnType("int(11)")
                 .HasColumnName("car_id");
+
             entity.Property(e => e.HeatedSeats).HasColumnName("heated_seats");
             entity.Property(e => e.LeatherSeats).HasColumnName("leather_seats");
             entity.Property(e => e.Navigation).HasColumnName("navigation");
             entity.Property(e => e.ParkingSensors).HasColumnName("parking_sensors");
 
-            entity.HasOne(d => d.AirConditioning).WithMany(p => p.AdditionalEquipments)
+            entity.HasOne(d => d.AirConditioning)
+                .WithMany(p => p.AdditionalEquipments)
                 .HasForeignKey(d => d.AirConditioningId)
                 .OnDelete(DeleteBehavior.Restrict)
                 .HasConstraintName("additional_equipment_ibfk_2");
 
-            entity.HasOne(d => d.Car).WithMany(p => p.AdditionalEquipments)
-                .HasForeignKey(d => d.CarId)
-                .OnDelete(DeleteBehavior.Restrict)
+            entity.HasOne(d => d.Car)
+                .WithOne(p => p.AdditionalEquipment)
+                .HasForeignKey<AdditionalEquipment>(d => d.CarId)
+                .OnDelete(DeleteBehavior.Cascade)
                 .HasConstraintName("additional_equipment_ibfk_1");
         });
 
         modelBuilder.Entity<AirConditioningType>(entity =>
         {
             entity.HasKey(e => e.Id).HasName("PRIMARY");
-
             entity.ToTable("air_conditioning_types");
-
             entity.HasIndex(e => e.Name, "name").IsUnique();
 
             entity.Property(e => e.Id)
                 .HasColumnType("int(11)")
                 .HasColumnName("id");
+
             entity.Property(e => e.Name)
                 .HasMaxLength(50)
                 .HasColumnName("name");
@@ -92,21 +87,24 @@ public partial class CarRentalContext : DbContext
         modelBuilder.Entity<Branch>(entity =>
         {
             entity.HasKey(e => e.Id).HasName("PRIMARY");
-
             entity.ToTable("branches");
 
             entity.Property(e => e.Id)
                 .HasColumnType("int(11)")
                 .HasColumnName("id");
+
             entity.Property(e => e.Address)
                 .HasMaxLength(255)
                 .HasColumnName("address");
+
             entity.Property(e => e.City)
                 .HasMaxLength(100)
                 .HasColumnName("city");
+
             entity.Property(e => e.Email)
                 .HasMaxLength(150)
                 .HasColumnName("email");
+
             entity.Property(e => e.PhoneNumber)
                 .HasMaxLength(30)
                 .HasColumnName("phone_number");
@@ -115,59 +113,67 @@ public partial class CarRentalContext : DbContext
         modelBuilder.Entity<Car>(entity =>
         {
             entity.HasKey(e => e.Id).HasName("PRIMARY");
-
             entity.ToTable("cars");
 
             entity.HasIndex(e => e.BranchId, "branch_id");
-
             entity.HasIndex(e => e.FuelTypeId, "fuel_type_id");
-
             entity.HasIndex(e => e.LicensePlate, "license_plate").IsUnique();
-
             entity.HasIndex(e => e.TransmissionId, "transmission_id");
 
             entity.Property(e => e.Id)
                 .HasColumnType("int(11)")
                 .HasColumnName("id");
+
             entity.Property(e => e.BranchId)
                 .HasColumnType("int(11)")
                 .HasColumnName("branch_id");
+
             entity.Property(e => e.Brand)
                 .HasMaxLength(50)
                 .HasColumnName("brand");
+
             entity.Property(e => e.FuelTypeId)
                 .HasColumnType("int(11)")
                 .HasColumnName("fuel_type_id");
+
             entity.Property(e => e.LicensePlate)
                 .HasMaxLength(20)
                 .HasColumnName("license_plate");
+
             entity.Property(e => e.Model)
                 .HasMaxLength(50)
                 .HasColumnName("model");
+
             entity.Property(e => e.NumberOfSeats)
                 .HasColumnType("smallint(6)")
                 .HasColumnName("number_of_seats");
+
             entity.Property(e => e.Price)
                 .HasColumnType("int(11)")
                 .HasColumnName("price");
+
             entity.Property(e => e.TransmissionId)
                 .HasColumnType("int(11)")
                 .HasColumnName("transmission_id");
+
             entity.Property(e => e.Year)
                 .HasColumnType("year(4)")
                 .HasColumnName("year");
 
-            entity.HasOne(d => d.Branch).WithMany(p => p.Cars)
+            entity.HasOne(d => d.Branch)
+                .WithMany(p => p.Cars)
                 .HasForeignKey(d => d.BranchId)
                 .OnDelete(DeleteBehavior.Restrict)
                 .HasConstraintName("cars_ibfk_1");
 
-            entity.HasOne(d => d.FuelType).WithMany(p => p.Cars)
+            entity.HasOne(d => d.FuelType)
+                .WithMany(p => p.Cars)
                 .HasForeignKey(d => d.FuelTypeId)
                 .OnDelete(DeleteBehavior.Restrict)
                 .HasConstraintName("cars_ibfk_3");
 
-            entity.HasOne(d => d.Transmission).WithMany(p => p.Cars)
+            entity.HasOne(d => d.TransmissionType)
+                .WithMany(p => p.Cars)
                 .HasForeignKey(d => d.TransmissionId)
                 .OnDelete(DeleteBehavior.Restrict)
                 .HasConstraintName("cars_ibfk_2");
@@ -176,14 +182,13 @@ public partial class CarRentalContext : DbContext
         modelBuilder.Entity<FuelType>(entity =>
         {
             entity.HasKey(e => e.Id).HasName("PRIMARY");
-
             entity.ToTable("fuel_types");
-
             entity.HasIndex(e => e.Name, "name").IsUnique();
 
             entity.Property(e => e.Id)
                 .HasColumnType("int(11)")
                 .HasColumnName("id");
+
             entity.Property(e => e.Name)
                 .HasMaxLength(50)
                 .HasColumnName("name");
@@ -192,35 +197,39 @@ public partial class CarRentalContext : DbContext
         modelBuilder.Entity<Rental>(entity =>
         {
             entity.HasKey(e => e.Id).HasName("PRIMARY");
-
             entity.ToTable("rentals");
 
             entity.HasIndex(e => e.CarId, "car_id");
-
             entity.HasIndex(e => e.UserId, "user_id");
 
             entity.Property(e => e.Id)
                 .HasColumnType("int(11)")
                 .HasColumnName("id");
+
             entity.Property(e => e.CarId)
                 .HasColumnType("int(11)")
                 .HasColumnName("car_id");
+
             entity.Property(e => e.EndDate)
                 .HasColumnType("date")
                 .HasColumnName("end_date");
+
             entity.Property(e => e.StartDate)
                 .HasColumnType("date")
                 .HasColumnName("start_date");
+
             entity.Property(e => e.UserId)
                 .HasColumnType("int(11)")
                 .HasColumnName("user_id");
 
-            entity.HasOne(d => d.Car).WithMany(p => p.Rentals)
+            entity.HasOne(d => d.Car)
+                .WithMany(p => p.Rentals)
                 .HasForeignKey(d => d.CarId)
                 .OnDelete(DeleteBehavior.Restrict)
                 .HasConstraintName("rentals_ibfk_1");
 
-            entity.HasOne(d => d.User).WithMany(p => p.Rentals)
+            entity.HasOne(d => d.User)
+                .WithMany(p => p.Rentals)
                 .HasForeignKey(d => d.UserId)
                 .OnDelete(DeleteBehavior.Restrict)
                 .HasConstraintName("rentals_ibfk_2");
@@ -229,7 +238,6 @@ public partial class CarRentalContext : DbContext
         modelBuilder.Entity<TransmissionType>(entity =>
         {
             entity.HasKey(e => e.Id).HasName("PRIMARY");
-
             entity.ToTable("transmission_types");
 
             entity.HasIndex(e => e.Name, "name").IsUnique();
@@ -237,6 +245,7 @@ public partial class CarRentalContext : DbContext
             entity.Property(e => e.Id)
                 .HasColumnType("int(11)")
                 .HasColumnName("id");
+
             entity.Property(e => e.Name)
                 .HasMaxLength(50)
                 .HasColumnName("name");
@@ -245,7 +254,6 @@ public partial class CarRentalContext : DbContext
         modelBuilder.Entity<User>(entity =>
         {
             entity.HasKey(e => e.Id).HasName("PRIMARY");
-
             entity.ToTable("users");
 
             entity.HasIndex(e => e.Email, "email").IsUnique();
@@ -253,15 +261,19 @@ public partial class CarRentalContext : DbContext
             entity.Property(e => e.Id)
                 .HasColumnType("int(11)")
                 .HasColumnName("id");
+
             entity.Property(e => e.BirthDate)
                 .HasColumnType("date")
                 .HasColumnName("birth_date");
+
             entity.Property(e => e.Email)
                 .HasMaxLength(150)
                 .HasColumnName("email");
+
             entity.Property(e => e.FirstName)
                 .HasMaxLength(100)
                 .HasColumnName("first_name");
+
             entity.Property(e => e.LastName)
                 .HasMaxLength(100)
                 .HasColumnName("last_name");
