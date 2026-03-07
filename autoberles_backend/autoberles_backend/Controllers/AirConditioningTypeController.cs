@@ -1,0 +1,38 @@
+﻿using Microsoft.AspNetCore.Http;
+using Microsoft.AspNetCore.Mvc;
+using Microsoft.EntityFrameworkCore;
+
+namespace autoberles_backend.Controllers
+{
+    [Route("api/[controller]")]
+    [ApiController]
+    public class AirConditioningTypeController : ControllerBase
+    {
+        CarRentalContext context = new CarRentalContext();
+
+        [HttpGet("air_conditioning_type")]
+        public async Task<IActionResult> GetAllAirConditioningTypes()
+        {
+            var acts = await context.AirConditioningTypes.ToListAsync();
+            if (acts == null)
+                return BadRequest("Hiba a klímatípusok lekérdezése során");
+            return Ok(acts);
+        }
+
+        [HttpGet("{id}")]
+        public async Task<IActionResult> GetAirConditionalTypeById([FromRoute] int id)
+        {
+            try
+            {
+                var act = await context.AirConditioningTypes.FirstOrDefaultAsync(x => x.Id == id);
+                if (act == null)
+                    return NotFound($"Nem található klímatípus a(z) {id} ID-val!");
+                return Ok(act);
+            }
+            catch (Exception ex)
+            {
+                return BadRequest($"Hiba {ex}");
+            }
+        }
+    }
+}

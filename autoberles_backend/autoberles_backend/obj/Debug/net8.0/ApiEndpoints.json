@@ -1,5 +1,78 @@
 [
   {
+    "ContainingType": "autoberles_backend.Controllers.AdditionalEquipmentController",
+    "Method": "GetAdditionalEquipmentsById",
+    "RelativePath": "api/AdditionalEquipment/{id}",
+    "HttpMethod": "GET",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "id",
+        "Type": "System.Int32",
+        "IsRequired": true
+      }
+    ],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "autoberles_backend.Controllers.AdditionalEquipmentController",
+    "Method": "PatchAdditionalEquipment",
+    "RelativePath": "api/AdditionalEquipment/{id}",
+    "HttpMethod": "PATCH",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "id",
+        "Type": "System.Int32",
+        "IsRequired": true
+      },
+      {
+        "Name": "body",
+        "Type": "System.Text.Json.JsonElement",
+        "IsRequired": true
+      }
+    ],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "autoberles_backend.Controllers.AdditionalEquipmentController",
+    "Method": "GetAllAdditionalEquipments",
+    "RelativePath": "api/AdditionalEquipment/additional_equipment",
+    "HttpMethod": "GET",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "autoberles_backend.Controllers.AirConditioningTypeController",
+    "Method": "GetAirConditionalTypeById",
+    "RelativePath": "api/AirConditioningType/{id}",
+    "HttpMethod": "GET",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "id",
+        "Type": "System.Int32",
+        "IsRequired": true
+      }
+    ],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "autoberles_backend.Controllers.AirConditioningTypeController",
+    "Method": "GetAllAirConditioningTypes",
+    "RelativePath": "api/AirConditioningType/air_conditioning_type",
+    "HttpMethod": "GET",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [],
+    "ReturnTypes": []
+  },
+  {
     "ContainingType": "autoberles_backend.Controllers.BranchController",
     "Method": "GetBranchById",
     "RelativePath": "api/Branch/{id}",
@@ -158,6 +231,32 @@
     "ReturnTypes": []
   },
   {
+    "ContainingType": "autoberles_backend.Controllers.FuelTypeController",
+    "Method": "GetFuelTypeById",
+    "RelativePath": "api/FuelType/{id}",
+    "HttpMethod": "GET",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "id",
+        "Type": "System.Int32",
+        "IsRequired": true
+      }
+    ],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "autoberles_backend.Controllers.FuelTypeController",
+    "Method": "GetAllFuelTypes",
+    "RelativePath": "api/FuelType/fuel_type",
+    "HttpMethod": "GET",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [],
+    "ReturnTypes": []
+  },
+  {
     "ContainingType": "autoberles_backend.Controllers.RentalController",
     "Method": "GetRentalById",
     "RelativePath": "api/Rental/{id}",
@@ -234,6 +333,32 @@
         "IsRequired": true
       }
     ],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "autoberles_backend.Controllers.TransmissionTypeController",
+    "Method": "GetTransmissionTypeById",
+    "RelativePath": "api/TransmissionType/{id}",
+    "HttpMethod": "GET",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "id",
+        "Type": "System.Int32",
+        "IsRequired": true
+      }
+    ],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "autoberles_backend.Controllers.TransmissionTypeController",
+    "Method": "GetAllTransmissionTypes",
+    "RelativePath": "api/TransmissionType/transmission_type",
+    "HttpMethod": "GET",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [],
     "ReturnTypes": []
   },
   {
