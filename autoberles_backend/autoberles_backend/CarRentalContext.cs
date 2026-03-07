@@ -222,8 +222,31 @@ public partial class CarRentalContext : DbContext
 
         modelBuilder.Entity<Branch>(entity =>
         {
-            entity.HasKey(e => e.Id);
+            entity.HasKey(e => e.Id).HasName("PRIMARY");
+
             entity.ToTable("branches");
+
+            entity.HasIndex(e => e.PhoneNumber).IsUnique();
+
+            entity.Property(e => e.Id)
+                .HasColumnType("int(11)")
+                .HasColumnName("id");
+
+            entity.Property(e => e.City)
+                .HasMaxLength(100)
+                .HasColumnName("city");
+
+            entity.Property(e => e.Address)
+                .HasMaxLength(255)
+                .HasColumnName("address");
+
+            entity.Property(e => e.Email)
+                .HasMaxLength(150)
+                .HasColumnName("email");
+
+            entity.Property(e => e.PhoneNumber)
+                .HasMaxLength(30)
+                .HasColumnName("phone_number");
         });
 
         OnModelCreatingPartial(modelBuilder);

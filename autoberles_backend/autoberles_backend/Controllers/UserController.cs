@@ -44,47 +44,69 @@ namespace autoberles_backend.Controllers
         [HttpPost("user")]
         public async Task<IActionResult> PostUser([FromBody] CreateUserDto dto)
         {
-            if (!ModelState.IsValid)
-                return BadRequest(ModelState);
-
-            var user = new User
+            try
             {
-                FirstName = dto.FirstName,
-                LastName = dto.LastName,
-                Email = dto.Email,
-                BirthDate = dto.BirthDate
-            };
+                if (!ModelState.IsValid)
+                    return BadRequest(ModelState);
 
-            context.Users.Add(user);
-            await context.SaveChangesAsync();
-            return CreatedAtAction(nameof(GetUserById), new { id = user.Id }, user);
+                bool emailExists = await context.Users.AnyAsync(x => x.Email == dto.Email);
+                if (emailExists)
+                    return BadRequest("Ez az email cím már létezik.");
+
+                var user = new User
+                {
+                    FirstName = dto.FirstName,
+                    LastName = dto.LastName,
+                    Email = dto.Email,
+                    BirthDate = dto.BirthDate
+                };
+                context.Users.Add(user);
+                await context.SaveChangesAsync();
+                return CreatedAtAction(nameof(GetUserById), new { id = user.Id }, user);
+            }
+            catch (Exception ex)
+            {
+                return BadRequest($"Hiba a felhasználó létrehozása során: {ex.Message}");
+            }
         }
 
         [HttpPatch("{id}")]
         public async Task<IActionResult> PatchUser(int id, [FromBody] JsonElement body)
         {
-            var user = await context.Users.FindAsync(id);
-            if (user == null)
-                return NotFound($"Nem található felhasználó a(z) {id} ID-val!");
-            if (body.ValueKind != JsonValueKind.Object)
-                return BadRequest("Érvénytelen JSON formátum!");
-            foreach (var property in body.EnumerateObject())
+            try
             {
-                var propInfo = typeof(User).GetProperty(
-                    property.Name,
-                    BindingFlags.IgnoreCase | BindingFlags.Public | BindingFlags.Instance);
+                var user = await context.Users.FindAsync(id);
+                if (user == null)
+                    return NotFound($"Nem található felhasználó a(z) {id} ID-val!");
+                if (body.ValueKind != JsonValueKind.Object)
+                    return BadRequest("Érvénytelen JSON formátum!");
 
-                if (propInfo == null)
-                    return BadRequest($"Ismeretlen mező: {property.Name}");
+                foreach (var property in body.EnumerateObject())
+                {
+                    var propInfo = typeof(User).GetProperty(property.Name,
+                        BindingFlags.IgnoreCase | BindingFlags.Public | BindingFlags.Instance);
 
-                var convertedValue = JsonSerializer.Deserialize(
-                    property.Value.GetRawText(),
-                    propInfo.PropertyType);
+                    if (propInfo == null)
+                        return BadRequest($"Ismeretlen mező: {property.Name}");
 
-                propInfo.SetValue(user, convertedValue);
+                    var convertedValue = JsonSerializer.Deserialize(property.Value.GetRawText(), propInfo.PropertyType);
+
+                    if (propInfo.Name.Equals("Email", StringComparison.OrdinalIgnoreCase))
+                    {
+                        string newEmail = convertedValue?.ToString();
+                        bool emailExists = await context.Users.AnyAsync(x => x.Email == newEmail && x.Id != id);
+                        if (emailExists)
+                            return BadRequest("Ez az email cím már foglalt.");
+                    }
+                    propInfo.SetValue(user, convertedValue);
+                }
+                await context.SaveChangesAsync();
+                return Ok($"A(z) {id} ID-val rendelkező felhasználó frissítésre került!");
             }
-            await context.SaveChangesAsync();
-            return Ok($"A(z) {id} ID-val rendelkező felhasználó frissítésre került!");
+            catch (Exception ex)
+            {
+                return BadRequest($"Hiba a felhasználó frissítése során: {ex.Message}");
+            }
         }
 
         [HttpDelete("{id}")]

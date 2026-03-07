@@ -2,6 +2,7 @@
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
+using System.ComponentModel.DataAnnotations;
 using System.Text.Json;
 
 namespace autoberles_backend.Controllers
@@ -38,44 +39,84 @@ namespace autoberles_backend.Controllers
         }
 
         [HttpPost("rental")]
-        public async Task<IActionResult> PostRental([FromBody] dynamic rental)
+        public async Task<IActionResult> PostRental([FromBody] Rental newRental)
         {
             try
             {
-                Rental newRental = JsonSerializer.Deserialize<Rental>(rental, new JsonSerializerOptions { PropertyNameCaseInsensitive = true });
-                if (newRental == null)
-                    return BadRequest("Hiba az adatok konvertálása során!");
+                if (!ModelState.IsValid)
+                    return BadRequest(ModelState);
+
+                if (newRental.CarId == 0 || newRental.UserId == 0)
+                    return BadRequest("CarId és UserId megadása kötelező.");
+
+                bool isCarAlreadyRented = await context.Rentals
+                    .AnyAsync(x => x.CarId == newRental.CarId &&
+                                  x.StartDate < newRental.EndDate &&
+                                  newRental.StartDate < x.EndDate);
+
+                if (isCarAlreadyRented)
+                    return BadRequest("Ez az autó a megadott időszakban már ki van bérelve.");
+
+                var validationResult = Rental.ValidateDates(newRental.EndDate!.Value, new ValidationContext(newRental));
+                if (validationResult != ValidationResult.Success)
+                    return BadRequest(validationResult!.ErrorMessage);
+
                 context.Rentals.Add(newRental);
-                context.SaveChanges();
+                await context.SaveChangesAsync();
                 return Ok(newRental);
             }
             catch (Exception ex)
             {
-                return BadRequest($"Hiba {ex}");
+                return BadRequest($"Hiba a bérlés létrehozása során: {ex.Message}");
             }
         }
 
+
         [HttpPatch("{id}")]
-        public async Task<IActionResult> PatchRental(int id, [FromBody] dynamic rental)
+        public async Task<IActionResult> PatchRental(int id, [FromBody] Rental updatedRental)
         {
             try
             {
-                Rental? existed = await context.Rentals.FindAsync(id);
+                var existed = await context.Rentals.FindAsync(id);
                 if (existed == null)
                     return NotFound($"Nem található bérlés a(z) {id} ID-val!");
-                Rental? newRental = JsonSerializer.Deserialize<Rental>(rental, new JsonSerializerOptions() { PropertyNameCaseInsensitive = true });
-                existed.CarId = newRental.CarId ?? existed.CarId;
-                existed.UserId = newRental.UserId ?? existed.UserId;
-                existed.StartDate = newRental.StartDate ?? existed.StartDate;
-                existed.EndDate = newRental.EndDate ?? existed.EndDate;
+                if (updatedRental == null)
+                    return BadRequest("Érvénytelen adatok!");
+
+                int carIdToCheck = (updatedRental.CarId ?? existed.CarId)!.Value;
+                DateTime startDateToCheck = updatedRental.StartDate ?? existed.StartDate!.Value;
+                DateTime endDateToCheck = updatedRental.EndDate ?? existed.EndDate!.Value;
+
+                bool isCarAlreadyRented = await context.Rentals.AnyAsync(x =>
+                        x.Id != id &&
+                        x.CarId == carIdToCheck &&
+                        x.StartDate < endDateToCheck &&
+                        startDateToCheck < x.EndDate
+                    );
+                if (isCarAlreadyRented)
+                    return BadRequest("Ez az autó a megadott időszakban már ki van bérelve.");
+
+                existed.CarId = updatedRental.CarId != 0 ? updatedRental.CarId : existed.CarId;
+
+                existed.UserId = updatedRental.UserId != 0 ? updatedRental.UserId : existed.UserId;
+
+                existed.StartDate = updatedRental.StartDate ?? existed.StartDate;
+                existed.EndDate = updatedRental.EndDate ?? existed.EndDate;
+
+                var validationResult = Rental.ValidateDates(existed.EndDate.Value, new ValidationContext(existed));
+
+                if (validationResult != ValidationResult.Success)
+                    return BadRequest(validationResult.ErrorMessage);
+
                 int rowAffected = await context.SaveChangesAsync();
                 if (rowAffected == 0)
                     return BadRequest("Hiba a frissítés során!");
+
                 return Ok($"A(z) {id} ID-val rendelkező bérlés frissítésre került!");
             }
             catch (Exception ex)
             {
-                return BadRequest($"Hiba {ex}");
+                return BadRequest($"Hiba a frissítés során: {ex.Message}");
             }
         }
 

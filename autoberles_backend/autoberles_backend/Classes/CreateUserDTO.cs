@@ -10,7 +10,8 @@ namespace autoberles_backend.Classes
         [Required]
         public string LastName { get; set; }
 
-        [EmailAddress]
+        [Required]
+        [EmailAddress(ErrorMessage = "Érvénytelen email formátum.")]
         public string Email { get; set; }
 
         public DateTime BirthDate { get; set; }

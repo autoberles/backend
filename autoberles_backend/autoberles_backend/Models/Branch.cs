@@ -33,7 +33,6 @@ public partial class Branch
 
 
     [Required(ErrorMessage = "A telefonszám megadása kötelező.")]
-    [RegularExpression(@"^(\+36|06)[0-9]{1,2} ?[0-9]{3} ?[0-9]{3,4}$", ErrorMessage = "Érvénytelen telefonszám formátum.")]
     public string PhoneNumber { get; set; } = null!;
 
     [JsonIgnore]

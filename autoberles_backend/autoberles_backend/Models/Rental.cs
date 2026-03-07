@@ -23,10 +23,10 @@ public partial class Rental
     public DateTime? EndDate { get; set; }
 
     [JsonIgnore]
-    public virtual Car Car { get; set; } = null!;
+    public virtual Car? Car { get; set; } = null!;
 
     [JsonIgnore]
-    public virtual User User { get; set; } = null!;
+    public virtual User? User { get; set; } = null!;
 
 
     public static ValidationResult? ValidateDates(DateTime endDate, ValidationContext context)

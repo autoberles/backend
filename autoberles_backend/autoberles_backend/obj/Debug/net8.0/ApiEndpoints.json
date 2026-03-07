@@ -29,8 +29,8 @@
         "IsRequired": true
       },
       {
-        "Name": "branch",
-        "Type": "System.Object",
+        "Name": "body",
+        "Type": "System.Text.Json.JsonElement",
         "IsRequired": true
       }
     ],
@@ -72,7 +72,7 @@
     "Parameters": [
       {
         "Name": "branch",
-        "Type": "System.Object",
+        "Type": "autoberles_backend.Models.Branch",
         "IsRequired": true
       }
     ],
@@ -187,8 +187,8 @@
         "IsRequired": true
       },
       {
-        "Name": "rental",
-        "Type": "System.Object",
+        "Name": "updatedRental",
+        "Type": "autoberles_backend.Models.Rental",
         "IsRequired": true
       }
     ],
@@ -229,8 +229,8 @@
     "Order": 0,
     "Parameters": [
       {
-        "Name": "rental",
-        "Type": "System.Object",
+        "Name": "newRental",
+        "Type": "autoberles_backend.Models.Rental",
         "IsRequired": true
       }
     ],

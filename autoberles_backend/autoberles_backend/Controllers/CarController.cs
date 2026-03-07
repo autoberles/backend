@@ -14,20 +14,26 @@ namespace autoberles_backend.Controllers
     {
         CarRentalContext context = new CarRentalContext();
 
+
         [HttpGet("car")]
         public async Task<IActionResult> GetAllCars()
         {
-            var cars = await context.Cars
-                .Include(x => x.AdditionalEquipment)
-                    .ThenInclude(x => x.AirConditioning)
-                .Include(x => x.Branch)
-                .Include(x => x.FuelType)
-                .Include(x => x.TransmissionType)
-                .Include(x => x.Rentals)
-                .ToListAsync();
-            if (cars == null)
-                return BadRequest("Hiba az autók lekérdezése során");
-            return Ok(cars);
+            try
+            {
+                var cars = await context.Cars
+                    .Include(x => x.AdditionalEquipment)
+                        .ThenInclude(x => x.AirConditioning)
+                    .Include(x => x.Branch)
+                    .Include(x => x.FuelType)
+                    .Include(x => x.TransmissionType)
+                    .Include(x => x.Rentals)
+                    .ToListAsync();
+                return Ok(cars);
+            }
+            catch (Exception ex)
+            {
+                return BadRequest($"Hiba az autók lekérdezése során: {ex.Message}");
+            }
         }
 
 
@@ -58,92 +64,102 @@ namespace autoberles_backend.Controllers
         [HttpPost("car")]
         public async Task<IActionResult> PostCar([FromBody] CreateCarDTO dto)
         {
-            if (!ModelState.IsValid)
-                return BadRequest(ModelState);
-
-            var car = new Car
+            try
             {
-                Brand = dto.Brand,
-                Model = dto.Model,
-                Year = dto.Year,
-                NumberOfSeats = dto.NumberOfSeats,
-                Price = dto.Price,
-                LicensePlate = dto.LicensePlate,
-                BranchId = dto.BranchId,
-                TransmissionId = dto.TransmissionId,
-                FuelTypeId = dto.FuelTypeId
-            };
+                if (!ModelState.IsValid)
+                    return BadRequest(ModelState);
 
-            context.Cars.Add(car);
-            await context.SaveChangesAsync();
-
-            if (dto.AdditionalEquipment != null)
-            {
-                var equipment = new AdditionalEquipment
+                var car = new Car
                 {
-                    CarId = car.Id,
-                    ParkingSensors = dto.AdditionalEquipment.ParkingSensors,
-                    HeatedSeats = dto.AdditionalEquipment.HeatedSeats,
-                    Navigation = dto.AdditionalEquipment.Navigation,
-                    LeatherSeats = dto.AdditionalEquipment.LeatherSeats,
-                    AirConditioningId = dto.AdditionalEquipment.AirConditioningId
+                    Brand = dto.Brand,
+                    Model = dto.Model,
+                    Year = dto.Year,
+                    NumberOfSeats = dto.NumberOfSeats,
+                    Price = dto.Price,
+                    LicensePlate = dto.LicensePlate,
+                    BranchId = dto.BranchId,
+                    TransmissionId = dto.TransmissionId,
+                    FuelTypeId = dto.FuelTypeId
                 };
-                context.AdditionalEquipments.Add(equipment);
+
+                context.Cars.Add(car);
                 await context.SaveChangesAsync();
+
+                if (dto.AdditionalEquipment != null)
+                {
+                    var equipment = new AdditionalEquipment
+                    {
+                        CarId = car.Id,
+                        ParkingSensors = dto.AdditionalEquipment.ParkingSensors,
+                        HeatedSeats = dto.AdditionalEquipment.HeatedSeats,
+                        Navigation = dto.AdditionalEquipment.Navigation,
+                        LeatherSeats = dto.AdditionalEquipment.LeatherSeats,
+                        AirConditioningId = dto.AdditionalEquipment.AirConditioningId
+                    };
+
+                    context.AdditionalEquipments.Add(equipment);
+                    await context.SaveChangesAsync();
+                }
+                return CreatedAtAction(nameof(GetCarById), new { id = car.Id }, car);
             }
-            return CreatedAtAction(nameof(GetCarById), new { id = car.Id }, car);
+            catch (Exception ex)
+            {
+                return BadRequest($"Hiba az autó létrehozása során: {ex.Message}");
+            }
         }
 
 
         [HttpPatch("{id}")]
         public async Task<IActionResult> PatchCar(int id, [FromBody] JsonElement body)
         {
-            var car = await context.Cars.FindAsync(id);
-
-            if (car == null)
-                return NotFound($"Nem található autó a(z) {id} ID-val!");
-
-            if (body.ValueKind == JsonValueKind.Object)
+            try
             {
-                foreach (var property in body.EnumerateObject())
+                var car = await context.Cars.FindAsync(id);
+                if (car == null)
+                    return NotFound($"Nem található autó a(z) {id} ID-val!");
+                if (body.ValueKind == JsonValueKind.Object)
                 {
-                    UpdateProperty(car, property.Name, property.Value);
+                    foreach (var property in body.EnumerateObject())
+                    {
+                        UpdateProperty(car, property.Name, property.Value);
+                    }
                 }
-            }
-            else if (body.ValueKind == JsonValueKind.Array)
-            {
-                foreach (var item in body.EnumerateArray())
+                else if (body.ValueKind == JsonValueKind.Array)
                 {
-                    var field = item.GetProperty("field").GetString();
-                    var value = item.GetProperty("value");
-
-                    UpdateProperty(car, field, value);
+                    foreach (var item in body.EnumerateArray())
+                    {
+                        var field = item.GetProperty("field").GetString();
+                        var value = item.GetProperty("value");
+                        UpdateProperty(car, field, value);
+                    }
                 }
+                else
+                    return BadRequest("Érvénytelen JSON formátum.");
+
+                await context.SaveChangesAsync();
+                return Ok($"A(z) {id} ID-val rendelkező autó frissítésre került!");
             }
-            else
+            catch (Exception ex)
             {
-                return BadRequest("Érvénytelen JSON formátum.");
+                return BadRequest($"Hiba az autó frissítése során: {ex.Message}");
             }
-
-            await context.SaveChangesAsync();
-
-            return Ok($"A(z) {id} ID-val rendelkező autó frissítésre került!");
         }
 
         private void UpdateProperty(Car car, string fieldName, JsonElement value)
         {
-            var property = typeof(Car).GetProperty(
-                fieldName,
-                BindingFlags.IgnoreCase | BindingFlags.Public | BindingFlags.Instance);
-
-            if (property == null)
-                throw new Exception($"Ismeretlen mező: {fieldName}");
-
-            var convertedValue = JsonSerializer.Deserialize(
-                value.GetRawText(),
-                property.PropertyType);
-
-            property.SetValue(car, convertedValue);
+            try
+            {
+                var property = typeof(Car).GetProperty(fieldName,
+                    BindingFlags.IgnoreCase | BindingFlags.Public | BindingFlags.Instance);
+                if (property == null)
+                    throw new Exception($"Ismeretlen mező: {fieldName}");
+                var convertedValue = JsonSerializer.Deserialize(value.GetRawText(), property.PropertyType);
+                property.SetValue(car, convertedValue);
+            }
+            catch (Exception ex)
+            {
+                throw new Exception($"Hiba a(z) {fieldName} mező frissítése során: {ex.Message}");
+            }
         }
 
         [HttpDelete("{id}")]
@@ -156,8 +172,7 @@ namespace autoberles_backend.Controllers
                 if (car == null)
                     return NotFound($"Nem található autó a(z) {id} ID-val!");
 
-                var equipment = await context.AdditionalEquipments
-                    .FirstOrDefaultAsync(x => x.CarId == id);
+                var equipment = await context.AdditionalEquipments.FirstOrDefaultAsync(x => x.CarId == id);
                 if (equipment != null)
                     context.AdditionalEquipments.Remove(equipment);
                 context.Cars.Remove(car);
