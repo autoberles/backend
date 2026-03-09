@@ -1,11 +1,9 @@
-﻿using Microsoft.EntityFrameworkCore;
-using System;
+﻿using System;
 using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
 
 namespace autoberles_backend.Models;
 
-[Index(nameof(Email), IsUnique = true)]
 public partial class User
 {
     [Key]
@@ -13,12 +11,12 @@ public partial class User
 
 
     [Required(ErrorMessage = "A vezetéknév megadása kötelező.")]
-    [StringLength(100, MinimumLength = 2, ErrorMessage = "A vezetéknév hossza 2 és 100 karakter között kell legyen.")]
+    [StringLength(100, MinimumLength = 2, ErrorMessage = "A vezetéknév hosszának 2 és 100 karakter közöttinek kell lennie.")]
     public string LastName { get; set; } = null!;
 
 
     [Required(ErrorMessage = "A keresztnév megadása kötelező.")]
-    [StringLength(100, MinimumLength = 2, ErrorMessage = "A keresztnév hossza 2 és 100 karakter között kell legyen.")]
+    [StringLength(100, MinimumLength = 2, ErrorMessage = "A keresztnév hosszának 2 és 100 karakter közöttinek kell lennie.")]
     public string FirstName { get; set; } = null!;
 
 
@@ -55,4 +53,3 @@ public partial class User
         return ValidationResult.Success;
     }
 }
-

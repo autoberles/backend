@@ -15,6 +15,16 @@ public partial class Rental
     public int? UserId { get; set; }
 
 
+    [Required(ErrorMessage = "A kezdeti üzemanyagszintet kötelező megadni.")]
+    [Range(0,100, ErrorMessage = "Az üzemanyagszint 0% és 100% közötti érték lehet.")]
+    public int? FuelLevelStart { get; set; }
+
+
+    [Required(ErrorMessage = "A végső üzemanyagszintet kötelező megadni.")]
+    [Range(0, 100, ErrorMessage = "Az üzemanyagszint 0% és 100% közötti érték lehet.")]
+    public int? FuelLevelEnd { get; set; }
+
+
     [Required(ErrorMessage = "A bérlés kezdetét megadni kötelező!")]
     public DateTime? StartDate { get; set; }
 
@@ -22,12 +32,16 @@ public partial class Rental
     [Required(ErrorMessage = "A bérlés végét megadni kötelező!")]
     public DateTime? EndDate { get; set; }
 
+
+    [Required(ErrorMessage = "A bérlés teljes árát kötelező megadni.")]
+    public int FullPrice { get; set; }
+
+
     [JsonIgnore]
     public virtual Car? Car { get; set; } = null!;
 
     [JsonIgnore]
     public virtual User? User { get; set; } = null!;
-
 
     public static ValidationResult? ValidateDates(DateTime endDate, ValidationContext context)
     {

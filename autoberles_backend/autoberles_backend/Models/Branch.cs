@@ -6,6 +6,7 @@ using System.Text.Json.Serialization;
 
 namespace autoberles_backend.Models;
 
+
 [Index(nameof(City), IsUnique = true)]
 [Index(nameof(Address), IsUnique = true)]
 [Index(nameof(Email), IsUnique = true)]
@@ -15,14 +16,13 @@ public partial class Branch
     [Key]
     public int Id { get; set; }
 
-    
     [Required(ErrorMessage = "A város megadása kötelező.")]
     [StringLength(100, MinimumLength = 2, ErrorMessage = "A város neve 2 és 100 karakter között kell legyen.")]
     public string City { get; set; } = null!;
 
 
     [Required(ErrorMessage = "A cím megadása kötelező.")]
-    [StringLength(255, MinimumLength = 5, ErrorMessage = "A cím legalább 5 karakter hosszú kell legyen.")]
+    [StringLength(255, MinimumLength = 5, ErrorMessage = "A címnek legalább 5 karakter hosszúnak kell lennie.")]
     public string Address { get; set; } = null!;
 
 
@@ -34,6 +34,7 @@ public partial class Branch
 
     [Required(ErrorMessage = "A telefonszám megadása kötelező.")]
     public string PhoneNumber { get; set; } = null!;
+
 
     [JsonIgnore]
     public virtual ICollection<Car> Cars { get; set; } = new List<Car>();

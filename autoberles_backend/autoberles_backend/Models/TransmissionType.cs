@@ -10,7 +10,7 @@ public partial class TransmissionType
     [Key]
     public int Id { get; set; }
 
-    [Required]
+    [Required(ErrorMessage = "A váltó típusát megadni kötelező.")]
     public string Name { get; set; } = null!;
 
     [JsonIgnore]
