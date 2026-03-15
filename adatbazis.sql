@@ -85,6 +85,7 @@ CREATE TABLE cars (
     FOREIGN KEY (branch_id) REFERENCES branches(id),
     FOREIGN KEY (transmission_id) REFERENCES transmission_types(id),
     FOREIGN KEY (fuel_type_id) REFERENCES fuel_types(id),
+    FOREIGN KEY (wheel_drive_type_id) REFERENCES wheel_drive_types(id),
     FOREIGN KEY (car_category_id) REFERENCES car_categories(id)
 );
 
@@ -213,11 +214,11 @@ INSERT INTO additional_equipment VALUES
 
 -- Rentals
 INSERT INTO rentals VALUES
-(1,3,1,85,60,'2025-03-01','2025-03-05',100000),
-(2,8,2,90,95,'2025-03-02','2025-03-04',42000),
-(3,13,3,70,80,'2025-03-10','2025-03-15',150000),
-(4,5,4,95,50,'2025-04-01','2025-04-07',147000),
-(5,1,5,60,65,'2025-04-12','2025-04-18',105000),
+(1,3,1,85,60,'2025-04-01','2025-04-05',100000),
+(2,8,2,90,95,'2025-04-02','2025-04-04',42000),
+(3,13,3,70,80,'2025-04-10','2025-04-15',150000),
+(4,5,4,95,50,'2025-05-01','2025-05-07',147000),
+(5,1,5,60,65,'2025-05-12','2025-05-18',105000),
 (6,10,6,80,75,'2025-05-05','2025-05-09',90000),
 (7,16,7,50,70,'2025-05-20','2025-05-25',108000),
 (8,6,8,75,40,'2025-06-01','2025-06-03',54000);
