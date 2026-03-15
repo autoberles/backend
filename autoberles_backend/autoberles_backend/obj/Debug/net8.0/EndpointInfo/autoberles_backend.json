@@ -5,7 +5,7 @@
     "version": "1.0"
   },
   "paths": {
-    "/api/AdditionalEquipment/additional_equipment": {
+    "/api/additional_equipments": {
       "get": {
         "tags": [
           "AdditionalEquipment"
@@ -17,7 +17,7 @@
         }
       }
     },
-    "/api/AdditionalEquipment/{id}": {
+    "/api/additional_equipments/{id}": {
       "get": {
         "tags": [
           "AdditionalEquipment"
@@ -74,7 +74,7 @@
         }
       }
     },
-    "/api/AirConditioningType/air_conditioning_type": {
+    "/api/air_conditioning_types": {
       "get": {
         "tags": [
           "AirConditioningType"
@@ -86,7 +86,7 @@
         }
       }
     },
-    "/api/AirConditioningType/{id}": {
+    "/api/air_conditioning_types/{id}": {
       "get": {
         "tags": [
           "AirConditioningType"
@@ -109,7 +109,7 @@
         }
       }
     },
-    "/api/Branch/branch": {
+    "/api/branches": {
       "get": {
         "tags": [
           "Branch"
@@ -119,38 +119,9 @@
             "description": "OK"
           }
         }
-      },
-      "post": {
-        "tags": [
-          "Branch"
-        ],
-        "requestBody": {
-          "content": {
-            "application/json": {
-              "schema": {
-                "$ref": "#/components/schemas/Branch"
-              }
-            },
-            "text/json": {
-              "schema": {
-                "$ref": "#/components/schemas/Branch"
-              }
-            },
-            "application/*+json": {
-              "schema": {
-                "$ref": "#/components/schemas/Branch"
-              }
-            }
-          }
-        },
-        "responses": {
-          "200": {
-            "description": "OK"
-          }
-        }
       }
     },
-    "/api/Branch/{id}": {
+    "/api/branches/{id}": {
       "get": {
         "tags": [
           "Branch"
@@ -228,36 +199,26 @@
         }
       }
     },
-    "/api/Car/car": {
-      "get": {
-        "tags": [
-          "Car"
-        ],
-        "responses": {
-          "200": {
-            "description": "OK"
-          }
-        }
-      },
+    "/api/branch": {
       "post": {
         "tags": [
-          "Car"
+          "Branch"
         ],
         "requestBody": {
           "content": {
             "application/json": {
               "schema": {
-                "$ref": "#/components/schemas/CreateCarDTO"
+                "$ref": "#/components/schemas/Branch"
               }
             },
             "text/json": {
               "schema": {
-                "$ref": "#/components/schemas/CreateCarDTO"
+                "$ref": "#/components/schemas/Branch"
               }
             },
             "application/*+json": {
               "schema": {
-                "$ref": "#/components/schemas/CreateCarDTO"
+                "$ref": "#/components/schemas/Branch"
               }
             }
           }
@@ -269,7 +230,19 @@
         }
       }
     },
-    "/api/Car/{id}": {
+    "/api/cars": {
+      "get": {
+        "tags": [
+          "Car"
+        ],
+        "responses": {
+          "200": {
+            "description": "OK"
+          }
+        }
+      }
+    },
+    "/api/cars/{id}": {
       "get": {
         "tags": [
           "Car"
@@ -347,7 +320,73 @@
         }
       }
     },
-    "/api/FuelType/fuel_type": {
+    "/api/car": {
+      "post": {
+        "tags": [
+          "Car"
+        ],
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/Car"
+              }
+            },
+            "text/json": {
+              "schema": {
+                "$ref": "#/components/schemas/Car"
+              }
+            },
+            "application/*+json": {
+              "schema": {
+                "$ref": "#/components/schemas/Car"
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "OK"
+          }
+        }
+      }
+    },
+    "/api/car_categories": {
+      "get": {
+        "tags": [
+          "CarCategory"
+        ],
+        "responses": {
+          "200": {
+            "description": "OK"
+          }
+        }
+      }
+    },
+    "/api/car_categories/{id}": {
+      "get": {
+        "tags": [
+          "CarCategory"
+        ],
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "integer",
+              "format": "int32"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK"
+          }
+        }
+      }
+    },
+    "/api/fuel_types": {
       "get": {
         "tags": [
           "FuelType"
@@ -359,7 +398,7 @@
         }
       }
     },
-    "/api/FuelType/{id}": {
+    "/api/fuel_types/{id}": {
       "get": {
         "tags": [
           "FuelType"
@@ -382,7 +421,7 @@
         }
       }
     },
-    "/api/Rental/rental": {
+    "/api/rentals": {
       "get": {
         "tags": [
           "Rental"
@@ -392,38 +431,9 @@
             "description": "OK"
           }
         }
-      },
-      "post": {
-        "tags": [
-          "Rental"
-        ],
-        "requestBody": {
-          "content": {
-            "application/json": {
-              "schema": {
-                "$ref": "#/components/schemas/Rental"
-              }
-            },
-            "text/json": {
-              "schema": {
-                "$ref": "#/components/schemas/Rental"
-              }
-            },
-            "application/*+json": {
-              "schema": {
-                "$ref": "#/components/schemas/Rental"
-              }
-            }
-          }
-        },
-        "responses": {
-          "200": {
-            "description": "OK"
-          }
-        }
       }
     },
-    "/api/Rental/{id}": {
+    "/api/rentals/{id}": {
       "get": {
         "tags": [
           "Rental"
@@ -463,19 +473,13 @@
         "requestBody": {
           "content": {
             "application/json": {
-              "schema": {
-                "$ref": "#/components/schemas/Rental"
-              }
+              "schema": { }
             },
             "text/json": {
-              "schema": {
-                "$ref": "#/components/schemas/Rental"
-              }
+              "schema": { }
             },
             "application/*+json": {
-              "schema": {
-                "$ref": "#/components/schemas/Rental"
-              }
+              "schema": { }
             }
           }
         },
@@ -507,7 +511,38 @@
         }
       }
     },
-    "/api/TransmissionType/transmission_type": {
+    "/api/rental": {
+      "post": {
+        "tags": [
+          "Rental"
+        ],
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/Rental"
+              }
+            },
+            "text/json": {
+              "schema": {
+                "$ref": "#/components/schemas/Rental"
+              }
+            },
+            "application/*+json": {
+              "schema": {
+                "$ref": "#/components/schemas/Rental"
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "OK"
+          }
+        }
+      }
+    },
+    "/api/transmission_types": {
       "get": {
         "tags": [
           "TransmissionType"
@@ -519,7 +554,7 @@
         }
       }
     },
-    "/api/TransmissionType/{id}": {
+    "/api/transmission_types/{id}": {
       "get": {
         "tags": [
           "TransmissionType"
@@ -542,7 +577,7 @@
         }
       }
     },
-    "/api/User/user": {
+    "/api/users": {
       "get": {
         "tags": [
           "User"
@@ -552,38 +587,9 @@
             "description": "OK"
           }
         }
-      },
-      "post": {
-        "tags": [
-          "User"
-        ],
-        "requestBody": {
-          "content": {
-            "application/json": {
-              "schema": {
-                "$ref": "#/components/schemas/CreateUserDto"
-              }
-            },
-            "text/json": {
-              "schema": {
-                "$ref": "#/components/schemas/CreateUserDto"
-              }
-            },
-            "application/*+json": {
-              "schema": {
-                "$ref": "#/components/schemas/CreateUserDto"
-              }
-            }
-          }
-        },
-        "responses": {
-          "200": {
-            "description": "OK"
-          }
-        }
       }
     },
-    "/api/User/{id}": {
+    "/api/users/{id}": {
       "get": {
         "tags": [
           "User"
@@ -642,6 +648,72 @@
       "delete": {
         "tags": [
           "User"
+        ],
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "integer",
+              "format": "int32"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK"
+          }
+        }
+      }
+    },
+    "/api/user": {
+      "post": {
+        "tags": [
+          "User"
+        ],
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/User"
+              }
+            },
+            "text/json": {
+              "schema": {
+                "$ref": "#/components/schemas/User"
+              }
+            },
+            "application/*+json": {
+              "schema": {
+                "$ref": "#/components/schemas/User"
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "OK"
+          }
+        }
+      }
+    },
+    "/api/wheel_drive_types": {
+      "get": {
+        "tags": [
+          "WheelDriveType"
+        ],
+        "responses": {
+          "200": {
+            "description": "OK"
+          }
+        }
+      }
+    },
+    "/api/wheel_drive_types/{id}": {
+      "get": {
+        "tags": [
+          "WheelDriveType"
         ],
         "parameters": [
           {
@@ -664,12 +736,55 @@
   },
   "components": {
     "schemas": {
+      "AdditionalEquipment": {
+        "required": [
+          "air_conditioning_id",
+          "heated_seats",
+          "leather_seats",
+          "navigation",
+          "parking_sensors",
+          "tempomat"
+        ],
+        "type": "object",
+        "properties": {
+          "id": {
+            "type": "integer",
+            "format": "int32"
+          },
+          "car_id": {
+            "type": "integer",
+            "format": "int32"
+          },
+          "parking_sensors": {
+            "type": "boolean"
+          },
+          "air_conditioning_id": {
+            "maximum": 2147483647,
+            "minimum": 1,
+            "type": "integer",
+            "format": "int32"
+          },
+          "heated_seats": {
+            "type": "boolean"
+          },
+          "navigation": {
+            "type": "boolean"
+          },
+          "leather_seats": {
+            "type": "boolean"
+          },
+          "tempomat": {
+            "type": "boolean"
+          }
+        },
+        "additionalProperties": false
+      },
       "Branch": {
         "required": [
           "address",
           "city",
           "email",
-          "phoneNumber"
+          "phone_number"
         ],
         "type": "object",
         "properties": {
@@ -693,112 +808,34 @@
             "type": "string",
             "format": "email"
           },
-          "phoneNumber": {
+          "phone_number": {
             "minLength": 1,
+            "pattern": "^\\+36\\s\\d{2}\\s\\d{3}\\s\\d{3}$",
             "type": "string"
           }
         },
         "additionalProperties": false
       },
-      "CreateAdditionalEquipmentDto": {
-        "type": "object",
-        "properties": {
-          "parkingSensors": {
-            "type": "boolean"
-          },
-          "heatedSeats": {
-            "type": "boolean"
-          },
-          "navigation": {
-            "type": "boolean"
-          },
-          "leatherSeats": {
-            "type": "boolean"
-          },
-          "airConditioningId": {
-            "type": "integer",
-            "format": "int32"
-          }
-        },
-        "additionalProperties": false
-      },
-      "CreateCarDTO": {
-        "type": "object",
-        "properties": {
-          "brand": {
-            "type": "string",
-            "nullable": true
-          },
-          "model": {
-            "type": "string",
-            "nullable": true
-          },
-          "year": {
-            "type": "integer",
-            "format": "int32"
-          },
-          "numberOfSeats": {
-            "type": "integer",
-            "format": "int32"
-          },
-          "price": {
-            "type": "integer",
-            "format": "int32"
-          },
-          "licensePlate": {
-            "type": "string",
-            "nullable": true
-          },
-          "branchId": {
-            "type": "integer",
-            "format": "int32"
-          },
-          "transmissionId": {
-            "type": "integer",
-            "format": "int32"
-          },
-          "fuelTypeId": {
-            "type": "integer",
-            "format": "int32"
-          },
-          "additionalEquipment": {
-            "$ref": "#/components/schemas/CreateAdditionalEquipmentDto"
-          }
-        },
-        "additionalProperties": false
-      },
-      "CreateUserDto": {
+      "Car": {
         "required": [
-          "email",
-          "firstName",
-          "lastName"
-        ],
-        "type": "object",
-        "properties": {
-          "firstName": {
-            "minLength": 1,
-            "type": "string"
-          },
-          "lastName": {
-            "minLength": 1,
-            "type": "string"
-          },
-          "email": {
-            "minLength": 1,
-            "type": "string",
-            "format": "email"
-          },
-          "birthDate": {
-            "type": "string",
-            "format": "date-time"
-          }
-        },
-        "additionalProperties": false
-      },
-      "Rental": {
-        "required": [
-          "endDate",
-          "startDate"
+          "availability",
+          "brand",
+          "color",
+          "cubic_capacity",
+          "inspection_expiry_date",
+          "last_service_date",
+          "license_plate",
+          "luggage_capacity",
+          "mileage",
+          "model",
+          "number_of_doors",
+          "number_of_seats",
+          "own_weight",
+          "performance_hp",
+          "performance_kw",
+          "price",
+          "total_weight",
+          "year"
         ],
         "type": "object",
         "properties": {
@@ -806,23 +843,209 @@
             "type": "integer",
             "format": "int32"
           },
-          "carId": {
+          "availability": {
+            "type": "boolean"
+          },
+          "brand": {
+            "maxLength": 50,
+            "minLength": 2,
+            "type": "string"
+          },
+          "model": {
+            "maxLength": 50,
+            "minLength": 1,
+            "type": "string"
+          },
+          "year": {
+            "maximum": 2100,
+            "minimum": 1980,
+            "type": "integer",
+            "format": "int32"
+          },
+          "color": {
+            "minLength": 1,
+            "type": "string"
+          },
+          "own_weight": {
+            "type": "integer",
+            "format": "int32"
+          },
+          "total_weight": {
+            "type": "integer",
+            "format": "int32"
+          },
+          "number_of_seats": {
+            "maximum": 9,
+            "minimum": 2,
+            "type": "integer",
+            "format": "int32"
+          },
+          "number_of_doors": {
+            "maximum": 5,
+            "minimum": 2,
+            "type": "integer",
+            "format": "int32"
+          },
+          "price": {
+            "type": "integer",
+            "format": "int32"
+          },
+          "license_plate": {
+            "minLength": 1,
+            "pattern": "^[A-Z]{2}-[A-Z]{2}-\\d{3}$",
+            "type": "string"
+          },
+          "mileage": {
+            "type": "integer",
+            "format": "int32"
+          },
+          "luggage_capacity": {
+            "type": "integer",
+            "format": "int32"
+          },
+          "cubic_capacity": {
+            "type": "integer",
+            "format": "int32"
+          },
+          "tank_capacity": {
             "type": "integer",
             "format": "int32",
             "nullable": true
           },
-          "userId": {
+          "battery_capacity": {
             "type": "integer",
             "format": "int32",
             "nullable": true
           },
-          "startDate": {
+          "performance_kw": {
+            "type": "integer",
+            "format": "int32"
+          },
+          "performance_hp": {
+            "type": "integer",
+            "format": "int32"
+          },
+          "last_service_date": {
+            "type": "string",
+            "format": "date"
+          },
+          "inspection_expiry_date": {
+            "type": "string",
+            "format": "date"
+          },
+          "branch_id": {
+            "type": "integer",
+            "format": "int32"
+          },
+          "transmission_id": {
+            "type": "integer",
+            "format": "int32"
+          },
+          "fuel_type_id": {
+            "type": "integer",
+            "format": "int32"
+          },
+          "wheel_drive_type_id": {
+            "type": "integer",
+            "format": "int32"
+          },
+          "car_category_id": {
+            "type": "integer",
+            "format": "int32"
+          },
+          "default_price_per_day": {
+            "type": "integer",
+            "format": "int32"
+          },
+          "additional_equipment": {
+            "$ref": "#/components/schemas/AdditionalEquipment"
+          }
+        },
+        "additionalProperties": false
+      },
+      "Rental": {
+        "required": [
+          "end_date",
+          "fuel_level_end",
+          "fuel_level_start",
+          "full_price",
+          "start_date"
+        ],
+        "type": "object",
+        "properties": {
+          "id": {
+            "type": "integer",
+            "format": "int32"
+          },
+          "car_id": {
+            "type": "integer",
+            "format": "int32",
+            "nullable": true
+          },
+          "user_id": {
+            "type": "integer",
+            "format": "int32",
+            "nullable": true
+          },
+          "fuel_level_start": {
+            "maximum": 100,
+            "minimum": 0,
+            "type": "integer",
+            "format": "int32"
+          },
+          "fuel_level_end": {
+            "maximum": 100,
+            "minimum": 0,
+            "type": "integer",
+            "format": "int32"
+          },
+          "start_date": {
             "type": "string",
             "format": "date-time"
           },
-          "endDate": {
+          "end_date": {
             "type": "string",
             "format": "date-time"
+          },
+          "full_price": {
+            "type": "integer",
+            "format": "int32"
+          }
+        },
+        "additionalProperties": false
+      },
+      "User": {
+        "required": [
+          "birth_date",
+          "email",
+          "first_name",
+          "last_name"
+        ],
+        "type": "object",
+        "properties": {
+          "id": {
+            "type": "integer",
+            "format": "int32"
+          },
+          "last_name": {
+            "maxLength": 100,
+            "minLength": 2,
+            "type": "string"
+          },
+          "first_name": {
+            "maxLength": 100,
+            "minLength": 2,
+            "type": "string"
+          },
+          "email": {
+            "maxLength": 150,
+            "minLength": 0,
+            "type": "string",
+            "format": "email"
+          },
+          "birth_date": {
+            "type": "string",
+            "format": "date"
           }
         },
         "additionalProperties": false

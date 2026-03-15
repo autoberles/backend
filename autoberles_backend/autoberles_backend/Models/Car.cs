@@ -2,6 +2,7 @@
 using System;
 using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
+using System.Text.Json.Serialization;
 
 namespace autoberles_backend.Models;
 
@@ -29,7 +30,7 @@ public partial class Car
 
     [Required(ErrorMessage = "Az évszám megadása kötelező.")]
     [Range(1980, 2100, ErrorMessage = "Az évszámnak 1980 és 2100 közöttinek kell lennie.")]
-    public int? Year { get; set; }
+    public int Year { get; set; }
 
 
     [Required(ErrorMessage = "Az autó színének megadása kötelező.")]
@@ -74,12 +75,8 @@ public partial class Car
     [Required(ErrorMessage = "Az autó hengerűrtartalmának megadása kötelező.")]
     public int CubicCapacity { get; set; }
 
-
-    [Required(ErrorMessage = "Az autó tankjának kapacitását megadni kötelező.")]
     public int? TankCapacity { get; set; }
 
-
-    [Required(ErrorMessage = "Az autó akkumulátorának kapacitását megadni kötelező.")]
     public int? BatteryCapacity { get; set; }
 
 
@@ -112,16 +109,23 @@ public partial class Car
 
     public int DefaultPricePerDay { get; set; }
     
-    public virtual AdditionalEquipment AdditionalEquipment { get; set; } = null!;
-    public virtual Branch Branch { get; set; } = null!;
+    public virtual AdditionalEquipment? AdditionalEquipment { get; set; } = null!;
 
-    public virtual CarCategory CarCategory { get; set; } = null!;
+    [JsonIgnore]
+    public virtual Branch? Branch { get; set; } = null!;
 
-    public virtual FuelType FuelType { get; set; } = null!;
+    [JsonIgnore]
+    public virtual CarCategory? CarCategory { get; set; } = null!;
 
+    [JsonIgnore]
+    public virtual FuelType? FuelType { get; set; } = null!;
+
+    [JsonIgnore]
     public virtual ICollection<Rental> Rentals { get; set; } = new List<Rental>();
 
-    public virtual TransmissionType TransmissionType { get; set; } = null!;
+    [JsonIgnore]
+    public virtual TransmissionType? TransmissionType { get; set; } = null!;
 
-    public virtual WheelDriveType WheelDriveType { get; set; } = null!;
+    [JsonIgnore]
+    public virtual WheelDriveType? WheelDriveType { get; set; } = null!;
 }

@@ -1,8 +1,18 @@
 [
   {
     "ContainingType": "autoberles_backend.Controllers.AdditionalEquipmentController",
+    "Method": "GetAllAdditionalEquipments",
+    "RelativePath": "api/additional_equipments",
+    "HttpMethod": "GET",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "autoberles_backend.Controllers.AdditionalEquipmentController",
     "Method": "GetAdditionalEquipmentsById",
-    "RelativePath": "api/AdditionalEquipment/{id}",
+    "RelativePath": "api/additional_equipments/{id}",
     "HttpMethod": "GET",
     "IsController": true,
     "Order": 0,
@@ -18,7 +28,7 @@
   {
     "ContainingType": "autoberles_backend.Controllers.AdditionalEquipmentController",
     "Method": "PatchAdditionalEquipment",
-    "RelativePath": "api/AdditionalEquipment/{id}",
+    "RelativePath": "api/additional_equipments/{id}",
     "HttpMethod": "PATCH",
     "IsController": true,
     "Order": 0,
@@ -37,9 +47,9 @@
     "ReturnTypes": []
   },
   {
-    "ContainingType": "autoberles_backend.Controllers.AdditionalEquipmentController",
-    "Method": "GetAllAdditionalEquipments",
-    "RelativePath": "api/AdditionalEquipment/additional_equipment",
+    "ContainingType": "autoberles_backend.Controllers.AirConditioningTypeController",
+    "Method": "GetAllAirConditioningTypes",
+    "RelativePath": "api/air_conditioning_types",
     "HttpMethod": "GET",
     "IsController": true,
     "Order": 0,
@@ -49,7 +59,7 @@
   {
     "ContainingType": "autoberles_backend.Controllers.AirConditioningTypeController",
     "Method": "GetAirConditionalTypeById",
-    "RelativePath": "api/AirConditioningType/{id}",
+    "RelativePath": "api/air_conditioning_types/{id}",
     "HttpMethod": "GET",
     "IsController": true,
     "Order": 0,
@@ -63,9 +73,25 @@
     "ReturnTypes": []
   },
   {
-    "ContainingType": "autoberles_backend.Controllers.AirConditioningTypeController",
-    "Method": "GetAllAirConditioningTypes",
-    "RelativePath": "api/AirConditioningType/air_conditioning_type",
+    "ContainingType": "autoberles_backend.Controllers.BranchController",
+    "Method": "PostBranch",
+    "RelativePath": "api/branch",
+    "HttpMethod": "POST",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "branch",
+        "Type": "autoberles_backend.Models.Branch",
+        "IsRequired": true
+      }
+    ],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "autoberles_backend.Controllers.BranchController",
+    "Method": "GetAllBranches",
+    "RelativePath": "api/branches",
     "HttpMethod": "GET",
     "IsController": true,
     "Order": 0,
@@ -75,7 +101,7 @@
   {
     "ContainingType": "autoberles_backend.Controllers.BranchController",
     "Method": "GetBranchById",
-    "RelativePath": "api/Branch/{id}",
+    "RelativePath": "api/branches/{id}",
     "HttpMethod": "GET",
     "IsController": true,
     "Order": 0,
@@ -91,7 +117,7 @@
   {
     "ContainingType": "autoberles_backend.Controllers.BranchController",
     "Method": "PatchBranch",
-    "RelativePath": "api/Branch/{id}",
+    "RelativePath": "api/branches/{id}",
     "HttpMethod": "PATCH",
     "IsController": true,
     "Order": 0,
@@ -112,7 +138,7 @@
   {
     "ContainingType": "autoberles_backend.Controllers.BranchController",
     "Method": "DeleteBranch",
-    "RelativePath": "api/Branch/{id}",
+    "RelativePath": "api/branches/{id}",
     "HttpMethod": "DELETE",
     "IsController": true,
     "Order": 0,
@@ -126,9 +152,25 @@
     "ReturnTypes": []
   },
   {
-    "ContainingType": "autoberles_backend.Controllers.BranchController",
-    "Method": "GetAllBranches",
-    "RelativePath": "api/Branch/branch",
+    "ContainingType": "autoberles_backend.Controllers.CarController",
+    "Method": "PostCar",
+    "RelativePath": "api/car",
+    "HttpMethod": "POST",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "car",
+        "Type": "autoberles_backend.Models.Car",
+        "IsRequired": true
+      }
+    ],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "autoberles_backend.Controllers.CarCategoryController",
+    "Method": "GetAllCarCategories",
+    "RelativePath": "api/car_categories",
     "HttpMethod": "GET",
     "IsController": true,
     "Order": 0,
@@ -136,16 +178,16 @@
     "ReturnTypes": []
   },
   {
-    "ContainingType": "autoberles_backend.Controllers.BranchController",
-    "Method": "PostBranch",
-    "RelativePath": "api/Branch/branch",
-    "HttpMethod": "POST",
+    "ContainingType": "autoberles_backend.Controllers.CarCategoryController",
+    "Method": "GetCarCategoryById",
+    "RelativePath": "api/car_categories/{id}",
+    "HttpMethod": "GET",
     "IsController": true,
     "Order": 0,
     "Parameters": [
       {
-        "Name": "branch",
-        "Type": "autoberles_backend.Models.Branch",
+        "Name": "id",
+        "Type": "System.Int32",
         "IsRequired": true
       }
     ],
@@ -153,8 +195,18 @@
   },
   {
     "ContainingType": "autoberles_backend.Controllers.CarController",
+    "Method": "GetAllCars",
+    "RelativePath": "api/cars",
+    "HttpMethod": "GET",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "autoberles_backend.Controllers.CarController",
     "Method": "GetCarById",
-    "RelativePath": "api/Car/{id}",
+    "RelativePath": "api/cars/{id}",
     "HttpMethod": "GET",
     "IsController": true,
     "Order": 0,
@@ -170,7 +222,7 @@
   {
     "ContainingType": "autoberles_backend.Controllers.CarController",
     "Method": "PatchCar",
-    "RelativePath": "api/Car/{id}",
+    "RelativePath": "api/cars/{id}",
     "HttpMethod": "PATCH",
     "IsController": true,
     "Order": 0,
@@ -191,50 +243,8 @@
   {
     "ContainingType": "autoberles_backend.Controllers.CarController",
     "Method": "DeleteCar",
-    "RelativePath": "api/Car/{id}",
+    "RelativePath": "api/cars/{id}",
     "HttpMethod": "DELETE",
-    "IsController": true,
-    "Order": 0,
-    "Parameters": [
-      {
-        "Name": "id",
-        "Type": "System.Int32",
-        "IsRequired": true
-      }
-    ],
-    "ReturnTypes": []
-  },
-  {
-    "ContainingType": "autoberles_backend.Controllers.CarController",
-    "Method": "GetAllCars",
-    "RelativePath": "api/Car/car",
-    "HttpMethod": "GET",
-    "IsController": true,
-    "Order": 0,
-    "Parameters": [],
-    "ReturnTypes": []
-  },
-  {
-    "ContainingType": "autoberles_backend.Controllers.CarController",
-    "Method": "PostCar",
-    "RelativePath": "api/Car/car",
-    "HttpMethod": "POST",
-    "IsController": true,
-    "Order": 0,
-    "Parameters": [
-      {
-        "Name": "dto",
-        "Type": "autoberles_backend.Classes.CreateCarDTO",
-        "IsRequired": true
-      }
-    ],
-    "ReturnTypes": []
-  },
-  {
-    "ContainingType": "autoberles_backend.Controllers.FuelTypeController",
-    "Method": "GetFuelTypeById",
-    "RelativePath": "api/FuelType/{id}",
-    "HttpMethod": "GET",
     "IsController": true,
     "Order": 0,
     "Parameters": [
@@ -249,7 +259,49 @@
   {
     "ContainingType": "autoberles_backend.Controllers.FuelTypeController",
     "Method": "GetAllFuelTypes",
-    "RelativePath": "api/FuelType/fuel_type",
+    "RelativePath": "api/fuel_types",
+    "HttpMethod": "GET",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "autoberles_backend.Controllers.FuelTypeController",
+    "Method": "GetFuelTypeById",
+    "RelativePath": "api/fuel_types/{id}",
+    "HttpMethod": "GET",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "id",
+        "Type": "System.Int32",
+        "IsRequired": true
+      }
+    ],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "autoberles_backend.Controllers.RentalController",
+    "Method": "PostRental",
+    "RelativePath": "api/rental",
+    "HttpMethod": "POST",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "newRental",
+        "Type": "autoberles_backend.Models.Rental",
+        "IsRequired": true
+      }
+    ],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "autoberles_backend.Controllers.RentalController",
+    "Method": "GetAllRentals",
+    "RelativePath": "api/rentals",
     "HttpMethod": "GET",
     "IsController": true,
     "Order": 0,
@@ -259,7 +311,7 @@
   {
     "ContainingType": "autoberles_backend.Controllers.RentalController",
     "Method": "GetRentalById",
-    "RelativePath": "api/Rental/{id}",
+    "RelativePath": "api/rentals/{id}",
     "HttpMethod": "GET",
     "IsController": true,
     "Order": 0,
@@ -275,7 +327,7 @@
   {
     "ContainingType": "autoberles_backend.Controllers.RentalController",
     "Method": "PatchRental",
-    "RelativePath": "api/Rental/{id}",
+    "RelativePath": "api/rentals/{id}",
     "HttpMethod": "PATCH",
     "IsController": true,
     "Order": 0,
@@ -286,8 +338,8 @@
         "IsRequired": true
       },
       {
-        "Name": "updatedRental",
-        "Type": "autoberles_backend.Models.Rental",
+        "Name": "body",
+        "Type": "System.Text.Json.JsonElement",
         "IsRequired": true
       }
     ],
@@ -296,50 +348,8 @@
   {
     "ContainingType": "autoberles_backend.Controllers.RentalController",
     "Method": "DeleteRental",
-    "RelativePath": "api/Rental/{id}",
+    "RelativePath": "api/rentals/{id}",
     "HttpMethod": "DELETE",
-    "IsController": true,
-    "Order": 0,
-    "Parameters": [
-      {
-        "Name": "id",
-        "Type": "System.Int32",
-        "IsRequired": true
-      }
-    ],
-    "ReturnTypes": []
-  },
-  {
-    "ContainingType": "autoberles_backend.Controllers.RentalController",
-    "Method": "GetAllRentals",
-    "RelativePath": "api/Rental/rental",
-    "HttpMethod": "GET",
-    "IsController": true,
-    "Order": 0,
-    "Parameters": [],
-    "ReturnTypes": []
-  },
-  {
-    "ContainingType": "autoberles_backend.Controllers.RentalController",
-    "Method": "PostRental",
-    "RelativePath": "api/Rental/rental",
-    "HttpMethod": "POST",
-    "IsController": true,
-    "Order": 0,
-    "Parameters": [
-      {
-        "Name": "newRental",
-        "Type": "autoberles_backend.Models.Rental",
-        "IsRequired": true
-      }
-    ],
-    "ReturnTypes": []
-  },
-  {
-    "ContainingType": "autoberles_backend.Controllers.TransmissionTypeController",
-    "Method": "GetTransmissionTypeById",
-    "RelativePath": "api/TransmissionType/{id}",
-    "HttpMethod": "GET",
     "IsController": true,
     "Order": 0,
     "Parameters": [
@@ -354,7 +364,49 @@
   {
     "ContainingType": "autoberles_backend.Controllers.TransmissionTypeController",
     "Method": "GetAllTransmissionTypes",
-    "RelativePath": "api/TransmissionType/transmission_type",
+    "RelativePath": "api/transmission_types",
+    "HttpMethod": "GET",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "autoberles_backend.Controllers.TransmissionTypeController",
+    "Method": "GetTransmissionTypeById",
+    "RelativePath": "api/transmission_types/{id}",
+    "HttpMethod": "GET",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "id",
+        "Type": "System.Int32",
+        "IsRequired": true
+      }
+    ],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "autoberles_backend.Controllers.UserController",
+    "Method": "PostUser",
+    "RelativePath": "api/user",
+    "HttpMethod": "POST",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "user",
+        "Type": "autoberles_backend.Models.User",
+        "IsRequired": true
+      }
+    ],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "autoberles_backend.Controllers.UserController",
+    "Method": "GetAllUsers",
+    "RelativePath": "api/users",
     "HttpMethod": "GET",
     "IsController": true,
     "Order": 0,
@@ -364,7 +416,7 @@
   {
     "ContainingType": "autoberles_backend.Controllers.UserController",
     "Method": "GetUserById",
-    "RelativePath": "api/User/{id}",
+    "RelativePath": "api/users/{id}",
     "HttpMethod": "GET",
     "IsController": true,
     "Order": 0,
@@ -380,7 +432,7 @@
   {
     "ContainingType": "autoberles_backend.Controllers.UserController",
     "Method": "PatchUser",
-    "RelativePath": "api/User/{id}",
+    "RelativePath": "api/users/{id}",
     "HttpMethod": "PATCH",
     "IsController": true,
     "Order": 0,
@@ -401,7 +453,7 @@
   {
     "ContainingType": "autoberles_backend.Controllers.UserController",
     "Method": "DeleteUser",
-    "RelativePath": "api/User/{id}",
+    "RelativePath": "api/users/{id}",
     "HttpMethod": "DELETE",
     "IsController": true,
     "Order": 0,
@@ -415,9 +467,9 @@
     "ReturnTypes": []
   },
   {
-    "ContainingType": "autoberles_backend.Controllers.UserController",
-    "Method": "GetAllUsers",
-    "RelativePath": "api/User/user",
+    "ContainingType": "autoberles_backend.Controllers.WheelDriveTypeController",
+    "Method": "GetAllWheelDriveTypes",
+    "RelativePath": "api/wheel_drive_types",
     "HttpMethod": "GET",
     "IsController": true,
     "Order": 0,
@@ -425,16 +477,16 @@
     "ReturnTypes": []
   },
   {
-    "ContainingType": "autoberles_backend.Controllers.UserController",
-    "Method": "PostUser",
-    "RelativePath": "api/User/user",
-    "HttpMethod": "POST",
+    "ContainingType": "autoberles_backend.Controllers.WheelDriveTypeController",
+    "Method": "GetWheelDriveTypeById",
+    "RelativePath": "api/wheel_drive_types/{id}",
+    "HttpMethod": "GET",
     "IsController": true,
     "Order": 0,
     "Parameters": [
       {
-        "Name": "dto",
-        "Type": "autoberles_backend.Classes.CreateUserDto",
+        "Name": "id",
+        "Type": "System.Int32",
         "IsRequired": true
       }
     ],

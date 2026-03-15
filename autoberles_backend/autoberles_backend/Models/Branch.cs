@@ -32,6 +32,8 @@ public partial class Branch
 
 
     [Required(ErrorMessage = "A telefonszám megadása kötelező.")]
+    [RegularExpression(@"^\+36\s\d{2}\s\d{3}\s\d{3}$",
+        ErrorMessage = "A telefonszám kötelező formátuma: +36 11 111 111")]
     public string PhoneNumber { get; set; } = null!;
 
 

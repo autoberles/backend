@@ -36,9 +36,11 @@ public partial class AdditionalEquipment
 
     [Required(ErrorMessage = "Kötelező megadni, hogy az autó rendelkezik-e tempomattal.")]
     public bool Tempomat { get; set; }
-    
-    public virtual AirConditioningType AirConditioning { get; set; } = null!;
+
 
     [JsonIgnore]
-    public virtual Car Car { get; set; } = null!;
+    public virtual AirConditioningType? AirConditioning { get; set; } = null!;
+
+    [JsonIgnore]
+    public virtual Car? Car { get; set; } = null!;
 }

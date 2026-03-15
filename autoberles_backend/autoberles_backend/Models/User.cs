@@ -2,6 +2,7 @@
 using System;
 using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
+using System.Text.Json.Serialization;
 using System.Xml.Linq;
 
 namespace autoberles_backend.Models;
@@ -35,6 +36,8 @@ public partial class User
     [CustomValidation(typeof(User), nameof(ValidateBirthDate))]
     public DateTime? BirthDate { get; set; }
 
+
+    [JsonIgnore]
     public virtual ICollection<Rental> Rentals { get; set; } = new List<Rental>();
 
     public static ValidationResult? ValidateBirthDate(DateTime birthDate, ValidationContext context)
