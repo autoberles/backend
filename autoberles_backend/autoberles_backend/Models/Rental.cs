@@ -1,6 +1,8 @@
-﻿using System;
+﻿using Swashbuckle.AspNetCore.Annotations;
+using System;
 using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
+using System.Diagnostics.CodeAnalysis;
 using System.Text.Json.Serialization;
 
 namespace autoberles_backend.Models;
@@ -15,22 +17,16 @@ public partial class Rental
     public int? UserId { get; set; }
 
 
-    [Required(ErrorMessage = "A kezdeti üzemanyagszintet kötelező megadni.")]
-    [Range(0, 100, ErrorMessage = "Az üzemanyagszint 0% és 100% közötti érték lehet.")]
-    public int? FuelLevelStart { get; set; }
-
-
-    [Required(ErrorMessage = "A végső üzemanyagszintet kötelező megadni.")]
-    [Range(0, 100, ErrorMessage = "Az üzemanyagszint 0% és 100% közötti érték lehet.")]
-    public int? FuelLevelEnd { get; set; }
-
-
     [Required(ErrorMessage = "A bérlés kezdetét megadni kötelező!")]
     public DateTime? StartDate { get; set; }
 
 
     [Required(ErrorMessage = "A bérlés végét megadni kötelező!")]
     public DateTime? EndDate { get; set; }
+
+    public DateTime? ReturnDate { get; set; }
+
+    public string? Damage { get; set; } = null;
 
 
     [Required(ErrorMessage = "A bérlés teljes árát kötelező megadni.")]

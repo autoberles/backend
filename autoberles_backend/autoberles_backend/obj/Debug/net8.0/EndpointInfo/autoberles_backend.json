@@ -966,8 +966,6 @@
       "Rental": {
         "required": [
           "end_date",
-          "fuel_level_end",
-          "fuel_level_start",
           "full_price",
           "start_date"
         ],
@@ -987,18 +985,6 @@
             "format": "int32",
             "nullable": true
           },
-          "fuel_level_start": {
-            "maximum": 100,
-            "minimum": 0,
-            "type": "integer",
-            "format": "int32"
-          },
-          "fuel_level_end": {
-            "maximum": 100,
-            "minimum": 0,
-            "type": "integer",
-            "format": "int32"
-          },
           "start_date": {
             "type": "string",
             "format": "date-time"
@@ -1006,6 +992,15 @@
           "end_date": {
             "type": "string",
             "format": "date-time"
+          },
+          "return_date": {
+            "type": "string",
+            "format": "date-time",
+            "nullable": true
+          },
+          "damage": {
+            "type": "string",
+            "nullable": true
           },
           "full_price": {
             "type": "integer",
@@ -1019,7 +1014,8 @@
           "birth_date",
           "email",
           "first_name",
-          "last_name"
+          "last_name",
+          "role"
         ],
         "type": "object",
         "properties": {
@@ -1046,6 +1042,11 @@
           "birth_date": {
             "type": "string",
             "format": "date"
+          },
+          "role": {
+            "minLength": 1,
+            "pattern": "^(agent|admin|customer)$",
+            "type": "string"
           }
         },
         "additionalProperties": false

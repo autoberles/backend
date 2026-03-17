@@ -36,6 +36,11 @@ public partial class User
     [CustomValidation(typeof(User), nameof(ValidateBirthDate))]
     public DateTime? BirthDate { get; set; }
 
+    [Required(ErrorMessage = "A felhasználó szerepkörét kötelező megadni.")]
+    [RegularExpression("^(agent|admin|customer)$",
+        ErrorMessage = "A felhasználó szerepköre csak customer, admin vagy agent lehet.")]
+    public string Role { get; set; } = null!;
+
 
     [JsonIgnore]
     public virtual ICollection<Rental> Rentals { get; set; } = new List<Rental>();

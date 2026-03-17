@@ -108,7 +108,7 @@ public partial class Car
     public int CarCategoryId { get; set; }
 
     public int DefaultPricePerDay { get; set; }
-    
+
     public virtual AdditionalEquipment? AdditionalEquipment { get; set; } = null!;
 
     [JsonIgnore]

@@ -106,9 +106,9 @@ public partial class CarRentalContext : DbContext
             entity.Property(e => e.Id)
                 .HasColumnType("int(11)")
                 .HasColumnName("id");
-            entity.Property(e => e.Address).HasColumnName("address")
+            entity.Property(e => e.Address)
                 .HasMaxLength(255)
-                .HasColumnName("address"); ;
+                .HasColumnName("address");
             entity.Property(e => e.City)
                 .HasMaxLength(100)
                 .HasColumnName("city");
@@ -289,18 +289,20 @@ public partial class CarRentalContext : DbContext
             entity.Property(e => e.CarId)
                 .HasColumnType("int(11)")
                 .HasColumnName("car_id");
+            entity.Property(e => e.Damage)
+                .HasDefaultValueSql("'NULL'")
+                .HasColumnType("text")
+                .HasColumnName("damage");
             entity.Property(e => e.EndDate)
                 .HasColumnType("date")
                 .HasColumnName("end_date");
-            entity.Property(e => e.FuelLevelEnd)
-                .HasColumnType("int(11)")
-                .HasColumnName("fuel_level_end");
-            entity.Property(e => e.FuelLevelStart)
-                .HasColumnType("int(11)")
-                .HasColumnName("fuel_level_start");
             entity.Property(e => e.FullPrice)
                 .HasColumnType("int(11)")
                 .HasColumnName("full_price");
+            entity.Property(e => e.ReturnDate)
+                .HasDefaultValueSql("'NULL'")
+                .HasColumnType("date")
+                .HasColumnName("return_date");
             entity.Property(e => e.StartDate)
                 .HasColumnType("date")
                 .HasColumnName("start_date");
@@ -356,6 +358,9 @@ public partial class CarRentalContext : DbContext
             entity.Property(e => e.LastName)
                 .HasMaxLength(100)
                 .HasColumnName("last_name");
+            entity.Property(e => e.Role)
+                .HasMaxLength(30)
+                .HasColumnName("role");
         });
 
         modelBuilder.Entity<WheelDriveType>(entity =>

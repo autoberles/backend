@@ -46,9 +46,6 @@ namespace autoberles_backend.Controllers
                 if (!ModelState.IsValid)
                     return BadRequest(ModelState);
 
-                if (await context.Branches.AnyAsync(x => x.City == branch.City))
-                    return BadRequest("Ez a város már létezik.");
-
                 if (await context.Branches.AnyAsync(x => x.Address == branch.Address))
                     return BadRequest("Ez a cím már létezik.");
 
