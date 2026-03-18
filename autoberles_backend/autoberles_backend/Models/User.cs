@@ -37,9 +37,9 @@ public partial class User
     public DateTime? BirthDate { get; set; }
 
     [Required(ErrorMessage = "A felhasználó szerepkörét kötelező megadni.")]
-    [RegularExpression("^(agent|admin|customer)$",
+    [RegularExpression("^(customer|admin|agent)$",
         ErrorMessage = "A felhasználó szerepköre csak customer, admin vagy agent lehet.")]
-    public string Role { get; set; } = null!;
+    public string Role { get; set; } = "customer";
 
 
     [JsonIgnore]

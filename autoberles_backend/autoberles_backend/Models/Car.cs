@@ -109,6 +109,10 @@ public partial class Car
 
     public int DefaultPricePerDay { get; set; }
 
+
+    [Required(ErrorMessage = "Az autó képének URL-ét kötelező megadni.")]
+    public string ImgUrl { get; set; } = null!;
+
     public virtual AdditionalEquipment? AdditionalEquipment { get; set; } = null!;
 
     [JsonIgnore]

@@ -167,6 +167,9 @@ public partial class CarRentalContext : DbContext
             entity.Property(e => e.FuelTypeId)
                 .HasColumnType("int(11)")
                 .HasColumnName("fuel_type_id");
+            entity.Property(e => e.ImgUrl)
+                    .HasMaxLength(500)
+                .HasColumnName("img_url");
             entity.Property(e => e.InspectionExpiryDate)
                 .HasColumnType("date")
                 .HasColumnName("inspection_expiry_date");

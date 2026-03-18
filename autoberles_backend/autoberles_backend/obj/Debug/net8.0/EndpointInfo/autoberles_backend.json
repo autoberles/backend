@@ -822,6 +822,7 @@
           "brand",
           "color",
           "cubic_capacity",
+          "img_url",
           "inspection_expiry_date",
           "last_service_date",
           "license_plate",
@@ -957,6 +958,10 @@
             "type": "integer",
             "format": "int32"
           },
+          "img_url": {
+            "minLength": 1,
+            "type": "string"
+          },
           "additional_equipment": {
             "$ref": "#/components/schemas/AdditionalEquipment"
           }
@@ -1045,7 +1050,7 @@
           },
           "role": {
             "minLength": 1,
-            "pattern": "^(agent|admin|customer)$",
+            "pattern": "^(customer|admin|agent)$",
             "type": "string"
           }
         },
