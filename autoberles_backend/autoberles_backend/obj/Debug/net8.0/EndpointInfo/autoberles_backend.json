@@ -1050,7 +1050,7 @@
           },
           "role": {
             "minLength": 1,
-            "pattern": "^(customer|admin|agent)$",
+            "pattern": "^(agent|admin|customer)$",
             "type": "string"
           }
         },

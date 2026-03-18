@@ -103,55 +103,30 @@ namespace autoberles_backend.Controllers
         [HttpPatch("cars/{id}")]
         public async Task<IActionResult> PatchCar(int id, [FromBody] JsonElement body)
         {
-            try
-            {
-                var car = await context.Cars.FindAsync(id);
-                if (car == null)
-                    return NotFound($"Nem található autó a(z) {id} ID-val!");
-                if (body.ValueKind == JsonValueKind.Object)
-                {
-                    foreach (var property in body.EnumerateObject())
-                    {
-                        UpdateProperty(car, property.Name, property.Value);
-                    }
-                }
-                else if (body.ValueKind == JsonValueKind.Array)
-                {
-                    foreach (var item in body.EnumerateArray())
-                    {
-                        var field = item.GetProperty("field").GetString();
-                        var value = item.GetProperty("value");
-                        UpdateProperty(car, field, value);
-                    }
-                }
-                else
-                    return BadRequest("Érvénytelen JSON formátum.");
+            var car = await context.Cars.FindAsync(id);
+            if (car == null)
+                return NotFound($"Nem található autó a(z) {id} ID-val!");
 
-                await context.SaveChangesAsync();
-                return Ok($"A(z) {id} ID-val rendelkező autó frissítésre került!");
-            }
-            catch (Exception ex)
+            if (body.ValueKind != JsonValueKind.Object)
+                return BadRequest("Érvénytelen JSON formátum!");
+
+            foreach (var property in body.EnumerateObject())
             {
-                return BadRequest($"Hiba az autó frissítése során: {ex.Message}");
+                var propName = ConvertSnakeToPascal(property.Name);
+
+                var propInfo = typeof(Car).GetProperty(propName,
+                    BindingFlags.Public | BindingFlags.Instance);
+                if (propInfo == null)
+                    return BadRequest($"Ismeretlen mező: {property.Name}");
+
+                var value = JsonSerializer.Deserialize(property.Value.GetRawText(), propInfo.PropertyType);
+                propInfo.SetValue(car, value);
             }
+
+            await context.SaveChangesAsync();
+            return Ok($"A(z) {id} ID-val rendelkező autó frissítésre került!");
         }
 
-        private void UpdateProperty(Car car, string fieldName, JsonElement value)
-        {
-            try
-            {
-                var property = typeof(Car).GetProperty(fieldName,
-                    BindingFlags.IgnoreCase | BindingFlags.Public | BindingFlags.Instance);
-                if (property == null)
-                    throw new Exception($"Ismeretlen mező: {fieldName}");
-                var convertedValue = JsonSerializer.Deserialize(value.GetRawText(), property.PropertyType);
-                property.SetValue(car, convertedValue);
-            }
-            catch (Exception ex)
-            {
-                throw new Exception($"Hiba a(z) {fieldName} mező frissítése során: {ex.Message}");
-            }
-        }
 
         [HttpDelete("cars/{id}")]
         public async Task<IActionResult> DeleteCar(int id)
@@ -176,6 +151,11 @@ namespace autoberles_backend.Controllers
                 await transaction.RollbackAsync();
                 return StatusCode(500, "Hiba történt a törlés során.");
             }
+        }
+
+        private string ConvertSnakeToPascal(string snakeCase)
+        {
+            return string.Join("", snakeCase.Split('_').Select(word => char.ToUpper(word[0]) + word.Substring(1)));
         }
     }
 }

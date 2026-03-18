@@ -116,9 +116,10 @@ namespace autoberles_backend.Controllers
                 await context.SaveChangesAsync();
                 return Ok($"A(z) {id} ID-val rendelkező bérlés sikeresen törölve!");
             }
-            catch (Exception ex)
+            catch (DbUpdateException ex)
             {
-                return BadRequest($"Hiba {ex}");
+                var message = ex.InnerException?.Message;
+                return BadRequest(message ?? "Adatbázis hiba történt.");
             }
         }
 
