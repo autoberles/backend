@@ -346,6 +346,8 @@ public partial class CarRentalContext : DbContext
 
             entity.HasIndex(e => e.Email, "email").IsUnique();
 
+            entity.HasIndex(e => e.PhoneNumber, "phone_number").IsUnique();
+
             entity.Property(e => e.Id)
                 .HasColumnType("int(11)")
                 .HasColumnName("id");
@@ -361,6 +363,12 @@ public partial class CarRentalContext : DbContext
             entity.Property(e => e.LastName)
                 .HasMaxLength(100)
                 .HasColumnName("last_name");
+            entity.Property(e => e.PasswordHash)
+                .HasMaxLength(255)
+                .HasColumnName("password_hash");
+            entity.Property(e => e.PhoneNumber)
+                .HasMaxLength(30)
+                .HasColumnName("phone_number");
             entity.Property(e => e.Role)
                 .HasMaxLength(30)
                 .HasColumnName("role");

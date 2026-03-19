@@ -47,16 +47,16 @@ public partial class Car
 
     [Required(ErrorMessage = "Az ülések darabszámának megadása kötelező.")]
     [Range(2, 9, ErrorMessage = "A darabszámnak 2 és 9 közöttinek kell lennie.")]
-    public short? NumberOfSeats { get; set; }
+    public short NumberOfSeats { get; set; }
 
 
     [Required(ErrorMessage = "Az ajtók darabszámának megadása kötelező.")]
     [Range(2, 5, ErrorMessage = "A darabszámnak 2 és 5 közöttinek kell lennie.")]
-    public short? NumberOfDoors { get; set; }
+    public short NumberOfDoors { get; set; }
 
 
     [Required(ErrorMessage = "Az autó árának megadása kötelező.")]
-    public int? Price { get; set; }
+    public int Price { get; set; }
 
 
     [Required(ErrorMessage = "Az autó rendszámának megadása kötelező.")]
@@ -65,11 +65,11 @@ public partial class Car
 
 
     [Required(ErrorMessage = "Az autó megtett kilométereinek számát kötelező megadni.")]
-    public int? Mileage { get; set; }
+    public int Mileage { get; set; }
 
 
     [Required(ErrorMessage = "Az autó csomagterének űrtartalmát kötelező megadni.")]
-    public int? LuggageCapacity { get; set; }
+    public int LuggageCapacity { get; set; }
 
 
     [Required(ErrorMessage = "Az autó hengerűrtartalmának megadása kötelező.")]
@@ -90,12 +90,12 @@ public partial class Car
 
     [Required(ErrorMessage = "Az utolsó szervízi látogatás időpontját kötelező megadni.")]
     [DataType(DataType.Date)]
-    public DateTime? LastServiceDate { get; set; }
+    public DateTime LastServiceDate { get; set; }
 
 
     [Required(ErrorMessage = "A műszaki vizsga lejárati dátumát kötelező megadni.")]
     [DataType(DataType.Date)]
-    public DateTime? InspectionExpiryDate { get; set; }
+    public DateTime InspectionExpiryDate { get; set; }
 
     public int BranchId { get; set; }
 

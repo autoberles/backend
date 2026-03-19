@@ -1,4 +1,5 @@
-﻿using Microsoft.EntityFrameworkCore;
+﻿using autoberles_backend.Classes;
+using Microsoft.EntityFrameworkCore;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
@@ -9,6 +10,7 @@ namespace autoberles_backend.Models;
 
 
 [Index(nameof(Email), IsUnique = true)]
+[Index(nameof(PhoneNumber), IsUnique = true)]
 public partial class User
 {
     [Key]
@@ -30,11 +32,20 @@ public partial class User
     [StringLength(150, ErrorMessage = "Az e-mail cím legfeljebb 150 karakter hosszú lehet.")]
     public string Email { get; set; } = null!;
 
+    public string PasswordHash { get; set; } = null!;
+
+
+    [Required(ErrorMessage = "A telefonszám megadása kötelező.")]
+    [RegularExpression(@"^\+36\s\d{2}\s\d{3}\s\d{3}$",
+        ErrorMessage = "Formátum: +36 20 123 456")]
+    public string PhoneNumber { get; set; } = null!;
+
 
     [Required(ErrorMessage = "A születési dátum megadása kötelező.")]
     [DataType(DataType.Date)]
-    [CustomValidation(typeof(User), nameof(ValidateBirthDate))]
-    public DateTime? BirthDate { get; set; }
+    [CustomValidation(typeof(UserValidator), nameof(UserValidator.ValidateBirthDate))]
+    public DateTime BirthDate { get; set; }
+
 
     [Required(ErrorMessage = "A felhasználó szerepkörét kötelező megadni.")]
     [RegularExpression("^(agent|admin|customer)$",
@@ -44,24 +55,4 @@ public partial class User
 
     [JsonIgnore]
     public virtual ICollection<Rental> Rentals { get; set; } = new List<Rental>();
-
-    public static ValidationResult? ValidateBirthDate(DateTime birthDate, ValidationContext context)
-    {
-        var age = DateTime.Today.Year - birthDate.Year;
-
-        if (birthDate > DateTime.Today.AddYears(-age))
-            age--;
-
-        if (age < 18)
-        {
-            return new ValidationResult("A felhasználónak legalább 18 évesnek kell lennie.");
-        }
-
-        if (birthDate < new DateTime(1900, 1, 1))
-        {
-            return new ValidationResult("A születési dátum túl régi.");
-        }
-
-        return ValidationResult.Success;
-    }
 }

@@ -50,6 +50,8 @@ CREATE TABLE users (
     last_name VARCHAR(100) NOT NULL,
     first_name VARCHAR(100) NOT NULL,
     email VARCHAR(150) NOT NULL UNIQUE,
+    password_hash VARCHAR(255) NOT NULL,
+    phone_number VARCHAR(30) NOT NULL UNIQUE,
     birth_date DATE NOT NULL,
     role VARCHAR (30) NOT NULL
 );
@@ -165,23 +167,23 @@ INSERT INTO branches VALUES
 
 -- Users
 INSERT INTO users VALUES
-(1,'Kovács','András','kovacs.andras@email.hu','1990-05-12', 'admin'),
-(2,'Nagy','Eszter','nagy.eszter@email.hu','1988-11-03', 'agent'),
-(3,'Tóth','Bence','toth.bence@email.hu','1995-07-21', 'customer'),
-(4,'Szabó','Lilla','szabo.lilla@email.hu','1992-02-14', 'customer'),
-(5,'Varga','Dávid','varga.david@email.hu','1985-09-30', 'customer'),
-(6,'Kiss','Anna','kiss.anna@email.hu','1998-12-08', 'customer'),
-(7,'Molnár','Gábor','molnar.gabor@email.hu','1993-04-17', 'customer'),
-(8,'Horváth','Zsófia','horvath.zsofia@email.hu','1991-06-25', 'customer'),
-(9,'Nagy','Lajos','nagy.lajos@email.hu','1973-04-17', 'customer'),
-(10,'Papp','Éva','papp.eva@email.hu','1996-07-08', 'customer'),
-(11,'Szilágyi','Attila','szilagyi.attila@email.hu','1987-09-19', 'customer'),
-(12,'Vass','Réka','vass.reka@email.hu','1992-11-22', 'customer'),
-(13,'Tóth','Márton','toth.marton@email.hu','1990-01-15', 'customer'),
-(14,'Németh','Bianka','nemeth.bianka@email.hu','1998-05-30', 'customer'),
-(15,'Kelemen','Zoltán','kelemen.zoltan@email.hu','1989-08-04', 'customer'),
-(16,'Major','Judit','major.judit@email.hu','1995-12-18', 'customer'),
-(17,'Farkas','Balázs','farkas.balazs@email.hu','1994-03-12', 'customer');
+(1,'Kovács','András','kovacs.andras@email.hu','$2a$11$wYQ4GZlYQ3Yx7YqK7v1n9eQ9v3F3z6H5Jr9v0b7Gz1Yx8QW6YkG2y','+36 20 111 111','1990-05-12','admin'),
+(2,'Nagy','Eszter','nagy.eszter@email.hu','$2a$11$wYQ4GZlYQ3Yx7YqK7v1n9eQ9v3F3z6H5Jr9v0b7Gz1Yx8QW6YkG2y','+36 20 222 222','1988-11-03','agent'),
+(3,'Tóth','Bence','toth.bence@email.hu','$2a$11$wYQ4GZlYQ3Yx7YqK7v1n9eQ9v3F3z6H5Jr9v0b7Gz1Yx8QW6YkG2y','+36 20 333 333','1995-07-21','customer'),
+(4,'Szabó','Lilla','szabo.lilla@email.hu','$2a$11$wYQ4GZlYQ3Yx7YqK7v1n9eQ9v3F3z6H5Jr9v0b7Gz1Yx8QW6YkG2y','+36 20 444 444','1992-02-14','customer'),
+(5,'Varga','Dávid','varga.david@email.hu','$2a$11$wYQ4GZlYQ3Yx7YqK7v1n9eQ9v3F3z6H5Jr9v0b7Gz1Yx8QW6YkG2y','+36 20 555 555','1985-09-30','customer'),
+(6,'Kiss','Anna','kiss.anna@email.hu','$2a$11$wYQ4GZlYQ3Yx7YqK7v1n9eQ9v3F3z6H5Jr9v0b7Gz1Yx8QW6YkG2y','+36 20 666 666','1998-12-08','customer'),
+(7,'Molnár','Gábor','molnar.gabor@email.hu','$2a$11$wYQ4GZlYQ3Yx7YqK7v1n9eQ9v3F3z6H5Jr9v0b7Gz1Yx8QW6YkG2y','+36 20 777 777','1993-04-17','customer'),
+(8,'Horváth','Zsófia','horvath.zsofia@email.hu','$2a$11$wYQ4GZlYQ3Yx7YqK7v1n9eQ9v3F3z6H5Jr9v0b7Gz1Yx8QW6YkG2y','+36 20 888 888','1991-06-25','customer'),
+(9,'Nagy','Lajos','nagy.lajos@email.hu','$2a$11$wYQ4GZlYQ3Yx7YqK7v1n9eQ9v3F3z6H5Jr9v0b7Gz1Yx8QW6YkG2y','+36 20 999 999','1973-04-17','customer'),
+(10,'Papp','Éva','papp.eva@email.hu','$2a$11$wYQ4GZlYQ3Yx7YqK7v1n9eQ9v3F3z6H5Jr9v0b7Gz1Yx8QW6YkG2y','+36 30 111 111','1996-07-08','customer'),
+(11,'Szilágyi','Attila','szilagyi.attila@email.hu','$2a$11$wYQ4GZlYQ3Yx7YqK7v1n9eQ9v3F3z6H5Jr9v0b7Gz1Yx8QW6YkG2y','+36 30 222 222','1987-09-19','customer'),
+(12,'Vass','Réka','vass.reka@email.hu','$2a$11$wYQ4GZlYQ3Yx7YqK7v1n9eQ9v3F3z6H5Jr9v0b7Gz1Yx8QW6YkG2y','+36 30 333 333','1992-11-22','customer'),
+(13,'Tóth','Márton','toth.marton@email.hu','$2a$11$wYQ4GZlYQ3Yx7YqK7v1n9eQ9v3F3z6H5Jr9v0b7Gz1Yx8QW6YkG2y','+36 30 444 444','1990-01-15','customer'),
+(14,'Németh','Bianka','nemeth.bianka@email.hu','$2a$11$wYQ4GZlYQ3Yx7YqK7v1n9eQ9v3F3z6H5Jr9v0b7Gz1Yx8QW6YkG2y','+36 30 555 555','1998-05-30','customer'),
+(15,'Kelemen','Zoltán','kelemen.zoltan@email.hu','$2a$11$wYQ4GZlYQ3Yx7YqK7v1n9eQ9v3F3z6H5Jr9v0b7Gz1Yx8QW6YkG2y','+36 30 666 666','1989-08-04','customer'),
+(16,'Major','Judit','major.judit@email.hu','$2a$11$wYQ4GZlYQ3Yx7YqK7v1n9eQ9v3F3z6H5Jr9v0b7Gz1Yx8QW6YkG2y','+36 30 777 777','1995-12-18','customer'),
+(17,'Farkas','Balázs','farkas.balazs@email.hu','$2a$11$wYQ4GZlYQ3Yx7YqK7v1n9eQ9v3F3z6H5Jr9v0b7Gz1Yx8QW6YkG2y','+36 30 888 888','1994-03-12','customer');
 
 -- Cars
 INSERT INTO cars VALUES

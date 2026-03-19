@@ -1,9 +1,11 @@
 ﻿using autoberles_backend.Models;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
 using System.ComponentModel.DataAnnotations;
 using System.Reflection;
+using System.Security.Claims;
 using System.Text.Json;
 
 namespace autoberles_backend.Controllers
@@ -39,6 +41,7 @@ namespace autoberles_backend.Controllers
             }
         }
 
+        [Authorize]
         [HttpPost("rental")]
         public async Task<IActionResult> PostRental([FromBody] Rental newRental)
         {
@@ -47,18 +50,37 @@ namespace autoberles_backend.Controllers
                 if (!ModelState.IsValid)
                     return BadRequest(ModelState);
 
-                if (newRental.CarId == 0 || newRental.UserId == 0)
-                    return BadRequest("CarId és UserId megadása kötelező.");
+                var userIdClaim = User.FindFirst(ClaimTypes.NameIdentifier)?.Value;
+                if (string.IsNullOrEmpty(userIdClaim))
+                    return Unauthorized("Nem sikerült azonosítani a felhasználót.");
+                int userId = int.Parse(userIdClaim);
+                newRental.UserId = userId;
 
-                bool isCarAlreadyRented = await context.Rentals.AnyAsync(x => x.CarId == newRental.CarId &&
-                                  x.StartDate < newRental.EndDate && newRental.StartDate < x.EndDate);
+                if (newRental.CarId == 0)
+                    return BadRequest("CarId megadása kötelező.");
+                if (!newRental.StartDate.HasValue || !newRental.EndDate.HasValue)
+                    return BadRequest("A bérlés kezdetét és végét kötelező megadni.");
 
+                var car = await context.Cars.FindAsync(newRental.CarId);
+                if (car == null)
+                    return BadRequest("A kiválasztott autó nem található.");
+
+                bool isCarAlreadyRented = await context.Rentals.AnyAsync(x =>
+                    x.CarId == newRental.CarId &&
+                    x.StartDate <= newRental.EndDate &&
+                    newRental.StartDate <= x.EndDate
+                );
                 if (isCarAlreadyRented)
                     return BadRequest("Ez az autó a megadott időszakban már ki van bérelve.");
 
-                var validationResult = Rental.ValidateDates(newRental.EndDate!.Value, new ValidationContext(newRental));
+                var validationResult = Rental.ValidateDates(newRental.EndDate.Value, new ValidationContext(newRental));
                 if (validationResult != ValidationResult.Success)
-                    return BadRequest(validationResult!.ErrorMessage);
+                    return BadRequest(validationResult.ErrorMessage);
+
+                int days = Math.Max(1, (int)Math.Ceiling((newRental.EndDate.Value - newRental.StartDate.Value).TotalDays));
+                newRental.FullPrice = days * car.DefaultPricePerDay;
+                newRental.ReturnDate = null;
+                newRental.Damage = null;
 
                 context.Rentals.Add(newRental);
                 await context.SaveChangesAsync();

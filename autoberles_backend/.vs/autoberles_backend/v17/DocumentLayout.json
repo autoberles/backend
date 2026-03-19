@@ -3,88 +3,32 @@
   "WorkspaceRootPath": "C:\\backend\\autoberles_backend\\",
   "Documents": [
     {
-      "AbsoluteMoniker": "D:0:0:{41495FAA-ADEC-43FA-AAE4-4D5298525BBD}|autoberles_backend\\autoberles_backend.csproj|c:\\backend\\autoberles_backend\\autoberles_backend\\carrentalcontext.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{41495FAA-ADEC-43FA-AAE4-4D5298525BBD}|autoberles_backend\\autoberles_backend.csproj|solutionrelative:autoberles_backend\\carrentalcontext.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{41495FAA-ADEC-43FA-AAE4-4D5298525BBD}|autoberles_backend\\autoberles_backend.csproj|c:\\backend\\autoberles_backend\\autoberles_backend\\models\\wheeldrivetype.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{41495FAA-ADEC-43FA-AAE4-4D5298525BBD}|autoberles_backend\\autoberles_backend.csproj|solutionrelative:autoberles_backend\\models\\wheeldrivetype.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{41495FAA-ADEC-43FA-AAE4-4D5298525BBD}|autoberles_backend\\autoberles_backend.csproj|c:\\backend\\autoberles_backend\\autoberles_backend\\models\\user.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{41495FAA-ADEC-43FA-AAE4-4D5298525BBD}|autoberles_backend\\autoberles_backend.csproj|solutionrelative:autoberles_backend\\models\\user.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{41495FAA-ADEC-43FA-AAE4-4D5298525BBD}|autoberles_backend\\autoberles_backend.csproj|c:\\backend\\autoberles_backend\\autoberles_backend\\models\\transmissiontype.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{41495FAA-ADEC-43FA-AAE4-4D5298525BBD}|autoberles_backend\\autoberles_backend.csproj|solutionrelative:autoberles_backend\\models\\transmissiontype.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
       "AbsoluteMoniker": "D:0:0:{41495FAA-ADEC-43FA-AAE4-4D5298525BBD}|autoberles_backend\\autoberles_backend.csproj|c:\\backend\\autoberles_backend\\autoberles_backend\\models\\rental.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
       "RelativeMoniker": "D:0:0:{41495FAA-ADEC-43FA-AAE4-4D5298525BBD}|autoberles_backend\\autoberles_backend.csproj|solutionrelative:autoberles_backend\\models\\rental.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{41495FAA-ADEC-43FA-AAE4-4D5298525BBD}|autoberles_backend\\autoberles_backend.csproj|c:\\backend\\autoberles_backend\\autoberles_backend\\classes\\nullabledatetimeconverter.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{41495FAA-ADEC-43FA-AAE4-4D5298525BBD}|autoberles_backend\\autoberles_backend.csproj|solutionrelative:autoberles_backend\\classes\\nullabledatetimeconverter.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{41495FAA-ADEC-43FA-AAE4-4D5298525BBD}|autoberles_backend\\autoberles_backend.csproj|c:\\backend\\autoberles_backend\\autoberles_backend\\classes\\datetimeconverter.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{41495FAA-ADEC-43FA-AAE4-4D5298525BBD}|autoberles_backend\\autoberles_backend.csproj|solutionrelative:autoberles_backend\\classes\\datetimeconverter.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
       "AbsoluteMoniker": "D:0:0:{41495FAA-ADEC-43FA-AAE4-4D5298525BBD}|autoberles_backend\\autoberles_backend.csproj|c:\\backend\\autoberles_backend\\autoberles_backend\\models\\fueltype.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
       "RelativeMoniker": "D:0:0:{41495FAA-ADEC-43FA-AAE4-4D5298525BBD}|autoberles_backend\\autoberles_backend.csproj|solutionrelative:autoberles_backend\\models\\fueltype.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{41495FAA-ADEC-43FA-AAE4-4D5298525BBD}|autoberles_backend\\autoberles_backend.csproj|c:\\backend\\autoberles_backend\\autoberles_backend\\models\\carcategory.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{41495FAA-ADEC-43FA-AAE4-4D5298525BBD}|autoberles_backend\\autoberles_backend.csproj|solutionrelative:autoberles_backend\\models\\carcategory.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
       "AbsoluteMoniker": "D:0:0:{41495FAA-ADEC-43FA-AAE4-4D5298525BBD}|autoberles_backend\\autoberles_backend.csproj|c:\\backend\\autoberles_backend\\autoberles_backend\\models\\car.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
       "RelativeMoniker": "D:0:0:{41495FAA-ADEC-43FA-AAE4-4D5298525BBD}|autoberles_backend\\autoberles_backend.csproj|solutionrelative:autoberles_backend\\models\\car.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{41495FAA-ADEC-43FA-AAE4-4D5298525BBD}|autoberles_backend\\autoberles_backend.csproj|c:\\backend\\autoberles_backend\\autoberles_backend\\models\\branch.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{41495FAA-ADEC-43FA-AAE4-4D5298525BBD}|autoberles_backend\\autoberles_backend.csproj|solutionrelative:autoberles_backend\\models\\branch.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+      "AbsoluteMoniker": "D:0:0:{41495FAA-ADEC-43FA-AAE4-4D5298525BBD}|autoberles_backend\\autoberles_backend.csproj|c:\\backend\\autoberles_backend\\autoberles_backend\\controllers\\authcontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{41495FAA-ADEC-43FA-AAE4-4D5298525BBD}|autoberles_backend\\autoberles_backend.csproj|solutionrelative:autoberles_backend\\controllers\\authcontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{41495FAA-ADEC-43FA-AAE4-4D5298525BBD}|autoberles_backend\\autoberles_backend.csproj|c:\\backend\\autoberles_backend\\autoberles_backend\\models\\airconditioningtype.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{41495FAA-ADEC-43FA-AAE4-4D5298525BBD}|autoberles_backend\\autoberles_backend.csproj|solutionrelative:autoberles_backend\\models\\airconditioningtype.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{41495FAA-ADEC-43FA-AAE4-4D5298525BBD}|autoberles_backend\\autoberles_backend.csproj|c:\\backend\\autoberles_backend\\autoberles_backend\\models\\additionalequipment.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{41495FAA-ADEC-43FA-AAE4-4D5298525BBD}|autoberles_backend\\autoberles_backend.csproj|solutionrelative:autoberles_backend\\models\\additionalequipment.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{41495FAA-ADEC-43FA-AAE4-4D5298525BBD}|autoberles_backend\\autoberles_backend.csproj|c:\\backend\\autoberles_backend\\autoberles_backend\\controllers\\wheeldrivetypecontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{41495FAA-ADEC-43FA-AAE4-4D5298525BBD}|autoberles_backend\\autoberles_backend.csproj|solutionrelative:autoberles_backend\\controllers\\wheeldrivetypecontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{41495FAA-ADEC-43FA-AAE4-4D5298525BBD}|autoberles_backend\\autoberles_backend.csproj|c:\\backend\\autoberles_backend\\autoberles_backend\\controllers\\usercontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{41495FAA-ADEC-43FA-AAE4-4D5298525BBD}|autoberles_backend\\autoberles_backend.csproj|solutionrelative:autoberles_backend\\controllers\\usercontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{41495FAA-ADEC-43FA-AAE4-4D5298525BBD}|autoberles_backend\\autoberles_backend.csproj|c:\\backend\\autoberles_backend\\autoberles_backend\\controllers\\transmissiontypecontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{41495FAA-ADEC-43FA-AAE4-4D5298525BBD}|autoberles_backend\\autoberles_backend.csproj|solutionrelative:autoberles_backend\\controllers\\transmissiontypecontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{41495FAA-ADEC-43FA-AAE4-4D5298525BBD}|autoberles_backend\\autoberles_backend.csproj|c:\\backend\\autoberles_backend\\autoberles_backend\\controllers\\rentalcontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{41495FAA-ADEC-43FA-AAE4-4D5298525BBD}|autoberles_backend\\autoberles_backend.csproj|solutionrelative:autoberles_backend\\controllers\\rentalcontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{41495FAA-ADEC-43FA-AAE4-4D5298525BBD}|autoberles_backend\\autoberles_backend.csproj|c:\\backend\\autoberles_backend\\autoberles_backend\\controllers\\fueltypecontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{41495FAA-ADEC-43FA-AAE4-4D5298525BBD}|autoberles_backend\\autoberles_backend.csproj|solutionrelative:autoberles_backend\\controllers\\fueltypecontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{41495FAA-ADEC-43FA-AAE4-4D5298525BBD}|autoberles_backend\\autoberles_backend.csproj|c:\\backend\\autoberles_backend\\autoberles_backend\\controllers\\carcontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{41495FAA-ADEC-43FA-AAE4-4D5298525BBD}|autoberles_backend\\autoberles_backend.csproj|solutionrelative:autoberles_backend\\controllers\\carcontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{41495FAA-ADEC-43FA-AAE4-4D5298525BBD}|autoberles_backend\\autoberles_backend.csproj|c:\\backend\\autoberles_backend\\autoberles_backend\\controllers\\carcategorycontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{41495FAA-ADEC-43FA-AAE4-4D5298525BBD}|autoberles_backend\\autoberles_backend.csproj|solutionrelative:autoberles_backend\\controllers\\carcategorycontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{41495FAA-ADEC-43FA-AAE4-4D5298525BBD}|autoberles_backend\\autoberles_backend.csproj|c:\\backend\\autoberles_backend\\autoberles_backend\\controllers\\branchcontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{41495FAA-ADEC-43FA-AAE4-4D5298525BBD}|autoberles_backend\\autoberles_backend.csproj|solutionrelative:autoberles_backend\\controllers\\branchcontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{41495FAA-ADEC-43FA-AAE4-4D5298525BBD}|autoberles_backend\\autoberles_backend.csproj|c:\\backend\\autoberles_backend\\autoberles_backend\\controllers\\airconditioningtypecontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{41495FAA-ADEC-43FA-AAE4-4D5298525BBD}|autoberles_backend\\autoberles_backend.csproj|solutionrelative:autoberles_backend\\controllers\\airconditioningtypecontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{41495FAA-ADEC-43FA-AAE4-4D5298525BBD}|autoberles_backend\\autoberles_backend.csproj|c:\\backend\\autoberles_backend\\autoberles_backend\\controllers\\additionalequipmentcontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{41495FAA-ADEC-43FA-AAE4-4D5298525BBD}|autoberles_backend\\autoberles_backend.csproj|solutionrelative:autoberles_backend\\controllers\\additionalequipmentcontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+      "AbsoluteMoniker": "D:0:0:{41495FAA-ADEC-43FA-AAE4-4D5298525BBD}|autoberles_backend\\autoberles_backend.csproj|c:\\backend\\autoberles_backend\\autoberles_backend\\appsettings.json||{90A6B3A7-C1A3-4009-A288-E2FF89E96FA0}",
+      "RelativeMoniker": "D:0:0:{41495FAA-ADEC-43FA-AAE4-4D5298525BBD}|autoberles_backend\\autoberles_backend.csproj|solutionrelative:autoberles_backend\\appsettings.json||{90A6B3A7-C1A3-4009-A288-E2FF89E96FA0}"
     }
   ],
   "DocumentGroupContainers": [
@@ -94,283 +38,101 @@
       "DocumentGroups": [
         {
           "DockedWidth": 200,
-          "SelectedChildIndex": 0,
+          "SelectedChildIndex": 3,
           "Children": [
-            {
-              "$type": "Document",
-              "DocumentIndex": 0,
-              "Title": "CarRentalContext.cs",
-              "DocumentMoniker": "C:\\backend\\autoberles_backend\\autoberles_backend\\CarRentalContext.cs",
-              "RelativeDocumentMoniker": "autoberles_backend\\CarRentalContext.cs",
-              "ToolTip": "C:\\backend\\autoberles_backend\\autoberles_backend\\CarRentalContext.cs",
-              "RelativeToolTip": "autoberles_backend\\CarRentalContext.cs",
-              "ViewState": "AgIAAG4BAAAAAAAAAAAiwIUBAAAAAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2026-03-18T12:17:10.227Z",
-              "EditorCaption": ""
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 1,
-              "Title": "WheelDriveType.cs",
-              "DocumentMoniker": "C:\\backend\\autoberles_backend\\autoberles_backend\\Models\\WheelDriveType.cs",
-              "RelativeDocumentMoniker": "autoberles_backend\\Models\\WheelDriveType.cs",
-              "ToolTip": "C:\\backend\\autoberles_backend\\autoberles_backend\\Models\\WheelDriveType.cs",
-              "RelativeToolTip": "autoberles_backend\\Models\\WheelDriveType.cs",
-              "ViewState": "AgIAAAAAAAAAAAAAAAAAABUAAAAAAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2026-03-18T12:16:59.037Z",
-              "EditorCaption": ""
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 3,
-              "Title": "TransmissionType.cs",
-              "DocumentMoniker": "C:\\backend\\autoberles_backend\\autoberles_backend\\Models\\TransmissionType.cs",
-              "RelativeDocumentMoniker": "autoberles_backend\\Models\\TransmissionType.cs",
-              "ToolTip": "C:\\backend\\autoberles_backend\\autoberles_backend\\Models\\TransmissionType.cs",
-              "RelativeToolTip": "autoberles_backend\\Models\\TransmissionType.cs",
-              "ViewState": "AgIAAAAAAAAAAAAAAAAAABUAAAAAAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2026-03-18T12:16:41.239Z",
-              "EditorCaption": ""
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 4,
-              "Title": "Rental.cs",
-              "DocumentMoniker": "C:\\backend\\autoberles_backend\\autoberles_backend\\Models\\Rental.cs",
-              "RelativeDocumentMoniker": "autoberles_backend\\Models\\Rental.cs",
-              "ToolTip": "C:\\backend\\autoberles_backend\\autoberles_backend\\Models\\Rental.cs",
-              "RelativeToolTip": "autoberles_backend\\Models\\Rental.cs",
-              "ViewState": "AgIAAB8AAAAAAAAAAAAIwEIAAAAAAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2026-03-18T12:16:24.049Z",
-              "EditorCaption": ""
-            },
             {
               "$type": "Bookmark",
               "Name": "ST:128:0:{116d2292-e37d-41cd-a077-ebacac4c8cc4}"
             },
             {
               "$type": "Document",
-              "DocumentIndex": 5,
-              "Title": "FuelType.cs",
-              "DocumentMoniker": "C:\\backend\\autoberles_backend\\autoberles_backend\\Models\\FuelType.cs",
-              "RelativeDocumentMoniker": "autoberles_backend\\Models\\FuelType.cs",
-              "ToolTip": "C:\\backend\\autoberles_backend\\autoberles_backend\\Models\\FuelType.cs",
-              "RelativeToolTip": "autoberles_backend\\Models\\FuelType.cs",
-              "ViewState": "AgIAAAAAAAAAAAAAAAAAABUAAAAAAAAAAAAAAA==",
+              "DocumentIndex": 1,
+              "Title": "NullableDateTimeConverter.cs",
+              "DocumentMoniker": "C:\\backend\\autoberles_backend\\autoberles_backend\\Classes\\NullableDateTimeConverter.cs",
+              "RelativeDocumentMoniker": "autoberles_backend\\Classes\\NullableDateTimeConverter.cs",
+              "ToolTip": "C:\\backend\\autoberles_backend\\autoberles_backend\\Classes\\NullableDateTimeConverter.cs",
+              "RelativeToolTip": "autoberles_backend\\Classes\\NullableDateTimeConverter.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAABYAAAAFAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2026-03-18T12:16:15.223Z",
-              "EditorCaption": ""
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 6,
-              "Title": "CarCategory.cs",
-              "DocumentMoniker": "C:\\backend\\autoberles_backend\\autoberles_backend\\Models\\CarCategory.cs",
-              "RelativeDocumentMoniker": "autoberles_backend\\Models\\CarCategory.cs",
-              "ToolTip": "C:\\backend\\autoberles_backend\\autoberles_backend\\Models\\CarCategory.cs",
-              "RelativeToolTip": "autoberles_backend\\Models\\CarCategory.cs",
-              "ViewState": "AgIAAAAAAAAAAAAAAAAAABcAAAAAAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2026-03-18T12:16:05.982Z",
-              "EditorCaption": ""
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 7,
-              "Title": "Car.cs",
-              "DocumentMoniker": "C:\\backend\\autoberles_backend\\autoberles_backend\\Models\\Car.cs",
-              "RelativeDocumentMoniker": "autoberles_backend\\Models\\Car.cs",
-              "ToolTip": "C:\\backend\\autoberles_backend\\autoberles_backend\\Models\\Car.cs",
-              "RelativeToolTip": "autoberles_backend\\Models\\Car.cs",
-              "ViewState": "AgIAAGkAAAAAAAAAAAA3wIcAAAAAAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2026-03-18T12:15:57.261Z",
-              "EditorCaption": ""
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 8,
-              "Title": "Branch.cs",
-              "DocumentMoniker": "C:\\backend\\autoberles_backend\\autoberles_backend\\Models\\Branch.cs",
-              "RelativeDocumentMoniker": "autoberles_backend\\Models\\Branch.cs",
-              "ToolTip": "C:\\backend\\autoberles_backend\\autoberles_backend\\Models\\Branch.cs",
-              "RelativeToolTip": "autoberles_backend\\Models\\Branch.cs",
-              "ViewState": "AgIAAAkAAAAAAAAAAAAswCoAAAAAAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2026-03-18T12:15:48.809Z",
-              "EditorCaption": ""
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 9,
-              "Title": "AirConditioningType.cs",
-              "DocumentMoniker": "C:\\backend\\autoberles_backend\\autoberles_backend\\Models\\AirConditioningType.cs",
-              "RelativeDocumentMoniker": "autoberles_backend\\Models\\AirConditioningType.cs",
-              "ToolTip": "C:\\backend\\autoberles_backend\\autoberles_backend\\Models\\AirConditioningType.cs",
-              "RelativeToolTip": "autoberles_backend\\Models\\AirConditioningType.cs",
-              "ViewState": "AgIAAAAAAAAAAAAAAAAAABcAAAAAAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2026-03-18T12:15:40.214Z",
-              "EditorCaption": ""
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 10,
-              "Title": "AdditionalEquipment.cs",
-              "DocumentMoniker": "C:\\backend\\autoberles_backend\\autoberles_backend\\Models\\AdditionalEquipment.cs",
-              "RelativeDocumentMoniker": "autoberles_backend\\Models\\AdditionalEquipment.cs",
-              "ToolTip": "C:\\backend\\autoberles_backend\\autoberles_backend\\Models\\AdditionalEquipment.cs",
-              "RelativeToolTip": "autoberles_backend\\Models\\AdditionalEquipment.cs",
-              "ViewState": "AgIAAA4AAAAAAAAAAAAowC4AAAAAAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2026-03-18T12:15:29.437Z",
+              "WhenOpened": "2026-03-19T13:49:51.851Z",
               "EditorCaption": ""
             },
             {
               "$type": "Document",
               "DocumentIndex": 2,
-              "Title": "User.cs",
-              "DocumentMoniker": "C:\\backend\\autoberles_backend\\autoberles_backend\\Models\\User.cs",
-              "RelativeDocumentMoniker": "autoberles_backend\\Models\\User.cs",
-              "ToolTip": "C:\\backend\\autoberles_backend\\autoberles_backend\\Models\\User.cs",
-              "RelativeToolTip": "autoberles_backend\\Models\\User.cs",
-              "ViewState": "AgIAACAAAAAAAAAAAAAIwEMAAAAAAAAAAAAAAA==",
+              "Title": "DateTimeConverter.cs",
+              "DocumentMoniker": "C:\\backend\\autoberles_backend\\autoberles_backend\\Classes\\DateTimeConverter.cs",
+              "RelativeDocumentMoniker": "autoberles_backend\\Classes\\DateTimeConverter.cs",
+              "ToolTip": "C:\\backend\\autoberles_backend\\autoberles_backend\\Classes\\DateTimeConverter.cs",
+              "RelativeToolTip": "autoberles_backend\\Classes\\DateTimeConverter.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAABEAAAABAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2026-03-18T11:43:13.635Z",
+              "WhenOpened": "2026-03-19T13:48:15.128Z",
               "EditorCaption": ""
             },
             {
               "$type": "Document",
-              "DocumentIndex": 11,
-              "Title": "WheelDriveTypeController.cs",
-              "DocumentMoniker": "C:\\backend\\autoberles_backend\\autoberles_backend\\Controllers\\WheelDriveTypeController.cs",
-              "RelativeDocumentMoniker": "autoberles_backend\\Controllers\\WheelDriveTypeController.cs",
-              "ToolTip": "C:\\backend\\autoberles_backend\\autoberles_backend\\Controllers\\WheelDriveTypeController.cs",
-              "RelativeToolTip": "autoberles_backend\\Controllers\\WheelDriveTypeController.cs",
-              "ViewState": "AgIAAAIAAAAAAAAAAAAUwBgAAAAPAAAAAAAAAA==",
+              "DocumentIndex": 0,
+              "Title": "Rental.cs",
+              "DocumentMoniker": "C:\\backend\\autoberles_backend\\autoberles_backend\\Models\\Rental.cs",
+              "RelativeDocumentMoniker": "autoberles_backend\\Models\\Rental.cs",
+              "ToolTip": "C:\\backend\\autoberles_backend\\autoberles_backend\\Models\\Rental.cs",
+              "RelativeToolTip": "autoberles_backend\\Models\\Rental.cs",
+              "ViewState": "AgIAAAYAAAAAAAAAAAAAACMAAAAdAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2026-03-18T12:15:09.274Z",
+              "WhenOpened": "2026-03-19T13:28:14.17Z",
               "EditorCaption": ""
             },
             {
               "$type": "Document",
-              "DocumentIndex": 13,
-              "Title": "TransmissionTypeController.cs",
-              "DocumentMoniker": "C:\\backend\\autoberles_backend\\autoberles_backend\\Controllers\\TransmissionTypeController.cs",
-              "RelativeDocumentMoniker": "autoberles_backend\\Controllers\\TransmissionTypeController.cs",
-              "ToolTip": "C:\\backend\\autoberles_backend\\autoberles_backend\\Controllers\\TransmissionTypeController.cs",
-              "RelativeToolTip": "autoberles_backend\\Controllers\\TransmissionTypeController.cs",
-              "ViewState": "AgIAAAIAAAAAAAAAAAAUwCYAAAAAAAAAAAAAAA==",
+              "DocumentIndex": 3,
+              "Title": "FuelType.cs",
+              "DocumentMoniker": "C:\\backend\\autoberles_backend\\autoberles_backend\\Models\\FuelType.cs",
+              "RelativeDocumentMoniker": "autoberles_backend\\Models\\FuelType.cs",
+              "ToolTip": "C:\\backend\\autoberles_backend\\autoberles_backend\\Models\\FuelType.cs",
+              "RelativeToolTip": "autoberles_backend\\Models\\FuelType.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2026-03-18T12:14:49.61Z",
+              "WhenOpened": "2026-03-19T13:28:13.28Z",
               "EditorCaption": ""
             },
             {
               "$type": "Document",
-              "DocumentIndex": 15,
-              "Title": "FuelTypeController.cs",
-              "DocumentMoniker": "C:\\backend\\autoberles_backend\\autoberles_backend\\Controllers\\FuelTypeController.cs",
-              "RelativeDocumentMoniker": "autoberles_backend\\Controllers\\FuelTypeController.cs",
-              "ToolTip": "C:\\backend\\autoberles_backend\\autoberles_backend\\Controllers\\FuelTypeController.cs",
-              "RelativeToolTip": "autoberles_backend\\Controllers\\FuelTypeController.cs",
-              "ViewState": "AgIAAAIAAAAAAAAAAAAUwCYAAAAAAAAAAAAAAA==",
+              "DocumentIndex": 4,
+              "Title": "Car.cs",
+              "DocumentMoniker": "C:\\backend\\autoberles_backend\\autoberles_backend\\Models\\Car.cs",
+              "RelativeDocumentMoniker": "autoberles_backend\\Models\\Car.cs",
+              "ToolTip": "C:\\backend\\autoberles_backend\\autoberles_backend\\Models\\Car.cs",
+              "RelativeToolTip": "autoberles_backend\\Models\\Car.cs",
+              "ViewState": "AgIAAEIAAAAAAAAAAAAiwFwAAAATAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2026-03-18T12:14:05.6Z",
+              "WhenOpened": "2026-03-19T13:01:15.584Z",
               "EditorCaption": ""
             },
             {
               "$type": "Document",
-              "DocumentIndex": 17,
-              "Title": "CarCategoryController.cs",
-              "DocumentMoniker": "C:\\backend\\autoberles_backend\\autoberles_backend\\Controllers\\CarCategoryController.cs",
-              "RelativeDocumentMoniker": "autoberles_backend\\Controllers\\CarCategoryController.cs",
-              "ToolTip": "C:\\backend\\autoberles_backend\\autoberles_backend\\Controllers\\CarCategoryController.cs",
-              "RelativeToolTip": "autoberles_backend\\Controllers\\CarCategoryController.cs",
-              "ViewState": "AgIAAAIAAAAAAAAAAAAUwCYAAAAAAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2026-03-18T12:13:39.972Z",
+              "DocumentIndex": 6,
+              "Title": "appsettings.json",
+              "DocumentMoniker": "C:\\backend\\autoberles_backend\\autoberles_backend\\appsettings.json",
+              "RelativeDocumentMoniker": "autoberles_backend\\appsettings.json",
+              "ToolTip": "C:\\backend\\autoberles_backend\\autoberles_backend\\appsettings.json",
+              "RelativeToolTip": "autoberles_backend\\appsettings.json",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAIAAABSAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.001642|",
+              "WhenOpened": "2026-03-19T11:45:26.18Z",
               "EditorCaption": ""
             },
             {
               "$type": "Document",
-              "DocumentIndex": 16,
-              "Title": "CarController.cs",
-              "DocumentMoniker": "C:\\backend\\autoberles_backend\\autoberles_backend\\Controllers\\CarController.cs",
-              "RelativeDocumentMoniker": "autoberles_backend\\Controllers\\CarController.cs",
-              "ToolTip": "C:\\backend\\autoberles_backend\\autoberles_backend\\Controllers\\CarController.cs",
-              "RelativeToolTip": "autoberles_backend\\Controllers\\CarController.cs",
-              "ViewState": "AgIAAIcAAAAAAAAAAAAiwH8AAAAJAAAAAAAAAA==",
+              "DocumentIndex": 5,
+              "Title": "AuthController.cs",
+              "DocumentMoniker": "C:\\backend\\autoberles_backend\\autoberles_backend\\Controllers\\AuthController.cs",
+              "RelativeDocumentMoniker": "autoberles_backend\\Controllers\\AuthController.cs",
+              "ToolTip": "C:\\backend\\autoberles_backend\\autoberles_backend\\Controllers\\AuthController.cs",
+              "RelativeToolTip": "autoberles_backend\\Controllers\\AuthController.cs",
+              "ViewState": "AgIAADsAAAAAAAAAAAAgwCUAAAAfAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2026-03-18T11:29:06.029Z",
-              "EditorCaption": ""
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 18,
-              "Title": "BranchController.cs",
-              "DocumentMoniker": "C:\\backend\\autoberles_backend\\autoberles_backend\\Controllers\\BranchController.cs",
-              "RelativeDocumentMoniker": "autoberles_backend\\Controllers\\BranchController.cs",
-              "ToolTip": "C:\\backend\\autoberles_backend\\autoberles_backend\\Controllers\\BranchController.cs",
-              "RelativeToolTip": "autoberles_backend\\Controllers\\BranchController.cs",
-              "ViewState": "AgIAAGgAAAAAAAAAAAAcwI0AAAAAAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2026-03-18T11:26:43.141Z",
-              "EditorCaption": ""
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 12,
-              "Title": "UserController.cs",
-              "DocumentMoniker": "C:\\backend\\autoberles_backend\\autoberles_backend\\Controllers\\UserController.cs",
-              "RelativeDocumentMoniker": "autoberles_backend\\Controllers\\UserController.cs",
-              "ToolTip": "C:\\backend\\autoberles_backend\\autoberles_backend\\Controllers\\UserController.cs",
-              "RelativeToolTip": "autoberles_backend\\Controllers\\UserController.cs",
-              "ViewState": "AgIAAGAAAAAAAAAAAAAcwIUAAAAAAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2026-03-18T10:26:48.76Z",
-              "EditorCaption": ""
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 19,
-              "Title": "AirConditioningTypeController.cs",
-              "DocumentMoniker": "C:\\backend\\autoberles_backend\\autoberles_backend\\Controllers\\AirConditioningTypeController.cs",
-              "RelativeDocumentMoniker": "autoberles_backend\\Controllers\\AirConditioningTypeController.cs",
-              "ToolTip": "C:\\backend\\autoberles_backend\\autoberles_backend\\Controllers\\AirConditioningTypeController.cs",
-              "RelativeToolTip": "autoberles_backend\\Controllers\\AirConditioningTypeController.cs",
-              "ViewState": "AgIAAAIAAAAAAAAAAAAUwCYAAAAAAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2026-03-18T12:13:18.994Z",
-              "EditorCaption": ""
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 14,
-              "Title": "RentalController.cs",
-              "DocumentMoniker": "C:\\backend\\autoberles_backend\\autoberles_backend\\Controllers\\RentalController.cs",
-              "RelativeDocumentMoniker": "autoberles_backend\\Controllers\\RentalController.cs",
-              "ToolTip": "C:\\backend\\autoberles_backend\\autoberles_backend\\Controllers\\RentalController.cs",
-              "RelativeToolTip": "autoberles_backend\\Controllers\\RentalController.cs",
-              "ViewState": "AgIAAF4AAAAAAAAAAAAcwIMAAAAAAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2026-03-18T10:31:28.511Z",
-              "EditorCaption": ""
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 20,
-              "Title": "AdditionalEquipmentController.cs",
-              "DocumentMoniker": "C:\\backend\\autoberles_backend\\autoberles_backend\\Controllers\\AdditionalEquipmentController.cs",
-              "RelativeDocumentMoniker": "autoberles_backend\\Controllers\\AdditionalEquipmentController.cs",
-              "ToolTip": "C:\\backend\\autoberles_backend\\autoberles_backend\\Controllers\\AdditionalEquipmentController.cs",
-              "RelativeToolTip": "autoberles_backend\\Controllers\\AdditionalEquipmentController.cs",
-              "ViewState": "AgIAAEQAAAAAAAAAAAAgwFAAAAAAAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2026-03-18T12:12:50.429Z",
+              "WhenOpened": "2026-03-19T10:53:29.352Z",
               "EditorCaption": ""
             }
           ]

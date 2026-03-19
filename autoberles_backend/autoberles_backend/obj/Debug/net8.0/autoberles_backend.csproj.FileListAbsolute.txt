@@ -259,3 +259,12 @@ D:\backend\autoberles_backend\autoberles_backend\obj\Debug\net8.0\refint\autober
 D:\backend\autoberles_backend\autoberles_backend\obj\Debug\net8.0\autoberles_backend.pdb
 D:\backend\autoberles_backend\autoberles_backend\obj\Debug\net8.0\autoberles_backend.genruntimeconfig.cache
 D:\backend\autoberles_backend\autoberles_backend\obj\Debug\net8.0\ref\autoberles_backend.dll
+C:\backend\autoberles_backend\autoberles_backend\bin\Debug\net8.0\Microsoft.AspNetCore.Authentication.JwtBearer.dll
+C:\backend\autoberles_backend\autoberles_backend\bin\Debug\net8.0\Microsoft.IdentityModel.Abstractions.dll
+C:\backend\autoberles_backend\autoberles_backend\bin\Debug\net8.0\Microsoft.IdentityModel.JsonWebTokens.dll
+C:\backend\autoberles_backend\autoberles_backend\bin\Debug\net8.0\Microsoft.IdentityModel.Logging.dll
+C:\backend\autoberles_backend\autoberles_backend\bin\Debug\net8.0\Microsoft.IdentityModel.Protocols.dll
+C:\backend\autoberles_backend\autoberles_backend\bin\Debug\net8.0\Microsoft.IdentityModel.Protocols.OpenIdConnect.dll
+C:\backend\autoberles_backend\autoberles_backend\bin\Debug\net8.0\Microsoft.IdentityModel.Tokens.dll
+C:\backend\autoberles_backend\autoberles_backend\bin\Debug\net8.0\System.IdentityModel.Tokens.Jwt.dll
+C:\backend\autoberles_backend\autoberles_backend\bin\Debug\net8.0\BCrypt.Net-Next.dll

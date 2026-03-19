@@ -1,8 +1,8 @@
 {
   "openapi": "3.0.1",
   "info": {
-    "title": "autoberles_backend",
-    "version": "1.0"
+    "title": "JWT Demo API",
+    "version": "v1"
   },
   "paths": {
     "/api/additional_equipments": {
@@ -102,6 +102,68 @@
             }
           }
         ],
+        "responses": {
+          "200": {
+            "description": "OK"
+          }
+        }
+      }
+    },
+    "/api/Auth/register": {
+      "post": {
+        "tags": [
+          "Auth"
+        ],
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/Register"
+              }
+            },
+            "text/json": {
+              "schema": {
+                "$ref": "#/components/schemas/Register"
+              }
+            },
+            "application/*+json": {
+              "schema": {
+                "$ref": "#/components/schemas/Register"
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "OK"
+          }
+        }
+      }
+    },
+    "/api/Auth/login": {
+      "post": {
+        "tags": [
+          "Auth"
+        ],
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/Login"
+              }
+            },
+            "text/json": {
+              "schema": {
+                "$ref": "#/components/schemas/Login"
+              }
+            },
+            "application/*+json": {
+              "schema": {
+                "$ref": "#/components/schemas/Login"
+              }
+            }
+          }
+        },
         "responses": {
           "200": {
             "description": "OK"
@@ -968,48 +1030,95 @@
         },
         "additionalProperties": false
       },
+      "Login": {
+        "required": [
+          "email",
+          "password"
+        ],
+        "type": "object",
+        "properties": {
+          "email": {
+            "minLength": 1,
+            "type": "string"
+          },
+          "password": {
+            "minLength": 1,
+            "type": "string"
+          }
+        },
+        "additionalProperties": false
+      },
+      "Register": {
+        "required": [
+          "birth_date",
+          "confirm_password",
+          "email",
+          "first_name",
+          "last_name",
+          "password",
+          "phone_number"
+        ],
+        "type": "object",
+        "properties": {
+          "email": {
+            "maxLength": 150,
+            "minLength": 0,
+            "type": "string",
+            "format": "email"
+          },
+          "password": {
+            "minLength": 8,
+            "pattern": "^(?=.*[a-z])(?=.*[A-Z])(?=.*\\d).+$",
+            "type": "string"
+          },
+          "confirm_password": {
+            "minLength": 1,
+            "type": "string"
+          },
+          "first_name": {
+            "maxLength": 100,
+            "minLength": 2,
+            "type": "string"
+          },
+          "last_name": {
+            "maxLength": 100,
+            "minLength": 2,
+            "type": "string"
+          },
+          "phone_number": {
+            "minLength": 1,
+            "pattern": "^\\+36\\s\\d{2}\\s\\d{3}\\s\\d{3}$",
+            "type": "string"
+          },
+          "birth_date": {
+            "type": "string",
+            "format": "date"
+          },
+          "accept_terms": {
+            "type": "boolean"
+          }
+        },
+        "additionalProperties": false
+      },
       "Rental": {
         "required": [
           "end_date",
-          "full_price",
           "start_date"
         ],
         "type": "object",
         "properties": {
-          "id": {
-            "type": "integer",
-            "format": "int32"
-          },
           "car_id": {
-            "type": "integer",
-            "format": "int32",
-            "nullable": true
-          },
-          "user_id": {
             "type": "integer",
             "format": "int32",
             "nullable": true
           },
           "start_date": {
             "type": "string",
-            "format": "date-time"
+            "format": "date"
           },
           "end_date": {
             "type": "string",
-            "format": "date-time"
-          },
-          "return_date": {
-            "type": "string",
-            "format": "date-time",
-            "nullable": true
-          },
-          "damage": {
-            "type": "string",
-            "nullable": true
-          },
-          "full_price": {
-            "type": "integer",
-            "format": "int32"
+            "format": "date"
           }
         },
         "additionalProperties": false
@@ -1020,6 +1129,7 @@
           "email",
           "first_name",
           "last_name",
+          "phone_number",
           "role"
         ],
         "type": "object",
@@ -1044,6 +1154,15 @@
             "type": "string",
             "format": "email"
           },
+          "password_hash": {
+            "type": "string",
+            "nullable": true
+          },
+          "phone_number": {
+            "minLength": 1,
+            "pattern": "^\\+36\\s\\d{2}\\s\\d{3}\\s\\d{3}$",
+            "type": "string"
+          },
           "birth_date": {
             "type": "string",
             "format": "date"
@@ -1056,6 +1175,18 @@
         },
         "additionalProperties": false
       }
+    },
+    "securitySchemes": {
+      "Bearer": {
+        "type": "http",
+        "scheme": "bearer",
+        "bearerFormat": "JWT"
+      }
     }
-  }
+  },
+  "security": [
+    {
+      "Bearer": [ ]
+    }
+  ]
 }
