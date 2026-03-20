@@ -28,9 +28,7 @@ namespace autoberles_backend.Controllers
         {
             try
             {
-                var ae = await context.AdditionalEquipments
-                            .Include(x => x.AirConditioning)
-                            .FirstOrDefaultAsync(x => x.Id == id);
+                var ae = await context.AdditionalEquipments.Include(x => x.AirConditioning).FirstOrDefaultAsync(x => x.Id == id);
                 if (ae == null)
                     return NotFound($"Nem található extra felszereltség a(z) {id} ID-val!");
                 return Ok(ae);
@@ -41,7 +39,7 @@ namespace autoberles_backend.Controllers
             }
         }
 
-        [Authorize(Roles = "admin,agent")]
+        [Authorize(Roles = "admin")]
         [HttpPatch("{id}")]
         public async Task<IActionResult> PatchAdditionalEquipment(int id, [FromBody] JsonElement body)
         {

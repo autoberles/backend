@@ -16,6 +16,8 @@ namespace autoberles_backend.Controllers
     {
         CarRentalContext context = new CarRentalContext();
 
+
+        [Authorize(Roles = "admin,agent")]
         [HttpGet("rentals")]
         public async Task<IActionResult> GetAllRentals()
         {
@@ -25,6 +27,8 @@ namespace autoberles_backend.Controllers
             return Ok(rentals);
         }
 
+
+        [Authorize(Roles = "admin,agent")]
         [HttpGet("rentals/{id}")]
         public async Task<IActionResult> GetRentalById([FromRoute] int id)
         {
@@ -99,7 +103,7 @@ namespace autoberles_backend.Controllers
                 newRental.UserId = userId;
 
                 if (newRental.CarId == 0)
-                    return BadRequest("CarId megadása kötelező.");
+                    return BadRequest("Az autó azonosítójának megadása kötelező.");
                 if (!newRental.StartDate.HasValue || !newRental.EndDate.HasValue)
                     return BadRequest("A bérlés kezdetét és végét kötelező megadni.");
 
@@ -119,7 +123,9 @@ namespace autoberles_backend.Controllers
                 if (validationResult != ValidationResult.Success)
                     return BadRequest(validationResult.ErrorMessage);
 
-                int days = Math.Max(1, (int)Math.Ceiling((newRental.EndDate.Value - newRental.StartDate.Value).TotalDays));
+                int days = (newRental.EndDate.Value.Date - newRental.StartDate.Value.Date).Days + 1;
+                if (days <= 0)
+                    return BadRequest("A bérlés időtartama nem lehet 0 vagy negatív.");
                 newRental.FullPrice = days * car.DefaultPricePerDay;
                 newRental.ReturnDate = null;
                 newRental.Damage = null;
@@ -135,6 +141,7 @@ namespace autoberles_backend.Controllers
         }
 
 
+        [Authorize(Roles = "admin,agent")]
         [HttpPatch("rentals/{id}")]
         public async Task<IActionResult> PatchRental(int id, [FromBody] JsonElement body)
         {
@@ -147,6 +154,8 @@ namespace autoberles_backend.Controllers
                 if (body.ValueKind != JsonValueKind.Object)
                     return BadRequest("Érvénytelen JSON!");
 
+                bool datesChanged = false;
+
                 foreach (var property in body.EnumerateObject())
                 {
                     string propertyName = ConvertSnakeToPascal(property.Name);
@@ -157,10 +166,29 @@ namespace autoberles_backend.Controllers
                         return BadRequest($"Ismeretlen mező: {property.Name}");
 
                     var convertedValue = JsonSerializer.Deserialize(property.Value.GetRawText(), propInfo.PropertyType);
+
+                    if (propInfo.Name == "StartDate" || propInfo.Name == "EndDate")
+                        datesChanged = true;
                     propInfo.SetValue(rental, convertedValue);
                 }
+
+                if (datesChanged)
+                {
+                    if (rental.StartDate == null || rental.EndDate == null)
+                        return BadRequest("StartDate és EndDate kötelező.");
+
+                    int days = (rental.EndDate.Value.Date - rental.StartDate.Value.Date).Days + 1;
+                    if (days <= 0)
+                        return BadRequest("A bérlés időtartama nem lehet 0 vagy negatív.");
+
+                    var car = await context.Cars.FindAsync(rental.CarId);
+                    if (car == null)
+                        return BadRequest("Nem található az autó.");
+
+                    rental.FullPrice = days * car.DefaultPricePerDay;
+                }
                 await context.SaveChangesAsync();
-                return Ok($"A(z) {id} ID-val rendelkező bérlés frissítve.");
+                return Ok(rental);
             }
             catch (Exception ex)
             {
@@ -168,6 +196,8 @@ namespace autoberles_backend.Controllers
             }
         }
 
+
+        [Authorize(Roles = "admin,agent")]
         [HttpDelete("rentals/{id}")]
         public async Task<IActionResult> DeleteRental(int id)
         {

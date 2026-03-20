@@ -58,21 +58,16 @@ public partial class Rental
         var instance = (Rental)context.ObjectInstance;
         var startDate = instance.StartDate;
 
-        if (startDate >= endDate)
+        if (startDate > endDate)
         {
-            return new ValidationResult("A kezdő dátumnak korábbinak kell lennie, mint a befejező dátumnak.");
-        }
-
-        if (startDate?.Date < DateTime.Today)
-        {
-            return new ValidationResult("A bérlés kezdete nem lehet múltbeli dátum.");
+            return new ValidationResult("A kezdő dátumn nem lehet későbbi a befejező dátumnál.");
         }
 
         var days = (endDate - startDate)?.TotalDays;
 
-        if (days < 1)
+        if (startDate?.Date < DateTime.Today || days < 0)
         {
-            return new ValidationResult("A bérlés legalább 1 napos kell legyen.");
+            return new ValidationResult("A bérlés kezdete nem lehet múltbeli dátum.");
         }
 
         return ValidationResult.Success;

@@ -26,8 +26,6 @@ namespace autoberles_backend.Controllers
                 List<User> users;
                 if (currentUserRole == Roles.Admin)
                     users = await context.Users.Include(x => x.Rentals).ThenInclude(x => x.Car).ToListAsync();
-                //else if (currentUserRole == Roles.Agent)
-                //    users = await context.Users.Where(x => x.Role == Roles.Customer).Include(x => x.Rentals).ThenInclude(x => x.Car).ToListAsync();
                 else
                     return Forbid();
                 return Ok(users);
@@ -48,8 +46,6 @@ namespace autoberles_backend.Controllers
                 User? user;
                 if (currentUserRole == Roles.Admin)
                     user = await context.Users.Include(x => x.Rentals).ThenInclude(x => x.Car).FirstOrDefaultAsync(x => x.Id == id);
-                //else if (currentUserRole == Roles.Agent)
-                //    user = await context.Users.Where(x => x.Role == Roles.Customer).Include(x => x.Rentals).ThenInclude(x => x.Car).FirstOrDefaultAsync(x => x.Id == id);
                 else
                     return Forbid();
                 if (user == null)

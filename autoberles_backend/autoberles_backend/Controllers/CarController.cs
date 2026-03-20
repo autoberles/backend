@@ -1,4 +1,5 @@
 ﻿using autoberles_backend.Models;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
@@ -12,6 +13,7 @@ namespace autoberles_backend.Controllers
     public class CarController : ControllerBase
     {
         CarRentalContext context = new CarRentalContext();
+
 
         [HttpGet("cars")]
         public async Task<IActionResult> GetAllCars()
@@ -63,6 +65,7 @@ namespace autoberles_backend.Controllers
         }
 
 
+        [Authorize(Roles = "admin")]
         [HttpPost("car")]
         public async Task<IActionResult> PostCar([FromBody] Car car)
         {
@@ -100,6 +103,7 @@ namespace autoberles_backend.Controllers
         }
 
 
+        [Authorize(Roles = "admin")]
         [HttpPatch("cars/{id}")]
         public async Task<IActionResult> PatchCar(int id, [FromBody] JsonElement body)
         {
@@ -128,6 +132,7 @@ namespace autoberles_backend.Controllers
         }
 
 
+        [Authorize(Roles = "admin")]
         [HttpDelete("cars/{id}")]
         public async Task<IActionResult> DeleteCar(int id)
         {

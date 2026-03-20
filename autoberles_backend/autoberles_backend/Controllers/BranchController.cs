@@ -1,4 +1,5 @@
 ﻿using autoberles_backend.Models;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
@@ -38,6 +39,7 @@ namespace autoberles_backend.Controllers
             }
         }
 
+        [Authorize(Roles = "admin")]
         [HttpPost("branch")]
         public async Task<IActionResult> PostBranch([FromBody] Branch branch)
         {
@@ -65,6 +67,7 @@ namespace autoberles_backend.Controllers
             }
         }
 
+        [Authorize(Roles = "admin")]
         [HttpPatch("branches/{id}")]
         public async Task<IActionResult> PatchBranch(int id, [FromBody] JsonElement body)
         {
@@ -114,6 +117,7 @@ namespace autoberles_backend.Controllers
             }
         }
 
+        [Authorize(Roles = "admin")]
         [HttpDelete("branches/{id}")]
         public async Task<IActionResult> DeleteBranch(int id)
         {
