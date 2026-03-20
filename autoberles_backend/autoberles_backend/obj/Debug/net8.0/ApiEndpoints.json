@@ -394,6 +394,26 @@
     "ReturnTypes": []
   },
   {
+    "ContainingType": "autoberles_backend.Controllers.RentalController",
+    "Method": "GetMyRentedCars",
+    "RelativePath": "api/rentals/my-cars",
+    "HttpMethod": "GET",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "autoberles_backend.Controllers.RentalController",
+    "Method": "GetMyRentals",
+    "RelativePath": "api/rentals/my-rentals",
+    "HttpMethod": "GET",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [],
+    "ReturnTypes": []
+  },
+  {
     "ContainingType": "autoberles_backend.Controllers.TransmissionTypeController",
     "Method": "GetAllTransmissionTypes",
     "RelativePath": "api/transmission_types",
@@ -496,6 +516,16 @@
         "IsRequired": true
       }
     ],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "autoberles_backend.Controllers.UserController",
+    "Method": "GetMyProfile",
+    "RelativePath": "api/users/me",
+    "HttpMethod": "GET",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [],
     "ReturnTypes": []
   },
   {

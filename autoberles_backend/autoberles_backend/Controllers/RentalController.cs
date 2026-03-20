@@ -42,6 +42,48 @@ namespace autoberles_backend.Controllers
         }
 
         [Authorize]
+        [HttpGet("rentals/my-rentals")]
+        public async Task<IActionResult> GetMyRentals()
+        {
+            try
+            {
+                var userIdClaim = User.FindFirst(ClaimTypes.NameIdentifier)?.Value;
+                if (string.IsNullOrEmpty(userIdClaim))
+                    return Unauthorized("Nem sikerült azonosítani a felhasználót.");
+                int userId = int.Parse(userIdClaim);
+                var rentals = await context.Rentals.Where(x => x.UserId == userId && x.ReturnDate == null).ToListAsync();
+                return Ok(rentals);
+            }
+            catch (Exception ex)
+            {
+                return BadRequest($"Hiba a bérlések lekérdezése során: {ex.Message}");
+            }
+        }
+
+        [Authorize]
+        [HttpGet("rentals/my-cars")]
+        public async Task<IActionResult> GetMyRentedCars()
+        {
+            try
+            {
+                var userIdClaim = User.FindFirst(ClaimTypes.NameIdentifier)?.Value;
+                if (string.IsNullOrEmpty(userIdClaim))
+                    return Unauthorized("Nem sikerült azonosítani a felhasználót.");
+                int userId = int.Parse(userIdClaim);
+
+                var cars = await context.Rentals
+                .Where(x => x.UserId == userId && x.EndDate >= DateTime.Today)
+                .Include(x => x.Car).ThenInclude(x => x.AdditionalEquipment)
+                .Select(x => x.Car).Distinct().ToListAsync();
+                return Ok(cars);
+            }
+            catch (Exception ex)
+            {
+                return BadRequest($"Hiba: {ex.Message}");
+            }
+        }
+
+        [Authorize]
         [HttpPost("rental")]
         public async Task<IActionResult> PostRental([FromBody] Rental newRental)
         {

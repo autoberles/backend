@@ -1,8 +1,10 @@
 ﻿using autoberles_backend.Models;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
 using System.Reflection;
+using System.Security.Claims;
 using System.Text.Json;
 
 namespace autoberles_backend.Controllers
@@ -37,6 +39,38 @@ namespace autoberles_backend.Controllers
             catch (Exception ex)
             {
                 return BadRequest($"Hiba {ex}");
+            }
+        }
+
+        [Authorize]
+        [HttpGet("users/me")]
+        public async Task<IActionResult> GetMyProfile()
+        {
+            try
+            {
+                var userIdClaim = User.FindFirst(ClaimTypes.NameIdentifier)?.Value;
+                if (string.IsNullOrEmpty(userIdClaim))
+                    return Unauthorized("Nem sikerült azonosítani a felhasználót.");
+                int userId = int.Parse(userIdClaim);
+
+                var user = await context.Users.Where(x => x.Id == userId).Select(x => new
+                    {
+                        x.Id,
+                        x.Email,
+                        x.FirstName,
+                        x.LastName,
+                        x.PhoneNumber,
+                        x.BirthDate,
+                        x.Role
+                    }).FirstOrDefaultAsync();
+
+                if (user == null)
+                    return NotFound("Felhasználó nem található.");
+                return Ok(user);
+            }
+            catch (Exception ex)
+            {
+                return BadRequest($"Hiba a felhasználó lekérdezése során: {ex.Message}");
             }
         }
 
