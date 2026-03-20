@@ -1,4 +1,5 @@
 ﻿using autoberles_backend.Models;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
@@ -40,6 +41,7 @@ namespace autoberles_backend.Controllers
             }
         }
 
+        [Authorize(Roles = "admin,agent")]
         [HttpPatch("{id}")]
         public async Task<IActionResult> PatchAdditionalEquipment(int id, [FromBody] JsonElement body)
         {

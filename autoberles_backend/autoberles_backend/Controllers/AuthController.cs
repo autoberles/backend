@@ -29,10 +29,10 @@ namespace autoberles_backend.Controllers
             if (!ModelState.IsValid)
                 return BadRequest(ModelState);
 
-            if (await _context.Users.AnyAsync(u => u.Email == register.Email))
+            if (await _context.Users.AnyAsync(x => x.Email == register.Email))
                 return BadRequest("Ez az email már használatban van.");
 
-            if (await _context.Users.AnyAsync(u => u.PhoneNumber == register.PhoneNumber))
+            if (await _context.Users.AnyAsync(x => x.PhoneNumber == register.PhoneNumber))
                 return BadRequest("Ez a telefonszám már használatban van.");
 
             var user = new User
@@ -55,7 +55,7 @@ namespace autoberles_backend.Controllers
         [HttpPost("login")]
         public async Task<IActionResult> Login([FromBody] Login login)
         {
-            var user = await _context.Users.FirstOrDefaultAsync(u => u.Email == login.Email);
+            var user = await _context.Users.FirstOrDefaultAsync(x => x.Email == login.Email);
 
             if (user == null || !BCrypt.Net.BCrypt.Verify(login.Password, user.PasswordHash))
                 return Unauthorized("Érvénytelen email vagy jelszó.");

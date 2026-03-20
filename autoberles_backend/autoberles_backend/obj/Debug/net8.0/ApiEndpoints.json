@@ -289,6 +289,32 @@
     "ReturnTypes": []
   },
   {
+    "ContainingType": "autoberles_backend.Controllers.UserController",
+    "Method": "GetAllCustomers",
+    "RelativePath": "api/customers",
+    "HttpMethod": "GET",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "autoberles_backend.Controllers.UserController",
+    "Method": "GetCustomerById",
+    "RelativePath": "api/customers/{id}",
+    "HttpMethod": "GET",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "id",
+        "Type": "System.Int32",
+        "IsRequired": true
+      }
+    ],
+    "ReturnTypes": []
+  },
+  {
     "ContainingType": "autoberles_backend.Controllers.FuelTypeController",
     "Method": "GetAllFuelTypes",
     "RelativePath": "api/fuel_types",
@@ -441,28 +467,28 @@
   },
   {
     "ContainingType": "autoberles_backend.Controllers.UserController",
-    "Method": "PostUser",
-    "RelativePath": "api/user",
-    "HttpMethod": "POST",
-    "IsController": true,
-    "Order": 0,
-    "Parameters": [
-      {
-        "Name": "user",
-        "Type": "autoberles_backend.Models.User",
-        "IsRequired": true
-      }
-    ],
-    "ReturnTypes": []
-  },
-  {
-    "ContainingType": "autoberles_backend.Controllers.UserController",
     "Method": "GetAllUsers",
     "RelativePath": "api/users",
     "HttpMethod": "GET",
     "IsController": true,
     "Order": 0,
     "Parameters": [],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "autoberles_backend.Controllers.UserController",
+    "Method": "CreateUser",
+    "RelativePath": "api/users",
+    "HttpMethod": "POST",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "request",
+        "Type": "autoberles_backend.Classes.CreateUser",
+        "IsRequired": true
+      }
+    ],
     "ReturnTypes": []
   },
   {
