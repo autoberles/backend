@@ -112,15 +112,15 @@ namespace autoberles_backend.Controllers
                 int userId = int.Parse(userIdClaim);
 
                 var user = await context.Users.Where(x => x.Id == userId).Select(x => new
-                    {
-                        x.Id,
-                        x.Email,
-                        x.FirstName,
-                        x.LastName,
-                        x.PhoneNumber,
-                        x.BirthDate,
-                        x.Role
-                    }).FirstOrDefaultAsync();
+                {
+                    x.Id,
+                    x.Email,
+                    x.FirstName,
+                    x.LastName,
+                    x.PhoneNumber,
+                    x.BirthDate,
+                    x.Role
+                }).FirstOrDefaultAsync();
 
                 if (user == null)
                     return NotFound("Felhasználó nem található.");

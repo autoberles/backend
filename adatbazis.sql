@@ -116,6 +116,7 @@ CREATE TABLE rentals (
     end_date DATE NOT NULL,
     return_date DATE,
     damage TEXT,
+    damage_cost INT,
     full_price INT NOT NULL,
     FOREIGN KEY (car_id) REFERENCES cars(id),
     FOREIGN KEY (user_id) REFERENCES users(id)
@@ -167,23 +168,23 @@ INSERT INTO branches VALUES
 
 -- Users
 INSERT INTO users VALUES
-(1,'Kovács','András','kovacs.andras@email.hu','$2a$11$wYQ4GZlYQ3Yx7YqK7v1n9eQ9v3F3z6H5Jr9v0b7Gz1Yx8QW6YkG2y','+36 20 111 111','1990-05-12','admin'),
-(2,'Nagy','Eszter','nagy.eszter@email.hu','$2a$11$wYQ4GZlYQ3Yx7YqK7v1n9eQ9v3F3z6H5Jr9v0b7Gz1Yx8QW6YkG2y','+36 20 222 222','1988-11-03','agent'),
-(3,'Tóth','Bence','toth.bence@email.hu','$2a$11$wYQ4GZlYQ3Yx7YqK7v1n9eQ9v3F3z6H5Jr9v0b7Gz1Yx8QW6YkG2y','+36 20 333 333','1995-07-21','customer'),
-(4,'Szabó','Lilla','szabo.lilla@email.hu','$2a$11$wYQ4GZlYQ3Yx7YqK7v1n9eQ9v3F3z6H5Jr9v0b7Gz1Yx8QW6YkG2y','+36 20 444 444','1992-02-14','customer'),
-(5,'Varga','Dávid','varga.david@email.hu','$2a$11$wYQ4GZlYQ3Yx7YqK7v1n9eQ9v3F3z6H5Jr9v0b7Gz1Yx8QW6YkG2y','+36 20 555 555','1985-09-30','customer'),
-(6,'Kiss','Anna','kiss.anna@email.hu','$2a$11$wYQ4GZlYQ3Yx7YqK7v1n9eQ9v3F3z6H5Jr9v0b7Gz1Yx8QW6YkG2y','+36 20 666 666','1998-12-08','customer'),
-(7,'Molnár','Gábor','molnar.gabor@email.hu','$2a$11$wYQ4GZlYQ3Yx7YqK7v1n9eQ9v3F3z6H5Jr9v0b7Gz1Yx8QW6YkG2y','+36 20 777 777','1993-04-17','customer'),
-(8,'Horváth','Zsófia','horvath.zsofia@email.hu','$2a$11$wYQ4GZlYQ3Yx7YqK7v1n9eQ9v3F3z6H5Jr9v0b7Gz1Yx8QW6YkG2y','+36 20 888 888','1991-06-25','customer'),
-(9,'Nagy','Lajos','nagy.lajos@email.hu','$2a$11$wYQ4GZlYQ3Yx7YqK7v1n9eQ9v3F3z6H5Jr9v0b7Gz1Yx8QW6YkG2y','+36 20 999 999','1973-04-17','customer'),
-(10,'Papp','Éva','papp.eva@email.hu','$2a$11$wYQ4GZlYQ3Yx7YqK7v1n9eQ9v3F3z6H5Jr9v0b7Gz1Yx8QW6YkG2y','+36 30 111 111','1996-07-08','customer'),
-(11,'Szilágyi','Attila','szilagyi.attila@email.hu','$2a$11$wYQ4GZlYQ3Yx7YqK7v1n9eQ9v3F3z6H5Jr9v0b7Gz1Yx8QW6YkG2y','+36 30 222 222','1987-09-19','customer'),
-(12,'Vass','Réka','vass.reka@email.hu','$2a$11$wYQ4GZlYQ3Yx7YqK7v1n9eQ9v3F3z6H5Jr9v0b7Gz1Yx8QW6YkG2y','+36 30 333 333','1992-11-22','customer'),
-(13,'Tóth','Márton','toth.marton@email.hu','$2a$11$wYQ4GZlYQ3Yx7YqK7v1n9eQ9v3F3z6H5Jr9v0b7Gz1Yx8QW6YkG2y','+36 30 444 444','1990-01-15','customer'),
-(14,'Németh','Bianka','nemeth.bianka@email.hu','$2a$11$wYQ4GZlYQ3Yx7YqK7v1n9eQ9v3F3z6H5Jr9v0b7Gz1Yx8QW6YkG2y','+36 30 555 555','1998-05-30','customer'),
-(15,'Kelemen','Zoltán','kelemen.zoltan@email.hu','$2a$11$wYQ4GZlYQ3Yx7YqK7v1n9eQ9v3F3z6H5Jr9v0b7Gz1Yx8QW6YkG2y','+36 30 666 666','1989-08-04','customer'),
-(16,'Major','Judit','major.judit@email.hu','$2a$11$wYQ4GZlYQ3Yx7YqK7v1n9eQ9v3F3z6H5Jr9v0b7Gz1Yx8QW6YkG2y','+36 30 777 777','1995-12-18','customer'),
-(17,'Farkas','Balázs','farkas.balazs@email.hu','$2a$11$wYQ4GZlYQ3Yx7YqK7v1n9eQ9v3F3z6H5Jr9v0b7Gz1Yx8QW6YkG2y','+36 30 888 888','1994-03-12','customer');
+(1,'Kovács','András','kovacs.andras@email.hu','$2a$11$Q9zvXc0mK7L5W2u1Yp6h4eN1bF7rD8tJkL3sP0xZcV9aT2mHqR1yK','+36 20 111 111','1990-05-12','admin'),
+(2,'Nagy','Eszter','nagy.eszter@email.hu','$2a$11$A1bC2dE3fG4hI5jK6lM7nO8pQ9rS0tU1vW2xY3z4aB5cD6eF7gH8i','+36 20 222 222','1988-11-03','agent'),
+(3,'Tóth','Bence','toth.bence@email.hu','$2a$11$zX9yW8vU7tS6rQ5pO4nM3lK2jI1hG0fE9dC8bA7a6Z5y4X3w2V1uT','+36 20 333 333','1995-07-21','customer'),
+(4,'Szabó','Lilla','szabo.lilla@email.hu','$2a$11$LmN8oP7qR6sT5uV4wX3yZ2aB1cD0eF9gH8iJ7kL6mN5oP4qR3sT2u','+36 20 444 444','1992-02-14','customer'),
+(5,'Varga','Dávid','varga.david@email.hu','$2a$11$9x8y7z6w5v4u3t2s1r0qPOnMlKjIhGfEdCbA9876543210qwertyui','+36 20 555 555','1985-09-30','customer'),
+(6,'Kiss','Anna','kiss.anna@email.hu','$2a$11$AbCdEfGhIjKlMnOpQrStUvWxYz1234567890abcdefghijklmnopqr','+36 20 666 666','1998-12-08','customer'),
+(7,'Molnár','Gábor','molnar.gabor@email.hu','$2a$11$XyZ123456789abcdefghijklmnopqrstuvwABCDEFGHIJKLMNOPQRS','+36 20 777 777','1993-04-17','customer'),
+(8,'Horváth','Zsófia','horvath.zsofia@email.hu','$2a$11$QwErTyUiOpAsDfGhJkLzXcVbNm1234567890poiuytrewqlkjhgfds','+36 20 888 888','1991-06-25','customer'),
+(9,'Nagy','Lajos','nagy.lajos@email.hu','$2a$11$MnbVcXzAsDfGhJkLqWeRtYuIoP0987654321poiuytrewqlkjhgfds','+36 20 999 999','1973-04-17','customer'),
+(10,'Papp','Éva','papp.eva@email.hu','$2a$11$ZxCvBnMaSdFgHjKlQwErTyUiOp1234567890poiuytrewqlkjhgfdsa','+36 30 111 111','1996-07-08','customer'),
+(11,'Szilágyi','Attila','szilagyi.attila@email.hu','$2a$11$YtReWqAsDfGhJkLzXcVbNm1234567890poiuytrewqlkjhgfdsazxcv','+36 30 222 222','1987-09-19','customer'),
+(12,'Vass','Réka','vass.reka@email.hu','$2a$11$UuIiOoPpAaSsDdFfGgHhJjKkLlZzXxCcVvBbNnMm1234567890asdfg','+36 30 333 333','1992-11-22','customer'),
+(13,'Tóth','Márton','toth.marton@email.hu','$2a$11$KkLlMmNnOoPpQqRrSsTtUuVvWwXxYyZz1234567890abcdefghijklmn','+36 30 444 444','1990-01-15','customer'),
+(14,'Németh','Bianka','nemeth.bianka@email.hu','$2a$11$HgFdSaQwErTyUiOpLkJHgfdsazxcvbnm1234567890poiuytrewqlkj','+36 30 555 555','1998-05-30','customer'),
+(15,'Kelemen','Zoltán','kelemen.zoltan@email.hu','$2a$11$PpOoIiUuYyTtRrEeWwQqAaSsDdFfGgHhJjKkLlZzXxCcVvBbNnMm123','+36 30 666 666','1989-08-04','customer'),
+(16,'Major','Judit','major.judit@email.hu','$2a$11$AaBbCcDdEeFfGgHhIiJjKkLlMmNnOoPpQqRrSsTtUuVvWwXxYyZz123','+36 30 777 777','1995-12-18','customer'),
+(17,'Farkas','Balázs','farkas.balazs@email.hu','$2a$11$1234567890abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZabcd','+36 30 888 888','1994-03-12','customer');
 
 -- Cars
 INSERT INTO cars VALUES
@@ -227,17 +228,17 @@ INSERT INTO additional_equipment VALUES
 
 -- Rentals
 INSERT INTO rentals VALUES
-(1,13,3,'2026-03-16','2026-03-20',NULL,NULL,100000),
-(2,5,4,'2026-03-17','2026-03-22',NULL,NULL,126000),
-(3,1,5,'2026-03-22','2026-03-28',NULL,NULL,105000),
-(4,10,6,'2026-03-25','2026-03-29',NULL,NULL,90000),
-(5,16,7,'2026-04-10','2026-04-15',NULL,NULL,108000),
-(6,6,8,'2026-04-11','2026-04-13',NULL,NULL,54000),
-(7,2,9,'2026-04-10','2026-04-15',NULL,NULL,84000),
-(8,3,10,'2026-04-20','2026-04-25',NULL,NULL,120000),
-(9,8,11,'2026-05-01','2026-05-04',NULL,NULL,84000),
-(10,14,12,'2026-05-05','2026-05-10',NULL,NULL,102000),
-(11,9,13,'2026-05-12','2026-05-16',NULL,NULL,115000),
-(12,15,14,'2026-05-18','2026-05-20',NULL,NULL,120000),
-(13,7,15,'2026-05-21','2026-05-25',NULL,NULL,75000),
-(14,11,16,'2026-05-26','2026-05-30',NULL,NULL,65000);
+(1,13,3,'2026-03-16','2026-03-20',NULL,NULL,NULL,100000),
+(2,5,4,'2026-03-17','2026-03-22',NULL,NULL,NULL,126000),
+(3,1,5,'2026-03-22','2026-03-28',NULL,NULL,NULL,105000),
+(4,10,6,'2026-03-25','2026-03-29',NULL,NULL,NULL,90000),
+(5,16,7,'2026-04-10','2026-04-15',NULL,NULL,NULL,108000),
+(6,6,8,'2026-04-11','2026-04-13',NULL,NULL,NULL,54000),
+(7,2,9,'2026-04-10','2026-04-15',NULL,NULL,NULL,84000),
+(8,3,10,'2026-04-20','2026-04-25',NULL,NULL,NULL,120000),
+(9,8,11,'2026-05-01','2026-05-04',NULL,NULL,NULL,84000),
+(10,14,12,'2026-05-05','2026-05-10',NULL,NULL,NULL,102000),
+(11,9,13,'2026-05-12','2026-05-16',NULL,NULL,NULL,115000),
+(12,15,14,'2026-05-18','2026-05-20',NULL,NULL,NULL,120000),
+(13,7,15,'2026-05-21','2026-05-25',NULL,NULL,NULL,75000),
+(14,11,16,'2026-05-26','2026-05-30',NULL,NULL,NULL,65000);

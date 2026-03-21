@@ -3,12 +3,8 @@
   "WorkspaceRootPath": "C:\\backend\\autoberles_backend\\",
   "Documents": [
     {
-      "AbsoluteMoniker": "D:0:0:{41495FAA-ADEC-43FA-AAE4-4D5298525BBD}|autoberles_backend\\autoberles_backend.csproj|c:\\backend\\autoberles_backend\\autoberles_backend\\models\\rental.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{41495FAA-ADEC-43FA-AAE4-4D5298525BBD}|autoberles_backend\\autoberles_backend.csproj|solutionrelative:autoberles_backend\\models\\rental.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{41495FAA-ADEC-43FA-AAE4-4D5298525BBD}|autoberles_backend\\autoberles_backend.csproj|c:\\backend\\autoberles_backend\\autoberles_backend\\controllers\\rentalcontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{41495FAA-ADEC-43FA-AAE4-4D5298525BBD}|autoberles_backend\\autoberles_backend.csproj|solutionrelative:autoberles_backend\\controllers\\rentalcontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+      "AbsoluteMoniker": "D:0:0:{41495FAA-ADEC-43FA-AAE4-4D5298525BBD}|autoberles_backend\\autoberles_backend.csproj|c:\\backend\\autoberles_backend\\autoberles_backend\\controllers\\usercontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{41495FAA-ADEC-43FA-AAE4-4D5298525BBD}|autoberles_backend\\autoberles_backend.csproj|solutionrelative:autoberles_backend\\controllers\\usercontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     }
   ],
   "DocumentGroupContainers": [
@@ -31,27 +27,14 @@
             {
               "$type": "Document",
               "DocumentIndex": 0,
-              "Title": "Rental.cs",
-              "DocumentMoniker": "C:\\backend\\autoberles_backend\\autoberles_backend\\Models\\Rental.cs",
-              "RelativeDocumentMoniker": "autoberles_backend\\Models\\Rental.cs",
-              "ToolTip": "C:\\backend\\autoberles_backend\\autoberles_backend\\Models\\Rental.cs*",
-              "RelativeToolTip": "autoberles_backend\\Models\\Rental.cs*",
-              "ViewState": "AgIAADUAAAAAAAAAAAA0wEYAAAAJAAAAAAAAAA==",
+              "Title": "UserController.cs",
+              "DocumentMoniker": "C:\\backend\\autoberles_backend\\autoberles_backend\\Controllers\\UserController.cs",
+              "RelativeDocumentMoniker": "autoberles_backend\\Controllers\\UserController.cs",
+              "ToolTip": "C:\\backend\\autoberles_backend\\autoberles_backend\\Controllers\\UserController.cs*",
+              "RelativeToolTip": "autoberles_backend\\Controllers\\UserController.cs*",
+              "ViewState": "AgIAAB0AAAAAAAAAAAAiwIYAAAAqAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2026-03-20T18:29:21.677Z",
-              "EditorCaption": ""
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 1,
-              "Title": "RentalController.cs",
-              "DocumentMoniker": "C:\\backend\\autoberles_backend\\autoberles_backend\\Controllers\\RentalController.cs",
-              "RelativeDocumentMoniker": "autoberles_backend\\Controllers\\RentalController.cs",
-              "ToolTip": "C:\\backend\\autoberles_backend\\autoberles_backend\\Controllers\\RentalController.cs",
-              "RelativeToolTip": "autoberles_backend\\Controllers\\RentalController.cs",
-              "ViewState": "AgIAAKIAAAAAAAAAAAAmwHkAAAA3AAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2026-03-20T17:39:13.565Z",
+              "WhenOpened": "2026-03-21T09:26:42.226Z",
               "EditorCaption": ""
             }
           ]

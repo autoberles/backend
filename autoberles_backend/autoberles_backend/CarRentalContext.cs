@@ -296,6 +296,10 @@ public partial class CarRentalContext : DbContext
                 .HasDefaultValueSql("'NULL'")
                 .HasColumnType("text")
                 .HasColumnName("damage");
+            entity.Property(e => e.DamageCost)
+                .HasDefaultValueSql("'NULL'")
+                .HasColumnType("int(11)")
+                .HasColumnName("damage_cost");
             entity.Property(e => e.EndDate)
                 .HasColumnType("date")
                 .HasColumnName("end_date");

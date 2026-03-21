@@ -44,6 +44,11 @@ public partial class Rental
 
     [BindNever]
     [SwaggerIgnore]
+    public int? DamageCost { get; set; } = null;
+
+
+    [BindNever]
+    [SwaggerIgnore]
     public int FullPrice { get; set; }
 
 

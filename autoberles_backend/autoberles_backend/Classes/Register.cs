@@ -1,4 +1,5 @@
 ﻿using autoberles_backend.Models;
+using Microsoft.AspNetCore.Identity;
 using System.ComponentModel.DataAnnotations;
 
 namespace autoberles_backend.Classes
