@@ -168,8 +168,8 @@ INSERT INTO branches VALUES
 
 -- Users
 INSERT INTO users VALUES
-(1,'Kovács','András','kovacs.andras@email.hu','$2a$11$Q9zvXc0mK7L5W2u1Yp6h4eN1bF7rD8tJkL3sP0xZcV9aT2mHqR1yK','+36 20 111 111','1990-05-12','admin'),
-(2,'Nagy','Eszter','nagy.eszter@email.hu','$2a$11$A1bC2dE3fG4hI5jK6lM7nO8pQ9rS0tU1vW2xY3z4aB5cD6eF7gH8i','+36 20 222 222','1988-11-03','agent'),
+(1,'Kovács','András','kovacs.andras@email.hu','$2a$11$8JvY8mQ7k0zJk6V3bYwqUeQ7YxXlKz2mFv7H9pR1nD3tWcA5sE6uK','+36 20 111 111','1990-05-12','customer'),
+(2,'Nagy','Eszter','nagy.eszter@email.hu','$2a$11$2QkFvWm9YpT6rX1cJz8NHeL4sB7uA3dG5hK0nM2pR9tYwC6xZ8vQW','+36 20 222 222','1988-11-03','customer'),
 (3,'Tóth','Bence','toth.bence@email.hu','$2a$11$zX9yW8vU7tS6rQ5pO4nM3lK2jI1hG0fE9dC8bA7a6Z5y4X3w2V1uT','+36 20 333 333','1995-07-21','customer'),
 (4,'Szabó','Lilla','szabo.lilla@email.hu','$2a$11$LmN8oP7qR6sT5uV4wX3yZ2aB1cD0eF9gH8iJ7kL6mN5oP4qR3sT2u','+36 20 444 444','1992-02-14','customer'),
 (5,'Varga','Dávid','varga.david@email.hu','$2a$11$9x8y7z6w5v4u3t2s1r0qPOnMlKjIhGfEdCbA9876543210qwertyui','+36 20 555 555','1985-09-30','customer'),

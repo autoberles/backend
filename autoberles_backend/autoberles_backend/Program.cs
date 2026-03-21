@@ -7,6 +7,7 @@ using Microsoft.OpenApi.Models;
 using Swashbuckle.AspNetCore.SwaggerGen;
 using System.Text;
 using System.Text.Json;
+using BCrypt.Net;
 
 namespace autoberles_backend
 {
@@ -53,6 +54,44 @@ namespace autoberles_backend
             });
 
             var app = builder.Build();
+
+            using (var scope = app.Services.CreateScope())
+            {
+                var context = scope.ServiceProvider.GetRequiredService<CarRentalContext>();
+
+                if (!context.Users.Any(u => u.Role == "admin"))
+                {
+                    var adminHash = BCrypt.Net.BCrypt.HashPassword("Tothpista1");
+                    var admin = new User
+                    {
+                        LastName = "Tóth",
+                        FirstName = "Pista",
+                        Email = "tothpista@admin.hu",
+                        PasswordHash = adminHash,
+                        PhoneNumber = "+36 20 780 193",
+                        BirthDate = new DateTime(1990, 5, 25),
+                        Role = "admin"
+                    };
+                    context.Users.Add(admin);
+                }
+
+                if (!context.Users.Any(u => u.Role == "agent"))
+                {
+                    var agentHash = BCrypt.Net.BCrypt.HashPassword("Kislili1");
+                    var agent = new User
+                    {
+                        LastName = "Kis",
+                        FirstName = "Lili",
+                        Email = "kislili@agent.com",
+                        PasswordHash = agentHash,
+                        PhoneNumber = "+36 20 516 403",
+                        BirthDate = new DateTime(1992, 7, 3),
+                        Role = "agent"
+                    };
+                    context.Users.Add(agent);
+                }
+                context.SaveChanges();
+            }
 
             if (app.Environment.IsDevelopment())
             {
