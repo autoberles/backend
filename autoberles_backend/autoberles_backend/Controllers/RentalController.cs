@@ -155,6 +155,8 @@ namespace autoberles_backend.Controllers
                     return BadRequest("Érvénytelen JSON!");
 
                 bool datesChanged = false;
+                bool damageChanged = false;
+                bool damageCostChanged = false;
 
                 foreach (var property in body.EnumerateObject())
                 {
@@ -169,23 +171,39 @@ namespace autoberles_backend.Controllers
 
                     if (propInfo.Name == "StartDate" || propInfo.Name == "EndDate")
                         datesChanged = true;
+                    if (propInfo.Name == "Damage")
+                        damageChanged = true;
+                    if (propInfo.Name == "DamageCost")
+                        damageCostChanged = true;
+
                     propInfo.SetValue(rental, convertedValue);
                 }
 
-                if (datesChanged)
+                if (!string.IsNullOrEmpty(rental.Damage) && rental.ReturnDate == null)
+                    return BadRequest("Kár rögzítése csak visszahozott autónál lehetséges.");
+                if (rental.DamageCost.HasValue && string.IsNullOrEmpty(rental.Damage))
+                    return BadRequest("A kár összegét csak akkor lehet megadni, ha a kár már meg van nevezve.");
+
+                var car = await context.Cars.FindAsync(rental.CarId);
+                if (car == null)
+                    return BadRequest($"Nem található autó a(z) {rental.CarId} ID-val.");
+
+                int days = (rental.EndDate!.Value.Date - rental.StartDate!.Value.Date).Days + 1;
+                if (days <= 0)
+                    return BadRequest("Hibás dátumok.");
+
+                int basePrice = days * car.DefaultPricePerDay;
+                int damageCost = rental.DamageCost ?? 0;
+                rental.FullPrice = basePrice + damageCost;
+
+                if (rental.ReturnDate == null)
+                    car.Availability = false;
+                else
                 {
-                    if (rental.StartDate == null || rental.EndDate == null)
-                        return BadRequest("StartDate és EndDate kötelező.");
-
-                    int days = (rental.EndDate.Value.Date - rental.StartDate.Value.Date).Days + 1;
-                    if (days <= 0)
-                        return BadRequest("A bérlés időtartama nem lehet 0 vagy negatív.");
-
-                    var car = await context.Cars.FindAsync(rental.CarId);
-                    if (car == null)
-                        return BadRequest("Nem található az autó.");
-
-                    rental.FullPrice = days * car.DefaultPricePerDay;
+                    if (!string.IsNullOrEmpty(rental.Damage))
+                        car.Availability = rental.ReturnDate.Value.Date.AddDays(1) <= DateTime.Today;
+                    else
+                        car.Availability = true;
                 }
                 await context.SaveChangesAsync();
                 return Ok(rental);
