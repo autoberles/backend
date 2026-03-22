@@ -7,6 +7,7 @@ using System.Security.Claims;
 using System.Text;
 using BCrypt.Net;
 using autoberles_backend.Classes;
+using autoberles_backend.Services;
 
 namespace autoberles_backend.Controllers
 {
@@ -16,11 +17,13 @@ namespace autoberles_backend.Controllers
     {
         private readonly CarRentalContext _context;
         private readonly IConfiguration _config;
+        private readonly EmailService _emailService;
 
-        public AuthController(CarRentalContext context, IConfiguration config)
+        public AuthController(CarRentalContext context, IConfiguration config, EmailService emailService)
         {
             _context = context;
             _config = config;
+            _emailService = emailService;
         }
 
         [HttpPost("register")]
@@ -48,8 +51,12 @@ namespace autoberles_backend.Controllers
 
             _context.Users.Add(user);
             await _context.SaveChangesAsync();
-
-            return Ok("Sikeres regisztráció!");
+            _ = _emailService.SendEmailAsync(
+                user.Email,
+                "Sikeres regisztráció",
+                $"Kedves {user.FirstName}!<br><br>Sikeresen regisztráltál az Autokell autóbérlés oldalára!"
+            ); 
+            return Ok(new { message = $"Sikeres regisztráció, email elküldve a(z) {user.Email} email címre!" });
         }
 
         [HttpPost("login")]

@@ -8,6 +8,7 @@ using Swashbuckle.AspNetCore.SwaggerGen;
 using System.Text;
 using System.Text.Json;
 using BCrypt.Net;
+using autoberles_backend.Services;
 
 namespace autoberles_backend
 {
@@ -31,6 +32,7 @@ namespace autoberles_backend
 
             builder.Services.AddEndpointsApiExplorer();
             builder.Services.AddSwaggerGen(AddSwaggerAuthBtn);
+            builder.Services.AddScoped<EmailService>();
 
             var jwtSettings = builder.Configuration.GetSection("Jwt");
             var key = Encoding.UTF8.GetBytes(jwtSettings["Key"]!);
