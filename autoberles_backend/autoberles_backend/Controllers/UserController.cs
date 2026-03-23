@@ -212,17 +212,13 @@ namespace autoberles_backend.Controllers
                     if (propInfo.Name.Equals("Role", StringComparison.OrdinalIgnoreCase))
                     {
                         string newRole = newValue?.ToString();
-
                         if (currentUserRole == Roles.Agent)
                             return StatusCode(403, "Agent nem módosíthatja a felhasználók szerepét.");
-
                         if (currentUserRole == Roles.Admin && user.Id == currentUserId)
                             return StatusCode(403, "Admin nem módosíthatja a saját szerepét.");
                     }
-
                     if (currentUserRole == Roles.Agent && user.Role != Roles.Customer)
                         return StatusCode(403, "Agent csak customereket módosíthat.");
-
                     if (propInfo.Name.Equals("Email", StringComparison.OrdinalIgnoreCase))
                     {
                         string emailStr = newValue?.ToString();

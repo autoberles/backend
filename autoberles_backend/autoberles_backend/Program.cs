@@ -9,6 +9,7 @@ using System.Text;
 using System.Text.Json;
 using BCrypt.Net;
 using autoberles_backend.Services;
+using System.ComponentModel;
 
 namespace autoberles_backend
 {

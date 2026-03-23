@@ -109,7 +109,7 @@
         }
       }
     },
-    "/api/Auth/register": {
+    "/api/auth/register": {
       "post": {
         "tags": [
           "Auth"
@@ -140,7 +140,7 @@
         }
       }
     },
-    "/api/Auth/login": {
+    "/api/auth/login": {
       "post": {
         "tags": [
           "Auth"
@@ -160,6 +160,68 @@
             "application/*+json": {
               "schema": {
                 "$ref": "#/components/schemas/Login"
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "OK"
+          }
+        }
+      }
+    },
+    "/api/auth/forgot_password": {
+      "post": {
+        "tags": [
+          "Auth"
+        ],
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/ForgotPassword"
+              }
+            },
+            "text/json": {
+              "schema": {
+                "$ref": "#/components/schemas/ForgotPassword"
+              }
+            },
+            "application/*+json": {
+              "schema": {
+                "$ref": "#/components/schemas/ForgotPassword"
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "OK"
+          }
+        }
+      }
+    },
+    "/api/auth/reset_password": {
+      "post": {
+        "tags": [
+          "Auth"
+        ],
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/ResetPassword"
+              }
+            },
+            "text/json": {
+              "schema": {
+                "$ref": "#/components/schemas/ResetPassword"
+              }
+            },
+            "application/*+json": {
+              "schema": {
+                "$ref": "#/components/schemas/ResetPassword"
               }
             }
           }
@@ -1154,6 +1216,16 @@
         },
         "additionalProperties": false
       },
+      "ForgotPassword": {
+        "type": "object",
+        "properties": {
+          "email": {
+            "type": "string",
+            "nullable": true
+          }
+        },
+        "additionalProperties": false
+      },
       "Login": {
         "required": [
           "email",
@@ -1184,6 +1256,16 @@
         ],
         "type": "object",
         "properties": {
+          "first_name": {
+            "maxLength": 100,
+            "minLength": 2,
+            "type": "string"
+          },
+          "last_name": {
+            "maxLength": 100,
+            "minLength": 2,
+            "type": "string"
+          },
           "email": {
             "maxLength": 150,
             "minLength": 0,
@@ -1199,19 +1281,9 @@
             "minLength": 1,
             "type": "string"
           },
-          "first_name": {
-            "maxLength": 100,
-            "minLength": 2,
-            "type": "string"
-          },
-          "last_name": {
-            "maxLength": 100,
-            "minLength": 2,
-            "type": "string"
-          },
           "phone_number": {
             "minLength": 1,
-            "pattern": "^\\+36\\s\\d{2}\\s\\d{3}\\s\\d{3}$",
+            "pattern": "^\\+36\\s\\d{2}\\s\\d{3}\\s\\d{4}$",
             "type": "string"
           },
           "birth_date": {
@@ -1243,6 +1315,24 @@
           "end_date": {
             "type": "string",
             "format": "date"
+          }
+        },
+        "additionalProperties": false
+      },
+      "ResetPassword": {
+        "type": "object",
+        "properties": {
+          "email": {
+            "type": "string",
+            "nullable": true
+          },
+          "code": {
+            "type": "string",
+            "nullable": true
+          },
+          "new_password": {
+            "type": "string",
+            "nullable": true
           }
         },
         "additionalProperties": false

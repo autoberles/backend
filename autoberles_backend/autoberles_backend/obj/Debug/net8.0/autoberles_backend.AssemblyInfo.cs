@@ -14,7 +14,7 @@ using System.Reflection;
 [assembly: System.Reflection.AssemblyCompanyAttribute("autoberles_backend")]
 [assembly: System.Reflection.AssemblyConfigurationAttribute("Debug")]
 [assembly: System.Reflection.AssemblyFileVersionAttribute("1.0.0.0")]
-[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+de494183b5bf9373347739c5aa7787836fd6ec09")]
+[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+542c04e4f1397fa6d1d8169094ad485f04494f6e")]
 [assembly: System.Reflection.AssemblyProductAttribute("autoberles_backend")]
 [assembly: System.Reflection.AssemblyTitleAttribute("autoberles_backend")]
 [assembly: System.Reflection.AssemblyVersionAttribute("1.0.0.0")]

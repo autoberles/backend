@@ -34,10 +34,14 @@ public partial class User
 
     public string PasswordHash { get; set; } = null!;
 
+    public string? ResetToken { get; set; }
+
+    public DateTime? ResetTokenExpiry { get; set; }
+
 
     [Required(ErrorMessage = "A telefonszám megadása kötelező.")]
-    [RegularExpression(@"^\+36\s\d{2}\s\d{3}\s\d{3}$",
-        ErrorMessage = "Formátum: +36 20 123 456")]
+    [RegularExpression(@"^\+36\s\d{2}\s\d{3}\s\d{4}$",
+        ErrorMessage = "Formátum: +36 20 123 4567")]
     public string PhoneNumber { get; set; } = null!;
 
 

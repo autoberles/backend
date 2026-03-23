@@ -373,6 +373,14 @@ public partial class CarRentalContext : DbContext
             entity.Property(e => e.PhoneNumber)
                 .HasMaxLength(30)
                 .HasColumnName("phone_number");
+            entity.Property(e => e.ResetToken)
+            .HasMaxLength(255)
+            .HasDefaultValueSql("'NULL'")
+            .HasColumnName("reset_token");
+            entity.Property(e => e.ResetTokenExpiry)
+            .HasDefaultValueSql("'NULL'")
+            .HasColumnType("datetime")
+            .HasColumnName("reset_token_expiry");
             entity.Property(e => e.Role)
                 .HasMaxLength(30)
                 .HasColumnName("role");

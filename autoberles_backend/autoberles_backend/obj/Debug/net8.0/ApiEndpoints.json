@@ -74,8 +74,24 @@
   },
   {
     "ContainingType": "autoberles_backend.Controllers.AuthController",
+    "Method": "ForgotPassword",
+    "RelativePath": "api/auth/forgot_password",
+    "HttpMethod": "POST",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "forgotPassword",
+        "Type": "autoberles_backend.Classes.ForgotPassword",
+        "IsRequired": true
+      }
+    ],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "autoberles_backend.Controllers.AuthController",
     "Method": "Login",
-    "RelativePath": "api/Auth/login",
+    "RelativePath": "api/auth/login",
     "HttpMethod": "POST",
     "IsController": true,
     "Order": 0,
@@ -91,7 +107,7 @@
   {
     "ContainingType": "autoberles_backend.Controllers.AuthController",
     "Method": "Register",
-    "RelativePath": "api/Auth/register",
+    "RelativePath": "api/auth/register",
     "HttpMethod": "POST",
     "IsController": true,
     "Order": 0,
@@ -99,6 +115,22 @@
       {
         "Name": "register",
         "Type": "autoberles_backend.Classes.Register",
+        "IsRequired": true
+      }
+    ],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "autoberles_backend.Controllers.AuthController",
+    "Method": "ResetPassword",
+    "RelativePath": "api/auth/reset_password",
+    "HttpMethod": "POST",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "resetPassword",
+        "Type": "autoberles_backend.Classes.ResetPassword",
         "IsRequired": true
       }
     ],

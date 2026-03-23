@@ -51,6 +51,8 @@ CREATE TABLE users (
     first_name VARCHAR(100) NOT NULL,
     email VARCHAR(150) NOT NULL UNIQUE,
     password_hash VARCHAR(255) NOT NULL,
+    reset_token VARCHAR(255) NULL,
+    reset_token_expiry DATETIME NULL,
     phone_number VARCHAR(30) NOT NULL UNIQUE,
     birth_date DATE NOT NULL,
     role VARCHAR (30) NOT NULL
@@ -168,23 +170,23 @@ INSERT INTO branches VALUES
 
 -- Users
 INSERT INTO users VALUES
-(1,'Kovács','András','kovacs.andras@email.hu','$2a$11$8JvY8mQ7k0zJk6V3bYwqUeQ7YxXlKz2mFv7H9pR1nD3tWcA5sE6uK','+36 20 111 111','1990-05-12','customer'),
-(2,'Nagy','Eszter','nagy.eszter@email.hu','$2a$11$2QkFvWm9YpT6rX1cJz8NHeL4sB7uA3dG5hK0nM2pR9tYwC6xZ8vQW','+36 20 222 222','1988-11-03','customer'),
-(3,'Tóth','Bence','toth.bence@email.hu','$2a$11$zX9yW8vU7tS6rQ5pO4nM3lK2jI1hG0fE9dC8bA7a6Z5y4X3w2V1uT','+36 20 333 333','1995-07-21','customer'),
-(4,'Szabó','Lilla','szabo.lilla@email.hu','$2a$11$LmN8oP7qR6sT5uV4wX3yZ2aB1cD0eF9gH8iJ7kL6mN5oP4qR3sT2u','+36 20 444 444','1992-02-14','customer'),
-(5,'Varga','Dávid','varga.david@email.hu','$2a$11$9x8y7z6w5v4u3t2s1r0qPOnMlKjIhGfEdCbA9876543210qwertyui','+36 20 555 555','1985-09-30','customer'),
-(6,'Kiss','Anna','kiss.anna@email.hu','$2a$11$AbCdEfGhIjKlMnOpQrStUvWxYz1234567890abcdefghijklmnopqr','+36 20 666 666','1998-12-08','customer'),
-(7,'Molnár','Gábor','molnar.gabor@email.hu','$2a$11$XyZ123456789abcdefghijklmnopqrstuvwABCDEFGHIJKLMNOPQRS','+36 20 777 777','1993-04-17','customer'),
-(8,'Horváth','Zsófia','horvath.zsofia@email.hu','$2a$11$QwErTyUiOpAsDfGhJkLzXcVbNm1234567890poiuytrewqlkjhgfds','+36 20 888 888','1991-06-25','customer'),
-(9,'Nagy','Lajos','nagy.lajos@email.hu','$2a$11$MnbVcXzAsDfGhJkLqWeRtYuIoP0987654321poiuytrewqlkjhgfds','+36 20 999 999','1973-04-17','customer'),
-(10,'Papp','Éva','papp.eva@email.hu','$2a$11$ZxCvBnMaSdFgHjKlQwErTyUiOp1234567890poiuytrewqlkjhgfdsa','+36 30 111 111','1996-07-08','customer'),
-(11,'Szilágyi','Attila','szilagyi.attila@email.hu','$2a$11$YtReWqAsDfGhJkLzXcVbNm1234567890poiuytrewqlkjhgfdsazxcv','+36 30 222 222','1987-09-19','customer'),
-(12,'Vass','Réka','vass.reka@email.hu','$2a$11$UuIiOoPpAaSsDdFfGgHhJjKkLlZzXxCcVvBbNnMm1234567890asdfg','+36 30 333 333','1992-11-22','customer'),
-(13,'Tóth','Márton','toth.marton@email.hu','$2a$11$KkLlMmNnOoPpQqRrSsTtUuVvWwXxYyZz1234567890abcdefghijklmn','+36 30 444 444','1990-01-15','customer'),
-(14,'Németh','Bianka','nemeth.bianka@email.hu','$2a$11$HgFdSaQwErTyUiOpLkJHgfdsazxcvbnm1234567890poiuytrewqlkj','+36 30 555 555','1998-05-30','customer'),
-(15,'Kelemen','Zoltán','kelemen.zoltan@email.hu','$2a$11$PpOoIiUuYyTtRrEeWwQqAaSsDdFfGgHhJjKkLlZzXxCcVvBbNnMm123','+36 30 666 666','1989-08-04','customer'),
-(16,'Major','Judit','major.judit@email.hu','$2a$11$AaBbCcDdEeFfGgHhIiJjKkLlMmNnOoPpQqRrSsTtUuVvWwXxYyZz123','+36 30 777 777','1995-12-18','customer'),
-(17,'Farkas','Balázs','farkas.balazs@email.hu','$2a$11$1234567890abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZabcd','+36 30 888 888','1994-03-12','customer');
+(1,'Kovács','András','kovacs.andras@email.hu','$2a$11$8JvY8mQ7k0zJk6V3bYwqUeQ7YxXlKz2mFv7H9pR1nD3tWcA5sE6uK',NULL,NULL,'+36 20 111 1111','1990-05-12','customer'),
+(2,'Nagy','Eszter','nagy.eszter@email.hu','$2a$11$2QkFvWm9YpT6rX1cJz8NHeL4sB7uA3dG5hK0nM2pR9tYwC6xZ8vQW',NULL,NULL,'+36 20 222 2222','1988-11-03','customer'),
+(3,'Tóth','Bence','toth.bence@email.hu','$2a$11$zX9yW8vU7tS6rQ5pO4nM3lK2jI1hG0fE9dC8bA7a6Z5y4X3w2V1uT',NULL,NULL,'+36 20 333 3333','1995-07-21','customer'),
+(4,'Szabó','Lilla','szabo.lilla@email.hu','$2a$11$LmN8oP7qR6sT5uV4wX3yZ2aB1cD0eF9gH8iJ7kL6mN5oP4qR3sT2u',NULL,NULL,'+36 20 444 4444','1992-02-14','customer'),
+(5,'Varga','Dávid','varga.david@email.hu','$2a$11$9x8y7z6w5v4u3t2s1r0qPOnMlKjIhGfEdCbA9876543210qwertyui',NULL,NULL,'+36 20 555 5555','1985-09-30','customer'),
+(6,'Kiss','Anna','kiss.anna@email.hu','$2a$11$AbCdEfGhIjKlMnOpQrStUvWxYz1234567890abcdefghijklmnopqr',NULL,NULL,'+36 20 666 6666','1998-12-08','customer'),
+(7,'Molnár','Gábor','molnar.gabor@email.hu','$2a$11$XyZ123456789abcdefghijklmnopqrstuvwABCDEFGHIJKLMNOPQRS',NULL,NULL,'+36 20 777 7777','1993-04-17','customer'),
+(8,'Horváth','Zsófia','horvath.zsofia@email.hu','$2a$11$QwErTyUiOpAsDfGhJkLzXcVbNm1234567890poiuytrewqlkjhgfds',NULL,NULL,'+36 20 888 8888','1991-06-25','customer'),
+(9,'Nagy','Lajos','nagy.lajos@email.hu','$2a$11$MnbVcXzAsDfGhJkLqWeRtYuIoP0987654321poiuytrewqlkjhgfds',NULL,NULL,'+36 20 999 9999','1973-04-17','customer'),
+(10,'Papp','Éva','papp.eva@email.hu','$2a$11$ZxCvBnMaSdFgHjKlQwErTyUiOp1234567890poiuytrewqlkjhgfdsa',NULL,NULL,'+36 30 111 1111','1996-07-08','customer'),
+(11,'Szilágyi','Attila','szilagyi.attila@email.hu','$2a$11$YtReWqAsDfGhJkLzXcVbNm1234567890poiuytrewqlkjhgfdsazxcv',NULL,NULL,'+36 30 222 2222','1987-09-19','customer'),
+(12,'Vass','Réka','vass.reka@email.hu','$2a$11$UuIiOoPpAaSsDdFfGgHhJjKkLlZzXxCcVvBbNnMm1234567890asdfg',NULL,NULL,'+36 30 333 3333','1992-11-22','customer'),
+(13,'Tóth','Márton','toth.marton@email.hu','$2a$11$KkLlMmNnOoPpQqRrSsTtUuVvWwXxYyZz1234567890abcdefghijklmn',NULL,NULL,'+36 30 444 4444','1990-01-15','customer'),
+(14,'Németh','Bianka','nemeth.bianka@email.hu','$2a$11$HgFdSaQwErTyUiOpLkJHgfdsazxcvbnm1234567890poiuytrewqlkj',NULL,NULL,'+36 30 555 5555','1998-05-30','customer'),
+(15,'Kelemen','Zoltán','kelemen.zoltan@email.hu','$2a$11$PpOoIiUuYyTtRrEeWwQqAaSsDdFfGgHhJjKkLlZzXxCcVvBbNnMm123',NULL,NULL,'+36 30 666 6666','1989-08-04','customer'),
+(16,'Major','Judit','major.judit@email.hu','$2a$11$AaBbCcDdEeFfGgHhIiJjKkLlMmNnOoPpQqRrSsTtUuVvWwXxYyZz123',NULL,NULL,'+36 30 777 7777','1995-12-18','customer'),
+(17,'Farkas','Balázs','farkas.balazs@email.hu','$2a$11$1234567890abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZabcd',NULL,NULL,'+36 30 888 8888','1994-03-12','customer');
 
 -- Cars
 INSERT INTO cars VALUES

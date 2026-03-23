@@ -8,10 +8,11 @@ using System.Text;
 using BCrypt.Net;
 using autoberles_backend.Classes;
 using autoberles_backend.Services;
+using System.Security.Cryptography;
 
 namespace autoberles_backend.Controllers
 {
-    [Route("api/[controller]")]
+    [Route("api/auth")]
     [ApiController]
     public class AuthController : ControllerBase
     {
@@ -25,6 +26,7 @@ namespace autoberles_backend.Controllers
             _config = config;
             _emailService = emailService;
         }
+
 
         [HttpPost("register")]
         public async Task<IActionResult> Register([FromBody] Register register)
@@ -55,9 +57,10 @@ namespace autoberles_backend.Controllers
                 user.Email,
                 "Sikeres regisztráció",
                 $"Kedves {user.FirstName}!<br><br>Sikeresen regisztráltál az Autokell autóbérlés oldalára!"
-            ); 
+            );
             return Ok(new { message = $"Sikeres regisztráció, email elküldve a(z) {user.Email} email címre!" });
         }
+
 
         [HttpPost("login")]
         public async Task<IActionResult> Login([FromBody] Login login)
@@ -69,6 +72,46 @@ namespace autoberles_backend.Controllers
 
             var token = GenerateJwtToken(user);
             return Ok(new { Token = token });
+        }
+
+
+        [HttpPost("forgot_password")]
+        public async Task<IActionResult> ForgotPassword([FromBody] ForgotPassword forgotPassword)
+        {
+            var user = await _context.Users.FirstOrDefaultAsync(u => u.Email == forgotPassword.Email);
+            if (user == null)
+                return Ok($"Helyreállítási kód elküldve a {user.Email} email címre.");
+            var code = RandomNumberGenerator.GetInt32(100000, 999999).ToString(); 
+            user.ResetToken = code;
+            user.ResetTokenExpiry = DateTime.UtcNow.AddMinutes(10).AddHours(1);
+            await _context.SaveChangesAsync();
+
+            _ = _emailService.SendEmailAsync(
+                user.Email,
+                "Jelszó visszaállítás",
+                $@"<h2>Jelszó visszaállítás</h2>
+                    <p>A kódod:</p>
+                    <h1>{code}</h1>
+                    <p>10 percig érvényes.</p>"
+            );
+            return Ok($"Helyreállítási kód elküldve a {user.Email} email címre.");
+        }
+
+
+        [HttpPost("reset_password")]
+        public async Task<IActionResult> ResetPassword([FromBody] ResetPassword resetPassword)
+        {
+            var user = await _context.Users.FirstOrDefaultAsync(u => u.Email == resetPassword.Email);
+            if (user == null || user.ResetToken != resetPassword.Code ||
+                user.ResetTokenExpiry == null || user.ResetTokenExpiry < DateTime.UtcNow)
+                return BadRequest("Érvénytelen vagy lejárt kód.");
+
+            user.PasswordHash = BCrypt.Net.BCrypt.HashPassword(resetPassword.NewPassword);
+            user.ResetToken = null;
+            user.ResetTokenExpiry = null;
+
+            await _context.SaveChangesAsync();
+            return Ok("Jelszó sikeresen módosítva.");
         }
 
         private string GenerateJwtToken(User user)

@@ -46,7 +46,7 @@ namespace autoberles_backend.Controllers
         }
 
         [Authorize]
-        [HttpGet("rentals/my-rentals")]
+        [HttpGet("rentals/my_rentals")]
         public async Task<IActionResult> GetMyRentals()
         {
             try
@@ -65,7 +65,7 @@ namespace autoberles_backend.Controllers
         }
 
         [Authorize]
-        [HttpGet("rentals/my-cars")]
+        [HttpGet("rentals/my_cars")]
         public async Task<IActionResult> GetMyRentedCars()
         {
             try
