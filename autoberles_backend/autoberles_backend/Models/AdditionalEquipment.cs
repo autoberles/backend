@@ -1,4 +1,6 @@
-﻿using System;
+﻿using Microsoft.AspNetCore.Mvc.ModelBinding;
+using Swashbuckle.AspNetCore.Annotations;
+using System;
 using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
 using System.Text.Json.Serialization;
@@ -8,8 +10,12 @@ namespace autoberles_backend.Models;
 public partial class AdditionalEquipment
 {
     [Key]
+    [BindNever]
+    [SwaggerIgnore]
     public int Id { get; set; }
 
+    [BindNever]
+    [SwaggerIgnore]
     public int CarId { get; set; }
 
 

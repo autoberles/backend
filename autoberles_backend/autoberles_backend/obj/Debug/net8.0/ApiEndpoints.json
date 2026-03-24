@@ -454,7 +454,7 @@
   {
     "ContainingType": "autoberles_backend.Controllers.RentalController",
     "Method": "GetMyRentedCars",
-    "RelativePath": "api/rentals/my-cars",
+    "RelativePath": "api/rentals/my_cars",
     "HttpMethod": "GET",
     "IsController": true,
     "Order": 0,
@@ -464,7 +464,7 @@
   {
     "ContainingType": "autoberles_backend.Controllers.RentalController",
     "Method": "GetMyRentals",
-    "RelativePath": "api/rentals/my-rentals",
+    "RelativePath": "api/rentals/my_rentals",
     "HttpMethod": "GET",
     "IsController": true,
     "Order": 0,

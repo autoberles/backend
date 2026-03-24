@@ -1,4 +1,6 @@
-﻿using Microsoft.EntityFrameworkCore;
+﻿using Microsoft.AspNetCore.Mvc.ModelBinding;
+using Microsoft.EntityFrameworkCore;
+using Swashbuckle.AspNetCore.Annotations;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
@@ -13,6 +15,8 @@ namespace autoberles_backend.Models;
 public partial class Branch
 {
     [Key]
+    [BindNever]
+    [SwaggerIgnore]
     public int Id { get; set; }
 
     [Required(ErrorMessage = "A város megadása kötelező.")]

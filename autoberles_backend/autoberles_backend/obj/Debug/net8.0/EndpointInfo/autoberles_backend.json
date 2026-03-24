@@ -635,7 +635,7 @@
         }
       }
     },
-    "/api/rentals/my-rentals": {
+    "/api/rentals/my_rentals": {
       "get": {
         "tags": [
           "Rental"
@@ -647,7 +647,7 @@
         }
       }
     },
-    "/api/rentals/my-cars": {
+    "/api/rentals/my_cars": {
       "get": {
         "tags": [
           "Rental"
@@ -940,14 +940,6 @@
         ],
         "type": "object",
         "properties": {
-          "id": {
-            "type": "integer",
-            "format": "int32"
-          },
-          "car_id": {
-            "type": "integer",
-            "format": "int32"
-          },
           "parking_sensors": {
             "type": "boolean"
           },
@@ -981,10 +973,6 @@
         ],
         "type": "object",
         "properties": {
-          "id": {
-            "type": "integer",
-            "format": "int32"
-          },
           "city": {
             "maxLength": 100,
             "minLength": 2,
@@ -1033,10 +1021,6 @@
         ],
         "type": "object",
         "properties": {
-          "id": {
-            "type": "integer",
-            "format": "int32"
-          },
           "availability": {
             "type": "boolean"
           },
