@@ -37,7 +37,12 @@ public partial class CarRentalContext : DbContext
     public virtual DbSet<WheelDriveType> WheelDriveTypes { get; set; }
 
     protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
-        => optionsBuilder.UseMySQL("Server=localhost;Database=car_rental;uid=root;pwd=;");
+    {
+        if (!optionsBuilder.IsConfigured)
+        {
+            optionsBuilder.UseMySQL("Server=localhost;Database=car_rental;uid=root;pwd=;");
+        }
+    }
 
     protected override void OnModelCreating(ModelBuilder modelBuilder)
     {

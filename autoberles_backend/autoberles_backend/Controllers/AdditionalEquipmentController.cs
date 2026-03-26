@@ -12,23 +12,30 @@ namespace autoberles_backend.Controllers
     [ApiController]
     public class AdditionalEquipmentController : ControllerBase
     {
-        CarRentalContext context = new CarRentalContext();
+
+        private readonly CarRentalContext _context;
+        public AdditionalEquipmentController(CarRentalContext context)
+        {
+            _context = context;
+        }
+
 
         [HttpGet]
         public async Task<IActionResult> GetAllAdditionalEquipments()
         {
-            var aes = await context.AdditionalEquipments.Include(x => x.AirConditioning).OrderBy(x => x.Id).ToListAsync();
+            var aes = await _context.AdditionalEquipments.Include(x => x.AirConditioning).OrderBy(x => x.Id).ToListAsync();
             if (aes == null)
                 return BadRequest("Hiba az extra felszereltségek lekérdezése során");
             return Ok(aes);
         }
+
 
         [HttpGet("{id}")]
         public async Task<IActionResult> GetAdditionalEquipmentsById([FromRoute] int id)
         {
             try
             {
-                var ae = await context.AdditionalEquipments.Include(x => x.AirConditioning).FirstOrDefaultAsync(x => x.Id == id);
+                var ae = await _context.AdditionalEquipments.Include(x => x.AirConditioning).FirstOrDefaultAsync(x => x.Id == id);
                 if (ae == null)
                     return NotFound($"Nem található extra felszereltség a(z) {id} ID-val!");
                 return Ok(ae);
@@ -39,13 +46,14 @@ namespace autoberles_backend.Controllers
             }
         }
 
+
         [Authorize(Roles = "admin")]
         [HttpPatch("{id}")]
         public async Task<IActionResult> PatchAdditionalEquipment(int id, [FromBody] JsonElement body)
         {
             try
             {
-                var equipment = await context.AdditionalEquipments.FindAsync(id);
+                var equipment = await _context.AdditionalEquipments.FindAsync(id);
                 if (equipment == null)
                     return NotFound($"Nem található felszereltség a(z) {id} ID-val!");
                 if (body.ValueKind != JsonValueKind.Object)
@@ -63,7 +71,7 @@ namespace autoberles_backend.Controllers
                     var convertedValue = JsonSerializer.Deserialize(property.Value.GetRawText(), propInfo.PropertyType);
                     propInfo.SetValue(equipment, convertedValue);
                 }
-                await context.SaveChangesAsync();
+                await _context.SaveChangesAsync();
                 return Ok($"A(z) {id} ID-val rendelkező felszereltség frissítésre került.");
             }
             catch (Exception ex)
