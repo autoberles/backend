@@ -132,6 +132,15 @@ public static class TestDbContextFactory
         };
         context.FuelTypes.AddRange(fuelTypes);
 
+        var transmissionTypes = new List<TransmissionType>
+        {
+            new TransmissionType { Id = 1, Name = "automata" },
+            new TransmissionType { Id = 2, Name = "dupla kuplungos" },
+            new TransmissionType { Id = 3, Name = "fokozatmentes automata" },
+            new TransmissionType { Id = 4, Name = "manuális" }
+        };
+        context.TransmissionTypes.AddRange(transmissionTypes);
+
         context.SaveChanges();
     }
 }

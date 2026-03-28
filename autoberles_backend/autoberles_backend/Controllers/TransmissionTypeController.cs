@@ -8,12 +8,16 @@ namespace autoberles_backend.Controllers
     [ApiController]
     public class TransmissionTypeController : ControllerBase
     {
-        CarRentalContext context = new CarRentalContext();
+        private readonly CarRentalContext _context;
+        public TransmissionTypeController(CarRentalContext context)
+        {
+            _context = context;
+        }
 
         [HttpGet]
         public async Task<IActionResult> GetAllTransmissionTypes()
         {
-            var transmissionTypes = await context.TransmissionTypes.ToListAsync();
+            var transmissionTypes = await _context.TransmissionTypes.ToListAsync();
             if (transmissionTypes == null)
                 return BadRequest("Hiba a váltótípusok lekérdezése során");
             return Ok(transmissionTypes);
@@ -24,7 +28,7 @@ namespace autoberles_backend.Controllers
         {
             try
             {
-                var transmissionType = await context.TransmissionTypes.FirstOrDefaultAsync(x => x.Id == id);
+                var transmissionType = await _context.TransmissionTypes.FirstOrDefaultAsync(x => x.Id == id);
                 if (transmissionType == null)
                     return NotFound($"Nem található váltótípus a(z) {id} ID-val!");
                 return Ok(transmissionType);

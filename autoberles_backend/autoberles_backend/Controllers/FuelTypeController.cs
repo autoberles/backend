@@ -13,6 +13,7 @@ namespace autoberles_backend.Controllers
         {
             _context = context;
         }
+
         [HttpGet]
         public async Task<IActionResult> GetAllFuelTypes()
         {

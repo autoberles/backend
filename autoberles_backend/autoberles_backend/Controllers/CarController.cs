@@ -14,7 +14,6 @@ namespace autoberles_backend.Controllers
     {
         CarRentalContext context = new CarRentalContext();
 
-
         [HttpGet("cars")]
         public async Task<IActionResult> GetAllCars()
         {

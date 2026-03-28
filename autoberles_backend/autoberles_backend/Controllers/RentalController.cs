@@ -16,7 +16,6 @@ namespace autoberles_backend.Controllers
     {
         CarRentalContext context = new CarRentalContext();
 
-
         [Authorize(Roles = "admin,agent")]
         [HttpGet("rentals")]
         public async Task<IActionResult> GetAllRentals()
