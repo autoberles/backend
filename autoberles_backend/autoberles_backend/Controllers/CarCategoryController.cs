@@ -8,12 +8,15 @@ namespace autoberles_backend.Controllers
     [ApiController]
     public class CarCategoryController : ControllerBase
     {
-        CarRentalContext context = new CarRentalContext();
-
+        private readonly CarRentalContext _context;
+        public CarCategoryController(CarRentalContext context)
+        {
+            _context = context;
+        }
         [HttpGet]
         public async Task<IActionResult> GetAllCarCategories()
         {
-            var carCategories = await context.CarCategories.ToListAsync();
+            var carCategories = await _context.CarCategories.ToListAsync();
             if (carCategories == null)
                 return BadRequest("Hiba az autókategóriák lekérdezése során");
             return Ok(carCategories);
@@ -24,7 +27,7 @@ namespace autoberles_backend.Controllers
         {
             try
             {
-                var carCategory = await context.CarCategories.FirstOrDefaultAsync(x => x.Id == id);
+                var carCategory = await _context.CarCategories.FirstOrDefaultAsync(x => x.Id == id);
                 if (carCategory == null)
                     return NotFound($"Nem található autókategória a(z) {id} ID-val!");
                 return Ok(carCategory);

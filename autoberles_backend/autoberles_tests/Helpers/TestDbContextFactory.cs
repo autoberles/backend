@@ -85,6 +85,7 @@ public static class TestDbContextFactory
             }
         };
         context.Cars.AddRange(cars);
+
         var equipments = new List<AdditionalEquipment>
         {
             new AdditionalEquipment
@@ -111,6 +112,17 @@ public static class TestDbContextFactory
             }
         };
         context.AdditionalEquipments.AddRange(equipments);
+
+        var carCategories = new List<CarCategory>
+        {
+            new CarCategory { Id = 1, Name = "gazdaságos kisautó" },
+            new CarCategory { Id = 2, Name = "középkategóriás családi autó" },
+            new CarCategory { Id = 3, Name = "nagykategóriás autó" },
+            new CarCategory { Id = 4, Name = "sportautó" },
+            new CarCategory { Id = 5, Name = "városi terepjáró" }
+        };
+        context.CarCategories.AddRange(carCategories);
+
         context.SaveChanges();
     }
 }
