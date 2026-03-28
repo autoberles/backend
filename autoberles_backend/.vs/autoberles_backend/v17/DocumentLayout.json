@@ -3,8 +3,12 @@
   "WorkspaceRootPath": "C:\\backend\\autoberles_backend\\",
   "Documents": [
     {
-      "AbsoluteMoniker": "D:0:0:{85E7BE69-D17D-49AF-A99C-EBE2407BC795}|autoberles_tests\\autoberles_tests.csproj|c:\\backend\\autoberles_backend\\autoberles_tests\\tests\\wheeldrivetypetests.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{85E7BE69-D17D-49AF-A99C-EBE2407BC795}|autoberles_tests\\autoberles_tests.csproj|solutionrelative:autoberles_tests\\tests\\wheeldrivetypetests.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+      "AbsoluteMoniker": "D:0:0:{85E7BE69-D17D-49AF-A99C-EBE2407BC795}|autoberles_tests\\autoberles_tests.csproj|c:\\backend\\autoberles_backend\\autoberles_tests\\tests\\branchtests.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{85E7BE69-D17D-49AF-A99C-EBE2407BC795}|autoberles_tests\\autoberles_tests.csproj|solutionrelative:autoberles_tests\\tests\\branchtests.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{85E7BE69-D17D-49AF-A99C-EBE2407BC795}|autoberles_tests\\autoberles_tests.csproj|c:\\backend\\autoberles_backend\\autoberles_tests\\tests\\authtests.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{85E7BE69-D17D-49AF-A99C-EBE2407BC795}|autoberles_tests\\autoberles_tests.csproj|solutionrelative:autoberles_tests\\tests\\authtests.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     }
   ],
   "DocumentGroupContainers": [
@@ -14,7 +18,7 @@
       "DocumentGroups": [
         {
           "DockedWidth": 200,
-          "SelectedChildIndex": 2,
+          "SelectedChildIndex": 4,
           "Children": [
             {
               "$type": "Bookmark",
@@ -26,15 +30,28 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 0,
-              "Title": "WheelDriveTypeTests.cs",
-              "DocumentMoniker": "C:\\backend\\autoberles_backend\\autoberles_tests\\Tests\\WheelDriveTypeTests.cs",
-              "RelativeDocumentMoniker": "autoberles_tests\\Tests\\WheelDriveTypeTests.cs",
-              "ToolTip": "C:\\backend\\autoberles_backend\\autoberles_tests\\Tests\\WheelDriveTypeTests.cs",
-              "RelativeToolTip": "autoberles_tests\\Tests\\WheelDriveTypeTests.cs",
-              "ViewState": "AgIAABMAAAAAAAAAAAAQwCYAAABmAAAAAAAAAA==",
+              "DocumentIndex": 1,
+              "Title": "AuthTests.cs",
+              "DocumentMoniker": "C:\\backend\\autoberles_backend\\autoberles_tests\\Tests\\AuthTests.cs",
+              "RelativeDocumentMoniker": "autoberles_tests\\Tests\\AuthTests.cs",
+              "ToolTip": "C:\\backend\\autoberles_backend\\autoberles_tests\\Tests\\AuthTests.cs",
+              "RelativeToolTip": "autoberles_tests\\Tests\\AuthTests.cs",
+              "ViewState": "AgIAAE0AAAAAAAAAAAAgwFUAAAA6AAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2026-03-28T19:47:52.745Z",
+              "WhenOpened": "2026-03-28T20:12:52.465Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 0,
+              "Title": "BranchTests.cs",
+              "DocumentMoniker": "C:\\backend\\autoberles_backend\\autoberles_tests\\Tests\\BranchTests.cs",
+              "RelativeDocumentMoniker": "autoberles_tests\\Tests\\BranchTests.cs",
+              "ToolTip": "C:\\backend\\autoberles_backend\\autoberles_tests\\Tests\\BranchTests.cs",
+              "RelativeToolTip": "autoberles_tests\\Tests\\BranchTests.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAGAAAAAIAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2026-03-28T20:02:27.173Z",
               "EditorCaption": ""
             }
           ]

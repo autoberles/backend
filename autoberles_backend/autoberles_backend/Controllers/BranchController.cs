@@ -12,12 +12,16 @@ namespace autoberles_backend.Controllers
     [ApiController]
     public class BranchController : ControllerBase
     {
-        CarRentalContext context = new CarRentalContext();
+        private readonly CarRentalContext _context;
+        public BranchController(CarRentalContext context)
+        {
+            _context = context;
+        }
 
         [HttpGet("branches")]
         public async Task<IActionResult> GetAllBranches()
         {
-            List<Branch> branches = await context.Branches.ToListAsync();
+            List<Branch> branches = await _context.Branches.ToListAsync();
             if (branches == null)
                 return BadRequest("Hiba a telephelyek lekérdezése során");
             return Ok(branches);
@@ -28,7 +32,7 @@ namespace autoberles_backend.Controllers
         {
             try
             {
-                Branch? branch = await context.Branches.FindAsync(id);
+                Branch? branch = await _context.Branches.FindAsync(id);
                 if (branch == null)
                     return NotFound($"Nem található telephely a(z) {id} ID-val!");
                 return Ok(branch);
@@ -48,17 +52,17 @@ namespace autoberles_backend.Controllers
                 if (!ModelState.IsValid)
                     return BadRequest(ModelState);
 
-                if (await context.Branches.AnyAsync(x => x.Address == branch.Address))
+                if (await _context.Branches.AnyAsync(x => x.Address == branch.Address))
                     return BadRequest("Ez a cím már létezik.");
 
-                if (await context.Branches.AnyAsync(x => x.Email == branch.Email))
+                if (await _context.Branches.AnyAsync(x => x.Email == branch.Email))
                     return BadRequest("Ez az email már létezik.");
 
-                if (await context.Branches.AnyAsync(x => x.PhoneNumber == branch.PhoneNumber))
+                if (await _context.Branches.AnyAsync(x => x.PhoneNumber == branch.PhoneNumber))
                     return BadRequest("Ez a telefonszám már létezik.");
 
-                context.Branches.Add(branch);
-                await context.SaveChangesAsync();
+                _context.Branches.Add(branch);
+                await _context.SaveChangesAsync();
                 return CreatedAtAction(nameof(GetBranchById), new { id = branch.Id }, branch);
             }
             catch (Exception ex)
@@ -73,7 +77,7 @@ namespace autoberles_backend.Controllers
         {
             try
             {
-                var branch = await context.Branches.FindAsync(id);
+                var branch = await _context.Branches.FindAsync(id);
                 if (branch == null)
                     return NotFound($"Nem található telephely a(z) {id} ID-val!");
                 if (body.ValueKind != JsonValueKind.Object)
@@ -92,23 +96,23 @@ namespace autoberles_backend.Controllers
                     string? newValue = convertedValue?.ToString();
 
                     if (propInfo.Name.Equals("City", StringComparison.OrdinalIgnoreCase) &&
-                        await context.Branches.AnyAsync(x => x.City == newValue && x.Id != id))
+                        await _context.Branches.AnyAsync(x => x.City == newValue && x.Id != id))
                         return BadRequest("Ez a város már létezik.");
 
                     if (propInfo.Name.Equals("Address", StringComparison.OrdinalIgnoreCase) &&
-                        await context.Branches.AnyAsync(x => x.Address == newValue && x.Id != id))
+                        await _context.Branches.AnyAsync(x => x.Address == newValue && x.Id != id))
                         return BadRequest("Ez a cím már létezik.");
 
                     if (propInfo.Name.Equals("Email", StringComparison.OrdinalIgnoreCase) &&
-                        await context.Branches.AnyAsync(x => x.Email == newValue && x.Id != id))
+                        await _context.Branches.AnyAsync(x => x.Email == newValue && x.Id != id))
                         return BadRequest("Ez az email már létezik.");
 
                     if (propInfo.Name.Equals("PhoneNumber", StringComparison.OrdinalIgnoreCase) &&
-                        await context.Branches.AnyAsync(x => x.PhoneNumber == newValue && x.Id != id))
+                        await _context.Branches.AnyAsync(x => x.PhoneNumber == newValue && x.Id != id))
                         return BadRequest("Ez a telefonszám már létezik.");
                     propInfo.SetValue(branch, convertedValue);
                 }
-                await context.SaveChangesAsync();
+                await _context.SaveChangesAsync();
                 return Ok($"A(z) {id} ID-val rendelkező telephely frissítésre került!");
             }
             catch (Exception ex)
@@ -123,11 +127,11 @@ namespace autoberles_backend.Controllers
         {
             try
             {
-                Branch? branch = await context.Branches.FindAsync(id);
+                Branch? branch = await _context.Branches.FindAsync(id);
                 if (branch == null)
                     return NotFound($"Nem található telephely a(z) {id} ID-val!");
-                context.Branches.Remove(branch);
-                await context.SaveChangesAsync();
+                _context.Branches.Remove(branch);
+                await _context.SaveChangesAsync();
                 return Ok($"A(z) {id} ID-val rendelkező telephely sikeresen törölve!");
             }
             catch (DbUpdateException ex)

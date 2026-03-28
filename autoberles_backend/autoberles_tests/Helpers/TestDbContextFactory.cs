@@ -23,6 +23,75 @@ public static class TestDbContextFactory
         };
         context.AirConditioningTypes.AddRange(airConditioningTypes);
 
+        var branches = new List<Branch>
+        {
+            new Branch
+            {
+                Id = 1,
+                City = "Budapest",
+                Address = "1044 Budapest, Váci út 123.",
+                Email = "budapest@autoker.hu",
+                PhoneNumber = "+36 15 555 1231"
+            },
+            new Branch
+            {
+                Id = 2,
+                City = "Győr",
+                Address = "9022 Győr, Szent István út 45.",
+                Email = "gyor@autoker.hu",
+                PhoneNumber = "+36 96 555 6781"
+            },
+            new Branch
+            {
+                Id = 3,
+                City = "Szeged",
+                Address = "6724 Szeged, Kossuth Lajos sugárút 78.",
+                Email = "szeged@autoker.hu",
+                PhoneNumber = "+36 62 555 9871"
+            },
+            new Branch
+            {
+                Id = 4,
+                City = "Debrecen",
+                Address = "4026 Debrecen, Piac utca 12.",
+                Email = "debrecen@autoker.hu",
+                PhoneNumber = "+36 52 555 1111"
+            },
+            new Branch
+            {
+                Id = 5,
+                City = "Székesfehérvár",
+                Address = "8000 Székesfehérvár, Palotai út 33.",
+                Email = "fehervar@autoker.hu",
+                PhoneNumber = "+36 22 555 2221"
+            },
+            new Branch
+            {
+                Id = 6,
+                City = "Pécs",
+                Address = "7621 Pécs, Rákóczi út 50.",
+                Email = "pecs@autoker.hu",
+                PhoneNumber = "+36 72 555 3331"
+            },
+            new Branch
+            {
+                Id = 7,
+                City = "Miskolc",
+                Address = "3711 Miskolc, Széchenyi utca 88.",
+                Email = "miskolc@autoker.hu",
+                PhoneNumber = "+36 46 555 4441"
+            },
+            new Branch
+            {
+                Id = 8,
+                City = "Zalaegerszeg",
+                Address = "8900 Zalaegerszeg, Kossuth Lajos utca 21.",
+                Email = "zalaegerszeg@autoker.hu",
+                PhoneNumber = "+36 92 555 5551"
+            }
+        };
+        context.Branches.AddRange(branches);
+
         var cars = new List<Car>
         {
             new Car
