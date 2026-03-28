@@ -123,6 +123,15 @@ public static class TestDbContextFactory
         };
         context.CarCategories.AddRange(carCategories);
 
+        var fuelTypes = new List<FuelType>
+        {
+            new FuelType { Id = 1, Name = "benzines" },
+            new FuelType { Id = 2, Name = "dízel" },
+            new FuelType { Id = 3, Name = "elektromos" },
+            new FuelType { Id = 4, Name = "hibrid" }
+        };
+        context.FuelTypes.AddRange(fuelTypes);
+
         context.SaveChanges();
     }
 }

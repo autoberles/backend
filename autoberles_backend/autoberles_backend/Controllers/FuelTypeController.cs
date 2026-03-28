@@ -8,12 +8,15 @@ namespace autoberles_backend.Controllers
     [ApiController]
     public class FuelTypeController : ControllerBase
     {
-        CarRentalContext context = new CarRentalContext();
-
+        private readonly CarRentalContext _context;
+        public FuelTypeController(CarRentalContext context)
+        {
+            _context = context;
+        }
         [HttpGet]
         public async Task<IActionResult> GetAllFuelTypes()
         {
-            var fuelTypes = await context.FuelTypes.ToListAsync();
+            var fuelTypes = await _context.FuelTypes.ToListAsync();
             if (fuelTypes == null)
                 return BadRequest("Hiba az üzemanyagtípusok lekérdezése során");
             return Ok(fuelTypes);
@@ -24,7 +27,7 @@ namespace autoberles_backend.Controllers
         {
             try
             {
-                var fuelType = await context.FuelTypes.FirstOrDefaultAsync(x => x.Id == id);
+                var fuelType = await _context.FuelTypes.FirstOrDefaultAsync(x => x.Id == id);
                 if (fuelType == null)
                     return NotFound($"Nem található üzemanyagtípus a(z) {id} ID-val!");
                 return Ok(fuelType);
