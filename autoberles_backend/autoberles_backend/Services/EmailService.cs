@@ -13,7 +13,7 @@ namespace autoberles_backend.Services
             _config = config;
         }
 
-        public async Task SendEmailAsync(string toEmail, string subject, string body)
+        public virtual async Task SendEmailAsync(string toEmail, string subject, string body)
         {
             var smtpClient = new SmtpClient(_config["Email:SmtpHost"])
             {
