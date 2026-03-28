@@ -8,12 +8,15 @@ namespace autoberles_backend.Controllers
     [ApiController]
     public class WheelDriveTypeController : ControllerBase
     {
-        CarRentalContext context = new CarRentalContext();
-
+        private readonly CarRentalContext _context;
+        public WheelDriveTypeController(CarRentalContext context)
+        {
+            _context = context;
+        }
         [HttpGet]
         public async Task<IActionResult> GetAllWheelDriveTypes()
         {
-            var wheelDriveTypes = await context.WheelDriveTypes.ToListAsync();
+            var wheelDriveTypes = await _context.WheelDriveTypes.ToListAsync();
             if (wheelDriveTypes == null)
                 return BadRequest("Hiba a kerékmeghajtások lekérdezése során");
             return Ok(wheelDriveTypes);
@@ -24,7 +27,7 @@ namespace autoberles_backend.Controllers
         {
             try
             {
-                var wheelDriveType = await context.WheelDriveTypes.FirstOrDefaultAsync(x => x.Id == id);
+                var wheelDriveType = await _context.WheelDriveTypes.FirstOrDefaultAsync(x => x.Id == id);
                 if (wheelDriveType == null)
                     return NotFound($"Nem található kerékmeghajtás a(z) {id} ID-val!");
                 return Ok(wheelDriveType);

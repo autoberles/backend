@@ -141,6 +141,14 @@ public static class TestDbContextFactory
         };
         context.TransmissionTypes.AddRange(transmissionTypes);
 
+        var wheeldriveTypes = new List<WheelDriveType>
+        {
+            new WheelDriveType { Id = 1, Name = "elsőkerék-meghajtású" },
+            new WheelDriveType { Id = 2, Name = "hátsókerék-meghajtású" },
+            new WheelDriveType { Id = 3, Name = "összkerékmeghajtású" }
+        };
+        context.WheelDriveTypes.AddRange(wheeldriveTypes);
+
         context.SaveChanges();
     }
 }

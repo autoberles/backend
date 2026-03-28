@@ -24,7 +24,7 @@ public class TransmissionTypeTests
     }
 
     [Fact(DisplayName = "[TransmissionType] Should return transmission type by ID")]
-    public async Task ReturnsFuelTypeById()
+    public async Task ReturnsTransmissionTypeById()
     {
         var context = TestDbContextFactory.Create();
         var controller = new TransmissionTypeController(context);
