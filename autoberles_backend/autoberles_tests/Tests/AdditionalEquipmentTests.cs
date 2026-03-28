@@ -3,7 +3,6 @@ using autoberles_backend.Controllers;
 using autoberles_backend.Models;
 using autoberles_tests.Helpers;
 using Microsoft.AspNetCore.Mvc;
-using Xunit.Abstractions;
 using System.Text.Json;
 
 namespace autoberles_tests.Tests;
@@ -11,8 +10,8 @@ namespace autoberles_tests.Tests;
 public class AdditionalEquipmentTests
 {
 
-    [Fact(DisplayName = "Should return all additional equipments")]
-    public async Task ReturnsAllEquipments()
+    [Fact(DisplayName = "[AdditionalEquipment] Should return all additional equipments")]
+    public async Task ReturnsAllAdditionalEquipments()
     {
         var context = TestDbContextFactory.Create();
         var controller = new AdditionalEquipmentController(context);
@@ -22,13 +21,13 @@ public class AdditionalEquipmentTests
             throw new Exception("No OkObjectResult was received from the API.");
         var data = okResult.Value as List<AdditionalEquipment>;
         if (data == null)
-            throw new Exception("The returned data is not a list");
-        data.Count.Should().Be(2, "there must be 2 elements");
+            throw new Exception("The returned data is not a list.");
+        data.Count.Should().Be(2, "there must be 2 elements.");
     }
 
 
-    [Fact(DisplayName = "Should return additional equipment by ID")]
-    public async Task ReturnsEquipmentById()
+    [Fact(DisplayName = "[AdditionalEquipment] Should return additional equipment by ID")]
+    public async Task ReturnsAdditionalEquipmentById()
     {
         var context = TestDbContextFactory.Create();
         var controller = new AdditionalEquipmentController(context);
@@ -38,14 +37,14 @@ public class AdditionalEquipmentTests
             throw new Exception("No OkObjectResult was received from the API.");
         var data = okResult.Value as AdditionalEquipment;
         if (data == null)
-            throw new Exception("The returned data is not an AdditionalEquipment object");
+            throw new Exception("The returned data is not an AdditionalEquipment object.");
         data.Id.Should().Be(1, "the returned object should have ID 1");
         data.CarId.Should().Be(1, "the returned object should belong to CarId 1");
     }
 
 
-    [Fact(DisplayName = "Should patch an existing additional equipment")]
-    public async Task UpdatesExistingEquipment()
+    [Fact(DisplayName = "[AdditionalEquipment] Should patch an existing additional equipment")]
+    public async Task UpdatesExistingAdditionalEquipment()
     {
         var context = TestDbContextFactory.Create();
         var controller = new AdditionalEquipmentController(context);

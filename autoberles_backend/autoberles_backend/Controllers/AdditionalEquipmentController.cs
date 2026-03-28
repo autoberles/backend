@@ -12,13 +12,11 @@ namespace autoberles_backend.Controllers
     [ApiController]
     public class AdditionalEquipmentController : ControllerBase
     {
-
         private readonly CarRentalContext _context;
         public AdditionalEquipmentController(CarRentalContext context)
         {
             _context = context;
         }
-
 
         [HttpGet]
         public async Task<IActionResult> GetAllAdditionalEquipments()

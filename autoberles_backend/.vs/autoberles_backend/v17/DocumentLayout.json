@@ -3,12 +3,20 @@
   "WorkspaceRootPath": "C:\\backend\\autoberles_backend\\",
   "Documents": [
     {
+      "AbsoluteMoniker": "D:0:0:{85E7BE69-D17D-49AF-A99C-EBE2407BC795}|autoberles_tests\\autoberles_tests.csproj|c:\\backend\\autoberles_backend\\autoberles_tests\\tests\\additionalequipmenttests.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{85E7BE69-D17D-49AF-A99C-EBE2407BC795}|autoberles_tests\\autoberles_tests.csproj|solutionrelative:autoberles_tests\\tests\\additionalequipmenttests.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{85E7BE69-D17D-49AF-A99C-EBE2407BC795}|autoberles_tests\\autoberles_tests.csproj|c:\\backend\\autoberles_backend\\autoberles_tests\\helpers\\testdbcontextfactory.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{85E7BE69-D17D-49AF-A99C-EBE2407BC795}|autoberles_tests\\autoberles_tests.csproj|solutionrelative:autoberles_tests\\helpers\\testdbcontextfactory.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
       "AbsoluteMoniker": "D:0:0:{41495FAA-ADEC-43FA-AAE4-4D5298525BBD}|autoberles_backend\\autoberles_backend.csproj|c:\\backend\\autoberles_backend\\autoberles_backend\\controllers\\additionalequipmentcontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
       "RelativeMoniker": "D:0:0:{41495FAA-ADEC-43FA-AAE4-4D5298525BBD}|autoberles_backend\\autoberles_backend.csproj|solutionrelative:autoberles_backend\\controllers\\additionalequipmentcontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{41495FAA-ADEC-43FA-AAE4-4D5298525BBD}|autoberles_backend\\autoberles_backend.csproj|c:\\backend\\autoberles_backend\\autoberles_backend\\models\\additionalequipment.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{41495FAA-ADEC-43FA-AAE4-4D5298525BBD}|autoberles_backend\\autoberles_backend.csproj|solutionrelative:autoberles_backend\\models\\additionalequipment.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+      "AbsoluteMoniker": "D:0:0:{41495FAA-ADEC-43FA-AAE4-4D5298525BBD}|autoberles_backend\\autoberles_backend.csproj|c:\\backend\\autoberles_backend\\autoberles_backend\\carrentalcontext.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{41495FAA-ADEC-43FA-AAE4-4D5298525BBD}|autoberles_backend\\autoberles_backend.csproj|solutionrelative:autoberles_backend\\carrentalcontext.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     }
   ],
   "DocumentGroupContainers": [
@@ -31,27 +39,54 @@
             {
               "$type": "Document",
               "DocumentIndex": 0,
-              "Title": "AdditionalEquipmentController.cs",
-              "DocumentMoniker": "C:\\backend\\autoberles_backend\\autoberles_backend\\Controllers\\AdditionalEquipmentController.cs",
-              "RelativeDocumentMoniker": "autoberles_backend\\Controllers\\AdditionalEquipmentController.cs",
-              "ToolTip": "C:\\backend\\autoberles_backend\\autoberles_backend\\Controllers\\AdditionalEquipmentController.cs",
-              "RelativeToolTip": "autoberles_backend\\Controllers\\AdditionalEquipmentController.cs",
-              "ViewState": "AgIAADMAAAAAAAAAAAAiwFAAAAAAAAAAAAAAAA==",
+              "Title": "AdditionalEquipmentTests.cs",
+              "DocumentMoniker": "C:\\backend\\autoberles_backend\\autoberles_tests\\Tests\\AdditionalEquipmentTests.cs",
+              "RelativeDocumentMoniker": "autoberles_tests\\Tests\\AdditionalEquipmentTests.cs",
+              "ToolTip": "C:\\backend\\autoberles_backend\\autoberles_tests\\Tests\\AdditionalEquipmentTests.cs",
+              "RelativeToolTip": "autoberles_tests\\Tests\\AdditionalEquipmentTests.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAADcAAAA7AAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2026-03-26T16:11:01.79Z",
+              "WhenOpened": "2026-03-26T16:46:25.54Z",
               "EditorCaption": ""
             },
             {
               "$type": "Document",
               "DocumentIndex": 1,
-              "Title": "AdditionalEquipment.cs",
-              "DocumentMoniker": "C:\\backend\\autoberles_backend\\autoberles_backend\\Models\\AdditionalEquipment.cs",
-              "RelativeDocumentMoniker": "autoberles_backend\\Models\\AdditionalEquipment.cs",
-              "ToolTip": "C:\\backend\\autoberles_backend\\autoberles_backend\\Models\\AdditionalEquipment.cs",
-              "RelativeToolTip": "autoberles_backend\\Models\\AdditionalEquipment.cs",
-              "ViewState": "AgIAABsAAAAAAAAAAAA/wCcAAAAnAAAAAAAAAA==",
+              "Title": "TestDbContextFactory.cs",
+              "DocumentMoniker": "C:\\backend\\autoberles_backend\\autoberles_tests\\Helpers\\TestDbContextFactory.cs",
+              "RelativeDocumentMoniker": "autoberles_tests\\Helpers\\TestDbContextFactory.cs",
+              "ToolTip": "C:\\backend\\autoberles_backend\\autoberles_tests\\Helpers\\TestDbContextFactory.cs",
+              "RelativeToolTip": "autoberles_tests\\Helpers\\TestDbContextFactory.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAGoAAAAkAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2026-03-26T16:10:42.746Z"
+              "WhenOpened": "2026-03-26T16:35:09.31Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 3,
+              "Title": "CarRentalContext.cs",
+              "DocumentMoniker": "C:\\backend\\autoberles_backend\\autoberles_backend\\CarRentalContext.cs",
+              "RelativeDocumentMoniker": "autoberles_backend\\CarRentalContext.cs",
+              "ToolTip": "C:\\backend\\autoberles_backend\\autoberles_backend\\CarRentalContext.cs",
+              "RelativeToolTip": "autoberles_backend\\CarRentalContext.cs",
+              "ViewState": "AgIAACwAAAAAAAAAAAAuwCgAAAApAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2026-03-26T16:34:00.859Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 2,
+              "Title": "AdditionalEquipmentController.cs",
+              "DocumentMoniker": "C:\\backend\\autoberles_backend\\autoberles_backend\\Controllers\\AdditionalEquipmentController.cs",
+              "RelativeDocumentMoniker": "autoberles_backend\\Controllers\\AdditionalEquipmentController.cs",
+              "ToolTip": "C:\\backend\\autoberles_backend\\autoberles_backend\\Controllers\\AdditionalEquipmentController.cs",
+              "RelativeToolTip": "autoberles_backend\\Controllers\\AdditionalEquipmentController.cs",
+              "ViewState": "AgIAADsAAAAAAAAAAAAiwFgAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2026-03-26T16:11:01.79Z",
+              "EditorCaption": ""
             }
           ]
         }
