@@ -14,8 +14,11 @@ namespace autoberles_backend.Controllers
     [ApiController]
     public class UserController : ControllerBase
     {
-        CarRentalContext context = new CarRentalContext();
-
+        private readonly CarRentalContext _context;
+        public UserController(CarRentalContext context)
+        {
+            _context = context;
+        }
         [Authorize(Roles = "admin")]
         [HttpGet("users")]
         public async Task<IActionResult> GetAllUsers()
@@ -25,7 +28,7 @@ namespace autoberles_backend.Controllers
                 var currentUserRole = User.FindFirst(ClaimTypes.Role)?.Value;
                 List<User> users;
                 if (currentUserRole == Roles.Admin)
-                    users = await context.Users.Include(x => x.Rentals).ThenInclude(x => x.Car).ToListAsync();
+                    users = await _context.Users.Include(x => x.Rentals).ThenInclude(x => x.Car).ToListAsync();
                 else
                     return Forbid();
                 return Ok(users);
@@ -45,7 +48,7 @@ namespace autoberles_backend.Controllers
                 var currentUserRole = User.FindFirst(ClaimTypes.Role)?.Value;
                 User? user;
                 if (currentUserRole == Roles.Admin)
-                    user = await context.Users.Include(x => x.Rentals).ThenInclude(x => x.Car).FirstOrDefaultAsync(x => x.Id == id);
+                    user = await _context.Users.Include(x => x.Rentals).ThenInclude(x => x.Car).FirstOrDefaultAsync(x => x.Id == id);
                 else
                     return Forbid();
                 if (user == null)
@@ -67,7 +70,7 @@ namespace autoberles_backend.Controllers
                 var currentUserRole = User.FindFirst(ClaimTypes.Role)?.Value;
                 List<User> customers;
                 if (currentUserRole == Roles.Agent)
-                    customers = await context.Users.Where(x => x.Role == Roles.Customer).Include(x => x.Rentals).ThenInclude(x => x.Car).ToListAsync();
+                    customers = await _context.Users.Where(x => x.Role == Roles.Customer).Include(x => x.Rentals).ThenInclude(x => x.Car).ToListAsync();
                 else
                     return Forbid();
                 return Ok(customers);
@@ -87,7 +90,7 @@ namespace autoberles_backend.Controllers
                 var currentUserRole = User.FindFirst(ClaimTypes.Role)?.Value;
                 User? customer;
                 if (currentUserRole == Roles.Agent)
-                    customer = await context.Users.Where(x => x.Role == Roles.Customer).Include(x => x.Rentals).ThenInclude(x => x.Car).FirstOrDefaultAsync(x => x.Id == id);
+                    customer = await _context.Users.Where(x => x.Role == Roles.Customer).Include(x => x.Rentals).ThenInclude(x => x.Car).FirstOrDefaultAsync(x => x.Id == id);
                 else
                     return Forbid();
                 if (customer == null)
@@ -111,7 +114,7 @@ namespace autoberles_backend.Controllers
                     return Unauthorized("Nem sikerült azonosítani a felhasználót.");
                 int userId = int.Parse(userIdClaim);
 
-                var user = await context.Users.Where(x => x.Id == userId).Select(x => new
+                var user = await _context.Users.Where(x => x.Id == userId).Select(x => new
                 {
                     x.Id,
                     x.Email,
@@ -148,10 +151,10 @@ namespace autoberles_backend.Controllers
                 if (request.Password != request.ConfirmPassword)
                     return BadRequest("A jelszavak nem egyeznek.");
 
-                if (await context.Users.AnyAsync(x => x.Email == request.Email))
+                if (await _context.Users.AnyAsync(x => x.Email == request.Email))
                     return BadRequest("Ez az email már használatban van.");
 
-                if (await context.Users.AnyAsync(x => x.PhoneNumber == request.PhoneNumber))
+                if (await _context.Users.AnyAsync(x => x.PhoneNumber == request.PhoneNumber))
                     return BadRequest("Ez a telefonszám már használatban van.");
 
                 var allowedRoles = new[] { "admin", "agent", "customer" };
@@ -169,8 +172,8 @@ namespace autoberles_backend.Controllers
                     PasswordHash = BCrypt.Net.BCrypt.HashPassword(request.Password)
                 };
 
-                context.Users.Add(user);
-                await context.SaveChangesAsync();
+                _context.Users.Add(user);
+                await _context.SaveChangesAsync();
                 return Ok("Felhasználó sikeresen létrehozva!");
             }
             catch (Exception ex)
@@ -188,7 +191,7 @@ namespace autoberles_backend.Controllers
                 var currentUserId = int.Parse(User.FindFirst(ClaimTypes.NameIdentifier)?.Value ?? "0");
                 var currentUserRole = User.FindFirst(ClaimTypes.Role)?.Value;
 
-                var user = await context.Users.FindAsync(id);
+                var user = await _context.Users.FindAsync(id);
                 if (user == null)
                     return NotFound($"Nem található felhasználó a(z) {id} ID-val!");
 
@@ -222,12 +225,12 @@ namespace autoberles_backend.Controllers
                     if (propInfo.Name.Equals("Email", StringComparison.OrdinalIgnoreCase))
                     {
                         string emailStr = newValue?.ToString();
-                        if (await context.Users.AnyAsync(x => x.Email == emailStr && x.Id != id))
+                        if (await _context.Users.AnyAsync(x => x.Email == emailStr && x.Id != id))
                             return BadRequest("Ez az email cím már foglalt.");
                     }
                     propInfo.SetValue(user, newValue);
                 }
-                await context.SaveChangesAsync();
+                await _context.SaveChangesAsync();
                 return Ok($"A(z) {id} ID-val rendelkező felhasználó frissítésre került!");
             }
             catch (Exception ex)
@@ -248,7 +251,7 @@ namespace autoberles_backend.Controllers
                 if (currentUserId == id)
                     return BadRequest("Saját fiók nem törölhető.");
 
-                var userToDelete = await context.Users.FindAsync(id);
+                var userToDelete = await _context.Users.FindAsync(id);
                 if (userToDelete == null)
                     return NotFound($"Nem található felhasználó a(z) {id} ID-val!");
 
@@ -260,8 +263,8 @@ namespace autoberles_backend.Controllers
                 else if (currentUserRole != Roles.Admin)
                     return Forbid();
 
-                context.Users.Remove(userToDelete);
-                await context.SaveChangesAsync();
+                _context.Users.Remove(userToDelete);
+                await _context.SaveChangesAsync();
                 return Ok($"A(z) {id} ID-val rendelkező felhasználó sikeresen törölve!");
             }
             catch (DbUpdateException ex)

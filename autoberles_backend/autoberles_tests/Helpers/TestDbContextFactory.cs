@@ -14,6 +14,12 @@ public static class TestDbContextFactory
         return context;
     }
 
+    public static CarRentalContext CreateEmpty()
+    {
+        var options = new DbContextOptionsBuilder<CarRentalContext>().UseInMemoryDatabase(Guid.NewGuid().ToString()).Options;
+        return new CarRentalContext(options);
+    }
+
     private static void Seed(CarRentalContext context)
     {
         var airConditioningTypes = new List<AirConditioningType>
@@ -209,6 +215,44 @@ public static class TestDbContextFactory
             new TransmissionType { Id = 4, Name = "manuális" }
         };
         context.TransmissionTypes.AddRange(transmissionTypes);
+
+        var users = new List<User>
+        {
+            new User
+            {
+                Id = 1,
+                FirstName = "Admin",
+                LastName = "User",
+                Email = "admin@test.hu",
+                PhoneNumber = "+36 20 123 4567",
+                BirthDate = new DateTime(1990, 1, 1),
+                Role = "admin",
+                PasswordHash = "hash"
+            },
+            new User
+            {
+                Id = 2,
+                FirstName = "Agent",
+                LastName = "User",
+                Email = "agent@test.hu",
+                PhoneNumber = "+36 20 123 4568",
+                BirthDate = new DateTime(1992, 1, 1),
+                Role = "agent",
+                PasswordHash = "hash"
+            },
+            new User
+            {
+                Id = 3,
+                FirstName = "Customer",
+                LastName = "User",
+                Email = "customer@test.hu",
+                PhoneNumber = "+36 20 123 4569",
+                BirthDate = new DateTime(1995, 1, 1),
+                Role = "customer",
+                PasswordHash = "hash"
+            }
+        };
+        context.Users.AddRange(users);
 
         var wheeldriveTypes = new List<WheelDriveType>
         {

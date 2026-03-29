@@ -34,7 +34,7 @@ namespace autoberles_tests.Tests
         [Fact(DisplayName = "[Auth] Should register a new user")]
         public async Task RegisterSuccess()
         {
-            var context = TestDbContextFactory.Create();
+            var context = TestDbContextFactory.CreateEmpty();
             var controller = CreateController(context);
 
             var register = new Register
@@ -56,7 +56,7 @@ namespace autoberles_tests.Tests
         [Fact(DisplayName = "[Auth] Should not register with existing email")]
         public async Task RegisterFailsWhenEmailExists()
         {
-            var context = TestDbContextFactory.Create();
+            var context = TestDbContextFactory.CreateEmpty();
 
             context.Users.Add(new User
             {
@@ -90,7 +90,7 @@ namespace autoberles_tests.Tests
         [Fact(DisplayName = "[Auth] Should login with correct credentials")]
         public async Task LoginSuccess()
         {
-            var context = TestDbContextFactory.Create();
+            var context = TestDbContextFactory.CreateEmpty();
 
             var user = new User
             {
@@ -122,7 +122,7 @@ namespace autoberles_tests.Tests
         [Fact(DisplayName = "[Auth] Should reset password with valid code")]
         public async Task ResetPasswordSuccess()
         {
-            var context = TestDbContextFactory.Create();
+            var context = TestDbContextFactory.CreateEmpty();
 
             context.Users.Add(new User
             {
