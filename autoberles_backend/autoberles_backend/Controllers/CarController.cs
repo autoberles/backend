@@ -3,6 +3,7 @@ using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
+using Microsoft.EntityFrameworkCore.Storage;
 using System.Reflection;
 using System.Text.Json;
 
@@ -12,14 +13,18 @@ namespace autoberles_backend.Controllers
     [ApiController]
     public class CarController : ControllerBase
     {
-        CarRentalContext context = new CarRentalContext();
+        private readonly CarRentalContext _context;
+        public CarController(CarRentalContext context)
+        {
+            _context = context;
+        }
 
         [HttpGet("cars")]
         public async Task<IActionResult> GetAllCars()
         {
             try
             {
-                var cars = await context.Cars
+                var cars = await _context.Cars
                     .Include(x => x.AdditionalEquipment)
                         .ThenInclude(x => x.AirConditioning)
                     .Include(x => x.Branch)
@@ -43,7 +48,7 @@ namespace autoberles_backend.Controllers
         {
             try
             {
-                var car = await context.Cars
+                var car = await _context.Cars
                             .Include(x => x.AdditionalEquipment)
                                 .ThenInclude(x => x.AirConditioning)
                             .Include(x => x.Branch)
@@ -68,7 +73,10 @@ namespace autoberles_backend.Controllers
         [HttpPost("car")]
         public async Task<IActionResult> PostCar([FromBody] Car car)
         {
-            using var transaction = await context.Database.BeginTransactionAsync();
+            IDbContextTransaction? transaction = null;
+            if (_context.Database.ProviderName != "Microsoft.EntityFrameworkCore.InMemory")
+                transaction = await _context.Database.BeginTransactionAsync();
+
             try
             {
                 if (!ModelState.IsValid)
@@ -82,21 +90,26 @@ namespace autoberles_backend.Controllers
                 car.CarCategory = null;
                 car.WheelDriveType = null;
 
-                context.Cars.Add(car);
-                await context.SaveChangesAsync();
+                _context.Cars.Add(car);
+                await _context.SaveChangesAsync();
 
                 if (equipment != null)
                 {
                     equipment.CarId = car.Id;
-                    context.AdditionalEquipments.Add(equipment);
-                    await context.SaveChangesAsync();
+                    _context.AdditionalEquipments.Add(equipment);
+                    await _context.SaveChangesAsync();
                 }
-                await transaction.CommitAsync();
+
+                if (transaction != null)
+                    await transaction.CommitAsync();
+
                 return CreatedAtAction(nameof(GetCarById), new { id = car.Id }, car);
             }
             catch (Exception ex)
             {
-                await transaction.RollbackAsync();
+                if (transaction != null)
+                    await transaction.RollbackAsync();
+
                 return BadRequest($"Hiba az autó létrehozása során: {ex.Message}");
             }
         }
@@ -106,7 +119,7 @@ namespace autoberles_backend.Controllers
         [HttpPatch("cars/{id}")]
         public async Task<IActionResult> PatchCar(int id, [FromBody] JsonElement body)
         {
-            var car = await context.Cars.FindAsync(id);
+            var car = await _context.Cars.FindAsync(id);
             if (car == null)
                 return NotFound($"Nem található autó a(z) {id} ID-val!");
 
@@ -126,7 +139,7 @@ namespace autoberles_backend.Controllers
                 propInfo.SetValue(car, value);
             }
 
-            await context.SaveChangesAsync();
+            await _context.SaveChangesAsync();
             return Ok($"A(z) {id} ID-val rendelkező autó frissítésre került!");
         }
 
@@ -135,24 +148,34 @@ namespace autoberles_backend.Controllers
         [HttpDelete("cars/{id}")]
         public async Task<IActionResult> DeleteCar(int id)
         {
-            using var transaction = await context.Database.BeginTransactionAsync();
+            IDbContextTransaction? transaction = null;
+            if (_context.Database.ProviderName != "Microsoft.EntityFrameworkCore.InMemory")
+                transaction = await _context.Database.BeginTransactionAsync();
+
             try
             {
-                var car = await context.Cars.FindAsync(id);
+                var car = await _context.Cars.FindAsync(id);
                 if (car == null)
                     return NotFound($"Nem található autó a(z) {id} ID-val!");
 
-                var equipment = await context.AdditionalEquipments.FirstOrDefaultAsync(x => x.CarId == id);
+                var equipment = await _context.AdditionalEquipments
+                    .FirstOrDefaultAsync(x => x.CarId == id);
                 if (equipment != null)
-                    context.AdditionalEquipments.Remove(equipment);
-                context.Cars.Remove(car);
-                await context.SaveChangesAsync();
-                await transaction.CommitAsync();
+                    _context.AdditionalEquipments.Remove(equipment);
+
+                _context.Cars.Remove(car);
+                await _context.SaveChangesAsync();
+
+                if (transaction != null)
+                    await transaction.CommitAsync();
+
                 return Ok($"A {id} ID-val rendelkező autó sikeresen törölve!");
             }
             catch
             {
-                await transaction.RollbackAsync();
+                if (transaction != null)
+                    await transaction.RollbackAsync();
+
                 return StatusCode(500, "Hiba történt a törlés során.");
             }
         }

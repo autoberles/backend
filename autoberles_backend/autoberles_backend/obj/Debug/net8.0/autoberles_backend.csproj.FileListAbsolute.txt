@@ -276,4 +276,3 @@ D:\backend\autoberles_backend\autoberles_backend\bin\Debug\net8.0\Microsoft.Iden
 D:\backend\autoberles_backend\autoberles_backend\bin\Debug\net8.0\Microsoft.IdentityModel.Protocols.OpenIdConnect.dll
 D:\backend\autoberles_backend\autoberles_backend\bin\Debug\net8.0\Microsoft.IdentityModel.Tokens.dll
 D:\backend\autoberles_backend\autoberles_backend\bin\Debug\net8.0\System.IdentityModel.Tokens.Jwt.dll
-C:\backend\autoberles_backend\autoberles_backend\obj\Debug\net8.0\staticwebassets.upToDateCheck.txt
