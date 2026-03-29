@@ -991,7 +991,7 @@
           },
           "phone_number": {
             "minLength": 1,
-            "pattern": "^\\+36\\s\\d{2}\\s\\d{3}\\s\\d{3}$",
+            "pattern": "^\\+36\\s\\d{2}\\s\\d{3}\\s\\d{4}$",
             "type": "string"
           }
         },
