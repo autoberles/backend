@@ -254,6 +254,20 @@ public static class TestDbContextFactory
         };
         context.Users.AddRange(users);
 
+        var rentals = new List<Rental>
+        {
+            new Rental
+            {
+                Id = 1,
+                CarId = 1,
+                UserId = 1,
+                StartDate = DateTime.Today.AddDays(1),
+                EndDate = DateTime.Today.AddDays(3),
+                FullPrice = 30000
+            }
+        };
+        context.Rentals.AddRange(rentals);
+
         var wheeldriveTypes = new List<WheelDriveType>
         {
             new WheelDriveType { Id = 1, Name = "elsőkerék-meghajtású" },

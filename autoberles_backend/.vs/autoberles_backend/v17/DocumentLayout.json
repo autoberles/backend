@@ -3,16 +3,12 @@
   "WorkspaceRootPath": "C:\\backend\\autoberles_backend\\",
   "Documents": [
     {
+      "AbsoluteMoniker": "D:0:0:{85E7BE69-D17D-49AF-A99C-EBE2407BC795}|autoberles_tests\\autoberles_tests.csproj|c:\\backend\\autoberles_backend\\autoberles_tests\\tests\\rentaltests.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{85E7BE69-D17D-49AF-A99C-EBE2407BC795}|autoberles_tests\\autoberles_tests.csproj|solutionrelative:autoberles_tests\\tests\\rentaltests.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
       "AbsoluteMoniker": "D:0:0:{85E7BE69-D17D-49AF-A99C-EBE2407BC795}|autoberles_tests\\autoberles_tests.csproj|c:\\backend\\autoberles_backend\\autoberles_tests\\tests\\usertests.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
       "RelativeMoniker": "D:0:0:{85E7BE69-D17D-49AF-A99C-EBE2407BC795}|autoberles_tests\\autoberles_tests.csproj|solutionrelative:autoberles_tests\\tests\\usertests.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{85E7BE69-D17D-49AF-A99C-EBE2407BC795}|autoberles_tests\\autoberles_tests.csproj|c:\\backend\\autoberles_backend\\autoberles_tests\\tests\\cartests.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{85E7BE69-D17D-49AF-A99C-EBE2407BC795}|autoberles_tests\\autoberles_tests.csproj|solutionrelative:autoberles_tests\\tests\\cartests.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{85E7BE69-D17D-49AF-A99C-EBE2407BC795}|autoberles_tests\\autoberles_tests.csproj|c:\\backend\\autoberles_backend\\autoberles_tests\\helpers\\testdbcontextfactory.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{85E7BE69-D17D-49AF-A99C-EBE2407BC795}|autoberles_tests\\autoberles_tests.csproj|solutionrelative:autoberles_tests\\helpers\\testdbcontextfactory.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     }
   ],
   "DocumentGroupContainers": [
@@ -35,40 +31,27 @@
             {
               "$type": "Document",
               "DocumentIndex": 1,
-              "Title": "CarTests.cs",
-              "DocumentMoniker": "C:\\backend\\autoberles_backend\\autoberles_tests\\Tests\\CarTests.cs",
-              "RelativeDocumentMoniker": "autoberles_tests\\Tests\\CarTests.cs",
-              "ToolTip": "C:\\backend\\autoberles_backend\\autoberles_tests\\Tests\\CarTests.cs",
-              "RelativeToolTip": "autoberles_tests\\Tests\\CarTests.cs",
-              "ViewState": "AgIAAIAAAAAAAAAAAAAswDUAAAAAAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2026-03-29T08:39:33.634Z",
-              "EditorCaption": ""
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 0,
               "Title": "UserTests.cs",
               "DocumentMoniker": "C:\\backend\\autoberles_backend\\autoberles_tests\\Tests\\UserTests.cs",
               "RelativeDocumentMoniker": "autoberles_tests\\Tests\\UserTests.cs",
               "ToolTip": "C:\\backend\\autoberles_backend\\autoberles_tests\\Tests\\UserTests.cs",
               "RelativeToolTip": "autoberles_tests\\Tests\\UserTests.cs",
-              "ViewState": "AgIAAIMAAAAAAAAAAAAwwJAAAAA4AAAAAAAAAA==",
+              "ViewState": "AgIAAHQAAAAAAAAAAAAswIYAAABOAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2026-03-29T08:37:31.379Z",
+              "WhenOpened": "2026-03-29T16:13:07.901Z",
               "EditorCaption": ""
             },
             {
               "$type": "Document",
-              "DocumentIndex": 2,
-              "Title": "TestDbContextFactory.cs",
-              "DocumentMoniker": "C:\\backend\\autoberles_backend\\autoberles_tests\\Helpers\\TestDbContextFactory.cs",
-              "RelativeDocumentMoniker": "autoberles_tests\\Helpers\\TestDbContextFactory.cs",
-              "ToolTip": "C:\\backend\\autoberles_backend\\autoberles_tests\\Helpers\\TestDbContextFactory.cs",
-              "RelativeToolTip": "autoberles_tests\\Helpers\\TestDbContextFactory.cs",
-              "ViewState": "AgIAAAcAAAAAAAAAAAAgwBMAAAAIAAAAAAAAAA==",
+              "DocumentIndex": 0,
+              "Title": "RentalTests.cs",
+              "DocumentMoniker": "C:\\backend\\autoberles_backend\\autoberles_tests\\Tests\\RentalTests.cs",
+              "RelativeDocumentMoniker": "autoberles_tests\\Tests\\RentalTests.cs",
+              "ToolTip": "C:\\backend\\autoberles_backend\\autoberles_tests\\Tests\\RentalTests.cs",
+              "RelativeToolTip": "autoberles_tests\\Tests\\RentalTests.cs",
+              "ViewState": "AgIAAHYAAAAAAAAAAAAwwIUAAAAIAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2026-03-29T08:32:10.541Z",
+              "WhenOpened": "2026-03-29T16:11:03.726Z",
               "EditorCaption": ""
             }
           ]

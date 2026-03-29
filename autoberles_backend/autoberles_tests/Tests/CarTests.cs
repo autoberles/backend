@@ -15,11 +15,11 @@ public class CarTests
     {
         var context = TestDbContextFactory.Create();
         var controller = new CarController(context);
-        var actionResult = await controller.GetAllCars();
-        var okResult = actionResult as OkObjectResult;
-        if (okResult == null)
+        var action = await controller.GetAllCars();
+        var ok = action as OkObjectResult;
+        if (ok == null)
             throw new Exception("No OkObjectResult was received from the API.");
-        var cars = okResult!.Value as List<Car>;
+        var cars = ok!.Value as List<Car>;
         if (cars == null)
             throw new Exception("The returned data is not a list."); 
         cars!.Count.Should().Be(2, "there should be 2 elements");
@@ -33,11 +33,11 @@ public class CarTests
     {
         var context = TestDbContextFactory.Create();
         var controller = new CarController(context);
-        var actionResult = await controller.GetCarById(1);
-        var okResult = actionResult as OkObjectResult;
-        if (okResult == null)
+        var action = await controller.GetCarById(1);
+        var ok = action as OkObjectResult;
+        if (ok == null)
             throw new Exception("No OkObjectResult was received from the API.");
-        var car = okResult!.Value as Car;
+        var car = ok!.Value as Car;
         if (car == null)
             throw new Exception("Expected the returned data to be a Car.");
         car!.Id.Should().Be(1, "the returned object should have ID 1");
@@ -50,8 +50,8 @@ public class CarTests
     {
         var context = TestDbContextFactory.Create();
         var controller = new CarController(context);
-        var result = await controller.GetCarById(999);
-        Assert.IsType<NotFoundObjectResult>(result);
+        var action = await controller.GetCarById(999);
+        Assert.IsType<NotFoundObjectResult>(action);
     }
 
 
@@ -99,12 +99,12 @@ public class CarTests
             }
         };
 
-        var result = await controller.PostCar(car);
-        Assert.IsType<CreatedAtActionResult>(result);
+        var action = await controller.PostCar(car);
+        Assert.IsType<CreatedAtActionResult>(action);
     }
 
 
-    [Fact(DisplayName = "[Car] Should update car price")]
+    [Fact(DisplayName = "[Car] Should update price of car")]
     public async Task UpdatesPrice()
     {
         var context = TestDbContextFactory.Create();
@@ -116,8 +116,8 @@ public class CarTests
         });
 
         var element = JsonSerializer.Deserialize<JsonElement>(json);
-        var result = await controller.PatchCar(1, element);
-        Assert.IsType<OkObjectResult>(result);
+        var action = await controller.PatchCar(1, element);
+        Assert.IsType<OkObjectResult>(action);
     }
 
 
@@ -126,20 +126,20 @@ public class CarTests
     {
         var context = TestDbContextFactory.Create();
         var controller = new CarController(context);
-        var result = await controller.DeleteCar(1);
-        Assert.IsType<OkObjectResult>(result);
+        var action = await controller.DeleteCar(1);
+        Assert.IsType<OkObjectResult>(action);
     }
 
 
     [Fact(DisplayName = "[Car] Should fail on invalid JSON patch")]
-    public async Task PatchCar_InvalidJson_ReturnsBadRequest()
+    public async Task InvalidJsonReturnsBadRequest()
     {
         var context = TestDbContextFactory.Create();
         var controller = new CarController(context);
         var json = JsonSerializer.Serialize("invalid");
         var element = JsonSerializer.Deserialize<JsonElement>(json);
-        var result = await controller.PatchCar(1, element);
-        Assert.IsType<BadRequestObjectResult>(result);
+        var action = await controller.PatchCar(1, element);
+        Assert.IsType<BadRequestObjectResult>(action);
 
     }
 

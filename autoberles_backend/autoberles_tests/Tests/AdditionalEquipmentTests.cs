@@ -15,11 +15,11 @@ public class AdditionalEquipmentTests
     {
         var context = TestDbContextFactory.Create();
         var controller = new AdditionalEquipmentController(context);
-        var actionResult = await controller.GetAllAdditionalEquipments();
-        var okResult = actionResult as OkObjectResult;
-        if (okResult == null)
+        var action = await controller.GetAllAdditionalEquipments();
+        var ok = action as OkObjectResult;
+        if (ok == null)
             throw new Exception("No OkObjectResult was received from the API.");
-        var data = okResult.Value as List<AdditionalEquipment>;
+        var data = ok.Value as List<AdditionalEquipment>;
         if (data == null)
             throw new Exception("The returned data is not a list.");
         data.Count.Should().Be(2, "there must be 2 elements.");
@@ -31,11 +31,11 @@ public class AdditionalEquipmentTests
     {
         var context = TestDbContextFactory.Create();
         var controller = new AdditionalEquipmentController(context);
-        var actionResult = await controller.GetAdditionalEquipmentsById(1);
-        var okResult = actionResult as OkObjectResult;
-        if (okResult == null)
+        var action = await controller.GetAdditionalEquipmentsById(1);
+        var ok = action as OkObjectResult;
+        if (ok == null)
             throw new Exception("No OkObjectResult was received from the API.");
-        var data = okResult.Value as AdditionalEquipment;
+        var data = ok.Value as AdditionalEquipment;
         if (data == null)
             throw new Exception("The returned data is not an AdditionalEquipment object.");
         data.Id.Should().Be(1, "the returned object should have ID 1");
@@ -43,8 +43,8 @@ public class AdditionalEquipmentTests
     }
 
 
-    [Fact(DisplayName = "[AdditionalEquipment] Should patch an existing additional equipment")]
-    public async Task UpdatesExistingAdditionalEquipment()
+    [Fact(DisplayName = "[AdditionalEquipment] Should patch an additional equipment")]
+    public async Task UpdatesAdditionalEquipment()
     {
         var context = TestDbContextFactory.Create();
         var controller = new AdditionalEquipmentController(context);
@@ -55,10 +55,10 @@ public class AdditionalEquipmentTests
         var jsonBody = JsonSerializer.Serialize(patchBody);
         var jsonElement = JsonSerializer.Deserialize<JsonElement>(jsonBody);
         var actionResult = await controller.PatchAdditionalEquipment(1, jsonElement);
-        var okResult = actionResult as OkObjectResult;
-        if (okResult == null)
+        var ok = actionResult as OkObjectResult;
+        if (ok == null)
             throw new Exception("No OkObjectResult was returned from the API.");
-        ((string)okResult.Value!).Should().Be("A(z) 1 ID-val rendelkező felszereltség frissítésre került.");
+        ((string)ok.Value!).Should().Be("A(z) 1 ID-val rendelkező felszereltség frissítésre került.");
         var updated = await context.AdditionalEquipments.FindAsync(1);
         updated!.Navigation.Should().BeTrue("the Navigation field needed to be updated");
     }

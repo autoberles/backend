@@ -47,8 +47,7 @@ namespace autoberles_tests.Tests
                 BirthDate = DateTime.Now
             };
 
-            var result = await controller.Register(register);
-            var okResult = Assert.IsType<OkObjectResult>(result);
+            var action = await controller.Register(register);
             context.Users.Count().Should().Be(1, "one user should be created");
         }
 
@@ -82,8 +81,8 @@ namespace autoberles_tests.Tests
                 BirthDate = DateTime.Now
             };
 
-            var result = await controller.Register(register);
-            Assert.IsType<BadRequestObjectResult>(result);
+            var action = await controller.Register(register);
+            Assert.IsType<BadRequestObjectResult>(action);
         }
 
 
@@ -113,9 +112,9 @@ namespace autoberles_tests.Tests
                 Password = "1234"
             };
 
-            var result = await controller.Login(login);
-            var okResult = Assert.IsType<OkObjectResult>(result);
-            Assert.NotNull(okResult.Value);
+            var action = await controller.Login(login);
+            var ok = Assert.IsType<OkObjectResult>(action);
+            Assert.NotNull(ok.Value);
         }
 
 
@@ -145,8 +144,8 @@ namespace autoberles_tests.Tests
                 NewPassword = "newpass"
             };
 
-            var result = await controller.ResetPassword(reset);
-            Assert.IsType<OkObjectResult>(result);
+            var action = await controller.ResetPassword(reset);
+            Assert.IsType<OkObjectResult>(action);
         }
     }
 }

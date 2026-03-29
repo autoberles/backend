@@ -30,17 +30,18 @@ namespace autoberles_tests.Tests
             };
         }
 
+
         [Fact(DisplayName = "[User] Should return all users")]
         public async Task ReturnsAllUsers()
         {
             var context = TestDbContextFactory.Create();
             var controller = new UserController(context);
             SetUser(controller, "admin");
-            var actionResult = await controller.GetAllUsers();
-            var okResult = actionResult as OkObjectResult;
-            if (okResult == null)
+            var action = await controller.GetAllUsers();
+            var ok = action as OkObjectResult;
+            if (ok == null)
                 throw new Exception("No OkObjectResult was received from the API.");
-            var users = okResult.Value as List<User>;
+            var users = ok.Value as List<User>;
             if (users == null)
                 throw new Exception("The returned data is not a list.");
             users.Count().Should().Be(3, "there should be 3 elements");
@@ -53,11 +54,11 @@ namespace autoberles_tests.Tests
             var context = TestDbContextFactory.Create();
             var controller = new UserController(context);
             SetUser(controller, "admin");
-            var actionResult = await controller.GetUserById(1);
-            var okResult = actionResult as OkObjectResult;
-            if (okResult == null)
+            var action = await controller.GetUserById(1);
+            var ok = action as OkObjectResult;
+            if (ok == null)
                 throw new Exception("No OkObjectResult was received from the API.");
-            var user = okResult.Value as User;
+            var user = ok.Value as User;
             if (user == null)
                 throw new Exception("Expected the returned data to be a User.");
             user.Id.Should().Be(1, "the returned object should have ID 1");
@@ -71,11 +72,11 @@ namespace autoberles_tests.Tests
             var context = TestDbContextFactory.Create();
             var controller = new UserController(context);
             SetUser(controller, "agent");
-            var actionResult = await controller.GetAllCustomers();
-            var okResult = actionResult as OkObjectResult;
-            if (okResult == null)
+            var action = await controller.GetAllCustomers();
+            var ok = action as OkObjectResult;
+            if (ok == null)
                 throw new Exception("No OkObjectResult was received from the API.");
-            var customer = okResult.Value as List<User>;
+            var customer = ok.Value as List<User>;
             if (customer == null)
                 throw new Exception("Expected the returned data to be a customer.");
             customer.Should().OnlyContain(x => x.Role == "customer");
@@ -101,8 +102,8 @@ namespace autoberles_tests.Tests
                 ConfirmPassword = "123456"
             };
 
-            var result = await controller.CreateUser(request);
-            Assert.IsType<OkObjectResult>(result);
+            var action = await controller.CreateUser(request);
+            Assert.IsType<OkObjectResult>(action);
         }
 
 
@@ -127,8 +128,8 @@ namespace autoberles_tests.Tests
             context.SaveChanges();
             var controller = new UserController(context);
             SetUser(controller, "admin", 1);
-            var result = await controller.DeleteUser(user.Id);
-            Assert.IsType<OkObjectResult>(result);
+            var action = await controller.DeleteUser(user.Id);
+            Assert.IsType<OkObjectResult>(action);
             var deletedUser = await context.Users.FindAsync(user.Id);
             if (deletedUser != null)
                 throw new Exception("Expected the returned data to be null.");
@@ -141,8 +142,8 @@ namespace autoberles_tests.Tests
             var context = TestDbContextFactory.Create();
             var controller = new UserController(context);
             SetUser(controller, "admin", 1);
-            var result = await controller.DeleteUser(1);
-            Assert.IsType<BadRequestObjectResult>(result);
+            var action = await controller.DeleteUser(1);
+            Assert.IsType<BadRequestObjectResult>(action);
         }
     }
 }

@@ -13,26 +13,27 @@ public class TransmissionTypeTests
     {
         var context = TestDbContextFactory.Create();
         var controller = new TransmissionTypeController(context);
-        var actionResult = await controller.GetAllTransmissionTypes();
-        var okResult = actionResult as OkObjectResult;
-        if (okResult == null)
+        var action = await controller.GetAllTransmissionTypes();
+        var ok = action as OkObjectResult;
+        if (ok == null)
             throw new Exception("No OkObjectResult was received from the API.");
-        var data = okResult.Value as List<TransmissionType>;
+        var data = ok.Value as List<TransmissionType>;
         if (data == null)
             throw new Exception("The returned data is not a list.");
         data.Count.Should().Be(4, "there should be 4 elements");
     }
+
 
     [Fact(DisplayName = "[TransmissionType] Should return transmission type by ID")]
     public async Task ReturnsTransmissionTypeById()
     {
         var context = TestDbContextFactory.Create();
         var controller = new TransmissionTypeController(context);
-        var actionResult = await controller.GetTransmissionTypeById(1);
-        var okResult = actionResult as OkObjectResult;
-        if (okResult == null)
+        var action = await controller.GetTransmissionTypeById(1);
+        var ok = action as OkObjectResult;
+        if (ok == null)
             throw new Exception("No OkObjectResult was received from the API.");
-        var data = okResult.Value as TransmissionType;
+        var data = ok.Value as TransmissionType;
         if (data == null)
             throw new Exception("Expected the returned data to be a TransmissionType.");
         data.Id.Should().Be(1, "the returned object should have ID 1");

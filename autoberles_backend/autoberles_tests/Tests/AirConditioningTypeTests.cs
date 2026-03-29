@@ -14,11 +14,11 @@ public class AirConditioningTypeTests
     {
         var context = TestDbContextFactory.Create();
         var controller = new AirConditioningTypeController(context);
-        var actionResult = await controller.GetAllAirConditioningTypes();
-        var okResult = actionResult as OkObjectResult;
-        if (okResult == null)
+        var action = await controller.GetAllAirConditioningTypes();
+        var ok = action as OkObjectResult;
+        if (ok == null)
             throw new Exception("No OkObjectResult was received from the API.");
-        var data = okResult.Value as List<AirConditioningType>;
+        var data = ok.Value as List<AirConditioningType>;
         if (data == null)
             throw new Exception("The returned data is not a list.");
         data.Count.Should().Be(2, "there must be 2 elements.");
@@ -30,11 +30,11 @@ public class AirConditioningTypeTests
     {
         var context = TestDbContextFactory.Create();
         var controller = new AirConditioningTypeController(context);
-        var actionResult = await controller.GetAirConditionalTypeById(1);
-        var okResult = actionResult as OkObjectResult;
-        if (okResult == null)
+        var action = await controller.GetAirConditionalTypeById(1);
+        var ok = action as OkObjectResult;
+        if (ok == null)
             throw new Exception("No OkObjectResult was received from the API.");
-        var data = okResult.Value as AirConditioningType;
+        var data = ok.Value as AirConditioningType;
         if (data == null)
             throw new Exception("Expected the returned data to be an AirConditioningType.");
         data.Id.Should().Be(1, "the returned object should have ID 1");

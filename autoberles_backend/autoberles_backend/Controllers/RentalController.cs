@@ -14,13 +14,16 @@ namespace autoberles_backend.Controllers
     [ApiController]
     public class RentalController : ControllerBase
     {
-        CarRentalContext context = new CarRentalContext();
-
+        private readonly CarRentalContext _context;
+        public RentalController(CarRentalContext context)
+        {
+            _context = context;
+        }
         [Authorize(Roles = "admin,agent")]
         [HttpGet("rentals")]
         public async Task<IActionResult> GetAllRentals()
         {
-            List<Rental> rentals = await context.Rentals.ToListAsync();
+            List<Rental> rentals = await _context.Rentals.ToListAsync();
             if (rentals == null)
                 return BadRequest("Hiba a bérlések lekérdezése során");
             return Ok(rentals);
@@ -33,7 +36,7 @@ namespace autoberles_backend.Controllers
         {
             try
             {
-                Rental? rental = await context.Rentals.FindAsync(id);
+                Rental? rental = await _context.Rentals.FindAsync(id);
                 if (rental == null)
                     return NotFound($"Nem található bérlés a(z) {id} ID-val!");
                 return Ok(rental);
@@ -54,7 +57,7 @@ namespace autoberles_backend.Controllers
                 if (string.IsNullOrEmpty(userIdClaim))
                     return Unauthorized("Nem sikerült azonosítani a felhasználót.");
                 int userId = int.Parse(userIdClaim);
-                var rentals = await context.Rentals.Where(x => x.UserId == userId && x.ReturnDate == null).ToListAsync();
+                var rentals = await _context.Rentals.Where(x => x.UserId == userId && x.ReturnDate == null).ToListAsync();
                 return Ok(rentals);
             }
             catch (Exception ex)
@@ -74,7 +77,7 @@ namespace autoberles_backend.Controllers
                     return Unauthorized("Nem sikerült azonosítani a felhasználót.");
                 int userId = int.Parse(userIdClaim);
 
-                var cars = await context.Rentals
+                var cars = await _context.Rentals
                 .Where(x => x.UserId == userId && x.EndDate >= DateTime.Today)
                 .Include(x => x.Car).ThenInclude(x => x.AdditionalEquipment)
                 .Select(x => x.Car).Distinct().ToListAsync();
@@ -106,11 +109,11 @@ namespace autoberles_backend.Controllers
                 if (!newRental.StartDate.HasValue || !newRental.EndDate.HasValue)
                     return BadRequest("A bérlés kezdetét és végét kötelező megadni.");
 
-                var car = await context.Cars.FindAsync(newRental.CarId);
+                var car = await _context.Cars.FindAsync(newRental.CarId);
                 if (car == null)
                     return BadRequest("A kiválasztott autó nem található.");
 
-                bool isCarAlreadyRented = await context.Rentals.AnyAsync(x =>
+                bool isCarAlreadyRented = await _context.Rentals.AnyAsync(x =>
                     x.CarId == newRental.CarId &&
                     x.StartDate <= newRental.EndDate &&
                     newRental.StartDate <= x.EndDate
@@ -129,8 +132,8 @@ namespace autoberles_backend.Controllers
                 newRental.ReturnDate = null;
                 newRental.Damage = null;
 
-                context.Rentals.Add(newRental);
-                await context.SaveChangesAsync();
+                _context.Rentals.Add(newRental);
+                await _context.SaveChangesAsync();
                 return Ok(newRental);
             }
             catch (Exception ex)
@@ -146,7 +149,7 @@ namespace autoberles_backend.Controllers
         {
             try
             {
-                var rental = await context.Rentals.FindAsync(id);
+                var rental = await _context.Rentals.FindAsync(id);
                 if (rental == null)
                     return NotFound($"Nem található bérlés a(z) {id} ID-val!");
 
@@ -183,7 +186,7 @@ namespace autoberles_backend.Controllers
                 if (rental.DamageCost.HasValue && string.IsNullOrEmpty(rental.Damage))
                     return BadRequest("A kár összegét csak akkor lehet megadni, ha a kár már meg van nevezve.");
 
-                var car = await context.Cars.FindAsync(rental.CarId);
+                var car = await _context.Cars.FindAsync(rental.CarId);
                 if (car == null)
                     return BadRequest($"Nem található autó a(z) {rental.CarId} ID-val.");
 
@@ -204,7 +207,7 @@ namespace autoberles_backend.Controllers
                     else
                         car.Availability = true;
                 }
-                await context.SaveChangesAsync();
+                await _context.SaveChangesAsync();
                 return Ok(rental);
             }
             catch (Exception ex)
@@ -220,11 +223,11 @@ namespace autoberles_backend.Controllers
         {
             try
             {
-                Rental? rental = await context.Rentals.FindAsync(id);
+                Rental? rental = await _context.Rentals.FindAsync(id);
                 if (rental == null)
                     return NotFound($"Nem található bérlés a(z) {id} ID-val!");
-                context.Rentals.Remove(rental);
-                await context.SaveChangesAsync();
+                _context.Rentals.Remove(rental);
+                await _context.SaveChangesAsync();
                 return Ok($"A(z) {id} ID-val rendelkező bérlés sikeresen törölve!");
             }
             catch (DbUpdateException ex)
