@@ -3,12 +3,28 @@
   "WorkspaceRootPath": "C:\\backend\\autoberles_backend\\",
   "Documents": [
     {
-      "AbsoluteMoniker": "D:0:0:{85E7BE69-D17D-49AF-A99C-EBE2407BC795}|autoberles_tests\\autoberles_tests.csproj|c:\\backend\\autoberles_backend\\autoberles_tests\\tests\\rentaltests.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{85E7BE69-D17D-49AF-A99C-EBE2407BC795}|autoberles_tests\\autoberles_tests.csproj|solutionrelative:autoberles_tests\\tests\\rentaltests.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+      "AbsoluteMoniker": "D:0:0:{41495FAA-ADEC-43FA-AAE4-4D5298525BBD}|autoberles_backend\\autoberles_backend.csproj|c:\\backend\\autoberles_backend\\autoberles_backend\\services\\pdfservice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{41495FAA-ADEC-43FA-AAE4-4D5298525BBD}|autoberles_backend\\autoberles_backend.csproj|solutionrelative:autoberles_backend\\services\\pdfservice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{85E7BE69-D17D-49AF-A99C-EBE2407BC795}|autoberles_tests\\autoberles_tests.csproj|c:\\backend\\autoberles_backend\\autoberles_tests\\tests\\usertests.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{85E7BE69-D17D-49AF-A99C-EBE2407BC795}|autoberles_tests\\autoberles_tests.csproj|solutionrelative:autoberles_tests\\tests\\usertests.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+      "AbsoluteMoniker": "D:0:0:{41495FAA-ADEC-43FA-AAE4-4D5298525BBD}|autoberles_backend\\autoberles_backend.csproj|c:\\backend\\autoberles_backend\\autoberles_backend\\autoberles_backend.csproj||{FA3CD31E-987B-443A-9B81-186104E8DAC1}|",
+      "RelativeMoniker": "D:0:0:{41495FAA-ADEC-43FA-AAE4-4D5298525BBD}|autoberles_backend\\autoberles_backend.csproj|solutionrelative:autoberles_backend\\autoberles_backend.csproj||{FA3CD31E-987B-443A-9B81-186104E8DAC1}|"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{41495FAA-ADEC-43FA-AAE4-4D5298525BBD}|autoberles_backend\\autoberles_backend.csproj|c:\\backend\\autoberles_backend\\autoberles_backend\\controllers\\rentalcontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{41495FAA-ADEC-43FA-AAE4-4D5298525BBD}|autoberles_backend\\autoberles_backend.csproj|solutionrelative:autoberles_backend\\controllers\\rentalcontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{41495FAA-ADEC-43FA-AAE4-4D5298525BBD}|autoberles_backend\\autoberles_backend.csproj|c:\\backend\\autoberles_backend\\autoberles_backend\\program.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{41495FAA-ADEC-43FA-AAE4-4D5298525BBD}|autoberles_backend\\autoberles_backend.csproj|solutionrelative:autoberles_backend\\program.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{85E7BE69-D17D-49AF-A99C-EBE2407BC795}|autoberles_tests\\autoberles_tests.csproj|c:\\backend\\autoberles_backend\\autoberles_tests\\helpers\\fakeemailservice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{85E7BE69-D17D-49AF-A99C-EBE2407BC795}|autoberles_tests\\autoberles_tests.csproj|solutionrelative:autoberles_tests\\helpers\\fakeemailservice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{41495FAA-ADEC-43FA-AAE4-4D5298525BBD}|autoberles_backend\\autoberles_backend.csproj|c:\\backend\\autoberles_backend\\autoberles_backend\\services\\emailservice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{41495FAA-ADEC-43FA-AAE4-4D5298525BBD}|autoberles_backend\\autoberles_backend.csproj|solutionrelative:autoberles_backend\\services\\emailservice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     }
   ],
   "DocumentGroupContainers": [
@@ -18,7 +34,7 @@
       "DocumentGroups": [
         {
           "DockedWidth": 200,
-          "SelectedChildIndex": 3,
+          "SelectedChildIndex": 7,
           "Children": [
             {
               "$type": "Bookmark",
@@ -31,27 +47,79 @@
             {
               "$type": "Document",
               "DocumentIndex": 1,
-              "Title": "UserTests.cs",
-              "DocumentMoniker": "C:\\backend\\autoberles_backend\\autoberles_tests\\Tests\\UserTests.cs",
-              "RelativeDocumentMoniker": "autoberles_tests\\Tests\\UserTests.cs",
-              "ToolTip": "C:\\backend\\autoberles_backend\\autoberles_tests\\Tests\\UserTests.cs",
-              "RelativeToolTip": "autoberles_tests\\Tests\\UserTests.cs",
-              "ViewState": "AgIAAHQAAAAAAAAAAAAswIYAAABOAAAAAAAAAA==",
+              "Title": "autoberles_backend",
+              "DocumentMoniker": "C:\\backend\\autoberles_backend\\autoberles_backend\\autoberles_backend.csproj",
+              "RelativeDocumentMoniker": "autoberles_backend\\autoberles_backend.csproj",
+              "ToolTip": "C:\\backend\\autoberles_backend\\autoberles_backend\\autoberles_backend.csproj",
+              "RelativeToolTip": "autoberles_backend\\autoberles_backend.csproj",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000758|",
+              "WhenOpened": "2026-03-29T17:58:21.059Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 3,
+              "Title": "Program.cs",
+              "DocumentMoniker": "C:\\backend\\autoberles_backend\\autoberles_backend\\Program.cs",
+              "RelativeDocumentMoniker": "autoberles_backend\\Program.cs",
+              "ToolTip": "C:\\backend\\autoberles_backend\\autoberles_backend\\Program.cs",
+              "RelativeToolTip": "autoberles_backend\\Program.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAADsAAAA+AAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2026-03-29T16:13:07.901Z",
+              "WhenOpened": "2026-03-29T17:34:32.721Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 4,
+              "Title": "FakeEmailService.cs",
+              "DocumentMoniker": "C:\\backend\\autoberles_backend\\autoberles_tests\\Helpers\\FakeEmailService.cs",
+              "RelativeDocumentMoniker": "autoberles_tests\\Helpers\\FakeEmailService.cs",
+              "ToolTip": "C:\\backend\\autoberles_backend\\autoberles_tests\\Helpers\\FakeEmailService.cs",
+              "RelativeToolTip": "autoberles_tests\\Helpers\\FakeEmailService.cs",
+              "ViewState": "AgIAABIAAAAAAAAAAAAYwBwAAABtAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2026-03-29T17:28:46.155Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 5,
+              "Title": "EmailService.cs",
+              "DocumentMoniker": "C:\\backend\\autoberles_backend\\autoberles_backend\\Services\\EmailService.cs",
+              "RelativeDocumentMoniker": "autoberles_backend\\Services\\EmailService.cs",
+              "ToolTip": "C:\\backend\\autoberles_backend\\autoberles_backend\\Services\\EmailService.cs",
+              "RelativeToolTip": "autoberles_backend\\Services\\EmailService.cs",
+              "ViewState": "AgIAABgAAAAAAAAAAAAYwCcAAAA9AAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2026-03-29T17:20:07.869Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 2,
+              "Title": "RentalController.cs",
+              "DocumentMoniker": "C:\\backend\\autoberles_backend\\autoberles_backend\\Controllers\\RentalController.cs",
+              "RelativeDocumentMoniker": "autoberles_backend\\Controllers\\RentalController.cs",
+              "ToolTip": "C:\\backend\\autoberles_backend\\autoberles_backend\\Controllers\\RentalController.cs",
+              "RelativeToolTip": "autoberles_backend\\Controllers\\RentalController.cs",
+              "ViewState": "AgIAAIsAAAAAAAAAAAAYwJgAAAB2AAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2026-03-29T17:08:59.515Z",
               "EditorCaption": ""
             },
             {
               "$type": "Document",
               "DocumentIndex": 0,
-              "Title": "RentalTests.cs",
-              "DocumentMoniker": "C:\\backend\\autoberles_backend\\autoberles_tests\\Tests\\RentalTests.cs",
-              "RelativeDocumentMoniker": "autoberles_tests\\Tests\\RentalTests.cs",
-              "ToolTip": "C:\\backend\\autoberles_backend\\autoberles_tests\\Tests\\RentalTests.cs",
-              "RelativeToolTip": "autoberles_tests\\Tests\\RentalTests.cs",
-              "ViewState": "AgIAAHYAAAAAAAAAAAAwwIUAAAAIAAAAAAAAAA==",
+              "Title": "PDFService.cs",
+              "DocumentMoniker": "C:\\backend\\autoberles_backend\\autoberles_backend\\Services\\PDFService.cs",
+              "RelativeDocumentMoniker": "autoberles_backend\\Services\\PDFService.cs",
+              "ToolTip": "C:\\backend\\autoberles_backend\\autoberles_backend\\Services\\PDFService.cs",
+              "RelativeToolTip": "autoberles_backend\\Services\\PDFService.cs",
+              "ViewState": "AgIAACIAAAAAAAAAAAAQwBIAAAAeAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2026-03-29T16:11:03.726Z",
+              "WhenOpened": "2026-03-29T17:02:24.067Z",
               "EditorCaption": ""
             }
           ]

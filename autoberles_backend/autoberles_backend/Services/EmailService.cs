@@ -13,7 +13,7 @@ namespace autoberles_backend.Services
             _config = config;
         }
 
-        public virtual async Task SendEmailAsync(string toEmail, string subject, string body)
+        public virtual async Task SendEmailAsync(string toEmail, string subject, string body, byte[]? attachment = null)
         {
             var smtpClient = new SmtpClient(_config["Email:SmtpHost"])
             {
@@ -34,7 +34,12 @@ namespace autoberles_backend.Services
             };
 
             mailMessage.To.Add(toEmail);
-
+            if (attachment != null)
+            {
+                var stream = new MemoryStream(attachment);
+                var file = new Attachment(stream, "autoberles.pdf", "application/pdf");
+                mailMessage.Attachments.Add(file);
+            }
             await smtpClient.SendMailAsync(mailMessage);
         }
     }

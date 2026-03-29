@@ -1,4 +1,5 @@
 ﻿using autoberles_backend.Models;
+using autoberles_backend.Services;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
@@ -15,10 +16,13 @@ namespace autoberles_backend.Controllers
     public class RentalController : ControllerBase
     {
         private readonly CarRentalContext _context;
-        public RentalController(CarRentalContext context)
+        private readonly EmailService _emailService;
+        public RentalController(CarRentalContext context, EmailService emailService)
         {
             _context = context;
+            _emailService = emailService;
         }
+
         [Authorize(Roles = "admin,agent")]
         [HttpGet("rentals")]
         public async Task<IActionResult> GetAllRentals()
@@ -131,10 +135,24 @@ namespace autoberles_backend.Controllers
                 newRental.FullPrice = days * car.DefaultPricePerDay;
                 newRental.ReturnDate = null;
                 newRental.Damage = null;
-
                 _context.Rentals.Add(newRental);
                 await _context.SaveChangesAsync();
-                return Ok(newRental);
+                var user = await _context.Users.FindAsync(userId);
+                var pdfService = new PDFService();
+                var pdfBytes = pdfService.Generate(newRental, user, car);
+
+                await _emailService.SendEmailAsync(
+                    user.Email,
+                    "Autóbérlés visszaigazolása",
+                    "PDF csatolva az autóbérlés létrejöttével kapcsolatban.",
+                    pdfBytes
+                );
+
+                return Ok(new
+                {
+                    message = $"Sikeres bérlés! Email elküldve a(z) {user.Email} email címre a visszaigazoló PDF-el.",
+                    rental = newRental
+                });
             }
             catch (Exception ex)
             {

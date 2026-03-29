@@ -10,6 +10,7 @@ using System.Text.Json;
 using BCrypt.Net;
 using autoberles_backend.Services;
 using System.ComponentModel;
+using QuestPDF.Infrastructure;
 
 namespace autoberles_backend
 {
@@ -55,6 +56,8 @@ namespace autoberles_backend
                     IssuerSigningKey = new SymmetricSecurityKey(key)
                 };
             });
+
+            QuestPDF.Settings.License = LicenseType.Community;
 
             var app = builder.Build();
 

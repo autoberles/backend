@@ -1,12 +1,125 @@
 {
   "Version": 1,
-  "Hash": "IOZ+ma6mx+/UMuW50qDT2t6Aj0mVtA3zSx/K8zsbXTk=",
+  "Hash": "B6flaPR4CDFP77owvZLmZZvd/hkAG39Smzhk7pn46s0=",
   "Source": "autoberles_backend",
   "BasePath": "_content/autoberles_backend",
   "Mode": "Default",
   "ManifestType": "Build",
   "ReferencedProjectsConfiguration": [],
-  "DiscoveryPatterns": [],
-  "Assets": [],
-  "Endpoints": []
+  "DiscoveryPatterns": [
+    {
+      "Name": "autoberles_backend\\wwwroot",
+      "Source": "autoberles_backend",
+      "ContentRoot": "C:\\backend\\autoberles_backend\\autoberles_backend\\wwwroot\\",
+      "BasePath": "_content/autoberles_backend",
+      "Pattern": "**"
+    }
+  ],
+  "Assets": [
+    {
+      "Identity": "C:\\backend\\autoberles_backend\\autoberles_backend\\wwwroot\\logo.png",
+      "SourceId": "autoberles_backend",
+      "SourceType": "Discovered",
+      "ContentRoot": "C:\\backend\\autoberles_backend\\autoberles_backend\\wwwroot\\",
+      "BasePath": "_content/autoberles_backend",
+      "RelativePath": "logo#[.{fingerprint}]?.png",
+      "AssetKind": "All",
+      "AssetMode": "All",
+      "AssetRole": "Primary",
+      "AssetMergeBehavior": "",
+      "AssetMergeSource": "",
+      "RelatedAsset": "",
+      "AssetTraitName": "",
+      "AssetTraitValue": "",
+      "Fingerprint": "mlzvvf60k7",
+      "Integrity": "+kA7wztThVh1jfLJsr9ujXtlVW9L3Jw8WdxB+IqbmZE=",
+      "CopyToOutputDirectory": "PreserveNewest",
+      "CopyToPublishDirectory": "PreserveNewest",
+      "OriginalItemSpec": "wwwroot\\logo.png"
+    }
+  ],
+  "Endpoints": [
+    {
+      "Route": "logo.mlzvvf60k7.png",
+      "AssetFile": "C:\\backend\\autoberles_backend\\autoberles_backend\\wwwroot\\logo.png",
+      "Selectors": [],
+      "ResponseHeaders": [
+        {
+          "Name": "Accept-Ranges",
+          "Value": "bytes"
+        },
+        {
+          "Name": "Content-Length",
+          "Value": "14685"
+        },
+        {
+          "Name": "Content-Type",
+          "Value": "image/png"
+        },
+        {
+          "Name": "ETag",
+          "Value": "\"+kA7wztThVh1jfLJsr9ujXtlVW9L3Jw8WdxB+IqbmZE=\""
+        },
+        {
+          "Name": "Last-Modified",
+          "Value": "Sun, 29 Mar 2026 17:51:36 GMT"
+        },
+        {
+          "Name": "Cache-Control",
+          "Value": "max-age=31536000, immutable"
+        }
+      ],
+      "EndpointProperties": [
+        {
+          "Name": "fingerprint",
+          "Value": "mlzvvf60k7"
+        },
+        {
+          "Name": "label",
+          "Value": "logo.png"
+        },
+        {
+          "Name": "integrity",
+          "Value": "sha256-+kA7wztThVh1jfLJsr9ujXtlVW9L3Jw8WdxB+IqbmZE="
+        }
+      ]
+    },
+    {
+      "Route": "logo.png",
+      "AssetFile": "C:\\backend\\autoberles_backend\\autoberles_backend\\wwwroot\\logo.png",
+      "Selectors": [],
+      "ResponseHeaders": [
+        {
+          "Name": "Accept-Ranges",
+          "Value": "bytes"
+        },
+        {
+          "Name": "Content-Length",
+          "Value": "14685"
+        },
+        {
+          "Name": "Content-Type",
+          "Value": "image/png"
+        },
+        {
+          "Name": "ETag",
+          "Value": "\"+kA7wztThVh1jfLJsr9ujXtlVW9L3Jw8WdxB+IqbmZE=\""
+        },
+        {
+          "Name": "Last-Modified",
+          "Value": "Sun, 29 Mar 2026 17:51:36 GMT"
+        },
+        {
+          "Name": "Cache-Control",
+          "Value": "max-age=3600, must-revalidate"
+        }
+      ],
+      "EndpointProperties": [
+        {
+          "Name": "integrity",
+          "Value": "sha256-+kA7wztThVh1jfLJsr9ujXtlVW9L3Jw8WdxB+IqbmZE="
+        }
+      ]
+    }
+  ]
 }

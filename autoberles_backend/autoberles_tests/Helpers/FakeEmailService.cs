@@ -26,7 +26,7 @@ namespace autoberles_tests.Helpers
                     {"Email:From", "test@test.com"}
                 }).Build();
         }
-        public override Task SendEmailAsync(string to, string subject, string body)
+        public override Task SendEmailAsync(string to, string subject, string body, byte[]? attachment = null)
         {
             return Task.CompletedTask;
         }
