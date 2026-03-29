@@ -159,14 +159,14 @@ INSERT INTO car_categories (name) VALUES
 
 -- Branches
 INSERT INTO branches VALUES
-(1,'Budapest','1044 Budapest, Váci út 123.','budapest@autoker.hu','+36 15 555 123'),
-(2,'Győr','9022 Győr, Szent István út 45.','gyor@autoker.hu','+36 96 555 678'),
-(3,'Szeged','6724 Szeged, Kossuth Lajos sugárút 78.','szeged@autoker.hu','+36 62 555 987'),
-(4,'Debrecen','4026 Debrecen, Piac utca 12.','debrecen@autoker.hu','+36 52 555 111'),
-(5,'Székesfehérvár','8000 Székesfehérvár, Palotai út 33.','fehervar@autoker.hu','+36 22 555 222'),
-(6,'Pécs','7621 Pécs, Rákóczi út 50.','pecs@autoker.hu','+36 72 555 333'),
-(7,'Miskolc','3711 Miskolc, Széchenyi utca 88.','miskolc@autoker.hu','+36 46 555 444'),
-(8,'Zalaegerszeg','8900 Zalaegerszeg, Kossuth Lajos utca 21.','zalaegerszeg@autoker.hu','+36 92 555 555');
+(1,'Budapest','1044 Budapest, Váci út 123.','budapest@autoker.hu','+36 15 555 1231'),
+(2,'Győr','9022 Győr, Szent István út 45.','gyor@autoker.hu','+36 96 555 6781'),
+(3,'Szeged','6724 Szeged, Kossuth Lajos sugárút 78.','szeged@autoker.hu','+36 62 555 9871'),
+(4,'Debrecen','4026 Debrecen, Piac utca 12.','debrecen@autoker.hu','+36 52 555 1111'),
+(5,'Székesfehérvár','8000 Székesfehérvár, Palotai út 33.','fehervar@autoker.hu','+36 22 555 2221'),
+(6,'Pécs','7621 Pécs, Rákóczi út 50.','pecs@autoker.hu','+36 72 555 3331'),
+(7,'Miskolc','3711 Miskolc, Széchenyi utca 88.','miskolc@autoker.hu','+36 46 555 4441'),
+(8,'Zalaegerszeg','8900 Zalaegerszeg, Kossuth Lajos utca 21.','zalaegerszeg@autoker.hu','+36 92 555 5551');
 
 -- Users
 INSERT INTO users VALUES
