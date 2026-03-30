@@ -56,7 +56,7 @@ namespace autoberles_backend.Controllers
             _ = _emailService.SendEmailAsync(
                 user.Email,
                 "Sikeres regisztráció",
-                $"Kedves {user.FirstName}!<br><br>Sikeresen regisztráltál az Autokell autóbérlés oldalára!"
+                $"Kedves {user.FirstName}!<br><br>Sikeresen regisztráltál az Autotberelek autóbérlés oldalára!"
             );
             return Ok(new { message = $"Sikeres regisztráció, email elküldve a(z) {user.Email} email címre!" });
         }
