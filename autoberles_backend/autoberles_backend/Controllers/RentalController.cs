@@ -61,7 +61,7 @@ namespace autoberles_backend.Controllers
                 if (string.IsNullOrEmpty(userIdClaim))
                     return Unauthorized("Nem sikerült azonosítani a felhasználót.");
                 int userId = int.Parse(userIdClaim);
-                var rentals = await _context.Rentals.Where(x => x.UserId == userId && x.ReturnDate == null).ToListAsync();
+                var rentals = await _context.Rentals.Where(x => x.UserId == userId).ToListAsync();
                 return Ok(rentals);
             }
             catch (Exception ex)
@@ -82,7 +82,7 @@ namespace autoberles_backend.Controllers
                 int userId = int.Parse(userIdClaim);
 
                 var cars = await _context.Rentals
-                .Where(x => x.UserId == userId && x.EndDate >= DateTime.Today)
+                .Where(x => x.UserId == userId)
                 .Include(x => x.Car).ThenInclude(x => x.AdditionalEquipment)
                 .Select(x => x.Car).Distinct().ToListAsync();
                 return Ok(cars);
@@ -141,10 +141,28 @@ namespace autoberles_backend.Controllers
                 var pdfService = new PDFService();
                 var pdfBytes = pdfService.Generate(newRental, user, car);
 
+                var body = $@"
+                <h2>Autóbérlés visszaigazolása</h2>
+
+                <p>Kedves {user.FirstName} {user.LastName}!</p>
+
+                <p>Sikeres bérlést hajtott végre az Autotberelek autóbérlő oldalán!:</p>
+
+                <ul>
+                    <li><b>Kibérelt autó:</b> {car.Brand} {car.Model}</li>
+                    <li><b>Bérlés kezdete:</b> {newRental.StartDate:yyyy-MM-dd}</li>
+                    <li><b>Bérlés vége:</b> {newRental.EndDate:yyyy-MM-dd}</li>
+                </ul>
+
+                <p>A részletes adatokat a csatolt PDF tartalmazza.</p>
+
+                <p>Köszönjük, hogy minket választott!</p>
+                ";
+
                 await _emailService.SendEmailAsync(
                     user.Email,
                     "Autóbérlés visszaigazolása",
-                    "PDF csatolva az autóbérlés létrejöttével kapcsolatban.",
+                    body,
                     pdfBytes
                 );
 
@@ -253,6 +271,46 @@ namespace autoberles_backend.Controllers
                 var message = ex.InnerException?.Message;
                 return BadRequest(message ?? "Adatbázis hiba történt.");
             }
+        }
+
+
+        [Authorize(Roles = "admin,agent")]
+        [HttpGet("rentals/active")]
+        public async Task<IActionResult> GetActiveRentals()
+        {
+            var rentals = await _context.Rentals.Where(x => x.ReturnDate == null && x.EndDate >= DateTime.Today).ToListAsync();
+            return Ok(rentals);
+        }
+
+
+        [Authorize(Roles = "admin,agent")]
+        [HttpGet("rentals/inactive")]
+        public async Task<IActionResult> GetInactiveRentals()
+        {
+            var rentals = await _context.Rentals.Where(x => x.ReturnDate != null || x.EndDate < DateTime.Today).ToListAsync();
+            return Ok(rentals);
+        }
+
+
+        [Authorize(Roles = "admin,agent")]
+        [HttpPatch("rentals/{id}/close")]
+        public async Task<IActionResult> CloseRental(int id)
+        {
+            try
+            {
+                Rental? rental = await _context.Rentals.FindAsync(id);
+                if (rental == null)
+                    return NotFound($"Nem található bérlés a(z) {id} ID-val!");
+                rental.ReturnDate = rental.EndDate;
+                await _context.SaveChangesAsync();
+                return Ok("Bérlés sikeresen lezárva.");
+            }
+            catch (DbUpdateException ex)
+            {
+                var message = ex.InnerException?.Message;
+                return BadRequest(message ?? "Adatbázis hiba történt.");
+            }
+
         }
 
         private string ConvertSnakeToPascal(string snakeCase)

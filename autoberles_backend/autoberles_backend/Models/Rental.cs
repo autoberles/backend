@@ -3,6 +3,7 @@ using Swashbuckle.AspNetCore.Annotations;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
+using System.ComponentModel.DataAnnotations.Schema;
 using System.Diagnostics.CodeAnalysis;
 using System.Text.Json.Serialization;
 
@@ -57,6 +58,11 @@ public partial class Rental
 
     [JsonIgnore]
     public virtual User? User { get; set; } = null!;
+
+
+    [NotMapped]
+    public string Status => (ReturnDate == null && EndDate >= DateTime.Today) ? "aktív" : "inaktív";
+
 
     public static ValidationResult? ValidateDates(DateTime endDate, ValidationContext context)
     {

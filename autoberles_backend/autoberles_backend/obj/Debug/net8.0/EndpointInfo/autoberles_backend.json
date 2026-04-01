@@ -690,6 +690,53 @@
         }
       }
     },
+    "/api/rentals/active": {
+      "get": {
+        "tags": [
+          "Rental"
+        ],
+        "responses": {
+          "200": {
+            "description": "OK"
+          }
+        }
+      }
+    },
+    "/api/rentals/inactive": {
+      "get": {
+        "tags": [
+          "Rental"
+        ],
+        "responses": {
+          "200": {
+            "description": "OK"
+          }
+        }
+      }
+    },
+    "/api/rentals/{id}/close": {
+      "patch": {
+        "tags": [
+          "Rental"
+        ],
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "integer",
+              "format": "int32"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK"
+          }
+        }
+      }
+    },
     "/api/transmission_types": {
       "get": {
         "tags": [
@@ -1299,6 +1346,11 @@
           "end_date": {
             "type": "string",
             "format": "date"
+          },
+          "status": {
+            "type": "string",
+            "nullable": true,
+            "readOnly": true
           }
         },
         "additionalProperties": false

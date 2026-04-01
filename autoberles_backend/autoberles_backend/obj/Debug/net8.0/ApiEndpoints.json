@@ -453,6 +453,42 @@
   },
   {
     "ContainingType": "autoberles_backend.Controllers.RentalController",
+    "Method": "CloseRental",
+    "RelativePath": "api/rentals/{id}/close",
+    "HttpMethod": "PATCH",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "id",
+        "Type": "System.Int32",
+        "IsRequired": true
+      }
+    ],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "autoberles_backend.Controllers.RentalController",
+    "Method": "GetActiveRentals",
+    "RelativePath": "api/rentals/active",
+    "HttpMethod": "GET",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "autoberles_backend.Controllers.RentalController",
+    "Method": "GetInactiveRentals",
+    "RelativePath": "api/rentals/inactive",
+    "HttpMethod": "GET",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "autoberles_backend.Controllers.RentalController",
     "Method": "GetMyRentedCars",
     "RelativePath": "api/rentals/my_cars",
     "HttpMethod": "GET",

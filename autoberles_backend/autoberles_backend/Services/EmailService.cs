@@ -27,7 +27,7 @@ namespace autoberles_backend.Services
 
             var mailMessage = new MailMessage
             {
-                From = new MailAddress(_config["Email:From"]!),
+                From = new MailAddress(_config["Email:From"]!, "Autotberelek autóbérlés"),
                 Subject = subject,
                 Body = body,
                 IsBodyHtml = true
