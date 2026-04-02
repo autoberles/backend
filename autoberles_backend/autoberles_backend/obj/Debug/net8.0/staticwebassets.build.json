@@ -1,6 +1,6 @@
 {
   "Version": 1,
-  "Hash": "B6flaPR4CDFP77owvZLmZZvd/hkAG39Smzhk7pn46s0=",
+  "Hash": "bmGtZ/qK9rB73SmA5tGrvgO1kWalnmLntQfPl04aeVo=",
   "Source": "autoberles_backend",
   "BasePath": "_content/autoberles_backend",
   "Mode": "Default",
@@ -62,7 +62,7 @@
         },
         {
           "Name": "Last-Modified",
-          "Value": "Sun, 29 Mar 2026 17:51:36 GMT"
+          "Value": "Thu, 02 Apr 2026 16:58:30 GMT"
         },
         {
           "Name": "Cache-Control",
@@ -107,7 +107,7 @@
         },
         {
           "Name": "Last-Modified",
-          "Value": "Sun, 29 Mar 2026 17:51:36 GMT"
+          "Value": "Thu, 02 Apr 2026 16:58:30 GMT"
         },
         {
           "Name": "Cache-Control",
