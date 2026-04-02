@@ -14,11 +14,13 @@ public class PDFService
             container.Page(page =>
             {
                 page.Margin(40);
+
                 page.Header().Column(col =>
                 {
                     col.Item().Image("wwwroot/logo.png", ImageScaling.FitWidth);
                     col.Item().PaddingTop(10);
-                    col.Item().Text("Autóbérlés visszaigazolás").FontSize(22).Bold().AlignCenter();
+                    col.Item().Text("Autóbérlés visszaigazolás")
+                        .FontSize(22).Bold().AlignCenter();
                     col.Item().PaddingBottom(20);
                 });
 
@@ -36,7 +38,7 @@ public class PDFService
                     });
 
                     col.Item().PaddingVertical(10).LineHorizontal(1);
-                    
+
                     col.Item().Text("Autó adatai").Bold().FontSize(14);
                     col.Item().Column(inner =>
                     {
@@ -48,7 +50,6 @@ public class PDFService
                     col.Item().PaddingVertical(10).LineHorizontal(1);
 
                     col.Item().Text("Bérlés adatai").Bold().FontSize(14);
-
                     col.Item().Column(inner =>
                     {
                         inner.Spacing(5);
@@ -58,14 +59,34 @@ public class PDFService
 
                     col.Item().PaddingVertical(10).LineHorizontal(1);
 
-                    col.Item().Text($"Bérlés teljes ára: {rental.FullPrice} Ft").FontSize(16)
-                        .Bold().FontColor(Colors.Blue.Medium);
+                    col.Item().Text($"Bérlés teljes ára: {rental.FullPrice} Ft")
+                        .FontSize(16)
+                        .Bold()
+                        .FontColor(Colors.Blue.Medium);
 
-                    col.Item().PaddingTop(10).Text($"Generálva: {generatedAt:yyyy-MM-dd HH:mm}")
-                        .FontSize(10).FontColor(Colors.Grey.Darken2);
+                    col.Item().PaddingTop(10)
+                        .Text($"Generálva: {generatedAt:yyyy-MM-dd HH:mm}")
+                        .FontSize(10)
+                        .FontColor(Colors.Grey.Darken2);
+
+                    col.Item().PaddingTop(20).Background(Colors.Grey.Lighten4).Padding(12).Column(legal =>
+                    {
+                        legal.Spacing(6);
+                        legal.Item().Text("Fontos információ").Bold().FontSize(11);
+                        legal.Item().Text(
+                            "A bérelt jármű a bérbeadó kizárólagos tulajdonát képezi. " +
+                            "A bérlő a bérleti időszak alatt a járműben keletkezett minden kárért teljes anyagi felelősséggel tartozik, " +
+                            "és köteles annak teljes összegét megtéríteni."
+                        )
+                        .FontSize(9).FontColor(Colors.Grey.Darken3);
+                    });
                 });
 
-                page.Footer().AlignCenter().Text("Köszönjük, hogy minket választott!").FontSize(10).Italic();
+                page.Footer()
+                    .AlignCenter()
+                    .Text("Köszönjük, hogy minket választott!")
+                    .FontSize(10)
+                    .Italic();
             });
         }).GeneratePdf();
     }
