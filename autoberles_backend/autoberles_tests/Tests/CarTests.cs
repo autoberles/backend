@@ -21,7 +21,7 @@ public class CarTests
             throw new Exception("No OkObjectResult was received from the API.");
         var cars = ok!.Value as List<Car>;
         if (cars == null)
-            throw new Exception("The returned data is not a list."); 
+            throw new Exception("The returned data is not a list.");
         cars!.Count.Should().Be(2, "there should be 2 elements");
         if (cars[0].AdditionalEquipment == null)
             throw new Exception("The returned data is not a list.");

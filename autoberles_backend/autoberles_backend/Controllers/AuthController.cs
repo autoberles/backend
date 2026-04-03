@@ -85,8 +85,8 @@ namespace autoberles_backend.Controllers
             var code = RandomNumberGenerator.GetInt32(100000, 999999).ToString();
             var hungarianTimeZone = TimeZoneInfo.FindSystemTimeZoneById("Central European Standard Time");
             var localNow = TimeZoneInfo.ConvertTimeFromUtc(DateTime.UtcNow, hungarianTimeZone);
-            
-            user.ResetToken = TokenHelper.HashToken(code);
+
+            user.ResetTokenHash = TokenHelper.HashToken(code);
             user.ResetTokenExpiry = localNow.AddMinutes(10);
             await _context.SaveChangesAsync();
 
@@ -109,7 +109,7 @@ namespace autoberles_backend.Controllers
         public async Task<IActionResult> ResetPassword([FromBody] ResetPassword resetPassword)
         {
             var user = await _context.Users.FirstOrDefaultAsync(u => u.Email == resetPassword.Email);
-            if (user == null || user.ResetToken == null || user.ResetTokenExpiry == null)
+            if (user == null || user.ResetTokenHash == null || user.ResetTokenExpiry == null)
                 return BadRequest("Érvénytelen vagy lejárt kód.");
 
             var hungarianTimeZone = TimeZoneInfo.FindSystemTimeZoneById("Central European Standard Time");
@@ -119,11 +119,11 @@ namespace autoberles_backend.Controllers
                 return BadRequest("Érvénytelen vagy lejárt kód.");
 
             var hashedInput = TokenHelper.HashToken(resetPassword.Code);
-            if (user.ResetToken != hashedInput)
+            if (user.ResetTokenHash != hashedInput)
                 return BadRequest("Érvénytelen vagy lejárt kód.");
 
             user.PasswordHash = BCrypt.Net.BCrypt.HashPassword(resetPassword.NewPassword);
-            user.ResetToken = null;
+            user.ResetTokenHash = null;
             user.ResetTokenExpiry = null;
 
             await _context.SaveChangesAsync();

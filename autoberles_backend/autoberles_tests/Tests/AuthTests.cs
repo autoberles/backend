@@ -122,30 +122,37 @@ namespace autoberles_tests.Tests
         public async Task ResetPasswordSuccess()
         {
             var context = TestDbContextFactory.CreateEmpty();
+            var code = "123456";
 
-            context.Users.Add(new User
+            var user = new User
             {
                 FirstName = "Test",
                 LastName = "User",
                 PhoneNumber = "123456789",
                 Email = "test@test.com",
                 PasswordHash = "old",
-                ResetToken = "123456",
-                ResetTokenExpiry = DateTime.UtcNow.AddMinutes(10)
-            });
+                ResetTokenHash = TokenHelper.HashToken(code),
+                ResetTokenExpiry = DateTime.Now.AddMinutes(10),
+                Role = "customer"
+            };
 
+            context.Users.Add(user);
             context.SaveChanges();
             var controller = CreateController(context);
 
             var reset = new ResetPassword
             {
                 Email = "test@test.com",
-                Code = "123456",
+                Code = code,
                 NewPassword = "newpass"
             };
 
             var action = await controller.ResetPassword(reset);
-            Assert.IsType<OkObjectResult>(action);
+            var ok = Assert.IsType<OkObjectResult>(action);
+            var updatedUser = context.Users.First();
+            Assert.Null(updatedUser.ResetTokenHash);
+            Assert.Null(updatedUser.ResetTokenExpiry);
+            Assert.True(BCrypt.Net.BCrypt.Verify("newpass", updatedUser.PasswordHash));
         }
     }
 }

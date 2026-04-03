@@ -52,7 +52,7 @@ CREATE TABLE users (
     first_name VARCHAR(100) NOT NULL,
     email VARCHAR(150) NOT NULL UNIQUE,
     password_hash VARCHAR(255) NOT NULL,
-    reset_token VARCHAR(255) NULL,
+    reset_token_hash VARCHAR(255) NULL,
     reset_token_expiry DATETIME NULL,
     phone_number VARCHAR(30) NOT NULL UNIQUE,
     birth_date DATE NOT NULL,

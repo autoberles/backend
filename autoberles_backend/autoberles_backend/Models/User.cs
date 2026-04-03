@@ -1,4 +1,5 @@
 ﻿using autoberles_backend.Classes;
+using Microsoft.AspNetCore.Identity;
 using Microsoft.EntityFrameworkCore;
 using System;
 using System.Collections.Generic;
@@ -34,7 +35,7 @@ public partial class User
 
     public string PasswordHash { get; set; } = null!;
 
-    public string? ResetToken { get; set; }
+    public string? ResetTokenHash { get; set; }
 
     public DateTime? ResetTokenExpiry { get; set; }
 

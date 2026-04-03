@@ -378,10 +378,10 @@ public partial class CarRentalContext : DbContext
             entity.Property(e => e.PhoneNumber)
                 .HasMaxLength(30)
                 .HasColumnName("phone_number");
-            entity.Property(e => e.ResetToken)
+            entity.Property(e => e.ResetTokenHash)
             .HasMaxLength(255)
             .HasDefaultValueSql("'NULL'")
-            .HasColumnName("reset_token");
+            .HasColumnName("reset_token_hash");
             entity.Property(e => e.ResetTokenExpiry)
             .HasDefaultValueSql("'NULL'")
             .HasColumnType("datetime")
