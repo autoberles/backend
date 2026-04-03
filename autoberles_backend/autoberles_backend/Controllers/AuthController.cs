@@ -80,21 +80,28 @@ namespace autoberles_backend.Controllers
         {
             var user = await _context.Users.FirstOrDefaultAsync(u => u.Email == forgotPassword.Email);
             if (user == null)
-                return Ok($"Helyreállítási kód elküldve a {user.Email} email címre.");
-            var code = RandomNumberGenerator.GetInt32(100000, 999999).ToString(); 
-            user.ResetToken = code;
-            user.ResetTokenExpiry = DateTime.UtcNow.AddMinutes(10).AddHours(1);
+                return Ok("Ha létezik ilyen email, elküldtük a kódot.");
+
+            var code = RandomNumberGenerator.GetInt32(100000, 999999).ToString();
+            var hungarianTimeZone = TimeZoneInfo.FindSystemTimeZoneById("Central European Standard Time");
+            var localNow = TimeZoneInfo.ConvertTimeFromUtc(DateTime.UtcNow, hungarianTimeZone);
+            
+            user.ResetToken = TokenHelper.HashToken(code);
+            user.ResetTokenExpiry = localNow.AddMinutes(10);
             await _context.SaveChangesAsync();
+
+            var localExpiry = user.ResetTokenExpiry.Value;
 
             _ = _emailService.SendEmailAsync(
                 user.Email,
-                "Jelszó visszaállítás",
-                $@"<h2>Jelszó visszaállítás</h2>
-                    <p>A kódod:</p>
-                    <h1>{code}</h1>
-                    <p>10 percig érvényes.</p>"
-            );
-            return Ok($"Helyreállítási kód elküldve a {user.Email} email címre.");
+                    "Jelszó visszaállítás",
+                    $@"<h2>Jelszó visszaállítás</h2>
+                   <p>A kódod:</p>
+                   <h1>{code}</h1>
+                   <p>Eddig érvényes: {localExpiry:yyyy.MM.dd HH:mm}</p>"
+                );
+
+            return Ok("Ha létezik ilyen email, elküldtük a kódot.");
         }
 
 
@@ -102,8 +109,17 @@ namespace autoberles_backend.Controllers
         public async Task<IActionResult> ResetPassword([FromBody] ResetPassword resetPassword)
         {
             var user = await _context.Users.FirstOrDefaultAsync(u => u.Email == resetPassword.Email);
-            if (user == null || user.ResetToken != resetPassword.Code ||
-                user.ResetTokenExpiry == null || user.ResetTokenExpiry < DateTime.UtcNow)
+            if (user == null || user.ResetToken == null || user.ResetTokenExpiry == null)
+                return BadRequest("Érvénytelen vagy lejárt kód.");
+
+            var hungarianTimeZone = TimeZoneInfo.FindSystemTimeZoneById("Central European Standard Time");
+            var localNow = TimeZoneInfo.ConvertTimeFromUtc(DateTime.UtcNow, hungarianTimeZone);
+
+            if (user.ResetTokenExpiry < localNow)
+                return BadRequest("Érvénytelen vagy lejárt kód.");
+
+            var hashedInput = TokenHelper.HashToken(resetPassword.Code);
+            if (user.ResetToken != hashedInput)
                 return BadRequest("Érvénytelen vagy lejárt kód.");
 
             user.PasswordHash = BCrypt.Net.BCrypt.HashPassword(resetPassword.NewPassword);
