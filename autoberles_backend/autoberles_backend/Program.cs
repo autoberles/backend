@@ -74,7 +74,7 @@ namespace autoberles_backend
                         FirstName = "Pista",
                         Email = "tothpista@admin.hu",
                         PasswordHash = adminHash,
-                        PhoneNumber = "+36 20 780 193",
+                        PhoneNumber = "+36 20 780 1935",
                         BirthDate = new DateTime(1990, 5, 25),
                         Role = "admin"
                     };
@@ -90,7 +90,7 @@ namespace autoberles_backend
                         FirstName = "Lili",
                         Email = "kislili@agent.com",
                         PasswordHash = agentHash,
-                        PhoneNumber = "+36 20 516 403",
+                        PhoneNumber = "+36 20 516 4053",
                         BirthDate = new DateTime(1992, 7, 3),
                         Role = "agent"
                     };

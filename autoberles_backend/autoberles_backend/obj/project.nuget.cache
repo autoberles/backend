@@ -1,6 +1,6 @@
 {
   "version": 2,
-  "dgSpecHash": "/nBYTOBnHGw=",
+  "dgSpecHash": "46AWiPPo4wU=",
   "success": true,
   "projectFilePath": "C:\\backend\\autoberles_backend\\autoberles_backend\\autoberles_backend.csproj",
   "expectedPackageFiles": [
@@ -70,8 +70,7 @@
     "C:\\Users\\user\\.nuget\\packages\\system.text.encoding.codepages\\6.0.0\\system.text.encoding.codepages.6.0.0.nupkg.sha512",
     "C:\\Users\\user\\.nuget\\packages\\system.threading.channels\\6.0.0\\system.threading.channels.6.0.0.nupkg.sha512",
     "C:\\Users\\user\\.nuget\\packages\\system.windows.extensions\\8.0.0\\system.windows.extensions.8.0.0.nupkg.sha512",
-    "C:\\Users\\user\\.nuget\\packages\\zstdsharp.port\\0.8.6\\zstdsharp.port.0.8.6.nupkg.sha512",
-    "C:\\Users\\user\\.nuget\\packages\\microsoft.net.sdk.compilers.toolset\\9.0.200\\microsoft.net.sdk.compilers.toolset.9.0.200.nupkg.sha512"
+    "C:\\Users\\user\\.nuget\\packages\\zstdsharp.port\\0.8.6\\zstdsharp.port.0.8.6.nupkg.sha512"
   ],
   "logs": []
 }
