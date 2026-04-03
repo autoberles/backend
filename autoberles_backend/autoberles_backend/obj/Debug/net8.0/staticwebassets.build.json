@@ -1,6 +1,6 @@
 {
   "Version": 1,
-  "Hash": "bmGtZ/qK9rB73SmA5tGrvgO1kWalnmLntQfPl04aeVo=",
+  "Hash": "WRxEPJRzV6/4gPiB8aKb0+xr6NuVuISlwsG9FXHBgOw=",
   "Source": "autoberles_backend",
   "BasePath": "_content/autoberles_backend",
   "Mode": "Default",
@@ -16,6 +16,27 @@
     }
   ],
   "Assets": [
+    {
+      "Identity": "C:\\backend\\autoberles_backend\\autoberles_backend\\wwwroot\\cars\\mercedes_benz.jpg",
+      "SourceId": "autoberles_backend",
+      "SourceType": "Discovered",
+      "ContentRoot": "C:\\backend\\autoberles_backend\\autoberles_backend\\wwwroot\\",
+      "BasePath": "_content/autoberles_backend",
+      "RelativePath": "cars/mercedes_benz#[.{fingerprint}]?.jpg",
+      "AssetKind": "All",
+      "AssetMode": "All",
+      "AssetRole": "Primary",
+      "AssetMergeBehavior": "",
+      "AssetMergeSource": "",
+      "RelatedAsset": "",
+      "AssetTraitName": "",
+      "AssetTraitValue": "",
+      "Fingerprint": "yvsfkdjzqc",
+      "Integrity": "AugeQOut+rPOgrM3HPKXxcYhSe5dXH2xXAmOrAWC1d8=",
+      "CopyToOutputDirectory": "Never",
+      "CopyToPublishDirectory": "PreserveNewest",
+      "OriginalItemSpec": "wwwroot\\cars\\mercedes_benz.jpg"
+    },
     {
       "Identity": "C:\\backend\\autoberles_backend\\autoberles_backend\\wwwroot\\logo.png",
       "SourceId": "autoberles_backend",
@@ -39,6 +60,88 @@
     }
   ],
   "Endpoints": [
+    {
+      "Route": "cars/mercedes_benz.jpg",
+      "AssetFile": "C:\\backend\\autoberles_backend\\autoberles_backend\\wwwroot\\cars\\mercedes_benz.jpg",
+      "Selectors": [],
+      "ResponseHeaders": [
+        {
+          "Name": "Accept-Ranges",
+          "Value": "bytes"
+        },
+        {
+          "Name": "Content-Length",
+          "Value": "54930"
+        },
+        {
+          "Name": "Content-Type",
+          "Value": "image/jpeg"
+        },
+        {
+          "Name": "ETag",
+          "Value": "\"AugeQOut+rPOgrM3HPKXxcYhSe5dXH2xXAmOrAWC1d8=\""
+        },
+        {
+          "Name": "Last-Modified",
+          "Value": "Fri, 03 Apr 2026 15:12:54 GMT"
+        },
+        {
+          "Name": "Cache-Control",
+          "Value": "max-age=3600, must-revalidate"
+        }
+      ],
+      "EndpointProperties": [
+        {
+          "Name": "integrity",
+          "Value": "sha256-AugeQOut+rPOgrM3HPKXxcYhSe5dXH2xXAmOrAWC1d8="
+        }
+      ]
+    },
+    {
+      "Route": "cars/mercedes_benz.yvsfkdjzqc.jpg",
+      "AssetFile": "C:\\backend\\autoberles_backend\\autoberles_backend\\wwwroot\\cars\\mercedes_benz.jpg",
+      "Selectors": [],
+      "ResponseHeaders": [
+        {
+          "Name": "Accept-Ranges",
+          "Value": "bytes"
+        },
+        {
+          "Name": "Content-Length",
+          "Value": "54930"
+        },
+        {
+          "Name": "Content-Type",
+          "Value": "image/jpeg"
+        },
+        {
+          "Name": "ETag",
+          "Value": "\"AugeQOut+rPOgrM3HPKXxcYhSe5dXH2xXAmOrAWC1d8=\""
+        },
+        {
+          "Name": "Last-Modified",
+          "Value": "Fri, 03 Apr 2026 15:12:54 GMT"
+        },
+        {
+          "Name": "Cache-Control",
+          "Value": "max-age=31536000, immutable"
+        }
+      ],
+      "EndpointProperties": [
+        {
+          "Name": "fingerprint",
+          "Value": "yvsfkdjzqc"
+        },
+        {
+          "Name": "label",
+          "Value": "cars/mercedes_benz.jpg"
+        },
+        {
+          "Name": "integrity",
+          "Value": "sha256-AugeQOut+rPOgrM3HPKXxcYhSe5dXH2xXAmOrAWC1d8="
+        }
+      ]
+    },
     {
       "Route": "logo.mlzvvf60k7.png",
       "AssetFile": "C:\\backend\\autoberles_backend\\autoberles_backend\\wwwroot\\logo.png",

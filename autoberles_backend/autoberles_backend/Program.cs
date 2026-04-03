@@ -107,6 +107,7 @@ namespace autoberles_backend
 
             app.UseAuthentication();
             app.UseAuthorization();
+            app.UseStaticFiles();
 
             app.MapControllers();
 

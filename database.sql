@@ -191,23 +191,23 @@ INSERT INTO users VALUES
 
 -- Cars
 INSERT INTO cars VALUES
-(1,TRUE,'Toyota','Corolla',2021,'fehér',1350,1850,5,4,8990000,'AB-CD-101',45000,470,1798,50,NULL,97,132,'2025-09-15','2026-06-30',2,3,2,1,2,15000,'https://kong-proxy-intranet.toyota-europe.com/c1-images/resize/ccis/680x680/zip/hu/product-token/38d73463-3328-42fd-9718-97718e529649/vehicle/d8d6fdc5-02ca-43c9-ba8b-249158d683d5/padding/50,50,50,50/image-quality/70/day-exterior-04_040.png'),
-(2,TRUE,'Volkswagen','Golf',2019,'fekete',1280,1780,5,5,6590000,'EF-GH-214',80000,380,1498,50,NULL,85,116,'2024-07-10','2026-09-09',1,1,1,1,1,14000,'https://images.hgmsites.net/med/2019-volkswagen-golf-2-0t-se-dsg-angular-front-exterior-view_100688298_m.jpg'),
-(3,TRUE,'BMW','320d',2020,'kék',1500,2050,5,4,11290000,'IJ-KL-335',60000,480,1995,57,NULL,140,190,'2025-01-20','2026-05-09',2,2,2,2,3,20000,'https://i.pinimg.com/736x/b1/ae/4f/b1ae4f01776f380ba5cabc9e8f0794cf.jpg'),
-(4,TRUE,'Ford','Focus',2018,'ezüst',1320,1820,5,5,5290000,'MN-OP-442',90000,375,1496,52,NULL,92,125,'2024-05-05','2027-03-19',3,1,1,1,2,13000,'https://www.dubicars.com/images/bdbfec/r_960x540/generations/generation_64ed7b3aba1c2_1.jpg'),
-(5,FALSE,'Audi','A4',2022,'szürke',1550,2100,5,4,13490000,'QR-ST-558',30000,460,1984,54,NULL,150,204,'2026-01-18','2026-06-30',2,2,2,1,3,21000,'https://www.shutterstock.com/image-illustration/tula-russia-june-9-2021-600nw-2022775508.jpg'),
-(6,TRUE,'Hyundai','Tucson',2021,'fehér',1650,2200,5,5,10490000,'UV-WX-671',40000,513,1598,52,13,132,179,'2025-08-12','2026-08-30',2,3,3,1,4,18000,'https://cache2.arabwheels.ae/system/car_generation_pictures/38296/original/Cover.jpg?1767186578'),
-(7,TRUE,'Skoda','Octavia',2020,'fekete',1380,1880,5,5,7890000,'YZ-AB-782',70000,600,1968,50,NULL,110,150,'2024-12-30','2026-05-05',1,1,1,1,2,15000,'https://cache1.arabwheels.ae/system/car_generation_pictures/27517/original/Front%20Left%20Side%20View.?1730101910'),
-(8,TRUE,'Suzuki','Vitara',2019,'kék',1200,1700,5,5,5990000,'CD-EF-893',85000,375,1373,47,NULL,103,140,'2024-06-15','2026-07-18',1,1,1,1,4,14000,'https://img.hasznaltautocdn.com/640x480/22489394/19021408.jpg'),
-(9,TRUE,'Mercedes','C220',2022,'ezüst',1600,2150,5,4,15990000,'GH-IJ-904',25000,455,1950,66,NULL,143,194,'2026-02-01','2026-05-30',2,4,2,2,3,23000,'https://www.anycaronline.co.uk/images/vehicles/600/mercedes-benz-c-class-coupe-c220d-amg-line-2dr-9g-tronic-120627.jpg'),
-(10,TRUE,'Kia','Sportage',2021,'szürke',1680,2230,5,5,10990000,'KL-MN-315',50000,503,1598,54,14,132,179,'2025-09-01','2026-08-31',4,2,3,1,4,18000,'https://media.motorfuse.com/img.cfm/type/3/img/0F16CD4A4C0FD7D6C1E6AFCEC12C0C10F5CB41'),
-(11,TRUE,'Opel','Astra',2019,'fehér',1250,1750,5,5,5490000,'OP-QR-426',95000,370,1399,48,NULL,81,110,'2024-07-20','2026-09-01',6,1,1,1,1,13000,'https://img.autoportaal.ee/cache3/pb/a2_advertisement_photo/ZmQwMWI4fDMzMjc5NThfbXlpbWdfMTc3MzY4Nzk4OC5qcGc/1600-1600-fit/3327958-opel-astra-white.jpg'),
-(12,TRUE,'Renault','Megane',2020,'fekete',1320,1820,5,5,6390000,'ST-UV-537',75000,440,1332,50,NULL,97,132,'2025-02-10','2027-03-12',3,1,2,1,2,14000,'https://images.thewest.com.au/publication/B88495457Z/G4L12KDBJ.2-0.jpg?imwidth=810&impolicy=wan_v3'),
-(13,FALSE,'Tesla','Model 3',2023,'piros',1840,2250,5,4,17990000,'WX-YZ-648',15000,425,0,NULL,60,208,283,'2026-03-01','2027-06-30',2,4,4,3,3,25000,'https://assets.autobuzz.my/wp-content/uploads/2023/09/01102445/Tesla-Model-3-facelift-orders-Malaysia.jpg'),
-(14,TRUE,'Peugeot','3008',2021,'kék',1600,2100,5,5,9890000,'AA-BB-759',40000,520,1598,53,NULL,121,165,'2025-08-20','2026-10-30',5,2,2,1,4,17000,'https://peugeotpartsdirect.co.uk/wp-content/uploads/3008-2008-2016-300x300.jpg'),
-(15,TRUE,'Porsche','911 Carrera',2022,'piros',1505,1850,2,2,45990000,'GG-HH-123',10000,132,2981,NULL,70,283,385,'2026-02-15','2026-08-22',2,2,4,2,5,40000,'https://st4.depositphotos.com/6013912/25170/i/450/depositphotos_251702844-stock-photo-almaty-kazakhstan-march-18-porsche.jpg'),
-(16,TRUE,'Nissan','Qashqai',2022,'szürke',1500,2000,5,5,11990000,'CC-DD-860',35000,504,1332,55,NULL,116,158,'2026-01-25','2026-06-26',7,2,1,1,4,18000,'https://global2.nissanflow.com/media/1ombfs2f/02-all-new-nissan-qashqai-colours-555555.jpg'),
-(17,TRUE,'Mazda','CX-5',2020,'ezüst',1620,2140,5,5,10490000,'EE-FF-971',55000,506,2488,58,NULL,143,194,'2025-03-10','2026-09-15',8,2,1,1,4,18000,'https://content.homenetiol.com/2000292/2235906/0x0/stock_images/8/cc_2026MAS06_01_640/cc_2026MAS062035297_01_640_52C.jpg');
+(1,TRUE,'Toyota','Corolla',2021,'fehér',1350,1850,5,4,8990000,'AB-CD-101',45000,470,1798,50,NULL,97,132,'2025-09-15','2026-06-30',2,3,2,1,2,15000,'http://localhost:5128/cars/toyota_corolla.jpg'),
+(2,TRUE,'Volkswagen','Golf',2019,'fekete',1280,1780,5,5,6590000,'EF-GH-214',80000,380,1498,50,NULL,85,116,'2024-07-10','2026-09-09',1,1,1,1,1,14000,'http://localhost:5128/cars/volkswagen_golf.jpg'),
+(3,TRUE,'BMW','320d',2020,'kék',1500,2050,5,4,11290000,'IJ-KL-335',60000,480,1995,57,NULL,140,190,'2025-01-20','2026-05-09',2,2,2,2,3,20000,'http://localhost:5128/images/cars/bmw_320d.jpg'),
+(4,TRUE,'Ford','Focus',2018,'ezüst',1320,1820,5,5,5290000,'MN-OP-442',90000,375,1496,52,NULL,92,125,'2024-05-05','2027-03-19',3,1,1,1,2,13000,'http://localhost:5128/images/cars/ford_focus.jpg'),
+(5,FALSE,'Audi','A4',2022,'szürke',1550,2100,5,4,13490000,'QR-ST-558',30000,460,1984,54,NULL,150,204,'2026-01-18','2026-06-30',2,2,2,1,3,21000,'http://localhost:5128/images/cars/audi_a4.jpg'),
+(6,TRUE,'Hyundai','Tucson',2021,'fehér',1650,2200,5,5,10490000,'UV-WX-671',40000,513,1598,52,13,132,179,'2025-08-12','2026-08-30',2,3,3,1,4,18000,'http://localhost:5128/images/cars/hyundai_tucson.jpg'),
+(7,TRUE,'Skoda','Octavia',2020,'fekete',1380,1880,5,5,7890000,'YZ-AB-782',70000,600,1968,50,NULL,110,150,'2024-12-30','2026-05-05',1,1,1,1,2,15000,'http://localhost:5128/images/cars/skoda_octavia.jpg'),
+(8,TRUE,'Suzuki','Vitara',2019,'kék',1200,1700,5,5,5990000,'CD-EF-893',85000,375,1373,47,NULL,103,140,'2024-06-15','2026-07-18',1,1,1,1,4,14000,'http://localhost:5128/images/cars/suzuki_vitara.jpg'),
+(9,TRUE,'Mercedes','C220',2022,'ezüst',1600,2150,5,4,15990000,'GH-IJ-904',25000,455,1950,66,NULL,143,194,'2026-02-01','2026-05-30',2,4,2,2,3,23000,'http://localhost:5128/images/cars/mercedes_c220.jpg'),
+(10,TRUE,'Kia','Sportage',2021,'szürke',1680,2230,5,5,10990000,'KL-MN-315',50000,503,1598,54,14,132,179,'2025-09-01','2026-08-31',4,2,3,1,4,18000,'http://localhost:5128/images/cars/kia_sportage.jpg'),
+(11,TRUE,'Opel','Astra',2019,'fehér',1250,1750,5,5,5490000,'OP-QR-426',95000,370,1399,48,NULL,81,110,'2024-07-20','2026-09-01',6,1,1,1,1,13000,'http://localhost:5128/images/cars/opel_astra.jpg'),
+(12,TRUE,'Renault','Megane',2020,'fekete',1320,1820,5,5,6390000,'ST-UV-537',75000,440,1332,50,NULL,97,132,'2025-02-10','2027-03-12',3,1,2,1,2,14000,'http://localhost:5128/images/cars/renault_megane.jpg'),
+(13,FALSE,'Tesla','Model 3',2023,'piros',1840,2250,5,4,17990000,'WX-YZ-648',15000,425,0,NULL,60,208,283,'2026-03-01','2027-06-30',2,4,4,3,3,25000,'http://localhost:5128/images/cars/tesla_model3.jpg'),
+(14,TRUE,'Peugeot','3008',2021,'kék',1600,2100,5,5,9890000,'AA-BB-759',40000,520,1598,53,NULL,121,165,'2025-08-20','2026-10-30',5,2,2,1,4,17000,'http://localhost:5128/images/cars/peugeot_3008.jpg'),
+(15,TRUE,'Porsche','911 Carrera',2022,'piros',1505,1850,2,2,45990000,'GG-HH-123',10000,132,2981,NULL,70,283,385,'2026-02-15','2026-08-22',2,2,4,2,5,40000,'http://localhost:5128/images/cars/porsche_911carrera.jpg'),
+(16,TRUE,'Nissan','Qashqai',2022,'szürke',1500,2000,5,5,11990000,'CC-DD-860',35000,504,1332,55,NULL,116,158,'2026-01-25','2026-06-26',7,2,1,1,4,18000,'http://localhost:5128/images/cars/nissan_qashqai.jpg'),
+(17,TRUE,'Mazda','CX-5',2020,'ezüst',1620,2140,5,5,10490000,'EE-FF-971',55000,506,2488,58,NULL,143,194,'2025-03-10','2026-09-15',8,2,1,1,4,18000,'http://localhost:5128/images/cars/mazda_cx5.jpeg');
 
 -- Additional Equipment
 INSERT INTO additional_equipment VALUES

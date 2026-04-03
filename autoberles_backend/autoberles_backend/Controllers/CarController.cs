@@ -116,6 +116,48 @@ namespace autoberles_backend.Controllers
 
 
         [Authorize(Roles = "admin")]
+        [HttpPost("car/image")]
+        public async Task<IActionResult> UploadCarImage(IFormFile file)
+        {
+            if (file == null || file.Length == 0)
+                return BadRequest("Nincs fájl feltöltve.");
+
+            var folderPath = Path.Combine(Directory.GetCurrentDirectory(), "wwwroot/cars");
+            var originalFileName = Path.GetFileName(file.FileName);
+            var filePath = Path.Combine(folderPath, originalFileName);
+
+            if (System.IO.File.Exists(filePath))
+            {
+                var existingUrl = $"{Request.Scheme}://{Request.Host}/cars/{originalFileName}";
+                return Ok(new { url = existingUrl, reused = true });
+            }
+
+            var fileName = $"{Guid.NewGuid()}{Path.GetExtension(file.FileName)}";
+            var newFilePath = Path.Combine(folderPath, fileName);
+
+            using (var stream = new FileStream(newFilePath, FileMode.Create))
+            {
+                await file.CopyToAsync(stream);
+            }
+
+            var url = $"{Request.Scheme}://{Request.Host}/cars/{fileName}";
+            return Ok(new { url, reused = false });
+        }
+
+
+        [Authorize(Roles = "admin")]
+        [HttpGet("cars/images")]
+        public IActionResult GetCarImages()
+        {
+            var path = Path.Combine(Directory.GetCurrentDirectory(), "wwwroot/cars");
+            if (!Directory.Exists(path))
+                return Ok(new List<string>());
+            var files = Directory.GetFiles(path).Select(f => $"{Request.Scheme}://{Request.Host}/images/cars/{Path.GetFileName(f)}");
+            return Ok(files);
+        }
+
+
+        [Authorize(Roles = "admin")]
         [HttpPatch("cars/{id}")]
         public async Task<IActionResult> PatchCar(int id, [FromBody] JsonElement body)
         {
