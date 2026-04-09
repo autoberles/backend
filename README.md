@@ -37,17 +37,11 @@ dotnet --list-sdks
 
 ### 📥 Telepítés lépései
 
-1. Repository klónozása a githubról:
+1. Repository klónozása a githubról: git clone https://github.com/autoberles/backend.git
 
-git clone https://github.com/autoberles/backend.git
+2. Adatbázis létrehozása: database.sql fájl futtatása dbForge segítségével
 
-2. Adatbázis létrehozása:
-
-database.sql fájl futtatása dbForge segítségével
-
-3. Projekt futtatása:
-
-Visual Studioban, http kiválasztásával
+3. Projekt futtatása: Visual Studioban, http kiválasztásával
 
 ---
 
@@ -70,6 +64,7 @@ A projektben lévő végpontokhoz tesztek is készültek.
 Futtatás (Visual Studio Terminalban):
 
 cd autoberles_tests
+
 dotnet test --logger "console;verbosity=detailed"
 
 ---
