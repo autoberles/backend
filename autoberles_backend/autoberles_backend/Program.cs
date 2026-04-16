@@ -32,6 +32,15 @@ namespace autoberles_backend
                     options.JsonSerializerOptions.PropertyNamingPolicy = JsonNamingPolicy.SnakeCaseLower;
                 });
 
+            builder.Services.AddCors(options =>
+            {
+                options.AddPolicy("AllowReactApp", policy =>
+                {
+                    policy.WithOrigins("http://localhost:5173")
+                          .AllowAnyHeader()
+                          .AllowAnyMethod();
+                });
+            });
             builder.Services.AddEndpointsApiExplorer();
             builder.Services.AddSwaggerGen(AddSwaggerAuthBtn);
             builder.Services.AddScoped<EmailService>();
@@ -105,6 +114,7 @@ namespace autoberles_backend
                 app.UseSwaggerUI();
             }
 
+            app.UseCors("AllowReactApp");
             app.UseAuthentication();
             app.UseAuthorization();
             app.UseStaticFiles();
