@@ -69,6 +69,13 @@ dotnet test --logger "console;verbosity=detailed"
 
 ---
 
+## 🔗 Kapcsolódó repók
+
+- **Frontend:** [github.com/autoberles/frontend](https://github.com/autoberles/frontend)
+- **Mobilapp:** [github.com/autoberles/frontend](https://github.com/autoberles/Mobil)
+
+---
+
 ## 👨‍💻 A projekt készítői
 
 | Név              | Szerep                    |
