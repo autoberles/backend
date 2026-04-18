@@ -24,6 +24,8 @@ namespace autoberles_backend.Controllers
         {
             try
             {
+                var now = DateTime.Now.Date;
+
                 var cars = await _context.Cars
                     .Include(x => x.AdditionalEquipment)
                         .ThenInclude(x => x.AirConditioning)
@@ -34,6 +36,11 @@ namespace autoberles_backend.Controllers
                     .Include(x => x.WheelDriveType)
                     .Include(x => x.Rentals)
                     .ToListAsync();
+
+                foreach (var car in cars)
+                {
+                    car.Availability = !car.Rentals.Any(r => r.ReturnDate == null && r.StartDate!.Value.Date <= now && now <= r.EndDate!.Value.Date);
+                }
                 return Ok(cars);
             }
             catch (Exception ex)
