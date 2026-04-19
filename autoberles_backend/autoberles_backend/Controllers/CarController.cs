@@ -159,7 +159,7 @@ namespace autoberles_backend.Controllers
             var path = Path.Combine(Directory.GetCurrentDirectory(), "wwwroot/cars");
             if (!Directory.Exists(path))
                 return Ok(new List<string>());
-            var files = Directory.GetFiles(path).Select(f => $"{Request.Scheme}://{Request.Host}/images/cars/{Path.GetFileName(f)}");
+            var files = Directory.GetFiles(path).Select(f => $"{Request.Scheme}://{Request.Host}/cars/{Path.GetFileName(f)}");
             return Ok(files);
         }
 
