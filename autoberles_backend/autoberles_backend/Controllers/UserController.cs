@@ -19,6 +19,7 @@ namespace autoberles_backend.Controllers
         {
             _context = context;
         }
+
         [Authorize(Roles = "admin")]
         [HttpGet("users")]
         public async Task<IActionResult> GetAllUsers()

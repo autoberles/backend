@@ -320,4 +320,3 @@ C:\backend\autoberles_backend\autoberles_backend\bin\Debug\net8.0\runtimes\win-x
 C:\backend\autoberles_backend\autoberles_backend\bin\Debug\net8.0\runtimes\win-x86\native\zlib1.dll
 C:\backend\autoberles_backend\autoberles_backend\bin\Debug\net8.0\wwwroot\logo.png
 C:\backend\autoberles_backend\autoberles_backend\bin\Debug\net8.0\autoberles_backend.staticwebassets.runtime.json
-C:\backend\autoberles_backend\autoberles_backend\obj\Debug\net8.0\staticwebassets.upToDateCheck.txt
