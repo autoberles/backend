@@ -1,16 +1,13 @@
 ﻿using autoberles_backend.Classes;
 using autoberles_backend.Models;
-using Microsoft.AspNetCore.Authentication.JwtBearer;
-using Microsoft.EntityFrameworkCore;
-using Microsoft.IdentityModel.Tokens;
-using Microsoft.OpenApi.Models;
-using Swashbuckle.AspNetCore.SwaggerGen;
-using System.Text;
-using System.Text.Json;
-using BCrypt.Net;
 using autoberles_backend.Services;
-using System.ComponentModel;
+using BCrypt.Net;
+using Microsoft.AspNetCore.Authentication.Cookies;
+using Microsoft.EntityFrameworkCore;
+using Microsoft.OpenApi.Models;
 using QuestPDF.Infrastructure;
+using Swashbuckle.AspNetCore.SwaggerGen;
+using System.Text.Json;
 
 namespace autoberles_backend
 {
@@ -32,39 +29,32 @@ namespace autoberles_backend
                     options.JsonSerializerOptions.PropertyNamingPolicy = JsonNamingPolicy.SnakeCaseLower;
                 });
 
+            builder.Services
+                .AddAuthentication(CookieAuthenticationDefaults.AuthenticationScheme)
+                .AddCookie(CookieAuthenticationDefaults.AuthenticationScheme, options =>
+                {
+                    options.Cookie.Name = "auth_cookie";
+                    options.Cookie.HttpOnly = true;
+                    options.Cookie.SameSite = SameSiteMode.Lax;
+                    options.Cookie.SecurePolicy = CookieSecurePolicy.SameAsRequest;
+                });
+
+            builder.Services.AddAuthorization();
+
             builder.Services.AddCors(options =>
             {
-                options.AddPolicy("AllowReactApp", policy =>
+                options.AddPolicy("AllowFrontend", policy =>
                 {
                     policy.WithOrigins("http://localhost:5173")
                           .AllowAnyHeader()
-                          .AllowAnyMethod();
+                          .AllowAnyMethod()
+                          .AllowCredentials();
                 });
             });
+
             builder.Services.AddEndpointsApiExplorer();
             builder.Services.AddSwaggerGen(AddSwaggerAuthBtn);
             builder.Services.AddScoped<EmailService>();
-
-            var jwtSettings = builder.Configuration.GetSection("Jwt");
-            var key = Encoding.UTF8.GetBytes(jwtSettings["Key"]!);
-
-            builder.Services.AddAuthentication(options =>
-            {
-                options.DefaultAuthenticateScheme = JwtBearerDefaults.AuthenticationScheme;
-                options.DefaultChallengeScheme = JwtBearerDefaults.AuthenticationScheme;
-            })
-            .AddJwtBearer(options =>
-            {
-                options.TokenValidationParameters = new TokenValidationParameters
-                {
-                    ValidateIssuer = true,
-                    ValidateAudience = true,
-                    ValidateLifetime = true,
-                    ValidIssuer = jwtSettings["Issuer"],
-                    ValidAudience = jwtSettings["Audience"],
-                    IssuerSigningKey = new SymmetricSecurityKey(key)
-                };
-            });
 
             QuestPDF.Settings.License = LicenseType.Community;
 
@@ -105,6 +95,7 @@ namespace autoberles_backend
                     };
                     context.Users.Add(agent);
                 }
+
                 context.SaveChanges();
             }
 
@@ -114,7 +105,7 @@ namespace autoberles_backend
                 app.UseSwaggerUI();
             }
 
-            app.UseCors("AllowReactApp");
+            app.UseCors("AllowFrontend");
             app.UseAuthentication();
             app.UseAuthorization();
             app.UseStaticFiles();
@@ -128,32 +119,8 @@ namespace autoberles_backend
         {
             options.SwaggerDoc("v1", new OpenApiInfo
             {
-                Title = "JWT Demo API",
+                Title = "Auth Demo API",
                 Version = "v1"
-            });
-
-            options.AddSecurityDefinition("Bearer", new OpenApiSecurityScheme
-            {
-                Name = "Authorization",
-                Type = SecuritySchemeType.Http,
-                Scheme = "bearer",
-                BearerFormat = "JWT",
-                In = ParameterLocation.Header
-            });
-
-            options.AddSecurityRequirement(new OpenApiSecurityRequirement
-            {
-                {
-                    new OpenApiSecurityScheme
-                    {
-                        Reference = new OpenApiReference
-                        {
-                            Type = ReferenceType.SecurityScheme,
-                            Id = "Bearer"
-                        }
-                    },
-                    Array.Empty<string>()
-                }
             });
         }
     }

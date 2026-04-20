@@ -3,8 +3,92 @@
   "WorkspaceRootPath": "C:\\Users\\Windows\\source\\repos\\backend\\autoberles_backend\\",
   "Documents": [
     {
+      "AbsoluteMoniker": "D:0:0:{41495FAA-ADEC-43FA-AAE4-4D5298525BBD}|autoberles_backend\\autoberles_backend.csproj|c:\\users\\windows\\source\\repos\\backend\\autoberles_backend\\autoberles_backend\\classes\\datetimeconverter.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{41495FAA-ADEC-43FA-AAE4-4D5298525BBD}|autoberles_backend\\autoberles_backend.csproj|solutionrelative:autoberles_backend\\classes\\datetimeconverter.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{41495FAA-ADEC-43FA-AAE4-4D5298525BBD}|autoberles_backend\\autoberles_backend.csproj|c:\\users\\windows\\source\\repos\\backend\\autoberles_backend\\autoberles_backend\\controllers\\authcontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{41495FAA-ADEC-43FA-AAE4-4D5298525BBD}|autoberles_backend\\autoberles_backend.csproj|solutionrelative:autoberles_backend\\controllers\\authcontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{41495FAA-ADEC-43FA-AAE4-4D5298525BBD}|autoberles_backend\\autoberles_backend.csproj|c:\\users\\windows\\source\\repos\\backend\\autoberles_backend\\autoberles_backend\\controllers\\usercontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{41495FAA-ADEC-43FA-AAE4-4D5298525BBD}|autoberles_backend\\autoberles_backend.csproj|solutionrelative:autoberles_backend\\controllers\\usercontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
       "AbsoluteMoniker": "D:0:0:{41495FAA-ADEC-43FA-AAE4-4D5298525BBD}|autoberles_backend\\autoberles_backend.csproj|c:\\users\\windows\\source\\repos\\backend\\autoberles_backend\\autoberles_backend\\program.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
       "RelativeMoniker": "D:0:0:{41495FAA-ADEC-43FA-AAE4-4D5298525BBD}|autoberles_backend\\autoberles_backend.csproj|solutionrelative:autoberles_backend\\program.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{41495FAA-ADEC-43FA-AAE4-4D5298525BBD}|autoberles_backend\\autoberles_backend.csproj|c:\\users\\windows\\source\\repos\\backend\\autoberles_backend\\autoberles_backend\\classes\\createuser.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{41495FAA-ADEC-43FA-AAE4-4D5298525BBD}|autoberles_backend\\autoberles_backend.csproj|solutionrelative:autoberles_backend\\classes\\createuser.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{41495FAA-ADEC-43FA-AAE4-4D5298525BBD}|autoberles_backend\\autoberles_backend.csproj|c:\\users\\windows\\source\\repos\\backend\\autoberles_backend\\autoberles_backend\\classes\\forgotpassword.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{41495FAA-ADEC-43FA-AAE4-4D5298525BBD}|autoberles_backend\\autoberles_backend.csproj|solutionrelative:autoberles_backend\\classes\\forgotpassword.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{41495FAA-ADEC-43FA-AAE4-4D5298525BBD}|autoberles_backend\\autoberles_backend.csproj|c:\\users\\windows\\source\\repos\\backend\\autoberles_backend\\autoberles_backend\\classes\\register.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{41495FAA-ADEC-43FA-AAE4-4D5298525BBD}|autoberles_backend\\autoberles_backend.csproj|solutionrelative:autoberles_backend\\classes\\register.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{41495FAA-ADEC-43FA-AAE4-4D5298525BBD}|autoberles_backend\\autoberles_backend.csproj|c:\\users\\windows\\source\\repos\\backend\\autoberles_backend\\autoberles_backend\\classes\\roles.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{41495FAA-ADEC-43FA-AAE4-4D5298525BBD}|autoberles_backend\\autoberles_backend.csproj|solutionrelative:autoberles_backend\\classes\\roles.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{41495FAA-ADEC-43FA-AAE4-4D5298525BBD}|autoberles_backend\\autoberles_backend.csproj|c:\\users\\windows\\source\\repos\\backend\\autoberles_backend\\autoberles_backend\\classes\\tokenhelper.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{41495FAA-ADEC-43FA-AAE4-4D5298525BBD}|autoberles_backend\\autoberles_backend.csproj|solutionrelative:autoberles_backend\\classes\\tokenhelper.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{41495FAA-ADEC-43FA-AAE4-4D5298525BBD}|autoberles_backend\\autoberles_backend.csproj|c:\\users\\windows\\source\\repos\\backend\\autoberles_backend\\autoberles_backend\\classes\\uservalidator.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{41495FAA-ADEC-43FA-AAE4-4D5298525BBD}|autoberles_backend\\autoberles_backend.csproj|solutionrelative:autoberles_backend\\classes\\uservalidator.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{41495FAA-ADEC-43FA-AAE4-4D5298525BBD}|autoberles_backend\\autoberles_backend.csproj|c:\\users\\windows\\source\\repos\\backend\\autoberles_backend\\autoberles_backend\\models\\user.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{41495FAA-ADEC-43FA-AAE4-4D5298525BBD}|autoberles_backend\\autoberles_backend.csproj|solutionrelative:autoberles_backend\\models\\user.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{41495FAA-ADEC-43FA-AAE4-4D5298525BBD}|autoberles_backend\\autoberles_backend.csproj|c:\\users\\windows\\source\\repos\\backend\\autoberles_backend\\autoberles_backend\\classes\\login.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{41495FAA-ADEC-43FA-AAE4-4D5298525BBD}|autoberles_backend\\autoberles_backend.csproj|solutionrelative:autoberles_backend\\classes\\login.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{41495FAA-ADEC-43FA-AAE4-4D5298525BBD}|autoberles_backend\\autoberles_backend.csproj|c:\\users\\windows\\source\\repos\\backend\\autoberles_backend\\autoberles_backend\\classes\\nullabledatetimeconverter.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{41495FAA-ADEC-43FA-AAE4-4D5298525BBD}|autoberles_backend\\autoberles_backend.csproj|solutionrelative:autoberles_backend\\classes\\nullabledatetimeconverter.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{41495FAA-ADEC-43FA-AAE4-4D5298525BBD}|autoberles_backend\\autoberles_backend.csproj|c:\\users\\windows\\source\\repos\\backend\\autoberles_backend\\autoberles_backend\\services\\pdfservice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{41495FAA-ADEC-43FA-AAE4-4D5298525BBD}|autoberles_backend\\autoberles_backend.csproj|solutionrelative:autoberles_backend\\services\\pdfservice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{41495FAA-ADEC-43FA-AAE4-4D5298525BBD}|autoberles_backend\\autoberles_backend.csproj|c:\\users\\windows\\source\\repos\\backend\\autoberles_backend\\autoberles_backend\\services\\emailservice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{41495FAA-ADEC-43FA-AAE4-4D5298525BBD}|autoberles_backend\\autoberles_backend.csproj|solutionrelative:autoberles_backend\\services\\emailservice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{41495FAA-ADEC-43FA-AAE4-4D5298525BBD}|autoberles_backend\\autoberles_backend.csproj|c:\\users\\windows\\source\\repos\\backend\\autoberles_backend\\autoberles_backend\\carrentalcontext.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{41495FAA-ADEC-43FA-AAE4-4D5298525BBD}|autoberles_backend\\autoberles_backend.csproj|solutionrelative:autoberles_backend\\carrentalcontext.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{41495FAA-ADEC-43FA-AAE4-4D5298525BBD}|autoberles_backend\\autoberles_backend.csproj|c:\\users\\windows\\source\\repos\\backend\\autoberles_backend\\autoberles_backend\\models\\additionalequipment.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{41495FAA-ADEC-43FA-AAE4-4D5298525BBD}|autoberles_backend\\autoberles_backend.csproj|solutionrelative:autoberles_backend\\models\\additionalequipment.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{41495FAA-ADEC-43FA-AAE4-4D5298525BBD}|autoberles_backend\\autoberles_backend.csproj|c:\\users\\windows\\source\\repos\\backend\\autoberles_backend\\autoberles_backend\\models\\fueltype.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{41495FAA-ADEC-43FA-AAE4-4D5298525BBD}|autoberles_backend\\autoberles_backend.csproj|solutionrelative:autoberles_backend\\models\\fueltype.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{41495FAA-ADEC-43FA-AAE4-4D5298525BBD}|autoberles_backend\\autoberles_backend.csproj|c:\\users\\windows\\source\\repos\\backend\\autoberles_backend\\autoberles_backend\\models\\branch.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{41495FAA-ADEC-43FA-AAE4-4D5298525BBD}|autoberles_backend\\autoberles_backend.csproj|solutionrelative:autoberles_backend\\models\\branch.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{41495FAA-ADEC-43FA-AAE4-4D5298525BBD}|autoberles_backend\\autoberles_backend.csproj|c:\\users\\windows\\source\\repos\\backend\\autoberles_backend\\autoberles_backend\\models\\carcategory.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{41495FAA-ADEC-43FA-AAE4-4D5298525BBD}|autoberles_backend\\autoberles_backend.csproj|solutionrelative:autoberles_backend\\models\\carcategory.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{41495FAA-ADEC-43FA-AAE4-4D5298525BBD}|autoberles_backend\\autoberles_backend.csproj|c:\\users\\windows\\source\\repos\\backend\\autoberles_backend\\autoberles_backend\\models\\rental.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{41495FAA-ADEC-43FA-AAE4-4D5298525BBD}|autoberles_backend\\autoberles_backend.csproj|solutionrelative:autoberles_backend\\models\\rental.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{41495FAA-ADEC-43FA-AAE4-4D5298525BBD}|autoberles_backend\\autoberles_backend.csproj|c:\\users\\windows\\source\\repos\\backend\\autoberles_backend\\autoberles_backend\\models\\transmissiontype.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{41495FAA-ADEC-43FA-AAE4-4D5298525BBD}|autoberles_backend\\autoberles_backend.csproj|solutionrelative:autoberles_backend\\models\\transmissiontype.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
       "AbsoluteMoniker": "D:0:0:{41495FAA-ADEC-43FA-AAE4-4D5298525BBD}|autoberles_backend\\autoberles_backend.csproj|c:\\users\\windows\\source\\repos\\backend\\autoberles_backend\\autoberles_backend\\autoberles_backend.csproj||{FA3CD31E-987B-443A-9B81-186104E8DAC1}|",
@@ -30,7 +114,7 @@
       "DocumentGroups": [
         {
           "DockedWidth": 200,
-          "SelectedChildIndex": 8,
+          "SelectedChildIndex": 9,
           "Children": [
             {
               "$type": "Bookmark",
@@ -42,28 +126,313 @@
             },
             {
               "$type": "Bookmark",
-              "Name": "ST:0:0:{56df62a4-05a3-4e5b-aa1a-99371ccfb997}"
+              "Name": "ST:129:0:{1fc202d4-d401-403c-9834-5b218574bb67}"
             },
             {
               "$type": "Bookmark",
-              "Name": "ST:129:0:{1fc202d4-d401-403c-9834-5b218574bb67}"
+              "Name": "ST:0:0:{56df62a4-05a3-4e5b-aa1a-99371ccfb997}"
             },
             {
               "$type": "Document",
               "DocumentIndex": 1,
-              "Title": "autoberles_backend",
+              "Title": "AuthController.cs",
+              "DocumentMoniker": "C:\\Users\\Windows\\source\\repos\\backend\\autoberles_backend\\autoberles_backend\\Controllers\\AuthController.cs",
+              "RelativeDocumentMoniker": "autoberles_backend\\Controllers\\AuthController.cs",
+              "ToolTip": "C:\\Users\\Windows\\source\\repos\\backend\\autoberles_backend\\autoberles_backend\\Controllers\\AuthController.cs",
+              "RelativeToolTip": "autoberles_backend\\Controllers\\AuthController.cs",
+              "ViewState": "AgIAAOAAAAAAAAAAAAAiwO8AAAABAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2026-04-20T06:42:33.394Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 9,
+              "Title": "UserValidator.cs",
+              "DocumentMoniker": "C:\\Users\\Windows\\source\\repos\\backend\\autoberles_backend\\autoberles_backend\\Classes\\UserValidator.cs",
+              "RelativeDocumentMoniker": "autoberles_backend\\Classes\\UserValidator.cs",
+              "ToolTip": "C:\\Users\\Windows\\source\\repos\\backend\\autoberles_backend\\autoberles_backend\\Classes\\UserValidator.cs",
+              "RelativeToolTip": "autoberles_backend\\Classes\\UserValidator.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2026-04-20T06:40:42.054Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 8,
+              "Title": "TokenHelper.cs",
+              "DocumentMoniker": "C:\\Users\\Windows\\source\\repos\\backend\\autoberles_backend\\autoberles_backend\\Classes\\TokenHelper.cs",
+              "RelativeDocumentMoniker": "autoberles_backend\\Classes\\TokenHelper.cs",
+              "ToolTip": "C:\\Users\\Windows\\source\\repos\\backend\\autoberles_backend\\autoberles_backend\\Classes\\TokenHelper.cs",
+              "RelativeToolTip": "autoberles_backend\\Classes\\TokenHelper.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2026-04-20T06:40:40.99Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 7,
+              "Title": "Roles.cs",
+              "DocumentMoniker": "C:\\Users\\Windows\\source\\repos\\backend\\autoberles_backend\\autoberles_backend\\Classes\\Roles.cs",
+              "RelativeDocumentMoniker": "autoberles_backend\\Classes\\Roles.cs",
+              "ToolTip": "C:\\Users\\Windows\\source\\repos\\backend\\autoberles_backend\\autoberles_backend\\Classes\\Roles.cs",
+              "RelativeToolTip": "autoberles_backend\\Classes\\Roles.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2026-04-20T06:40:38.334Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 6,
+              "Title": "Register.cs",
+              "DocumentMoniker": "C:\\Users\\Windows\\source\\repos\\backend\\autoberles_backend\\autoberles_backend\\Classes\\Register.cs",
+              "RelativeDocumentMoniker": "autoberles_backend\\Classes\\Register.cs",
+              "ToolTip": "C:\\Users\\Windows\\source\\repos\\backend\\autoberles_backend\\autoberles_backend\\Classes\\Register.cs",
+              "RelativeToolTip": "autoberles_backend\\Classes\\Register.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2026-04-20T06:40:37.34Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 0,
+              "Title": "DateTimeConverter.cs",
+              "DocumentMoniker": "C:\\Users\\Windows\\source\\repos\\backend\\autoberles_backend\\autoberles_backend\\Classes\\DateTimeConverter.cs",
+              "RelativeDocumentMoniker": "autoberles_backend\\Classes\\DateTimeConverter.cs",
+              "ToolTip": "C:\\Users\\Windows\\source\\repos\\backend\\autoberles_backend\\autoberles_backend\\Classes\\DateTimeConverter.cs",
+              "RelativeToolTip": "autoberles_backend\\Classes\\DateTimeConverter.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAoAAAAIAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2026-04-20T06:40:31.387Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 5,
+              "Title": "ForgotPassword.cs",
+              "DocumentMoniker": "C:\\Users\\Windows\\source\\repos\\backend\\autoberles_backend\\autoberles_backend\\Classes\\ForgotPassword.cs",
+              "RelativeDocumentMoniker": "autoberles_backend\\Classes\\ForgotPassword.cs",
+              "ToolTip": "C:\\Users\\Windows\\source\\repos\\backend\\autoberles_backend\\autoberles_backend\\Classes\\ForgotPassword.cs",
+              "RelativeToolTip": "autoberles_backend\\Classes\\ForgotPassword.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2026-04-20T06:40:29.862Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 4,
+              "Title": "CreateUser.cs",
+              "DocumentMoniker": "C:\\Users\\Windows\\source\\repos\\backend\\autoberles_backend\\autoberles_backend\\Classes\\CreateUser.cs",
+              "RelativeDocumentMoniker": "autoberles_backend\\Classes\\CreateUser.cs",
+              "ToolTip": "C:\\Users\\Windows\\source\\repos\\backend\\autoberles_backend\\autoberles_backend\\Classes\\CreateUser.cs",
+              "RelativeToolTip": "autoberles_backend\\Classes\\CreateUser.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAoAAAAyAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2026-04-20T06:40:29.138Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 3,
+              "Title": "Program.cs",
+              "DocumentMoniker": "C:\\Users\\Windows\\source\\repos\\backend\\autoberles_backend\\autoberles_backend\\Program.cs",
+              "RelativeDocumentMoniker": "autoberles_backend\\Program.cs",
+              "ToolTip": "C:\\Users\\Windows\\source\\repos\\backend\\autoberles_backend\\autoberles_backend\\Program.cs",
+              "RelativeToolTip": "autoberles_backend\\Program.cs",
+              "ViewState": "AgIAAA4AAAAAAAAAAAAqwH4AAAABAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2026-04-03T14:55:19.818Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 2,
+              "Title": "UserController.cs",
+              "DocumentMoniker": "C:\\Users\\Windows\\source\\repos\\backend\\autoberles_backend\\autoberles_backend\\Controllers\\UserController.cs",
+              "RelativeDocumentMoniker": "autoberles_backend\\Controllers\\UserController.cs",
+              "ToolTip": "C:\\Users\\Windows\\source\\repos\\backend\\autoberles_backend\\autoberles_backend\\Controllers\\UserController.cs",
+              "RelativeToolTip": "autoberles_backend\\Controllers\\UserController.cs",
+              "ViewState": "AgIAAN4AAAAAAAAAAAAiwBoBAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2026-04-20T06:41:05.255Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 12,
+              "Title": "NullableDateTimeConverter.cs",
+              "DocumentMoniker": "C:\\Users\\Windows\\source\\repos\\backend\\autoberles_backend\\autoberles_backend\\Classes\\NullableDateTimeConverter.cs",
+              "RelativeDocumentMoniker": "autoberles_backend\\Classes\\NullableDateTimeConverter.cs",
+              "ToolTip": "C:\\Users\\Windows\\source\\repos\\backend\\autoberles_backend\\autoberles_backend\\Classes\\NullableDateTimeConverter.cs",
+              "RelativeToolTip": "autoberles_backend\\Classes\\NullableDateTimeConverter.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2026-04-20T06:40:47.02Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 11,
+              "Title": "Login.cs",
+              "DocumentMoniker": "C:\\Users\\Windows\\source\\repos\\backend\\autoberles_backend\\autoberles_backend\\Classes\\Login.cs",
+              "RelativeDocumentMoniker": "autoberles_backend\\Classes\\Login.cs",
+              "ToolTip": "C:\\Users\\Windows\\source\\repos\\backend\\autoberles_backend\\autoberles_backend\\Classes\\Login.cs",
+              "RelativeToolTip": "autoberles_backend\\Classes\\Login.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAoAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2026-04-20T06:40:04.21Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 10,
+              "Title": "User.cs",
+              "DocumentMoniker": "C:\\Users\\Windows\\source\\repos\\backend\\autoberles_backend\\autoberles_backend\\Models\\User.cs",
+              "RelativeDocumentMoniker": "autoberles_backend\\Models\\User.cs",
+              "ToolTip": "C:\\Users\\Windows\\source\\repos\\backend\\autoberles_backend\\autoberles_backend\\Models\\User.cs",
+              "RelativeToolTip": "autoberles_backend\\Models\\User.cs",
+              "ViewState": "AgIAACUAAAAAAAAAAAA4wAAAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2026-04-19T01:02:49.461Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 13,
+              "Title": "PDFService.cs",
+              "DocumentMoniker": "C:\\Users\\Windows\\source\\repos\\backend\\autoberles_backend\\autoberles_backend\\Services\\PDFService.cs",
+              "RelativeDocumentMoniker": "autoberles_backend\\Services\\PDFService.cs",
+              "ToolTip": "C:\\Users\\Windows\\source\\repos\\backend\\autoberles_backend\\autoberles_backend\\Services\\PDFService.cs",
+              "RelativeToolTip": "autoberles_backend\\Services\\PDFService.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2026-04-19T01:03:42.484Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 14,
+              "Title": "EmailService.cs",
+              "DocumentMoniker": "C:\\Users\\Windows\\source\\repos\\backend\\autoberles_backend\\autoberles_backend\\Services\\EmailService.cs",
+              "RelativeDocumentMoniker": "autoberles_backend\\Services\\EmailService.cs",
+              "ToolTip": "C:\\Users\\Windows\\source\\repos\\backend\\autoberles_backend\\autoberles_backend\\Services\\EmailService.cs",
+              "RelativeToolTip": "autoberles_backend\\Services\\EmailService.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2026-04-19T01:03:40.91Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 15,
+              "Title": "CarRentalContext.cs",
+              "DocumentMoniker": "C:\\Users\\Windows\\source\\repos\\backend\\autoberles_backend\\autoberles_backend\\CarRentalContext.cs",
+              "RelativeDocumentMoniker": "autoberles_backend\\CarRentalContext.cs",
+              "ToolTip": "C:\\Users\\Windows\\source\\repos\\backend\\autoberles_backend\\autoberles_backend\\CarRentalContext.cs",
+              "RelativeToolTip": "autoberles_backend\\CarRentalContext.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2026-04-19T01:03:38.335Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 16,
+              "Title": "AdditionalEquipment.cs",
+              "DocumentMoniker": "C:\\Users\\Windows\\source\\repos\\backend\\autoberles_backend\\autoberles_backend\\Models\\AdditionalEquipment.cs",
+              "RelativeDocumentMoniker": "autoberles_backend\\Models\\AdditionalEquipment.cs",
+              "ToolTip": "C:\\Users\\Windows\\source\\repos\\backend\\autoberles_backend\\autoberles_backend\\Models\\AdditionalEquipment.cs",
+              "RelativeToolTip": "autoberles_backend\\Models\\AdditionalEquipment.cs",
+              "ViewState": "AgIAAAkAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2026-04-19T01:03:30.48Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 18,
+              "Title": "Branch.cs",
+              "DocumentMoniker": "C:\\Users\\Windows\\source\\repos\\backend\\autoberles_backend\\autoberles_backend\\Models\\Branch.cs",
+              "RelativeDocumentMoniker": "autoberles_backend\\Models\\Branch.cs",
+              "ToolTip": "C:\\Users\\Windows\\source\\repos\\backend\\autoberles_backend\\autoberles_backend\\Models\\Branch.cs",
+              "RelativeToolTip": "autoberles_backend\\Models\\Branch.cs",
+              "ViewState": "AgIAAAYAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2026-04-19T01:03:16.124Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 19,
+              "Title": "CarCategory.cs",
+              "DocumentMoniker": "C:\\Users\\Windows\\source\\repos\\backend\\autoberles_backend\\autoberles_backend\\Models\\CarCategory.cs",
+              "RelativeDocumentMoniker": "autoberles_backend\\Models\\CarCategory.cs",
+              "ToolTip": "C:\\Users\\Windows\\source\\repos\\backend\\autoberles_backend\\autoberles_backend\\Models\\CarCategory.cs",
+              "RelativeToolTip": "autoberles_backend\\Models\\CarCategory.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2026-04-19T01:03:08.026Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 17,
+              "Title": "FuelType.cs",
+              "DocumentMoniker": "C:\\Users\\Windows\\source\\repos\\backend\\autoberles_backend\\autoberles_backend\\Models\\FuelType.cs",
+              "RelativeDocumentMoniker": "autoberles_backend\\Models\\FuelType.cs",
+              "ToolTip": "C:\\Users\\Windows\\source\\repos\\backend\\autoberles_backend\\autoberles_backend\\Models\\FuelType.cs",
+              "RelativeToolTip": "autoberles_backend\\Models\\FuelType.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2026-04-19T01:03:05.91Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 20,
+              "Title": "Rental.cs",
+              "DocumentMoniker": "C:\\Users\\Windows\\source\\repos\\backend\\autoberles_backend\\autoberles_backend\\Models\\Rental.cs",
+              "RelativeDocumentMoniker": "autoberles_backend\\Models\\Rental.cs",
+              "ToolTip": "C:\\Users\\Windows\\source\\repos\\backend\\autoberles_backend\\autoberles_backend\\Models\\Rental.cs",
+              "RelativeToolTip": "autoberles_backend\\Models\\Rental.cs",
+              "ViewState": "AgIAABIAAAAAAAAAAAA5wAAAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2026-04-19T01:03:00.216Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 21,
+              "Title": "TransmissionType.cs",
+              "DocumentMoniker": "C:\\Users\\Windows\\source\\repos\\backend\\autoberles_backend\\autoberles_backend\\Models\\TransmissionType.cs",
+              "RelativeDocumentMoniker": "autoberles_backend\\Models\\TransmissionType.cs",
+              "ToolTip": "C:\\Users\\Windows\\source\\repos\\backend\\autoberles_backend\\autoberles_backend\\Models\\TransmissionType.cs",
+              "RelativeToolTip": "autoberles_backend\\Models\\TransmissionType.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2026-04-19T01:02:57.513Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 22,
+              "Title": "autoberles_backend.csproj",
               "DocumentMoniker": "C:\\Users\\Windows\\source\\repos\\backend\\autoberles_backend\\autoberles_backend\\autoberles_backend.csproj",
               "RelativeDocumentMoniker": "autoberles_backend\\autoberles_backend.csproj",
               "ToolTip": "C:\\Users\\Windows\\source\\repos\\backend\\autoberles_backend\\autoberles_backend\\autoberles_backend.csproj",
               "RelativeToolTip": "autoberles_backend\\autoberles_backend.csproj",
               "ViewState": "AgIAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000758|",
-              "WhenOpened": "2026-04-16T15:47:56.913Z",
-              "EditorCaption": ""
+              "WhenOpened": "2026-04-16T15:47:56.913Z"
             },
             {
               "$type": "Document",
-              "DocumentIndex": 2,
+              "DocumentIndex": 23,
               "Title": "CarTests.cs",
               "DocumentMoniker": "C:\\Users\\Windows\\source\\repos\\backend\\autoberles_backend\\autoberles_tests\\Tests\\CarTests.cs",
               "RelativeDocumentMoniker": "autoberles_tests\\Tests\\CarTests.cs",
@@ -71,12 +440,11 @@
               "RelativeToolTip": "autoberles_tests\\Tests\\CarTests.cs",
               "ViewState": "AgIAAAkAAAAAAAAAAAAAABEAAAAzAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2026-04-09T09:28:32.381Z",
-              "EditorCaption": ""
+              "WhenOpened": "2026-04-09T09:28:32.381Z"
             },
             {
               "$type": "Document",
-              "DocumentIndex": 3,
+              "DocumentIndex": 24,
               "Title": "AdditionalEquipmentTests.cs",
               "DocumentMoniker": "C:\\Users\\Windows\\source\\repos\\backend\\autoberles_backend\\autoberles_tests\\Tests\\AdditionalEquipmentTests.cs",
               "RelativeDocumentMoniker": "autoberles_tests\\Tests\\AdditionalEquipmentTests.cs",
@@ -84,12 +452,11 @@
               "RelativeToolTip": "autoberles_tests\\Tests\\AdditionalEquipmentTests.cs",
               "ViewState": "AgIAAAkAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2026-04-09T09:28:29.938Z",
-              "EditorCaption": ""
+              "WhenOpened": "2026-04-09T09:28:29.938Z"
             },
             {
               "$type": "Document",
-              "DocumentIndex": 4,
+              "DocumentIndex": 25,
               "Title": "CarController.cs",
               "DocumentMoniker": "C:\\Users\\Windows\\source\\repos\\backend\\autoberles_backend\\autoberles_backend\\Controllers\\CarController.cs",
               "RelativeDocumentMoniker": "autoberles_backend\\Controllers\\CarController.cs",
@@ -98,19 +465,6 @@
               "ViewState": "AgIAAIcAAAAAAAAAAAAqwI8AAAAMAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
               "WhenOpened": "2026-04-03T14:56:30.033Z"
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 0,
-              "Title": "Program.cs",
-              "DocumentMoniker": "C:\\Users\\Windows\\source\\repos\\backend\\autoberles_backend\\autoberles_backend\\Program.cs",
-              "RelativeDocumentMoniker": "autoberles_backend\\Program.cs",
-              "ToolTip": "C:\\Users\\Windows\\source\\repos\\backend\\autoberles_backend\\autoberles_backend\\Program.cs",
-              "RelativeToolTip": "autoberles_backend\\Program.cs",
-              "ViewState": "AgIAABEAAAAAAAAAAAAQwBsAAAAqAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2026-04-03T14:55:19.818Z",
-              "EditorCaption": ""
             }
           ]
         },
